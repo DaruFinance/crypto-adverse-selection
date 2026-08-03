@@ -1,0 +1,57 @@
+{
+  "scope": "Claims supported by the shipped aggregate panels and result files.",
+  "allowed": [
+    {
+      "claim": "The simulated last-in-queue touch quoter has negative 10-second pre-fee entry markout on Bybit, Binance and Hyperliquid.",
+      "evidence": "decomposition_by_venue.json",
+      "qualification": "This is a one-sided entry markout, not realised maker profit or loss."
+    },
+    {
+      "claim": "The two-way month-and-coin intervals for the pooled 10-second entry markout exclude zero on all three venues.",
+      "evidence": "decomposition_by_venue.json",
+      "qualification": "The panels cover different calendars and coin sets."
+    },
+    {
+      "claim": "The same-date Bybit-minus-Hyperliquid estimate is negative in the shipped re-quote panel.",
+      "evidence": "venue_difference.json",
+      "qualification": "The estimate depends on the extraction and re-quote specification and is not a causal architecture comparison."
+    },
+    {
+      "claim": "The matched lead-lag panel has a median 500 ms Bybit lead.",
+      "evidence": "cross_venue_leadlag.json",
+      "qualification": "The 441 ms publication-cadence gap is of the same order, so the result does not establish an information lead."
+    },
+    {
+      "claim": "No session block shows a detectable calm-to-stress change in net entry markout under the specified sign test.",
+      "evidence": "conditional_net_asia.json, conditional_net_europe.json, conditional_net_us.json",
+      "qualification": "The test is Bybit-only and low powered; failure to reject is not invariance."
+    },
+    {
+      "claim": "In the 300-coin-day Bybit bid-side depth panel, the minimum measured break-even rebate is 0.328 bp and the touch overtakes the deepest level at 0.771 bp.",
+      "evidence": "depth_rebate_frontier.json",
+      "qualification": "Levels are price depth, not queue position, and the published 1.5 bp tier is not shown to be attainable by this quoter."
+    },
+    {
+      "claim": "The tested Avellaneda-Stoikov depth rule remains negative on 66 of 91 coin-days and takes about 9.2 percent as many fills as the touch rule.",
+      "evidence": "avellaneda_stoikov_arm.json",
+      "qualification": "This is one limited quoting arm, not a general test of inventory-aware market making."
+    },
+    {
+      "claim": "All eight shipped aggregate panels rebuild byte-for-byte from the frozen derived measurement artifacts named in the lineage manifest.",
+      "evidence": "lineage.json and build_panels.py",
+      "qualification": "Raw venue archives and the raw-to-derived measurement stage are outside this repository."
+    }
+  ],
+  "prohibited": [
+    "Market makers lose money on these venues.",
+    "The study measures realised maker profitability.",
+    "Venue architecture causes the observed difference.",
+    "Bybit has an information lead over Hyperliquid.",
+    "Deeper queue position improves the result.",
+    "The adverse-to-capture ratio of 1.8 to 5.1 is a robust headline effect.",
+    "The simulated quoter qualifies for the published 1.5 bp rebate tier.",
+    "Net entry markout is unchanged or invariant across volatility regimes.",
+    "This repository reproduces the study from raw venue archives.",
+    "The result is a tradeable edge or a walk-forward strategy result."
+  ]
+}

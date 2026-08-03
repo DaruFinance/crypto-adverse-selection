@@ -1,0 +1,395 @@
+{
+  "a": "bybit_perp",
+  "b": "hyperliquid",
+  "gap_ms": 2000,
+  "n_shared_coindays": 325,
+  "n_date_clusters": 25,
+  "convention": "positive = A (Bybit) has higher net, i.e. B is worse",
+  "pooled_diff_bp": -0.3545737445909912,
+  "pooled_ci95": [
+    -0.38478610409600145,
+    -0.3276029940598124
+  ],
+  "paired_weighted_diff_bp": -0.34553339255590904,
+  "paired_unweighted_diff_bp": -0.4960242733157723,
+  "unweighted_inflation_bp": -0.15049088075986328,
+  "paired_ci95": [
+    -0.3831659715488618,
+    -0.3126128990761397
+  ],
+  "paired_median_diff_bp": -0.3920676671560167,
+  "coin_clustered": {
+    "n_clusters": 13,
+    "pooled_ci95": [
+      -0.45421797861117824,
+      -0.29930770812520935
+    ],
+    "paired_ci95": [
+      -0.42016196571972475,
+      -0.31141078592710403
+    ],
+    "paired_clears_zero": null,
+    "per_coin_diff_bp": {
+      "ARB": -0.5721354783881963,
+      "AVAX": -0.8103963082309482,
+      "BNB": -0.23167636577232145,
+      "BTC": -0.28458836085077405,
+      "DOGE": -0.35409945828114886,
+      "ETH": -0.3411835899914101,
+      "HYPE": -0.4910790808556053,
+      "LINK": -0.7805913056098788,
+      "LTC": -0.5571766894709173,
+      "OP": -0.930638024720696,
+      "SOL": -0.31711506562513403,
+      "SUI": -0.422364739991388,
+      "XRP": -0.3552710853166207
+    },
+    "n_coins_negative": 13,
+    "closest_to_zero_bp": -0.23167636577232145,
+    "percentile_interval_has_power_to_fail": false,
+    "verdict_is_available": false,
+    "n_effective_clusters": 4.383754288997897,
+    "paired_clears_zero_percentile": null,
+    "per_coin_diff_bp_common_weight": {
+      "ARB": -0.5296293023274372,
+      "AVAX": -0.710341962877621,
+      "BNB": -0.2965528118768209,
+      "BTC": -0.296533431048423,
+      "DOGE": -0.31206656687216244,
+      "ETH": -0.336175491337009,
+      "HYPE": -0.3968778441670843,
+      "LINK": -0.7258444918839598,
+      "LTC": -0.5865952303988682,
+      "OP": -0.44532070563625475,
+      "SOL": -0.2819364541902559,
+      "SUI": -0.37658431693110334,
+      "XRP": -0.3406942496088783
+    }
+  },
+  "leave_one_coin_out": {
+    "ARB": {
+      "pooled_without": -0.35269752712462255,
+      "paired_without": -0.34438963248063226,
+      "weight_share": 0.00617448776616072,
+      "n_coindays": 25
+    },
+    "AVAX": {
+      "pooled_without": -0.33761904043279983,
+      "paired_without": -0.34208776402831814,
+      "weight_share": 0.009356657815056882,
+      "n_coindays": 25
+    },
+    "BNB": {
+      "pooled_without": -0.355529169897951,
+      "paired_without": -0.3462623921997291,
+      "weight_share": 0.014665173978227,
+      "n_coindays": 25
+    },
+    "BTC": {
+      "pooled_without": -0.35343773065515194,
+      "paired_without": -0.3756404671283982,
+      "weight_share": 0.380586557964979,
+      "n_coindays": 25
+    },
+    "DOGE": {
+      "pooled_without": -0.3571552734864121,
+      "paired_without": -0.3464652561598397,
+      "weight_share": 0.02709009044320108,
+      "n_coindays": 25
+    },
+    "ETH": {
+      "pooled_without": -0.35624923741032977,
+      "paired_without": -0.34780871530922813,
+      "weight_share": 0.19558832175438254,
+      "n_coindays": 25
+    },
+    "HYPE": {
+      "pooled_without": -0.39250667108502557,
+      "paired_without": -0.3337527612495736,
+      "weight_share": 0.18662361714011347,
+      "n_coindays": 25
+    },
+    "LINK": {
+      "pooled_without": -0.3382767768412116,
+      "paired_without": -0.3354957384326133,
+      "weight_share": 0.025714579679186306,
+      "n_coindays": 25
+    },
+    "LTC": {
+      "pooled_without": -0.34892162876818145,
+      "paired_without": -0.34311506499416816,
+      "weight_share": 0.009932339078714,
+      "n_coindays": 25
+    },
+    "OP": {
+      "pooled_without": -0.3522350494318746,
+      "paired_without": -0.34516782812494706,
+      "weight_share": 0.003650064182336629,
+      "n_coindays": 25
+    },
+    "SOL": {
+      "pooled_without": -0.35952560158534375,
+      "paired_without": -0.35102401680600487,
+      "weight_share": 0.07947341087474155,
+      "n_coindays": 25
+    },
+    "SUI": {
+      "pooled_without": -0.35232495322914653,
+      "paired_without": -0.3448400869139436,
+      "weight_share": 0.021840367260149138,
+      "n_coindays": 25
+    },
+    "XRP": {
+      "pooled_without": -0.35555603318918416,
+      "paired_without": -0.345731373339665,
+      "weight_share": 0.039304332062751704,
+      "n_coindays": 25
+    }
+  },
+  "most_influential_coin": "HYPE",
+  "pooled_without_most_influential": -0.39250667108502557,
+  "loo_swing_bp": 0.03793292649403435,
+  "loo_swing_vs_weight_corr": 0.1184276033435491,
+  "loo_is_informative_pooled": true,
+  "most_influential_coin_common_weight": "BTC",
+  "paired_without_most_influential": -0.3756404671283982,
+  "loo_swing_bp_common_weight": 0.03010707457248918,
+  "loo_swing_vs_weight_corr_common_weight": 0.8540495251152994,
+  "loo_is_informative_common_weight": false,
+  "loo_headline_statistic": "common_weight_paired",
+  "loo_sign_stable": true,
+  "estimator_family": {
+    "by_estimator": {
+      "shipped_own_weights": -0.3545737445909912,
+      "paired_min_fill": -0.34553339255590904,
+      "common_bybit_weights": -0.4362081057269024,
+      "common_hl_weights": -0.3638112193925302,
+      "coin_equal": -0.49602427331577226,
+      "coindays_unweighted": -0.4960242733157723
+    },
+    "spread_bp": 0.15049088075986328,
+    "spread_bp_excluding_unweighted": 0.15049088075986322,
+    "spread_equals_unweighted_inflation": true,
+    "date_ci_width_bp": 0.05718311003618903,
+    "spread_over_ci_width": 2.631736550611243,
+    "spread_over_ci_width_excluding_unweighted": 2.631736550611242,
+    "n_members": 6,
+    "n_distinct_members": 5,
+    "duplicate_members": [
+      [
+        "coindays_unweighted",
+        "coin_equal"
+      ]
+    ],
+    "all_same_sign": true,
+    "shipped_is_smallest_magnitude": false
+  },
+  "rung_match": {
+    "effective_requote_s_a": 3.70453582680609,
+    "effective_requote_s_b": 3.843291697217049,
+    "ratio_a_over_b": 0.9638966070383278,
+    "measured_on": "the 325 shared coin-days, exactly, as 86400/mean(n_rows)",
+    "degenerate": false,
+    "markout_horizon_s": 10.0,
+    "stored_not_computed": true,
+    "reproducible_from_shipped_panels": false,
+    "retracted_as_a_selection_rule": "These figures come from the upstream measurement and cannot be rebuilt here, because n_rows is in no shipped panel. They were once read as showing the two venues well matched at this rung, and that reading is withdrawn: the rung is a fixed choice, see rung_choice. The one re-quote-intensity statistic that does ship does not select this rung."
+  },
+  "gap_composition": {
+    "headline_estimator": "min_fill_paired_primary",
+    "capture_diff_bp": -0.21105989770517886,
+    "adverse_diff_bp": -0.13447349485073012,
+    "share_from_capture": 0.6108234464517879,
+    "by_weighting": {
+      "own_weights_pooled": {
+        "capture_diff_bp": -0.11942865284290324,
+        "adverse_diff_bp": -0.23514509174808784,
+        "net_diff_bp": -0.3545737445909911,
+        "share_from_capture": 0.3368231705386616
+      },
+      "min_fill_paired_primary": {
+        "capture_diff_bp": -0.21105989770517886,
+        "adverse_diff_bp": -0.13447349485073012,
+        "net_diff_bp": -0.345533392555909,
+        "share_from_capture": 0.6108234464517879
+      },
+      "common_bybit_weights": {
+        "capture_diff_bp": -0.3058749645349549,
+        "adverse_diff_bp": -0.1303331411919476,
+        "net_diff_bp": -0.4362081057269025,
+        "share_from_capture": 0.70121338993745
+      },
+      "common_hl_weights": {
+        "capture_diff_bp": -0.21533693517165114,
+        "adverse_diff_bp": -0.14847428422087905,
+        "net_diff_bp": -0.3638112193925302,
+        "share_from_capture": 0.5918919585031149
+      },
+      "unweighted": {
+        "capture_diff_bp": -0.33620746132033935,
+        "adverse_diff_bp": -0.15981681199543285,
+        "net_diff_bp": -0.4960242733157722,
+        "share_from_capture": 0.677804453142775
+      }
+    },
+    "share_range": [
+      0.3368231705386616,
+      0.70121338993745
+    ],
+    "n_weightings_majority_capture": 4,
+    "n_weightings": 5,
+    "share_from_capture_formula": "abs(capture difference) over abs(capture difference) plus abs(adverse difference); this is a share of the total movement in the two legs rather than of the net difference, and the two agree only while both legs carry the same sign, which they do at every rung here"
+  },
+  "date_clustered_power": {
+    "n_dates_negative": 25,
+    "n_dates": 25,
+    "closest_to_zero_bp": -0.25542290070336826,
+    "percentile_interval_has_power_to_fail": false,
+    "sign_test_p_two_sided": 5.960464477539063e-08,
+    "dates_are_consecutive": true,
+    "lag1_autocorr_of_date_diff": 0.64,
+    "effective_n_clusters": 5.49,
+    "ci_should_be_wider_by": 2.13,
+    "sign_test_is_at_its_floor": true
+  },
+  "n_coindays_a_higher": 32,
+  "n_coindays_b_higher": 293,
+  "limitations": {
+    "fee_basis": "Gross markouts, before maker fees and before funding. Bybit charges 2.0 bp and Hyperliquid 1.5 bp, so the 0.5 bp fee-schedule gap is larger than the 0.35 bp microstructure gap measured here and points the same way. Net of each venue's own fee the difference is about -0.85 bp, and the maker loses on both venues.",
+    "date_clusters_are_not_independent": "The 25 date clusters are consecutive days inside one 3.5-week regime rather than independent draws. Lag-1 autocorrelation of 0.64 leaves roughly 5.5 effective clusters, so the date interval is about 2.1 times too narrow. The exact binomial also sits at its own floor, where it says no more than that all 25 days agree in sign. The direction survives widening; the stated precision does not.",
+    "majority_of_the_gap_is_captured_spread": "About 61 percent of the difference is a capture difference rather than an adverse-selection difference, and 4 of the 5 weightings tried put the majority on capture. That makes most of the venue gap a tick-size and depth property, in that Hyperliquid earns a wider effective spread, rather than a difference in order-flow toxicity.",
+    "coin_clustered_interval_rests_on_few_effective_coins": "Fill weight is concentrated enough that the 13 coins behave like 4.4 by the Kish count, below the threshold at which this interval is worth reading. Its bounds do sit wholly below zero, but the coin-clustered verdict should be treated as unavailable rather than as a pass. The evidence for the sign is the 13 of 13 coins running the same way and the date-clustered interval, not this one.",
+    "capture_share_depends_on_the_rung": "The net gap is stable across every re-quote rung, from -0.335 to -0.376 bp. The split between captured spread and adverse selection is not: capture is 0.61 of the gap at the 2000 ms rung reported here, and 0.39 to 0.42 at the three fastest rungs, where it is the minority. Reading the gap as mostly a tick-size and depth property holds at rungs of a second or slower and not below.",
+    "two_way_verdict_abstains": "The coin dimension carries 4.38 effective clusters against a floor of 5, so the two-way verdict is withheld rather than reported. The interval itself is [-0.4300, -0.2611] and does not contain zero, and it is wider than either one-way interval, which is the direction crossing the two dimensions should move it.",
+    "hyperliquid_leg_is_not_the_main_panel_cut": "This result is built from venue_requote_rungs.csv, not from the two venue coin-day panels. On Bybit those agree exactly: the 100 ms rung reproduces bybit_perp_coindays.csv on all 156 shared coin-days, fill for fill. On Hyperliquid they do not agree at any rung, matching on 3 of 500 coin-days at 100 ms and 6 of 500 at 2000 ms, and the main panel's captured half-spread of 0.4514 bp sits above even the 10000 ms rung. The two Hyperliquid panels were therefore cut differently, by more than snapshot spacing alone. On the 156 coin-days carried by both panels on both venues the difference is -0.3496 bp from the rung panel at the reported rung and -0.2232 bp from the two main panels, so the reported magnitude is about 57 percent larger than the same coin-days give under the other extraction. The sign is the same either way and the fee-schedule gap of roughly 0.5 bp still exceeds both, but the magnitude should be read as extraction dependent rather than settled.",
+    "the_split_moves_with_quote_staleness_and_the_net_does_not": "Both legs are measured against the mid of the last snapshot at or before the fill, not against a mid at the fill instant, because no later mid is known then. That mid enters the captured leg and the adverse leg with opposite signs, so it cancels exactly in the net and moves the split between them. A staler reference books pre-fill drift into the adverse leg and inflates the measured capture. Across the seven rungs the captured half-spread rises monotonically, by 1.33 times on Bybit and 1.37 on Hyperliquid from 100 ms to 10000 ms, which is the direction that mechanism predicts. The fill set also changes across rungs, so those two causes are not separated here. Read the share of the gap coming from capture as partly a statement about the venues' publication cadence rather than purely about their spreads. The sign and size of the net difference are untouched, because the net does not contain that reference mid."
+  },
+  "date_clustered": {
+    "lag1_autocorr_of_date_diff": 0.6400383049869655,
+    "effective_n_clusters": 5.487092800187606,
+    "ci_should_be_wider_by": 2.13,
+    "n_clusters": 25,
+    "paired_ci95": [
+      -0.3821913401749095,
+      -0.31193674531633964
+    ],
+    "percentile_interval_has_power_to_fail": false
+  },
+  "rung_choice": {
+    "gap_ms_reported": 2000,
+    "how_chosen": "fixed, not derived",
+    "fills_per_coin_day_by_rung": {
+      "100": {
+        "bybit_perp": 15220.606153846154,
+        "hyperliquid": 2968.406,
+        "ratio": 5.127535166633592
+      },
+      "250": {
+        "bybit_perp": 11513.433846153846,
+        "hyperliquid": 2965.124,
+        "ratio": 3.8829518921144097
+      },
+      "500": {
+        "bybit_perp": 9779.603076923077,
+        "hyperliquid": 2835.334,
+        "ratio": 3.449189082105698
+      },
+      "1000": {
+        "bybit_perp": 7982.11076923077,
+        "hyperliquid": 2311.412,
+        "ratio": 3.4533483296057867
+      },
+      "2000": {
+        "bybit_perp": 6299.0,
+        "hyperliquid": 1747.854,
+        "ratio": 3.6038479186476673
+      },
+      "5000": {
+        "bybit_perp": 4354.1046153846155,
+        "hyperliquid": 1155.842,
+        "ratio": 3.7670413563312417
+      },
+      "10000": {
+        "bybit_perp": 3125.1723076923076,
+        "hyperliquid": 817.198,
+        "ratio": 3.824253495104378
+      }
+    },
+    "rung_closest_on_that_statistic": 500,
+    "rung_runner_up": 1000,
+    "relative_margin_to_runner_up": 0.0012058624218854682,
+    "statistic_separates_the_top_two": false,
+    "reported_rung_relative_penalty": 0.04483918766423546,
+    "note": "the statistic does not separate its top two rungs, so it does not select one; what it does say is that the reported rung is not among them, and the net gap holds across every rung while the capture share does not"
+  },
+  "rung_sweep": {
+    "produced_by": "reproduce/analysis/venue_difference.py --gap-ms <rung>, one run per rung",
+    "estimator": "the same matched shared-coin-day estimator as the headline",
+    "by_rung": {
+      "100": {
+        "pooled_diff_bp": -0.3831796328258935,
+        "paired_weighted_diff_bp": -0.376120006973739,
+        "share_from_capture": 0.39443506998977096
+      },
+      "250": {
+        "pooled_diff_bp": -0.37854788776583254,
+        "paired_weighted_diff_bp": -0.3625009855023649,
+        "share_from_capture": 0.3895784653531001
+      },
+      "500": {
+        "pooled_diff_bp": -0.36776271193332083,
+        "paired_weighted_diff_bp": -0.34672835011259184,
+        "share_from_capture": 0.42012772771638784
+      },
+      "1000": {
+        "pooled_diff_bp": -0.3518513707837547,
+        "paired_weighted_diff_bp": -0.335268840422822,
+        "share_from_capture": 0.5924470817210301
+      },
+      "2000": {
+        "pooled_diff_bp": -0.35457374459099095,
+        "paired_weighted_diff_bp": -0.34553339255590904,
+        "share_from_capture": 0.6108234464517878
+      },
+      "5000": {
+        "pooled_diff_bp": -0.38181782754183147,
+        "paired_weighted_diff_bp": -0.3694427876300203,
+        "share_from_capture": 0.5843108418324767
+      },
+      "10000": {
+        "pooled_diff_bp": -0.362118499864966,
+        "paired_weighted_diff_bp": -0.3489773782957729,
+        "share_from_capture": 0.6170723529311987
+      }
+    }
+  },
+  "two_way_clustered": {
+    "clusters": "coins crossed with dates, Cameron Gelbach Miller",
+    "clears_zero": null,
+    "verdict_is_available": false,
+    "verdict_is_two_way": true,
+    "se_one_way_coins": 0.02516942267011276,
+    "se_used_for_verdict": 0.026536276097796636,
+    "ci95_t_two_way": [
+      -0.4299718230990979,
+      -0.26109496201272014
+    ],
+    "two_way_variance_was_negative": false,
+    "t_degrees_of_freedom_verdict": 3,
+    "ci95_t_one_way_coins": [
+      -0.4256224954922078,
+      -0.26544428961961025
+    ]
+  },
+  "n_coins": 13,
+  "panel_extraction_check": {
+    "shared_coin_days": 156,
+    "diff_bp_from_requote_panel": -0.3496,
+    "diff_bp_from_the_two_main_panels": -0.2232,
+    "bybit_rung_100ms_matches_main_panel_coin_days": 156,
+    "bybit_shared_coin_days": 156,
+    "hyperliquid_rung_100ms_matches_main_panel_coin_days": 3,
+    "hyperliquid_shared_coin_days": 500,
+    "note": "the two extractions of the same coin-days, reported so the difference between them is a leaf rather than only prose"
+  }
+}

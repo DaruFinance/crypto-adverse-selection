@@ -1,0 +1,4 @@
+numpy>=1.24
+
+# only needed for reproduce/make_figures.py
+matplotlib>=3.7

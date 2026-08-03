@@ -1,0 +1,35 @@
+{
+  "nominal": 0.05,
+  "n_resample": 3000,
+  "venues": {
+    "bybit_perp": {
+      "n_months": 29,
+      "cross_month_skew": -0.6814782296503024,
+      "share_of_months_on_the_median_side": 0.5517241379310345,
+      "sign_flip_size_on_resampled_months": 0.05333333333333334,
+      "n_resamples_returning_a_p_value": 3000,
+      "exceeds_nominal_by": 1.0666666666666667
+    },
+    "binance_um": {
+      "n_months": 11,
+      "cross_month_skew": 0.4549101656429623,
+      "share_of_months_on_the_median_side": 0.5454545454545454,
+      "sign_flip_size_on_resampled_months": 0.06066666666666667,
+      "n_resamples_returning_a_p_value": 3000,
+      "exceeds_nominal_by": 1.2133333333333334
+    },
+    "hyperliquid": {
+      "n_months": 11,
+      "cross_month_skew": 2.0236667882070343,
+      "share_of_months_on_the_median_side": 0.7272727272727273,
+      "sign_flip_size_on_resampled_months": 0.12433333333333334,
+      "n_resamples_returning_a_p_value": 3000,
+      "exceeds_nominal_by": 2.486666666666667
+    }
+  },
+  "no_shipped_verdict_uses_this_test": true,
+  "limitations": {
+    "resampling_months_cannot_exceed_their_own_range": "The reference distribution is built by resampling whole months, so it inherits whatever shape those months have and cannot represent a venue whose true month distribution is worse than the sample drawn.",
+    "one_horizon_and_one_weighting": "Months are collapsed on the 10 second net markout weighted by fill count, matching the pooled table. A different horizon or weighting would give a different month distribution."
+  }
+}

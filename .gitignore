@@ -1,0 +1,12 @@
+*.egg-info/
+*.pyc
+*.rebuilt.json
+.ipynb_checkpoints/
+.venv/
+__pycache__/
+build/
+checks.json
+coverage.json
+dist/
+readme_checks.json
+readme_traceability.json

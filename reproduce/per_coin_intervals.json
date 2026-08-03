@@ -1,0 +1,2684 @@
+{
+  "n_boot": 4000,
+  "venues": {
+    "bybit_perp": {
+      "maker_fee_bp": 2.0,
+      "n_coins": 13,
+      "per_coin": {
+        "ARB": {
+          "n_coindays": 295,
+          "10s": {
+            "net_bp": -1.150322855171533,
+            "n_coindays": 295,
+            "ci95": [
+              -1.2723740689581362,
+              -1.0155660806594968
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.5599018920482521,
+            "n_months": 29,
+            "n_effective_months_kish": 17.15411938880249,
+            "testable": true,
+            "month_mean_range": [
+              -1.706929596198522,
+              -0.5599018920482521
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.2870907234927973,
+              -1.0135549868502687
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -1.1405115652340525,
+            "n_coindays": 295,
+            "ci95": [
+              -1.296197519657364,
+              -0.9800874573549707
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.2607783909404235,
+            "n_months": 29,
+            "n_effective_months_kish": 17.15411938880249,
+            "testable": true,
+            "month_mean_range": [
+              -1.9445457076904011,
+              -0.2607783909404235
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.3116343201193137,
+              -0.9693888103487913
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "AVAX": {
+          "n_coindays": 295,
+          "10s": {
+            "net_bp": -1.0087869992790788,
+            "n_coindays": 295,
+            "ci95": [
+              -1.0691138513664502,
+              -0.9493844975267323
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.8184593059690641,
+            "n_months": 29,
+            "n_effective_months_kish": 16.668552917258538,
+            "testable": true,
+            "month_mean_range": [
+              -3.3799448475665743,
+              -0.8184593059690641
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.0742721977965282,
+              -0.9433018007616294
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -1.000214387836659,
+            "n_coindays": 295,
+            "ci95": [
+              -1.0971900244729278,
+              -0.9251128223163482
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.49987050702785585,
+            "n_months": 29,
+            "n_effective_months_kish": 16.668552917258538,
+            "testable": true,
+            "month_mean_range": [
+              -4.882892754347826,
+              -0.49987050702785585
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.088180751275612,
+              -0.9122480243977058
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "BNB": {
+          "n_coindays": 295,
+          "10s": {
+            "net_bp": -0.9150107395947313,
+            "n_coindays": 295,
+            "ci95": [
+              -0.9978386018552543,
+              -0.832694587228827
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.17194265245168502,
+            "n_months": 29,
+            "n_effective_months_kish": 15.240071728613973,
+            "testable": true,
+            "month_mean_range": [
+              -1.6937488364816655,
+              0.41556107667645076
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.0015604479098243,
+              -0.8284610312796384
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.8246000445777741,
+            "n_coindays": 295,
+            "ci95": [
+              -1.032830604087368,
+              -0.6011055923176654
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.4880236304262294,
+            "n_months": 29,
+            "n_effective_months_kish": 15.240071728613973,
+            "testable": true,
+            "month_mean_range": [
+              -1.6821662642844608,
+              1.5804364053473665
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.0516984675971024,
+              -0.5975016215584459
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "BTC": {
+          "n_coindays": 295,
+          "10s": {
+            "net_bp": -0.6094189412697093,
+            "n_coindays": 295,
+            "ci95": [
+              -0.6434502714513473,
+              -0.5778583555401856
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.4121576654516022,
+            "n_months": 29,
+            "n_effective_months_kish": 24.595969198604227,
+            "testable": true,
+            "month_mean_range": [
+              -0.8005425803001995,
+              -0.4121576654516022
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.644340872820616,
+              -0.5744970097188026
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.6352891376321828,
+            "n_coindays": 295,
+            "ci95": [
+              -0.683179227688538,
+              -0.5874389962667041
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.30982005405202895,
+            "n_months": 29,
+            "n_effective_months_kish": 24.595969198604227,
+            "testable": true,
+            "month_mean_range": [
+              -1.0352572735991326,
+              -0.30982005405202895
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.6869873933253944,
+              -0.5835908819389711
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "DOGE": {
+          "n_coindays": 295,
+          "10s": {
+            "net_bp": -0.8951531366542573,
+            "n_coindays": 295,
+            "ci95": [
+              -0.9784174184314025,
+              -0.8274930301136307
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.6854449226052514,
+            "n_months": 29,
+            "n_effective_months_kish": 15.215032317601583,
+            "testable": true,
+            "month_mean_range": [
+              -1.7564577579526917,
+              -0.6854449226052514
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.9758578305254839,
+              -0.8144484427830307
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.8505081456791536,
+            "n_coindays": 295,
+            "ci95": [
+              -0.9557183121782178,
+              -0.760152917491884
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.5730109836018079,
+            "n_months": 29,
+            "n_effective_months_kish": 15.215032317601583,
+            "testable": true,
+            "month_mean_range": [
+              -2.83295128548124,
+              -0.5730109836018079
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.9571826159408734,
+              -0.7438336754174337
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "ETH": {
+          "n_coindays": 295,
+          "10s": {
+            "net_bp": -0.8349025263162831,
+            "n_coindays": 295,
+            "ci95": [
+              -0.879009125161434,
+              -0.7913338241445639
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.5935512346298581,
+            "n_months": 29,
+            "n_effective_months_kish": 23.305904624398416,
+            "testable": true,
+            "month_mean_range": [
+              -1.2881946313294776,
+              -0.5935512346298581
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.8830030623303924,
+              -0.7868019903021739
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.857275461016456,
+            "n_coindays": 295,
+            "ci95": [
+              -0.9210847176841024,
+              -0.7992138287278928
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.6025195494776772,
+            "n_months": 29,
+            "n_effective_months_kish": 23.305904624398416,
+            "testable": true,
+            "month_mean_range": [
+              -2.0365456380502645,
+              -0.6025195494776772
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.922943884826073,
+              -0.791607037206839
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "HYPE": {
+          "n_coindays": 90,
+          "10s": {
+            "net_bp": -1.6926606711127605,
+            "n_coindays": 90,
+            "ci95": [
+              -1.9035719195401688,
+              -1.4339388927919376
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.9841967509709673,
+            "n_months": 9,
+            "n_effective_months_kish": 8.13438775158731,
+            "testable": true,
+            "month_mean_range": [
+              -2.1410096187237087,
+              -0.9841967509709673
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.9881983205944196,
+              -1.3971230216311015
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -1.6326735223293551,
+            "n_coindays": 90,
+            "ci95": [
+              -1.8101299154869888,
+              -1.4302332445994173
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -1.0874232013139047,
+            "n_months": 9,
+            "n_effective_months_kish": 8.13438775158731,
+            "testable": true,
+            "month_mean_range": [
+              -2.1558658969273785,
+              -1.0874232013139047
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.8711481112804744,
+              -1.3941989333782359
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "LINK": {
+          "n_coindays": 295,
+          "10s": {
+            "net_bp": -1.0328528083055735,
+            "n_coindays": 295,
+            "ci95": [
+              -1.1175104094653112,
+              -0.9660988836228197
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.8348113625188516,
+            "n_months": 29,
+            "n_effective_months_kish": 19.799822585688023,
+            "testable": true,
+            "month_mean_range": [
+              -1.7383550774138665,
+              -0.8348113625188516
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.114525655338663,
+              -0.9511799612724839
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -1.0119516315072594,
+            "n_coindays": 295,
+            "ci95": [
+              -1.1015773276556526,
+              -0.9362172643076395
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.7426068302080072,
+            "n_months": 29,
+            "n_effective_months_kish": 19.799822585688023,
+            "testable": true,
+            "month_mean_range": [
+              -1.583412772182081,
+              -0.7426068302080072
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.099836527951593,
+              -0.9240667350629259
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "LTC": {
+          "n_coindays": 295,
+          "10s": {
+            "net_bp": -1.08567565625162,
+            "n_coindays": 295,
+            "ci95": [
+              -1.214479742326633,
+              -0.993946777189126
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.38821647197034886,
+            "n_months": 29,
+            "n_effective_months_kish": 15.682988990896606,
+            "testable": true,
+            "month_mean_range": [
+              -2.163515493719125,
+              -0.38821647197034886
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.2036202598383254,
+              -0.9677310526649148
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -1.1284936169141462,
+            "n_coindays": 295,
+            "ci95": [
+              -1.2915279522692134,
+              -1.0042562816231226
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.3182040025812429,
+            "n_months": 29,
+            "n_effective_months_kish": 15.682988990896606,
+            "testable": true,
+            "month_mean_range": [
+              -3.4222703517995763,
+              -0.3182040025812429
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.2854974945886624,
+              -0.9714897392396299
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "OP": {
+          "n_coindays": 294,
+          "10s": {
+            "net_bp": -1.147989442718057,
+            "n_coindays": 294,
+            "ci95": [
+              -1.2673422058998638,
+              -1.0283852342839532
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.6719462047381349,
+            "n_months": 29,
+            "n_effective_months_kish": 23.582218302026817,
+            "testable": true,
+            "month_mean_range": [
+              -1.6180149839236773,
+              -0.6719462047381349
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.272807597924795,
+              -1.023171287511319
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -1.1060249893943674,
+            "n_coindays": 294,
+            "ci95": [
+              -1.2302759488335815,
+              -0.9759848772796057
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.4621369410849826,
+            "n_months": 29,
+            "n_effective_months_kish": 23.582218302026817,
+            "testable": true,
+            "month_mean_range": [
+              -1.7994309680819667,
+              -0.4621369410849826
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.2404722622069997,
+              -0.9715777165817352
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "SOL": {
+          "n_coindays": 295,
+          "10s": {
+            "net_bp": -0.8496813282729991,
+            "n_coindays": 295,
+            "ci95": [
+              -0.9017071166601696,
+              -0.805561070518694
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.6221860814976076,
+            "n_months": 29,
+            "n_effective_months_kish": 22.491434385784313,
+            "testable": true,
+            "month_mean_range": [
+              -1.4297572373002625,
+              -0.6221860814976076
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.9017273921303265,
+              -0.7976352644156718
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.8323119715858703,
+            "n_coindays": 295,
+            "ci95": [
+              -0.8955570601906727,
+              -0.7736670543192257
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.4861823540050263,
+            "n_months": 29,
+            "n_effective_months_kish": 22.491434385784313,
+            "testable": true,
+            "month_mean_range": [
+              -1.5328432222115478,
+              -0.4861823540050263
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.8987852306155016,
+              -0.765838712556239
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "SUI": {
+          "n_coindays": 284,
+          "10s": {
+            "net_bp": -0.9910162139743711,
+            "n_coindays": 284,
+            "ci95": [
+              -1.0976393067192405,
+              -0.9152336112656931
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.7408834946018847,
+            "n_months": 28,
+            "n_effective_months_kish": 20.49054841355261,
+            "testable": true,
+            "month_mean_range": [
+              -2.0381619871813688,
+              -0.7408834946018847
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.0892699883891013,
+              -0.892762439559641
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.965351036537211,
+            "n_coindays": 284,
+            "ci95": [
+              -1.0771862537529386,
+              -0.8804664499742789
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.5959326543018322,
+            "n_months": 28,
+            "n_effective_months_kish": 20.49054841355261,
+            "testable": true,
+            "month_mean_range": [
+              -2.2232997823768286,
+              -0.5959326543018322
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.07012219789635,
+              -0.860579875178072
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "XRP": {
+          "n_coindays": 295,
+          "10s": {
+            "net_bp": -0.7569032810290576,
+            "n_coindays": 295,
+            "ci95": [
+              -0.7856692076015312,
+              -0.7346976694694962
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.36400834404632654,
+            "n_months": 29,
+            "n_effective_months_kish": 11.266413815941243,
+            "testable": true,
+            "month_mean_range": [
+              -1.3501653344887348,
+              -0.36400834404632654
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.7844356798617794,
+              -0.7293708821963357
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.6968127676095497,
+            "n_coindays": 295,
+            "ci95": [
+              -0.7777484376668836,
+              -0.6208615898031729
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.07343022988505744,
+            "n_months": 29,
+            "n_effective_months_kish": 11.266413815941243,
+            "testable": true,
+            "month_mean_range": [
+              -1.492298144480637,
+              0.07343022988505744
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.785996648841414,
+              -0.6076288863776854
+            ],
+            "clears_zero_percentile": true
+          }
+        }
+      },
+      "n_testable_cells": 26,
+      "n_cells_without_power": 23,
+      "cells_without_power": [
+        "ARB@10s",
+        "ARB@60s",
+        "AVAX@10s",
+        "AVAX@60s",
+        "BTC@10s",
+        "BTC@60s",
+        "DOGE@10s",
+        "DOGE@60s",
+        "ETH@10s",
+        "ETH@60s",
+        "HYPE@10s",
+        "HYPE@60s",
+        "LINK@10s",
+        "LINK@60s",
+        "LTC@10s",
+        "LTC@60s",
+        "OP@10s",
+        "OP@60s",
+        "SOL@10s",
+        "SOL@60s",
+        "SUI@10s",
+        "SUI@60s",
+        "XRP@10s"
+      ],
+      "n_negative_10s": 13,
+      "n_negative_60s": 13,
+      "all_negative_both_horizons": true,
+      "reconciles_with_panel": {
+        "pooled_10s_recomputed": -0.8387362079915616,
+        "pooled_10s_in_table": -0.8387362079915633,
+        "abs_difference": 1.7763568394002505e-15,
+        "reproduces": true,
+        "n_rows_used": 3618,
+        "n_coindays_in_table": 3618
+      },
+      "n_cells_with_verdict": 26
+    },
+    "binance_um": {
+      "maker_fee_bp": 2.0,
+      "n_coins": 15,
+      "per_coin": {
+        "1000PEPEUSDT": {
+          "n_coindays": 319,
+          "10s": {
+            "net_bp": -0.32736606868619395,
+            "n_coindays": 319,
+            "ci95": [
+              -0.37696009766353916,
+              -0.2936753092002464
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.23237658782512743,
+            "n_months": 11,
+            "n_effective_months_kish": 6.477096497942903,
+            "testable": true,
+            "month_mean_range": [
+              -0.4660457834132568,
+              -0.23237658782512743
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.3848405090934332,
+              -0.2698916282789547
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.29241946578998324,
+            "n_coindays": 319,
+            "ci95": [
+              -0.36622870464961105,
+              -0.2433302068250126
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.13954105973105155,
+            "n_months": 11,
+            "n_effective_months_kish": 6.477096497942903,
+            "testable": true,
+            "month_mean_range": [
+              -0.4764181085869004,
+              -0.13954105973105155
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.3769524051766804,
+              -0.20788652640328611
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "1000SHIBUSDT": {
+          "n_coindays": 319,
+          "10s": {
+            "net_bp": -0.426715126582872,
+            "n_coindays": 319,
+            "ci95": [
+              -0.4621801485819881,
+              -0.3420642875805538
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.18365325598494348,
+            "n_months": 11,
+            "n_effective_months_kish": 3.4472501275473753,
+            "testable": true,
+            "month_mean_range": [
+              -0.5190740726955816,
+              -0.18365325598494348
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -0.5377396494207007,
+              -0.31569060374504326
+            ],
+            "clears_zero_percentile": null
+          },
+          "60s": {
+            "net_bp": -0.44236291020075885,
+            "n_coindays": 319,
+            "ci95": [
+              -0.4938852949251858,
+              -0.3647050928181616
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.2613998548278345,
+            "n_months": 11,
+            "n_effective_months_kish": 3.4472501275473753,
+            "testable": true,
+            "month_mean_range": [
+              -0.6815034419231999,
+              -0.2613998548278345
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -0.5542777696825021,
+              -0.3304480507190156
+            ],
+            "clears_zero_percentile": null
+          }
+        },
+        "ADAUSDT": {
+          "n_coindays": 319,
+          "10s": {
+            "net_bp": -0.17370861958570225,
+            "n_coindays": 319,
+            "ci95": [
+              -0.24927275672525845,
+              -0.07159888084172623
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.042048198549259806,
+            "n_months": 11,
+            "n_effective_months_kish": 6.61707267614433,
+            "testable": true,
+            "month_mean_range": [
+              -0.46705036072822204,
+              0.3347831505037848
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.2868427179029571,
+              -0.060574521268447354
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.22131012504938036,
+            "n_coindays": 319,
+            "ci95": [
+              -0.33926065089588486,
+              -0.1092123159744369
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.035161380163324325,
+            "n_months": 11,
+            "n_effective_months_kish": 6.61707267614433,
+            "testable": true,
+            "month_mean_range": [
+              -0.703810164888409,
+              0.22930575093087113
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.36838401384820907,
+              -0.07423623625055162
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "ARBUSDT": {
+          "n_coindays": 319,
+          "10s": {
+            "net_bp": -0.46955631834403433,
+            "n_coindays": 319,
+            "ci95": [
+              -0.5073180049924596,
+              -0.4166622784253617
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.30006388098964354,
+            "n_months": 11,
+            "n_effective_months_kish": 7.449368890087456,
+            "testable": true,
+            "month_mean_range": [
+              -0.5759565853033889,
+              -0.30006388098964354
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.5264372900614844,
+              -0.41267534662658417
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.45309608707846893,
+            "n_coindays": 319,
+            "ci95": [
+              -0.5206105114036844,
+              -0.38187942654901413
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.22751586390710837,
+            "n_months": 11,
+            "n_effective_months_kish": 7.449368890087456,
+            "testable": true,
+            "month_mean_range": [
+              -0.6122272517428015,
+              -0.22751586390710837
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.5414380012619527,
+              -0.36475417289498513
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "AVAXUSDT": {
+          "n_coindays": 319,
+          "10s": {
+            "net_bp": -0.4182307990752831,
+            "n_coindays": 319,
+            "ci95": [
+              -0.4840809252590604,
+              -0.3650437074568068
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.31238603872598886,
+            "n_months": 11,
+            "n_effective_months_kish": 6.489506028947532,
+            "testable": true,
+            "month_mean_range": [
+              -0.6114948854906431,
+              -0.31238603872598886
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.5018156950226287,
+              -0.33464590312793757
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.4184899959106262,
+            "n_coindays": 319,
+            "ci95": [
+              -0.5024248672724305,
+              -0.3628721999372585
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.32026191694528905,
+            "n_months": 11,
+            "n_effective_months_kish": 6.489506028947532,
+            "testable": true,
+            "month_mean_range": [
+              -0.7426675453191298,
+              -0.32026191694528905
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.5133379240647974,
+              -0.32364206775645493
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "BNBUSDT": {
+          "n_coindays": 319,
+          "10s": {
+            "net_bp": -0.3934991596682137,
+            "n_coindays": 319,
+            "ci95": [
+              -0.4240340871317947,
+              -0.35936059109428514
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.28669254383798176,
+            "n_months": 11,
+            "n_effective_months_kish": 8.448634972055165,
+            "testable": true,
+            "month_mean_range": [
+              -0.49574354542223303,
+              -0.28669254383798176
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.43357005534572907,
+              -0.3534282639906983
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.40552238137840546,
+            "n_coindays": 319,
+            "ci95": [
+              -0.4439297280495707,
+              -0.36041354941268633
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.28964862518603,
+            "n_months": 11,
+            "n_effective_months_kish": 8.448634972055165,
+            "testable": true,
+            "month_mean_range": [
+              -0.4998544174367657,
+              -0.28964862518603
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.4598613346593745,
+              -0.3511834280974364
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "BTCUSDT": {
+          "n_coindays": 319,
+          "10s": {
+            "net_bp": -0.32447419783345366,
+            "n_coindays": 319,
+            "ci95": [
+              -0.35327607528815963,
+              -0.29045124328732874
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.25077126279089396,
+            "n_months": 11,
+            "n_effective_months_kish": 9.355196228676713,
+            "testable": true,
+            "month_mean_range": [
+              -0.4352137578263966,
+              -0.25077126279089396
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.3635089323952559,
+              -0.28543946327165143
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.3256538289075597,
+            "n_coindays": 319,
+            "ci95": [
+              -0.35664963138129124,
+              -0.28847603646658737
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.2314793628244885,
+            "n_months": 11,
+            "n_effective_months_kish": 9.355196228676713,
+            "testable": true,
+            "month_mean_range": [
+              -0.45343506918464427,
+              -0.2314793628244885
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.3663515888077437,
+              -0.28495606900737563
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "DOGEUSDT": {
+          "n_coindays": 319,
+          "10s": {
+            "net_bp": -0.37981642188986353,
+            "n_coindays": 319,
+            "ci95": [
+              -0.41162246919279416,
+              -0.3135310661224346
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.17042631658768842,
+            "n_months": 11,
+            "n_effective_months_kish": 4.063125744135245,
+            "testable": true,
+            "month_mean_range": [
+              -0.4630323997614501,
+              -0.17042631658768842
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -0.4634000829209397,
+              -0.29623276085878736
+            ],
+            "clears_zero_percentile": null
+          },
+          "60s": {
+            "net_bp": -0.4161506375824048,
+            "n_coindays": 319,
+            "ci95": [
+              -0.48619245626146984,
+              -0.2908566482537521
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.19502436313750274,
+            "n_months": 11,
+            "n_effective_months_kish": 4.063125744135245,
+            "testable": true,
+            "month_mean_range": [
+              -0.9359590514289978,
+              -0.19502436313750274
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -0.5633084300248123,
+              -0.26899284513999716
+            ],
+            "clears_zero_percentile": null
+          }
+        },
+        "ETHUSDT": {
+          "n_coindays": 319,
+          "10s": {
+            "net_bp": -0.5337962987457755,
+            "n_coindays": 319,
+            "ci95": [
+              -0.5765769107532043,
+              -0.47986949792813743
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.4133481617411523,
+            "n_months": 11,
+            "n_effective_months_kish": 7.880333295169702,
+            "testable": true,
+            "month_mean_range": [
+              -0.7024985847646296,
+              -0.4133481617411523
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.5951453715644701,
+              -0.4724472259270809
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.5548471278522091,
+            "n_coindays": 319,
+            "ci95": [
+              -0.6011686351552055,
+              -0.4945991920600052
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.42188401050098595,
+            "n_months": 11,
+            "n_effective_months_kish": 7.880333295169702,
+            "testable": true,
+            "month_mean_range": [
+              -0.7425087718794992,
+              -0.42188401050098595
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.623682240150956,
+              -0.4860120155534623
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "LINKUSDT": {
+          "n_coindays": 319,
+          "10s": {
+            "net_bp": -0.44278345048484874,
+            "n_coindays": 319,
+            "ci95": [
+              -0.5034349692624192,
+              -0.383384862524445
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.13026404137399525,
+            "n_months": 11,
+            "n_effective_months_kish": 7.891166570428489,
+            "testable": true,
+            "month_mean_range": [
+              -0.5952281384008025,
+              -0.13026404137399525
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.5184097357170911,
+              -0.36715716525260633
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.4312865259085157,
+            "n_coindays": 319,
+            "ci95": [
+              -0.5070835578077516,
+              -0.3618473978425049
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.2035565337886099,
+            "n_months": 11,
+            "n_effective_months_kish": 7.891166570428489,
+            "testable": true,
+            "month_mean_range": [
+              -0.6352647934180231,
+              -0.2035565337886099
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.5245856619125484,
+              -0.3379873899044829
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "LTCUSDT": {
+          "n_coindays": 319,
+          "10s": {
+            "net_bp": -0.3295182290812321,
+            "n_coindays": 319,
+            "ci95": [
+              -0.39179318646078254,
+              -0.24061677950684776
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.15587001637892267,
+            "n_months": 11,
+            "n_effective_months_kish": 8.912728462590552,
+            "testable": true,
+            "month_mean_range": [
+              -0.45900355476787347,
+              -0.15587001637892267
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.42157578200040824,
+              -0.2374606761620559
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.3393453162820845,
+            "n_coindays": 319,
+            "ci95": [
+              -0.4033422577920203,
+              -0.25586902715953364
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.15759323471600586,
+            "n_months": 11,
+            "n_effective_months_kish": 8.912728462590552,
+            "testable": true,
+            "month_mean_range": [
+              -0.4743889809865293,
+              -0.15759323471600586
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.4304891236315199,
+              -0.24820150893264906
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "OPUSDT": {
+          "n_coindays": 319,
+          "10s": {
+            "net_bp": -0.4833084744566625,
+            "n_coindays": 319,
+            "ci95": [
+              -0.5200312848520939,
+              -0.4530576761356328
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.3755838918401132,
+            "n_months": 11,
+            "n_effective_months_kish": 8.65275855035951,
+            "testable": true,
+            "month_mean_range": [
+              -0.5663592681767309,
+              -0.3755838918401132
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.5266192151663096,
+              -0.4399977337470153
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.4655518501948706,
+            "n_coindays": 319,
+            "ci95": [
+              -0.5356874847083126,
+              -0.39827561296139635
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.3193620359882421,
+            "n_months": 11,
+            "n_effective_months_kish": 8.65275855035951,
+            "testable": true,
+            "month_mean_range": [
+              -0.6353690062011227,
+              -0.3193620359882421
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.555175172078466,
+              -0.3759285283112752
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "SOLUSDT": {
+          "n_coindays": 319,
+          "10s": {
+            "net_bp": -0.4049589413221606,
+            "n_coindays": 319,
+            "ci95": [
+              -0.45839709566756326,
+              -0.36263796569664924
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.3093331656908299,
+            "n_months": 11,
+            "n_effective_months_kish": 8.228868219490515,
+            "testable": true,
+            "month_mean_range": [
+              -0.509783127215756,
+              -0.3093331656908299
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.46562800245489117,
+              -0.34428988018943
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.35733532685630814,
+            "n_coindays": 319,
+            "ci95": [
+              -0.4284642745066829,
+              -0.3015555929345388
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.24663511498121074,
+            "n_months": 11,
+            "n_effective_months_kish": 8.228868219490515,
+            "testable": true,
+            "month_mean_range": [
+              -0.49687940860249624,
+              -0.24663511498121074
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.4408348534342768,
+              -0.2738358002783395
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "SUIUSDT": {
+          "n_coindays": 319,
+          "10s": {
+            "net_bp": -0.4093208635126775,
+            "n_coindays": 319,
+            "ci95": [
+              -0.4659618504228896,
+              -0.3577362928932853
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.20691020240326913,
+            "n_months": 11,
+            "n_effective_months_kish": 7.287333501926526,
+            "testable": true,
+            "month_mean_range": [
+              -0.60022251402718,
+              -0.20691020240326913
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.477172364024533,
+              -0.341469363000822
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.3878294389152383,
+            "n_coindays": 319,
+            "ci95": [
+              -0.47484192442418327,
+              -0.3290096565619894
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.17786162896136862,
+            "n_months": 11,
+            "n_effective_months_kish": 7.287333501926526,
+            "testable": true,
+            "month_mean_range": [
+              -0.696762044034755,
+              -0.17786162896136862
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.4795003127776193,
+              -0.2961585650528573
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "XRPUSDT": {
+          "n_coindays": 319,
+          "10s": {
+            "net_bp": -0.09874396928331065,
+            "n_coindays": 319,
+            "ci95": [
+              -0.17409799275825577,
+              -0.001889792557032331
+            ],
+            "negative": true,
+            "clears_zero": false,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.023898533171617237,
+            "n_months": 11,
+            "n_effective_months_kish": 8.138311863860906,
+            "testable": true,
+            "month_mean_range": [
+              -0.31128673391708667,
+              0.13584148341834656
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.20222039910673448,
+              0.00473246054011317
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.07842908138854719,
+            "n_coindays": 319,
+            "ci95": [
+              -0.19418598252367653,
+              0.03127250787940664
+            ],
+            "negative": true,
+            "clears_zero": false,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.015692383661977057,
+            "n_months": 11,
+            "n_effective_months_kish": 8.138311863860906,
+            "testable": true,
+            "month_mean_range": [
+              -0.4375744193749402,
+              0.1859364603060024
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.2194559520330806,
+              0.06259778925598623
+            ],
+            "clears_zero_percentile": false
+          }
+        }
+      },
+      "n_testable_cells": 30,
+      "n_cells_without_power": 26,
+      "n_negative_10s": 15,
+      "n_negative_60s": 15,
+      "all_negative_both_horizons": true,
+      "reconciles_with_panel": {
+        "pooled_10s_recomputed": -0.39116298126192883,
+        "pooled_10s_in_table": -0.39116298126192905,
+        "abs_difference": 2.220446049250313e-16,
+        "reproduces": true,
+        "n_rows_used": 4785,
+        "n_coindays_in_table": 4785
+      },
+      "cells_without_power": [
+        "1000PEPEUSDT@10s",
+        "1000PEPEUSDT@60s",
+        "1000SHIBUSDT@10s",
+        "1000SHIBUSDT@60s",
+        "ARBUSDT@10s",
+        "ARBUSDT@60s",
+        "AVAXUSDT@10s",
+        "AVAXUSDT@60s",
+        "BNBUSDT@10s",
+        "BNBUSDT@60s",
+        "BTCUSDT@10s",
+        "BTCUSDT@60s",
+        "DOGEUSDT@10s",
+        "DOGEUSDT@60s",
+        "ETHUSDT@10s",
+        "ETHUSDT@60s",
+        "LINKUSDT@10s",
+        "LINKUSDT@60s",
+        "LTCUSDT@10s",
+        "LTCUSDT@60s",
+        "OPUSDT@10s",
+        "OPUSDT@60s",
+        "SOLUSDT@10s",
+        "SOLUSDT@60s",
+        "SUIUSDT@10s",
+        "SUIUSDT@60s"
+      ],
+      "n_cells_with_verdict": 26
+    },
+    "hyperliquid": {
+      "maker_fee_bp": 1.5,
+      "n_coins": 20,
+      "per_coin": {
+        "AAVE": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": -0.34911100264740497,
+            "n_coindays": 79,
+            "ci95": [
+              -0.6139743796233154,
+              0.15095222778055298
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.13476777634754625,
+            "n_months": 11,
+            "n_effective_months_kish": 4.820504032071604,
+            "testable": true,
+            "month_mean_range": [
+              -1.3165500466988729,
+              0.6075412316118936
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -0.9810306415154744,
+              0.2828086362206645
+            ],
+            "clears_zero_percentile": null
+          },
+          "60s": {
+            "net_bp": -1.2196310784743103,
+            "n_coindays": 79,
+            "ci95": [
+              -3.2728065757552307,
+              0.025791404074491788
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.010567442827442765,
+            "n_months": 11,
+            "n_effective_months_kish": 4.820504032071604,
+            "testable": true,
+            "month_mean_range": [
+              -11.819224056897479,
+              0.9506857848200313
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -3.49086870178621,
+              1.0516065448375893
+            ],
+            "clears_zero_percentile": null
+          }
+        },
+        "APT": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": 0.06150688226229004,
+            "n_coindays": 79,
+            "ci95": [
+              -0.10406574104211973,
+              0.27942047523071273
+            ],
+            "negative": false,
+            "clears_zero": false,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.07549995452334629,
+            "n_months": 11,
+            "n_effective_months_kish": 6.53141595531902,
+            "testable": true,
+            "month_mean_range": [
+              -0.6881420847457627,
+              0.7324202439024391
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.18059808652073228,
+              0.30361185104531235
+            ],
+            "clears_zero_percentile": false
+          },
+          "60s": {
+            "net_bp": 0.21519255732778553,
+            "n_coindays": 79,
+            "ci95": [
+              -0.152981262227639,
+              0.7492350094396577
+            ],
+            "negative": false,
+            "clears_zero": false,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.14476526466753584,
+            "n_months": 11,
+            "n_effective_months_kish": 6.53141595531902,
+            "testable": true,
+            "month_mean_range": [
+              -1.4652006926070038,
+              1.1926877165048542
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.41212479569419136,
+              0.8425099103497624
+            ],
+            "clears_zero_percentile": false
+          }
+        },
+        "ARB": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": 0.26596897145651227,
+            "n_coindays": 79,
+            "ci95": [
+              -0.2997803113098634,
+              1.5923068905090587
+            ],
+            "negative": false,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.028353183026584874,
+            "n_months": 11,
+            "n_effective_months_kish": 4.5857528431875085,
+            "testable": true,
+            "month_mean_range": [
+              -0.4979232396598932,
+              3.6395584169835233
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -1.2882457729656431,
+              1.8201837158786678
+            ],
+            "clears_zero_percentile": null
+          },
+          "60s": {
+            "net_bp": -0.3818989267770919,
+            "n_coindays": 79,
+            "ci95": [
+              -0.8228998392751385,
+              0.5746499746371913
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.21249592670807455,
+            "n_months": 11,
+            "n_effective_months_kish": 4.5857528431875085,
+            "testable": true,
+            "month_mean_range": [
+              -1.7461780876048463,
+              4.2016386514285715
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -1.4981094126760266,
+              0.7343115591218429
+            ],
+            "clears_zero_percentile": null
+          }
+        },
+        "AVAX": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": -0.025841805964818308,
+            "n_coindays": 79,
+            "ci95": [
+              -0.42268354815729325,
+              0.7722017264944061
+            ],
+            "negative": true,
+            "clears_zero": false,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.08292519730679157,
+            "n_months": 11,
+            "n_effective_months_kish": 5.886098851886057,
+            "testable": true,
+            "month_mean_range": [
+              -0.6040238571428571,
+              2.1643114843573312
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.9281554253362242,
+              0.8764718134065875
+            ],
+            "clears_zero_percentile": false
+          },
+          "60s": {
+            "net_bp": -1.7672140929100812,
+            "n_coindays": 79,
+            "ci95": [
+              -4.518412331296784,
+              -0.46968420169271435
+            ],
+            "negative": true,
+            "clears_zero": false,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.007685988472622487,
+            "n_months": 11,
+            "n_effective_months_kish": 5.886098851886057,
+            "testable": true,
+            "month_mean_range": [
+              -10.376213537881643,
+              -0.007685988472622487
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -4.996167407821526,
+              1.4617392220013634
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "BNB": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": -0.212828855892138,
+            "n_coindays": 79,
+            "ci95": [
+              -0.6282622618215601,
+              0.395314326076168
+            ],
+            "negative": true,
+            "clears_zero": false,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.04542687722132474,
+            "n_months": 11,
+            "n_effective_months_kish": 6.3245710081859405,
+            "testable": true,
+            "month_mean_range": [
+              -1.015975340857788,
+              1.2171018732037193
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.9687397497226937,
+              0.5430820379384178
+            ],
+            "clears_zero_percentile": false
+          },
+          "60s": {
+            "net_bp": -0.5658813527578357,
+            "n_coindays": 79,
+            "ci95": [
+              -0.8268580933023758,
+              -0.31192806642835685
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.05926788529886914,
+            "n_months": 11,
+            "n_effective_months_kish": 6.3245710081859405,
+            "testable": true,
+            "month_mean_range": [
+              -1.4376264829408938,
+              0.05926788529886914
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.9060749636997899,
+              -0.22568774181588147
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "BTC": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": -0.583166697016063,
+            "n_coindays": 79,
+            "ci95": [
+              -0.6675408418566787,
+              -0.47089845608948033
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.21419133384177344,
+            "n_months": 11,
+            "n_effective_months_kish": 9.202642546841554,
+            "testable": true,
+            "month_mean_range": [
+              -0.7319760179340749,
+              -0.21419133384177344
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.7070016741293548,
+              -0.45933171990277133
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.5318785286572005,
+            "n_coindays": 79,
+            "ci95": [
+              -0.7474962136795861,
+              -0.20869947212940154
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.2811820486282793,
+            "n_months": 11,
+            "n_effective_months_kish": 9.202642546841554,
+            "testable": true,
+            "month_mean_range": [
+              -0.9133548300660673,
+              0.5750864607484237
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.8755253418789826,
+              -0.18823171543541856
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "DOGE": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": -0.055747337595853624,
+            "n_coindays": 79,
+            "ci95": [
+              -0.3900692499754195,
+              0.7082441309830878
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.03211045886792451,
+            "n_months": 11,
+            "n_effective_months_kish": 4.414197041057973,
+            "testable": true,
+            "month_mean_range": [
+              -0.512482219910323,
+              1.595585140235911
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -0.9607865988939107,
+              0.8492919237022035
+            ],
+            "clears_zero_percentile": null
+          },
+          "60s": {
+            "net_bp": -0.17798340890456063,
+            "n_coindays": 79,
+            "ci95": [
+              -0.4275104931967005,
+              0.3690807776732952
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.07744270846120124,
+            "n_months": 11,
+            "n_effective_months_kish": 4.414197041057973,
+            "testable": true,
+            "month_mean_range": [
+              -0.5526669310796514,
+              1.4803565204678364
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -0.8383699478589707,
+              0.48240313004984936
+            ],
+            "clears_zero_percentile": null
+          }
+        },
+        "ETH": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": -0.7010198422105426,
+            "n_coindays": 79,
+            "ci95": [
+              -0.7894931900619921,
+              -0.6494516845398378
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.5235040306694086,
+            "n_months": 11,
+            "n_effective_months_kish": 4.6073332861583545,
+            "testable": true,
+            "month_mean_range": [
+              -0.8922674700994799,
+              -0.5235040306694086
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -0.7962294499295554,
+              -0.6058102344915298
+            ],
+            "clears_zero_percentile": null
+          },
+          "60s": {
+            "net_bp": -0.7431633548739889,
+            "n_coindays": 79,
+            "ci95": [
+              -0.8653404939822344,
+              -0.6218922946422649
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.21663191477836588,
+            "n_months": 11,
+            "n_effective_months_kish": 4.6073332861583545,
+            "testable": true,
+            "month_mean_range": [
+              -0.996656039036585,
+              -0.21663191477836588
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -0.8995572613143601,
+              -0.5867694484336177
+            ],
+            "clears_zero_percentile": null
+          }
+        },
+        "HYPE": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": -0.37098342880962865,
+            "n_coindays": 79,
+            "ci95": [
+              -0.5348958380786507,
+              -0.0005448234782238259
+            ],
+            "negative": true,
+            "clears_zero": false,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.1488151028237729,
+            "n_months": 11,
+            "n_effective_months_kish": 5.759670897359216,
+            "testable": true,
+            "month_mean_range": [
+              -0.6217460459746957,
+              0.8824783825070137
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.7537827284500174,
+              0.011815870830760133
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.6476550771659147,
+            "n_coindays": 79,
+            "ci95": [
+              -0.7756971662853505,
+              -0.45950235539623674
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.02042627917773527,
+            "n_months": 11,
+            "n_effective_months_kish": 5.759670897359216,
+            "testable": true,
+            "month_mean_range": [
+              -1.3703660470223225,
+              -0.02042627917773527
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.8562826873275414,
+              -0.4390274670042881
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "INJ": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": -0.10861186734310412,
+            "n_coindays": 79,
+            "ci95": [
+              -0.4791141697377691,
+              0.5399367181154312
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.0034745322580645604,
+            "n_months": 11,
+            "n_effective_months_kish": 4.965679864862559,
+            "testable": true,
+            "month_mean_range": [
+              -0.7343277182044889,
+              1.2787253490566037
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -0.9565430178362493,
+              0.739319283150041
+            ],
+            "clears_zero_percentile": null
+          },
+          "60s": {
+            "net_bp": -0.23252349617938123,
+            "n_coindays": 79,
+            "ci95": [
+              -1.257459968724918,
+              2.110113093305048
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.03901236879432622,
+            "n_months": 11,
+            "n_effective_months_kish": 4.965679864862559,
+            "testable": true,
+            "month_mean_range": [
+              -1.8113152529390808,
+              7.27396981515712
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -2.7964167552639085,
+              2.331369762905146
+            ],
+            "clears_zero_percentile": null
+          }
+        },
+        "LINK": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": 0.15651311294073114,
+            "n_coindays": 79,
+            "ci95": [
+              -0.34351943684453046,
+              0.8630834639909063
+            ],
+            "negative": false,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.022166450532724508,
+            "n_months": 11,
+            "n_effective_months_kish": 2.0246561465552033,
+            "testable": true,
+            "month_mean_range": [
+              -0.8161353265306123,
+              2.3877110463049576
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -1.7350793855105848,
+              2.0481056113920473
+            ],
+            "clears_zero_percentile": null
+          },
+          "60s": {
+            "net_bp": -0.4485431043964958,
+            "n_coindays": 79,
+            "ci95": [
+              -2.0824393338691998,
+              -0.04121571687691182
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.08622203825136611,
+            "n_months": 11,
+            "n_effective_months_kish": 2.0246561465552033,
+            "testable": true,
+            "month_mean_range": [
+              -4.5946681702525725,
+              0.632150295
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -4.577358505381662,
+              3.6802722965886705
+            ],
+            "clears_zero_percentile": null
+          }
+        },
+        "LTC": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": 0.019077119817351617,
+            "n_coindays": 79,
+            "ci95": [
+              -0.7152084287035437,
+              0.8765514505110437
+            ],
+            "negative": false,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.042368666437414035,
+            "n_months": 11,
+            "n_effective_months_kish": 4.261753201082171,
+            "testable": true,
+            "month_mean_range": [
+              -2.0052171943502826,
+              1.6515626425364758
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -1.32078479088408,
+              1.3589390305187832
+            ],
+            "clears_zero_percentile": null
+          },
+          "60s": {
+            "net_bp": -0.12787507768645365,
+            "n_coindays": 79,
+            "ci95": [
+              -0.7725600453342532,
+              0.6114054844120026
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.004752650793650787,
+            "n_months": 11,
+            "n_effective_months_kish": 4.261753201082171,
+            "testable": true,
+            "month_mean_range": [
+              -1.7746480271186438,
+              1.0903936282267115
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -1.256626098586264,
+              1.0008759432133567
+            ],
+            "clears_zero_percentile": null
+          }
+        },
+        "NEAR": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": 0.4028582226016568,
+            "n_coindays": 79,
+            "ci95": [
+              0.06724953187378593,
+              0.9012199565513852
+            ],
+            "negative": false,
+            "clears_zero": false,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.10699995672624646,
+            "n_months": 11,
+            "n_effective_months_kish": 5.407990454982499,
+            "testable": true,
+            "month_mean_range": [
+              -0.7729028888126286,
+              2.288461700226244
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.11892206278174733,
+              0.924638507985061
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.4484743293492696,
+            "n_coindays": 79,
+            "ci95": [
+              -1.713686053698946,
+              0.12235165234407688
+            ],
+            "negative": true,
+            "clears_zero": false,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.011771749784594157,
+            "n_months": 11,
+            "n_effective_months_kish": 5.407990454982499,
+            "testable": true,
+            "month_mean_range": [
+              -6.573106490950228,
+              1.8114221647597255
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.660441046090083,
+              0.7634923873915436
+            ],
+            "clears_zero_percentile": false
+          }
+        },
+        "OP": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": 0.2795792779519331,
+            "n_coindays": 79,
+            "ci95": [
+              -0.21006023996543413,
+              1.081288978695421
+            ],
+            "negative": false,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.3368976460396039,
+            "n_months": 11,
+            "n_effective_months_kish": 4.695538070778898,
+            "testable": true,
+            "month_mean_range": [
+              -1.8258985761421318,
+              1.5342604855072461
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -0.874537300919914,
+              1.43369585682378
+            ],
+            "clears_zero_percentile": null
+          },
+          "60s": {
+            "net_bp": 0.09877308372518286,
+            "n_coindays": 79,
+            "ci95": [
+              -1.0161452171222445,
+              1.104611042674313
+            ],
+            "negative": false,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.027900798434442223,
+            "n_months": 11,
+            "n_effective_months_kish": 4.695538070778898,
+            "testable": true,
+            "month_mean_range": [
+              -7.185135532994925,
+              6.808386673913043
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -1.3262399726186147,
+              1.5237861400689803
+            ],
+            "clears_zero_percentile": null
+          }
+        },
+        "SEI": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": 0.12046935619867817,
+            "n_coindays": 79,
+            "ci95": [
+              -0.02479249463327095,
+              0.44117703328164676
+            ],
+            "negative": false,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.021404715105162512,
+            "n_months": 11,
+            "n_effective_months_kish": 4.32110982799226,
+            "testable": true,
+            "month_mean_range": [
+              -0.2760888571428572,
+              1.0021464837398373
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -0.26632591286694424,
+              0.5072646252643006
+            ],
+            "clears_zero_percentile": null
+          },
+          "60s": {
+            "net_bp": 0.301419203585019,
+            "n_coindays": 79,
+            "ci95": [
+              -0.2259869933191458,
+              1.5965116743288141
+            ],
+            "negative": false,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.06595232428765259,
+            "n_months": 11,
+            "n_effective_months_kish": 4.32110982799226,
+            "testable": true,
+            "month_mean_range": [
+              -0.4723826648501362,
+              3.7607678517722882
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -1.175295959456414,
+              1.778134366626452
+            ],
+            "clears_zero_percentile": null
+          }
+        },
+        "SOL": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": -0.609573890320272,
+            "n_coindays": 79,
+            "ci95": [
+              -0.7083992587801645,
+              -0.4461256838693234
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.24772083672266432,
+            "n_months": 11,
+            "n_effective_months_kish": 5.513311892304115,
+            "testable": true,
+            "month_mean_range": [
+              -0.8316554577240094,
+              -0.24772083672266432
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -0.8084042809357836,
+              -0.4107434997047603
+            ],
+            "clears_zero_percentile": true
+          },
+          "60s": {
+            "net_bp": -0.7987351851678699,
+            "n_coindays": 79,
+            "ci95": [
+              -0.9565054449501051,
+              -0.589573081455491
+            ],
+            "negative": true,
+            "clears_zero": true,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.1899153946360153,
+            "n_months": 11,
+            "n_effective_months_kish": 5.513311892304115,
+            "testable": true,
+            "month_mean_range": [
+              -1.286408665549133,
+              -0.1899153946360153
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.0310970340263235,
+              -0.5663733363094162
+            ],
+            "clears_zero_percentile": true
+          }
+        },
+        "SUI": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": -0.4387514118043931,
+            "n_coindays": 79,
+            "ci95": [
+              -0.5459253725763652,
+              -0.24885984686830256
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": false,
+            "month_mean_least_extreme": -0.08816422822822823,
+            "n_months": 11,
+            "n_effective_months_kish": 4.802383101413464,
+            "testable": true,
+            "month_mean_range": [
+              -0.8493890834588731,
+              -0.08816422822822823
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -0.6736681334740852,
+              -0.203834690134701
+            ],
+            "clears_zero_percentile": null
+          },
+          "60s": {
+            "net_bp": -1.0553918671880855,
+            "n_coindays": 79,
+            "ci95": [
+              -2.853657916902162,
+              -0.09860031767535951
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.0930911506591337,
+            "n_months": 11,
+            "n_effective_months_kish": 4.802383101413464,
+            "testable": true,
+            "month_mean_range": [
+              -8.24952440192829,
+              0.49641221634293364
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -3.1940771899666944,
+              1.0832934555905234
+            ],
+            "clears_zero_percentile": null
+          }
+        },
+        "TIA": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": -0.33985741527517044,
+            "n_coindays": 79,
+            "ci95": [
+              -0.8146466342170025,
+              0.6477660397624391
+            ],
+            "negative": true,
+            "clears_zero": false,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.11330042931483082,
+            "n_months": 11,
+            "n_effective_months_kish": 5.523292837671129,
+            "testable": true,
+            "month_mean_range": [
+              -1.3600289706959705,
+              3.192636564753004
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.3717925154746267,
+              0.6920776849242859
+            ],
+            "clears_zero_percentile": false
+          },
+          "60s": {
+            "net_bp": -0.14186501630273668,
+            "n_coindays": 79,
+            "ci95": [
+              -1.33577612718431,
+              2.943600737638621
+            ],
+            "negative": true,
+            "clears_zero": false,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.017952794202898577,
+            "n_months": 11,
+            "n_effective_months_kish": 5.523292837671129,
+            "testable": true,
+            "month_mean_range": [
+              -3.0009873223443226,
+              12.558094220293723
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -3.180147314048052,
+              2.8964172814425786
+            ],
+            "clears_zero_percentile": false
+          }
+        },
+        "WLD": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": -0.2230830720741335,
+            "n_coindays": 79,
+            "ci95": [
+              -1.6664071208045967,
+              1.2439216517037346
+            ],
+            "negative": true,
+            "clears_zero": false,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.034736578651685404,
+            "n_months": 11,
+            "n_effective_months_kish": 6.17295452172176,
+            "testable": true,
+            "month_mean_range": [
+              -5.555344442151345,
+              6.958615157608696
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -1.9249926443724628,
+              1.4788265002241958
+            ],
+            "clears_zero_percentile": false
+          },
+          "60s": {
+            "net_bp": -2.328498318270221,
+            "n_coindays": 79,
+            "ci95": [
+              -8.375796313898274,
+              1.496172565829001
+            ],
+            "negative": true,
+            "clears_zero": false,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.15493600331125829,
+            "n_months": 11,
+            "n_effective_months_kish": 6.17295452172176,
+            "testable": true,
+            "month_mean_range": [
+              -25.036480148217642,
+              11.09025302826087
+            ],
+            "verdict_is_available": true,
+            "ci95_t": [
+              -8.427842887619985,
+              3.770846251079543
+            ],
+            "clears_zero_percentile": false
+          }
+        },
+        "XRP": {
+          "n_coindays": 79,
+          "10s": {
+            "net_bp": -0.22793055479338617,
+            "n_coindays": 79,
+            "ci95": [
+              -0.4749776424097302,
+              0.422321218324726
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": 0.1748953134051244,
+            "n_months": 11,
+            "n_effective_months_kish": 4.0901569943110285,
+            "testable": true,
+            "month_mean_range": [
+              -0.6072195770580298,
+              1.8736453353783231
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -0.9278587974169237,
+              0.4719976878301513
+            ],
+            "clears_zero_percentile": null
+          },
+          "60s": {
+            "net_bp": -0.2533335858199685,
+            "n_coindays": 79,
+            "ci95": [
+              -0.5618816698219433,
+              0.5264713980729142
+            ],
+            "negative": true,
+            "clears_zero": null,
+            "percentile_interval_has_power_to_fail": true,
+            "month_mean_least_extreme": -0.08510101460040982,
+            "n_months": 11,
+            "n_effective_months_kish": 4.0901569943110285,
+            "testable": true,
+            "month_mean_range": [
+              -0.8451029128205128,
+              2.5212905121769844
+            ],
+            "verdict_is_available": false,
+            "ci95_t": [
+              -1.0700321108528374,
+              0.5633649392129005
+            ],
+            "clears_zero_percentile": null
+          }
+        }
+      },
+      "n_testable_cells": 40,
+      "n_cells_without_power": 8,
+      "cells_without_power": [
+        "AVAX@60s",
+        "BTC@10s",
+        "ETH@10s",
+        "ETH@60s",
+        "HYPE@60s",
+        "SOL@10s",
+        "SOL@60s",
+        "SUI@10s"
+      ],
+      "n_negative_10s": 13,
+      "n_negative_60s": 17,
+      "all_negative_both_horizons": false,
+      "reconciles_with_panel": {
+        "pooled_10s_recomputed": -0.4575475467077787,
+        "pooled_10s_in_table": -0.45754754670777875,
+        "abs_difference": 5.551115123125783e-17,
+        "reproduces": true,
+        "n_rows_used": 1580,
+        "n_coindays_in_table": 1580
+      },
+      "n_cells_with_verdict": 18
+    }
+  },
+  "n_testable_cells_total": 96,
+  "n_cells_without_power_total": 57,
+  "frac_cells_without_power": 0.59375,
+  "limitations": {
+    "month_mean_fields_are_diagnostics": "The month mean fields describe the spread of the monthly figures behind each cell and are not themselves estimates. A cell whose monthly means straddle zero has an interval that can reach zero; one whose monthly means share a sign does not, which is what the power flag records.",
+    "per_coin_cells_rest_on_few_months": "A per-coin cell has no more months behind it than the pooled figure it sits under, and often fewer, so its interval is the weakest in the paper. 57 of the 96 testable cells sit on an interval that cannot reach zero, where the unanimity across months is the evidence rather than the interval.",
+    "a_quarter_of_cells_rest_on_too_few_effective_months": "26 of the 96 testable cells carry fewer than five effective months once the Kish count is taken on fill weight, which is below the point at which a cluster interval is worth reading. That is a separate problem from the 57 cells whose interval cannot reach zero, and the two overlap. Read the per-coin surface as a description of dispersion rather than as 96 tests.",
+    "nine_cells_returned_a_verdict_the_library_refuses": "Nine cells previously recorded a pass on an effective month count below the floor at which a cluster interval is worth reading. Those verdicts are now null, matching how the venue difference already handled the same situation, and verdict_is_available says which cells were testable at all.",
+    "the_t_interval_is_the_rebuilt_one": "The t interval on each cell comes from the rebuild rather than the original measurement pipeline, which predates it. Its bounds therefore sit on a different random stream from the percentile interval beside them, though both rest on the same point estimate.",
+    "what_the_t_interval_would_change": "Each cell carries both intervals, so the cost of the shipped percentile verdict can be read directly. Of the 70 cells that return a verdict, 60 clear zero on the percentile interval and 56 on the t interval. The four that differ are one on Binance and three on Hyperliquid; Bybit is unchanged at 26 of 26."
+  },
+  "n_cells_with_verdict_total": 70
+}

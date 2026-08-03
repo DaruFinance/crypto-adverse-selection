@@ -1,0 +1,71 @@
+{
+  "block": "us",
+  "component": "net",
+  "n_coins": 12,
+  "n_coins_positive": 9,
+  "n_dates": 98,
+  "n_coins_excluded_zero_weight": 0,
+  "by_block_length_by_block_index": {
+    "1": {
+      "n_blocks": 98,
+      "p": 0.19899005049747512,
+      "p_is_exact_enumeration": false,
+      "n_sign_patterns": null,
+      "clears_5pct": false,
+      "median_calendar_days_per_block": 9.0
+    },
+    "3": {
+      "n_blocks": 33,
+      "p": 0.2095895205239738,
+      "p_is_exact_enumeration": false,
+      "n_sign_patterns": null,
+      "clears_5pct": false,
+      "median_calendar_days_per_block": 27.0
+    },
+    "5": {
+      "n_blocks": 20,
+      "p": 0.2852630615234375,
+      "p_is_exact_enumeration": true,
+      "n_sign_patterns": 1048576,
+      "clears_5pct": false,
+      "median_calendar_days_per_block": 45.0
+    },
+    "10": {
+      "n_blocks": 10,
+      "p": 0.47265625,
+      "p_is_exact_enumeration": true,
+      "n_sign_patterns": 1024,
+      "clears_5pct": false,
+      "median_calendar_days_per_block": 90.0
+    }
+  },
+  "median_calendar_gap_between_kept_dates_days": 9.0,
+  "n_boot_if_sampled": 20000,
+  "seed": 11,
+  "recommended_block_length": 5,
+  "recommended_p": 0.2852630615234375,
+  "recommended_p_is_exact": true,
+  "limitations": {
+    "only_the_net_contrast_is_reported": "Only the net contrast is reported. The gross capture leg admits a choice of weighting and of which cells to include, and that choice was not free, so no p-value is reported for it. The net specification was fixed before these numbers were read.",
+    "null_carries_cross_coin_dependence_by_construction": "The null applies one shared sign per date, which carries whatever same-day dependence exists across coins into the null by construction, so nothing about that dependence is estimated, imputed or repaired. An alternative route through a 66-pair correlation matrix left two thirds of the pairs with insufficient overlap, and filling those with zeros, which asserts independence, produced a spuriously significant result.",
+    "single_venue": "Bybit only. The regime cells are cut from the Bybit panel."
+  },
+  "venue": "bybit_perp",
+  "conditioning": {
+    "block_definition": "UTC hour of the fill in one of three eight-hour session blocks: asia 00 to 07, europe 08 to 15, us 16 to 23",
+    "regime_definition": "tercile of realised volatility over the 30 minutes ending at each fill, from mids strictly before it",
+    "tercile_mode": "expanding",
+    "tercile_cutoffs_leak": false,
+    "cutoff_rule": "each date takes cutoffs from fills on strictly earlier dates alone; dates without enough history are labelled -1 and dropped rather than defaulted into the middle tercile",
+    "dropped_prefix_share_of_tape": 0.033,
+    "dropped_prefix_composition_under_pooled_labels": {
+      "calm": 0.494,
+      "mid": 0.295,
+      "stress": 0.212
+    },
+    "caveats": [
+      "the stress share is not pinned at a third and drifts across the sample, so calm and stress cells differ in date composition as well as coin composition",
+      "pooled cutoffs restricted to these same dates is the control that would separate the label channel from the sample channel, and it is not run here"
+    ]
+  }
+}

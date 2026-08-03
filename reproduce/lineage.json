@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "boundary": "The frozen sources are derived measurement artifacts. Raw venue archives and fill-level ledgers are outside this repository.",
+  "panels": {
+    "bybit_perp_coindays.csv": {
+      "source_kind": "file",
+      "source_paths": ["runs/bybit/decomp_nodust.csv"],
+      "source_sha256": "877872f7ec99f0c07aba74abd9a501902b92cd6eb2d02f5b91f11c0661301f08",
+      "output_sha256": "c1fbf9a06a0f7b09e33d72d708fefbdbd5eafe577f2f120aec2a307ca1da1bb8",
+      "rows": 3618
+    },
+    "binance_um_coindays.csv": {
+      "source_kind": "file",
+      "source_paths": ["runs/stream/decomp_nodust_full15.csv"],
+      "source_sha256": "4d00395035c9c6fd0a803cfffb2527150047bebe1afe1a9f76358ef5b0aaf6ca",
+      "output_sha256": "9362c184cb7dacd8cde2775505f6b4bf6e255c2ae073225762fa65a9bc7a25e3",
+      "rows": 4785
+    },
+    "hyperliquid_coindays.csv": {
+      "source_kind": "file",
+      "source_paths": ["runs/hl10_decomp_merged.csv"],
+      "source_sha256": "083d880b1c2b4ed57d8864ce56c989f28610ff857e7f96ebe74638991e494dc2",
+      "output_sha256": "d74f1cf8ff064577d04520c51ce5ec52048ff905cb73bede9e2d24f868ed4753",
+      "rows": 1580
+    },
+    "bybit_depth_levels.csv": {
+      "source_kind": "json_directory",
+      "source_paths": ["runs/mm_depth3"],
+      "source_sha256": "a124f473a213815c09487d8f7494f23d8cac3599741b76451b51117819071c41",
+      "output_sha256": "298ae38fceba2b3f1bdbd6b2185999c3032373aeed1a043ab9f7ede3f1cfc2fc",
+      "rows": 1500
+    },
+    "bybit_quoting_arm_coindays.csv": {
+      "source_kind": "file",
+      "source_paths": ["runs/frontier/as_quoter_arm_v5.json.rows.jsonl"],
+      "source_sha256": "0ad39a7474b11cdb460998c2ae70fa6c6244f0bcb6c363b972089411f1908c7d",
+      "output_sha256": "cab9407c20315880073f94bd3018d9039395a7b00a02eb23a57cc742abb8b70e",
+      "rows": 91
+    },
+    "cross_venue_leadlag_coindays.csv": {
+      "source_kind": "file",
+      "source_paths": ["runs/part2/leadlag_sweep_250ms.json"],
+      "source_sha256": "cc2caedfb9741dcb8e137b428e3b816587d62b065629debcb221c8cf93e81709",
+      "output_sha256": "298dad8d52207d434889116bb3ec1f9c0a7ef5ee074bc8453f574933ee43ba86",
+      "rows": 325
+    },
+    "bybit_conditional_cells.csv": {
+      "source_kind": "file",
+      "source_paths": ["runs/conditional_bybit_v15_common_strided_per_coinday_cells.csv"],
+      "source_sha256": "e76a1bd3a7a7031d0017873f13c3fd7a681b2d437bfe174325f9305cba18b612",
+      "output_sha256": "e76a1bd3a7a7031d0017873f13c3fd7a681b2d437bfe174325f9305cba18b612",
+      "rows": 7026
+    },
+    "venue_requote_rungs.csv": {
+      "source_kind": "file_set",
+      "source_paths": [
+        "runs/part2/requote_bybit_25d.json",
+        "runs/part2/requote_hl_25d_all.json"
+      ],
+      "source_sha256": "da95ee4772a1cb586ad78782b01f9dc05b10a97a7234e0a815dd7bfe5660f801",
+      "output_sha256": "67426e9b593c964da82532b471831758bbea6b7f61a03c1ce22fd8385ca9bdfd",
+      "rows": 5775
+    }
+  }
+}

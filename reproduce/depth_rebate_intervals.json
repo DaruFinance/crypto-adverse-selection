@@ -1,0 +1,234 @@
+{
+  "fee_sensitivity": {
+    "crossing_by_residual_maker_fee_bp": {
+      "0.0": {
+        "crossing_bp": 0.7710766696924987,
+        "touch_wins_at_tier": true
+      },
+      "0.5": {
+        "crossing_bp": 1.2710766696924987,
+        "touch_wins_at_tier": true
+      },
+      "1.0": {
+        "crossing_bp": 1.7710766696924987,
+        "touch_wins_at_tier": false
+      },
+      "1.5": {
+        "crossing_bp": 2.2710766696924987,
+        "touch_wins_at_tier": false
+      },
+      "2.0": {
+        "crossing_bp": 2.7710766696924987,
+        "touch_wins_at_tier": false
+      }
+    },
+    "residual_fee_that_inverts_the_verdict_bp": 0.7289233303075013
+  },
+  "coinday_bootstrap_ci95": [
+    0.675269409532158,
+    0.8697601896112805
+  ],
+  "coinday_bootstrap_sd": 0.04991234114687397,
+  "venue": "bybit_perp",
+  "n_coindays": 300,
+  "n_coins": 13,
+  "n_levels": 5,
+  "markout_horizon": "10s",
+  "markout_weighting": "mean over fill rows, not size-weighted",
+  "size_weighting_bound_on_crossing_bp": 0.0251,
+  "fee_treatment": "no maker fee charged; the rebate replaces it",
+  "markout_bp_by_level": [
+    -0.717064146366643,
+    -0.6534759985834138,
+    -0.5128287400883014,
+    -0.45132577985970473,
+    -0.3283353007753428
+  ],
+  "fill_rate_by_level": [
+    0.0033479604313758206,
+    0.001074791365714891,
+    0.0006997429611587366,
+    0.0005176298777266506,
+    0.00040843662596066354
+  ],
+  "n_fills_by_level": [
+    610366.0,
+    195945.0,
+    127570.0,
+    94369.0,
+    74462.0
+  ],
+  "crossing_bp": 0.7710766696924987,
+  "crossing_ci95": [
+    0.7163085458105515,
+    0.8340608226644798
+  ],
+  "n_bootstrap_draws_usable": 4000,
+  "n_bootstrap_draws_degenerate": 0,
+  "clusters": "coin",
+  "n_clusters": 13,
+  "prob_crossing_below_published_tier": 1.0,
+  "prob_crossing_below_published_tier_is_at_floor": true,
+  "prob_crossing_below_published_tier_bound": 0.9997500624843789,
+  "published_tier_bp": 1.5,
+  "per_coin": {
+    "ARB": {
+      "crossing_bp": 0.7529580114697889,
+      "n_coindays": 24,
+      "touch_markout_bp": -0.7070510204303235,
+      "deepest_markout_bp": -0.346860628178598,
+      "touch_fill_rate": 0.0014703998220748132,
+      "deepest_fill_rate": 0.00016622030634464355
+    },
+    "AVAX": {
+      "crossing_bp": 0.8697020615174749,
+      "n_coindays": 26,
+      "touch_markout_bp": -0.7901832076469621,
+      "deepest_markout_bp": 0.6764151602065528,
+      "touch_fill_rate": 0.001607141940122672,
+      "deepest_fill_rate": 8.265743585941257e-05
+    },
+    "BNB": {
+      "crossing_bp": 1.0184482257216798,
+      "n_coindays": 28,
+      "touch_markout_bp": -0.8918012943473352,
+      "deepest_markout_bp": 1.9445304840021937,
+      "touch_fill_rate": 0.00079455374360567,
+      "deepest_fill_rate": 3.396169979535007e-05
+    },
+    "BTC": {
+      "crossing_bp": 0.6267087855935234,
+      "n_coindays": 19,
+      "touch_markout_bp": -0.5808763530755792,
+      "deepest_markout_bp": -0.2661656535624075,
+      "touch_fill_rate": 0.007214233550158674,
+      "deepest_fill_rate": 0.0009170771621515768
+    },
+    "DOGE": {
+      "crossing_bp": 0.753443977588268,
+      "n_coindays": 36,
+      "touch_markout_bp": -0.6593751510683957,
+      "deepest_markout_bp": -0.031988427852144605,
+      "touch_fill_rate": 0.005025871926290851,
+      "deepest_fill_rate": 0.0006553111616069366
+    },
+    "ETH": {
+      "crossing_bp": 0.8118348537841731,
+      "n_coindays": 24,
+      "touch_markout_bp": -0.792465841457976,
+      "deepest_markout_bp": -0.6711075498252916,
+      "touch_fill_rate": 0.0045632236463739925,
+      "deepest_fill_rate": 0.000628059605829128
+    },
+    "HYPE": {
+      "crossing_bp": 1.1019201351129495,
+      "n_coindays": 4,
+      "touch_markout_bp": -1.013583575280531,
+      "deepest_markout_bp": -0.4789661950860968,
+      "touch_fill_rate": 0.007501858219712896,
+      "deepest_fill_rate": 0.001063783860892546
+    },
+    "LINK": {
+      "crossing_bp": 0.819716511557808,
+      "n_coindays": 24,
+      "touch_markout_bp": -0.7827447157023455,
+      "deepest_markout_bp": -0.5751229863954744,
+      "touch_fill_rate": 0.003536042596027573,
+      "deepest_fill_rate": 0.0005344942999197747
+    },
+    "LTC": {
+      "crossing_bp": 0.6118314573259713,
+      "n_coindays": 21,
+      "touch_markout_bp": -0.6475965927499385,
+      "deepest_markout_bp": -1.2808530946977317,
+      "touch_fill_rate": 0.0010383788742306837,
+      "deepest_fill_rate": 5.551055299816917e-05
+    },
+    "OP": {
+      "crossing_bp": 0.8210141527721005,
+      "n_coindays": 26,
+      "touch_markout_bp": -0.7994559855943186,
+      "deepest_markout_bp": -0.6750757959307032,
+      "touch_fill_rate": 0.0021073194052083606,
+      "deepest_fill_rate": 0.0003112954333440817
+    },
+    "SOL": {
+      "crossing_bp": 0.8849844462912037,
+      "n_coindays": 19,
+      "touch_markout_bp": -0.8314431618528668,
+      "deepest_markout_bp": -0.3227801102788378,
+      "touch_fill_rate": 0.004306759120239236,
+      "deepest_fill_rate": 0.00041015232415258146
+    },
+    "SUI": {
+      "crossing_bp": 0.590729859448024,
+      "n_coindays": 24,
+      "touch_markout_bp": -0.6932653658355112,
+      "deepest_markout_bp": -1.1086719500768354,
+      "touch_fill_rate": 0.0026148206948948807,
+      "deepest_fill_rate": 0.0005176485342946826
+    },
+    "XRP": {
+      "crossing_bp": 0.7663781842973248,
+      "n_coindays": 25,
+      "touch_markout_bp": -0.6456651284613776,
+      "deepest_markout_bp": 0.7120060661867289,
+      "touch_fill_rate": 0.004401233990404784,
+      "deepest_fill_rate": 0.0003593696322568697
+    }
+  },
+  "per_coin_crossing_median": 0.8118348537841731,
+  "per_coin_crossing_range": [
+    0.590729859448024,
+    1.1019201351129495
+  ],
+  "n_coins_with_finite_crossing": 13,
+  "leave_one_coin_out_crossing": {
+    "ARB": 0.7717413546356944,
+    "AVAX": 0.7669203614309927,
+    "BNB": 0.7658190618663231,
+    "BTC": 0.7958983153807822,
+    "DOGE": 0.7750066963191302,
+    "ETH": 0.7657743833047377,
+    "HYPE": 0.7623840013120647,
+    "LINK": 0.7667199906438962,
+    "LTC": 0.7745881052543682,
+    "OP": 0.7683225485714303,
+    "SOL": 0.7596664829762393,
+    "SUI": 0.7818845516523082,
+    "XRP": 0.771778967874962
+  },
+  "loco_range": [
+    0.7596664829762393,
+    0.7958983153807822
+  ],
+  "subsample_year_distribution_pct": {
+    "2023": 45.0,
+    "2024": 39.0,
+    "2025": 16.0
+  },
+  "remainder_year_distribution_pct": {
+    "2023": 28.9,
+    "2024": 40.9,
+    "2025": 30.3
+  },
+  "subsample_is_time_skewed": true,
+  "per_coin_structure": {
+    "n_coins": 13,
+    "n_monotone_across_all_5_levels": 2,
+    "monotone_coins": [
+      "BNB",
+      "XRP"
+    ],
+    "n_coins_every_level_negative": 8,
+    "n_coins_L5_better_than_L1": 11,
+    "coins_where_deeper_is_WORSE": [
+      "LTC",
+      "SUI"
+    ]
+  },
+  "limitations": {
+    "same_scope_as_the_frontier": "These intervals cover the same measurement as the depth and rebate frontier and inherit its scope: bid side only, 300 coin-days, and no maker fee charged.",
+    "fee_axis_sits_outside_the_interval": "The dominant sensitivity is the residual maker fee, which is not a source of variation these intervals cover. A residual near 0.73 bp inverts the ordering, against an interval 0.194 bp wide, resampling coin-days."
+  }
+}

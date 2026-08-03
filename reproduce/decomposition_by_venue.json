@@ -1,0 +1,1982 @@
+{
+  "method": {
+    "weightings": {
+      "row_mean": "pooled by fill count, a mean over fills"
+    },
+    "panels": "dust-free (post phantom-fill guard) only"
+  },
+  "venues": {
+    "bybit_perp": {
+      "n_coindays": 3618,
+      "n_coins": 13,
+      "date_range": [
+        "20230401",
+        "20250818"
+      ],
+      "maker_fee_bp": 2.0,
+      "pooled": {
+        "10s_row_mean": {
+          "capture_bp": 0.20568540243332226,
+          "adverse_bp": -1.0444216247245726,
+          "net_bp": -0.8387362079915633,
+          "net_ci95": [
+            -0.8688660263921851,
+            -0.8121437295467262
+          ],
+          "adv_over_cap": 5.077762507055629,
+          "net_clears_zero": true,
+          "net_after_fee_bp": -2.8387362079915635,
+          "net_clears_zero_percentile": true,
+          "net_ci95_t": [
+            -0.8691727739438874,
+            -0.8082996420392358
+          ],
+          "n_month_clusters": 29,
+          "n_effective_months_kish": 23.18307648252876,
+          "percentile_interval_has_power_to_fail": false,
+          "net_ci95_t_two_way_month_coin": [
+            -1.0835272663395181,
+            -0.593945149643605
+          ],
+          "net_se_month_only": 0.014675296987620911,
+          "net_se_two_way_month_coin": 0.08818121698413423,
+          "net_clears_zero_two_way": true
+        },
+        "10s_coin_unit_weighted": {
+          "capture_bp": 0.3248968393785139,
+          "adverse_bp": -1.28631987318246,
+          "net_bp": -0.9614230549074385,
+          "net_ci95": [
+            -1.0117041885740479,
+            -0.9174307818141635
+          ],
+          "adv_over_cap": 3.9591640092375955,
+          "net_clears_zero": true,
+          "net_after_fee_bp": -2.9614230549074385,
+          "net_clears_zero_percentile": true,
+          "net_ci95_t": [
+            -1.0130568352764844,
+            -0.9097892745383878
+          ],
+          "n_month_clusters": 29,
+          "n_effective_months_kish": 21.88858834760502,
+          "percentile_interval_has_power_to_fail": false,
+          "net_ci95_t_two_way_month_coin": [
+            -1.0884112055269082,
+            -0.8344349042879639
+          ],
+          "net_se_month_only": 0.024752531337031765,
+          "net_se_two_way_month_coin": 0.05613976596793643,
+          "net_clears_zero_two_way": true
+        },
+        "60s_row_mean": {
+          "capture_bp": 0.20568540243332226,
+          "adverse_bp": -1.0399935782482135,
+          "net_bp": -0.8343081877835478,
+          "net_ci95": [
+            -0.8702409457878985,
+            -0.8056429824667245
+          ],
+          "adv_over_cap": 5.056234258458627,
+          "net_clears_zero": true,
+          "net_after_fee_bp": -2.834308187783548,
+          "net_clears_zero_percentile": true,
+          "net_ci95_t": [
+            -0.8682865956903224,
+            -0.8003297798767736
+          ],
+          "n_month_clusters": 29,
+          "n_effective_months_kish": 23.18307648252876,
+          "percentile_interval_has_power_to_fail": false,
+          "net_ci95_t_two_way_month_coin": [
+            -1.0499675400182675,
+            -0.6186488355488285
+          ],
+          "net_se_month_only": 0.016383031777615416,
+          "net_se_two_way_month_coin": 0.07768708653988453,
+          "net_clears_zero_two_way": true
+        },
+        "60s_coin_unit_weighted": {
+          "capture_bp": 0.3248968393785139,
+          "adverse_bp": -1.259425589330871,
+          "net_bp": -0.9345287582777282,
+          "net_ci95": [
+            -0.9835953296528075,
+            -0.8946873463949776
+          ],
+          "adv_over_cap": 3.8763860914744237,
+          "net_clears_zero": true,
+          "net_after_fee_bp": -2.934528758277728,
+          "net_clears_zero_percentile": true,
+          "net_ci95_t": [
+            -0.9826812088456952,
+            -0.8863763077097616
+          ],
+          "n_month_clusters": 29,
+          "n_effective_months_kish": 21.88858834760502,
+          "percentile_interval_has_power_to_fail": false,
+          "net_ci95_t_two_way_month_coin": [
+            -1.0583239072704287,
+            -0.8107336092850281
+          ],
+          "net_se_month_only": 0.023083629227213232,
+          "net_se_two_way_month_coin": 0.054728182578558944,
+          "net_clears_zero_two_way": true
+        }
+      },
+      "weighting_family": {
+        "n_cells": 4,
+        "cells": [
+          "10s_coin_unit_weighted",
+          "10s_row_mean",
+          "60s_coin_unit_weighted",
+          "60s_row_mean"
+        ],
+        "net_bp_range": [
+          -0.9614230549074385,
+          -0.8343081877835478
+        ],
+        "spread_bp": 0.12711486712389075,
+        "spread_over_smallest_magnitude": 0.15235960642024687,
+        "all_same_sign": true,
+        "n_clearing_zero": 4,
+        "verdict_is_weighting_invariant": true,
+        "magnitude_is_stable": true
+      },
+      "leave_one_coin_out": {
+        "full_sample_net_bp": -0.8387362079915633,
+        "most_influential_coin": "BTC",
+        "net_without_most_influential": -0.9595042650952884,
+        "swing_bp": 0.12076805710372507,
+        "swing_over_effect": 0.14398812875017772,
+        "swing_over_ci_half_width": 4.258221680717907,
+        "sign_stable": true,
+        "by_dropped_coin": {
+          "ARB": {
+            "net_without": -0.8297404910767991,
+            "row_share": 0.08153676064123826
+          },
+          "AVAX": {
+            "net_without": -0.8330433024255942,
+            "row_share": 0.08153676064123826
+          },
+          "BNB": {
+            "net_without": -0.8360233816927009,
+            "row_share": 0.08153676064123826
+          },
+          "BTC": {
+            "net_without": -0.9595042650952884,
+            "row_share": 0.08153676064123826
+          },
+          "DOGE": {
+            "net_without": -0.83408758461121,
+            "row_share": 0.08153676064123826
+          },
+          "ETH": {
+            "net_without": -0.8393514866558562,
+            "row_share": 0.08153676064123826
+          },
+          "HYPE": {
+            "net_without": -0.8123413707815794,
+            "row_share": 0.024875621890547265
+          },
+          "LINK": {
+            "net_without": -0.8288561216042708,
+            "row_share": 0.08153676064123826
+          },
+          "LTC": {
+            "net_without": -0.8322880315107496,
+            "row_share": 0.08153676064123826
+          },
+          "OP": {
+            "net_without": -0.82621417662299,
+            "row_share": 0.0812603648424544
+          },
+          "SOL": {
+            "net_without": -0.8374935074399412,
+            "row_share": 0.08153676064123826
+          },
+          "SUI": {
+            "net_without": -0.8302904909287114,
+            "row_share": 0.07849640685461581
+          },
+          "XRP": {
+            "net_without": -0.842909423879088,
+            "row_share": 0.08153676064123826
+          }
+        },
+        "n_coins_same_sign_as_pooled": 13,
+        "n_coins_opposite_sign_to_pooled": 0,
+        "coins_opposite_sign": [],
+        "closest_coin_to_zero_bp": -0.6094189412697094,
+        "most_extreme_opposing_coin_bp": -0.6094189412697094,
+        "n_month_clusters": 29,
+        "most_extreme_month_bp": -0.730586205167134,
+        "percentile_interval_has_power_to_fail": false,
+        "power_by_coin_unit": false,
+        "swing_exceeds_ci_half_width": true,
+        "pooled_net_bp": -0.8387362079915633,
+        "swing_bp_by_coin": {
+          "ARB": 0.008995716914764196,
+          "AVAX": 0.005692905565969131,
+          "BNB": 0.002712826298862492,
+          "BTC": -0.12076805710372507,
+          "DOGE": 0.004648623380353323,
+          "ETH": -0.0006152786642928953,
+          "HYPE": 0.026394837209983923,
+          "LINK": 0.009880086387292542,
+          "LTC": 0.00644817648081375,
+          "OP": 0.012522031368573328,
+          "SOL": 0.0012427005516221223,
+          "SUI": 0.00844571706285191,
+          "XRP": -0.004173215887524617
+        },
+        "n_coins_whose_removal_flips_pooled_sign": 0,
+        "coins_whose_removal_flips_pooled_sign": []
+      },
+      "per_coin": {
+        "ARB": {
+          "net_bp": -1.150322855171533,
+          "net_ci95": [
+            -1.268558853687038,
+            -1.0313540023465746
+          ],
+          "adv_over_cap": 2.937490866309629,
+          "n_coindays": 295,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -1.2870907234927973,
+            -1.0135549868502687
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 1276082,
+          "capture_bp": 0.5937178162813994,
+          "adverse_bp": -1.744040662491909
+        },
+        "AVAX": {
+          "net_bp": -1.0087869992790783,
+          "net_ci95": [
+            -1.0722119494810012,
+            -0.9501495382810519
+          ],
+          "adv_over_cap": 2.7737085790007887,
+          "n_coindays": 295,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -1.0742721977965282,
+            -0.9433018007616294
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 1473115,
+          "capture_bp": 0.5687445085692564,
+          "adverse_bp": -1.5775315226781341
+        },
+        "BNB": {
+          "net_bp": -0.9150107395947314,
+          "net_ci95": [
+            -0.9916185340278478,
+            -0.8295759444905255
+          ],
+          "adv_over_cap": 2.7004577463321953,
+          "n_coindays": 295,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -1.0015604479098243,
+            -0.8284610312796384
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 1561877,
+          "capture_bp": 0.5380967666243884,
+          "adverse_bp": -1.4531075817071373
+        },
+        "BTC": {
+          "net_bp": -0.6094189412697094,
+          "net_ci95": [
+            -0.6424296378333582,
+            -0.575681623750878
+          ],
+          "adv_over_cap": 50.174986422515275,
+          "n_coindays": 295,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.644340872820616,
+            -0.5744970097188026
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 15687748,
+          "capture_bp": 0.012392864747763651,
+          "adverse_bp": -0.6218118204551094
+        },
+        "DOGE": {
+          "net_bp": -0.8951531366542573,
+          "net_ci95": [
+            -0.9803639048435725,
+            -0.8305501965660038
+          ],
+          "adv_over_cap": 3.727254676183092,
+          "n_coindays": 295,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.9758578305254839,
+            -0.8144484427830307
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 3461868,
+          "capture_bp": 0.32822498783142495,
+          "adverse_bp": -1.223378120734817
+        },
+        "ETH": {
+          "net_bp": -0.8349025263162833,
+          "net_ci95": [
+            -0.8808831685526437,
+            -0.7920380686038727
+          ],
+          "adv_over_cap": 36.263965387522774,
+          "n_coindays": 295,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.8830030623303924,
+            -0.7868019903021739
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 6289205,
+          "capture_bp": 0.02367579978471049,
+          "adverse_bp": -0.8585783839146603
+        },
+        "HYPE": {
+          "net_bp": -1.69266067111276,
+          "net_ci95": [
+            -1.8986781592921287,
+            -1.4412144533307045
+          ],
+          "adv_over_cap": 5.333935478687953,
+          "n_coindays": 90,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -1.9881983205944196,
+            -1.3971230216311015
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 1363519,
+          "capture_bp": 0.39055973215188067,
+          "adverse_bp": -2.08322041187178
+        },
+        "LINK": {
+          "net_bp": -1.032852808305574,
+          "net_ci95": [
+            -1.1212791095992534,
+            -0.9664398247335616
+          ],
+          "adv_over_cap": 3.7226840918017823,
+          "n_coindays": 295,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -1.114525655338663,
+            -0.9511799612724839
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 2202521,
+          "capture_bp": 0.37935094550517345,
+          "adverse_bp": -1.412203730042074
+        },
+        "LTC": {
+          "net_bp": -1.08567565625162,
+          "net_ci95": [
+            -1.2160680554138221,
+            -0.9998666039405255
+          ],
+          "adv_over_cap": 2.8451657448439107,
+          "n_coindays": 295,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -1.2036202598383254,
+            -0.9677310526649148
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 1157268,
+          "capture_bp": 0.5883892233363399,
+          "adverse_bp": -1.6740648628718677
+        },
+        "OP": {
+          "net_bp": -1.1479894427180577,
+          "net_ci95": [
+            -1.269417265641521,
+            -1.0360111430353283
+          ],
+          "adv_over_cap": 3.95304804019955,
+          "n_coindays": 294,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -1.272807597924795,
+            -1.023171287511319
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 1769720,
+          "capture_bp": 0.3887473086476959,
+          "adverse_bp": -1.5367367865826238
+        },
+        "SOL": {
+          "net_bp": -0.8496813282729989,
+          "net_ci95": [
+            -0.8994690893898736,
+            -0.8052783515938806
+          ],
+          "adv_over_cap": 4.484201910322597,
+          "n_coindays": 295,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.9017273921303265,
+            -0.7976352644156718
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 4636848,
+          "capture_bp": 0.24386685790153134,
+          "adverse_bp": -1.0935482300664163
+        },
+        "SUI": {
+          "net_bp": -0.9910162139743709,
+          "net_ci95": [
+            -1.1012563797579455,
+            -0.9144892100753909
+          ],
+          "adv_over_cap": 4.070156152220676,
+          "n_coindays": 284,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -1.0892699883891013,
+            -0.892762439559641
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 2389646,
+          "capture_bp": 0.322790141232216,
+          "adverse_bp": -1.3138062792124847
+        },
+        "XRP": {
+          "net_bp": -0.7569032810290576,
+          "net_ci95": [
+            -0.7879128468086795,
+            -0.7338886525741054
+          ],
+          "adv_over_cap": 3.0898869557153326,
+          "n_coindays": 295,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.7844356798617794,
+            -0.7293708821963357
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 2206601,
+          "capture_bp": 0.3621742520419412,
+          "adverse_bp": -1.1190774970803512
+        }
+      },
+      "n_coins_testable": 13,
+      "n_coins_untestable": 0,
+      "n_coins_net_negative": 13,
+      "n_coins_net_negative_clearing_zero": 13,
+      "coins_significantly_positive": [],
+      "counterexamples_to_net_le_zero": 0,
+      "date_first": "20230401",
+      "date_last": "20250818",
+      "n_dates": 295,
+      "n_coins_verdict_withheld": 0,
+      "n_fills": 45476018,
+      "coins": [
+        "ARB",
+        "AVAX",
+        "BNB",
+        "BTC",
+        "DOGE",
+        "ETH",
+        "HYPE",
+        "LINK",
+        "LTC",
+        "OP",
+        "SOL",
+        "SUI",
+        "XRP"
+      ],
+      "n_months": 29,
+      "horizon_saturation": {
+        "adverse_bp_10s": -1.0444216247245726,
+        "adverse_bp_60s": -1.0399935782482135,
+        "ratio_60s_over_10s": 0.9957602884012222,
+        "ratio_if_drift_continued_at_the_same_rate": 6.0,
+        "value_if_flow_carried_no_information": 0.0,
+        "note": "this term is a signed markout, so under a martingale mid and flow that carries no information it is zero at every horizon rather than growing with the square root of time, which is how the unsigned magnitude would scale. The measured value is far from zero and close to flat between the two horizons, so the adverse move is substantially complete by ten seconds instead of accumulating. Had it continued at the ten second rate the ratio would be six. This compares a measured ratio against two reference values and does not test permanence, and the capture leg is invariant across the horizons by construction so it carries none of the comparison"
+      }
+    },
+    "binance_um": {
+      "n_coindays": 4785,
+      "n_coins": 15,
+      "date_range": [
+        "20230516",
+        "20240329"
+      ],
+      "maker_fee_bp": 2.0,
+      "pooled": {
+        "10s_row_mean": {
+          "capture_bp": 0.4604458281293068,
+          "adverse_bp": -0.8516088093912355,
+          "net_bp": -0.39116298126192905,
+          "net_ci95": [
+            -0.41127905720295277,
+            -0.3640326125804798
+          ],
+          "adv_over_cap": 1.8495309488439509,
+          "net_clears_zero": true,
+          "net_after_fee_bp": -2.391162981261929,
+          "net_clears_zero_percentile": true,
+          "net_ci95_t": [
+            -0.4213307518627918,
+            -0.3609952106610659
+          ],
+          "n_month_clusters": 11,
+          "n_effective_months_kish": 8.41231408625665,
+          "percentile_interval_has_power_to_fail": false,
+          "net_ci95_t_two_way_month_coin": [
+            -0.45156106626755654,
+            -0.3307648962563011
+          ],
+          "net_se_month_only": 0.012755928372457918,
+          "net_se_two_way_month_coin": 0.025538302327960973,
+          "net_clears_zero_two_way": true
+        },
+        "10s_coin_unit_weighted": {
+          "capture_bp": 0.5639333886584014,
+          "adverse_bp": -0.9650820434048529,
+          "net_bp": -0.40114865474645,
+          "net_ci95": [
+            -0.41757549930877935,
+            -0.3786301614601508
+          ],
+          "adv_over_cap": 1.711340493069199,
+          "net_clears_zero": true,
+          "net_after_fee_bp": -2.40114865474645,
+          "net_clears_zero_percentile": true,
+          "net_ci95_t": [
+            -0.4258140797874644,
+            -0.37648322970543574
+          ],
+          "n_month_clusters": 11,
+          "n_effective_months_kish": 8.297698017113055,
+          "percentile_interval_has_power_to_fail": false,
+          "net_ci95_t_two_way_month_coin": [
+            -0.4509106839238912,
+            -0.3513866255690089
+          ],
+          "net_se_month_only": 0.01042935519704623,
+          "net_se_two_way_month_coin": 0.021041027136338743,
+          "net_clears_zero_two_way": true
+        },
+        "60s_row_mean": {
+          "capture_bp": 0.4604458281293068,
+          "adverse_bp": -0.8442882375590107,
+          "net_bp": -0.38384240942970466,
+          "net_ci95": [
+            -0.40748146228572063,
+            -0.35171216891322005
+          ],
+          "adv_over_cap": 1.8336320713104814,
+          "net_clears_zero": true,
+          "net_after_fee_bp": -2.383842409429705,
+          "net_clears_zero_percentile": true,
+          "net_ci95_t": [
+            -0.41997813881936336,
+            -0.3477066800400483
+          ],
+          "n_month_clusters": 11,
+          "n_effective_months_kish": 8.41231408625665,
+          "percentile_interval_has_power_to_fail": false,
+          "net_ci95_t_two_way_month_coin": [
+            -0.45039086808939766,
+            -0.317293950770014
+          ],
+          "net_se_month_only": 0.015279378177445055,
+          "net_se_two_way_month_coin": 0.02813888315420372,
+          "net_clears_zero_two_way": true
+        },
+        "60s_coin_unit_weighted": {
+          "capture_bp": 0.5639333886584014,
+          "adverse_bp": -0.9518337133032827,
+          "net_bp": -0.3879003246448853,
+          "net_ci95": [
+            -0.41138919829166476,
+            -0.357121532467456
+          ],
+          "adv_over_cap": 1.6878477714676496,
+          "net_clears_zero": true,
+          "net_after_fee_bp": -2.3879003246448853,
+          "net_clears_zero_percentile": true,
+          "net_ci95_t": [
+            -0.4228032019815802,
+            -0.3529974473081923
+          ],
+          "n_month_clusters": 11,
+          "n_effective_months_kish": 8.297698017113055,
+          "percentile_interval_has_power_to_fail": false,
+          "net_ci95_t_two_way_month_coin": [
+            -0.4461716222782182,
+            -0.32962902701155433
+          ],
+          "net_se_month_only": 0.014758087668792368,
+          "net_se_two_way_month_coin": 0.024639026483438447,
+          "net_clears_zero_two_way": true
+        }
+      },
+      "weighting_family": {
+        "n_cells": 4,
+        "cells": [
+          "10s_coin_unit_weighted",
+          "10s_row_mean",
+          "60s_coin_unit_weighted",
+          "60s_row_mean"
+        ],
+        "net_bp_range": [
+          -0.40114865474645,
+          -0.38384240942970466
+        ],
+        "spread_bp": 0.01730624531674535,
+        "spread_over_smallest_magnitude": 0.04508685046672714,
+        "all_same_sign": true,
+        "n_clearing_zero": 4,
+        "verdict_is_weighting_invariant": true,
+        "magnitude_is_stable": true
+      },
+      "leave_one_coin_out": {
+        "full_sample_net_bp": -0.39116298126192905,
+        "net_without_most_influential": -0.37424865655055417,
+        "swing_bp": 0.016914324711374884,
+        "swing_over_effect": 0.04324111820808723,
+        "swing_over_ci_half_width": 0.716004128841031,
+        "sign_stable": true,
+        "by_dropped_coin": {
+          "1000PEPEUSDT": {
+            "net_without": -0.399473131843546,
+            "row_share": 0.06666666666666667
+          },
+          "1000SHIBUSDT": {
+            "net_without": -0.3891966134937014,
+            "row_share": 0.06666666666666667
+          },
+          "ADAUSDT": {
+            "net_without": -0.3956059988714848,
+            "row_share": 0.06666666666666667
+          },
+          "ARBUSDT": {
+            "net_without": -0.38753274522467906,
+            "row_share": 0.06666666666666667
+          },
+          "AVAXUSDT": {
+            "net_without": -0.38942303605627926,
+            "row_share": 0.06666666666666667
+          },
+          "BNBUSDT": {
+            "net_without": -0.39104771336574967,
+            "row_share": 0.06666666666666667
+          },
+          "BTCUSDT": {
+            "net_without": -0.4053196623310024,
+            "row_share": 0.06666666666666667
+          },
+          "DOGEUSDT": {
+            "net_without": -0.3916728072173289,
+            "row_share": 0.06666666666666667
+          },
+          "ETHUSDT": {
+            "net_without": -0.37424865655055417,
+            "row_share": 0.06666666666666667
+          },
+          "LINKUSDT": {
+            "net_without": -0.38884468102155395,
+            "row_share": 0.06666666666666667
+          },
+          "LTCUSDT": {
+            "net_without": -0.3926409326014541,
+            "row_share": 0.06666666666666667
+          },
+          "OPUSDT": {
+            "net_without": -0.38430982093127225,
+            "row_share": 0.06666666666666667
+          },
+          "SOLUSDT": {
+            "net_without": -0.38927813302665015,
+            "row_share": 0.06666666666666667
+          },
+          "SUIUSDT": {
+            "net_without": -0.3901468469236671,
+            "row_share": 0.06666666666666667
+          },
+          "XRPUSDT": {
+            "net_without": -0.3994950761557144,
+            "row_share": 0.06666666666666667
+          }
+        },
+        "n_coins_same_sign_as_pooled": 15,
+        "n_coins_opposite_sign_to_pooled": 0,
+        "coins_opposite_sign": [],
+        "closest_coin_to_zero_bp": -0.0987439692833106,
+        "most_extreme_opposing_coin_bp": -0.0987439692833106,
+        "n_month_clusters": 11,
+        "most_extreme_month_bp": -0.29416216891352687,
+        "percentile_interval_has_power_to_fail": false,
+        "power_by_coin_unit": false,
+        "swing_exceeds_ci_half_width": false,
+        "most_influential_coin_is_unnamed": true,
+        "pooled_net_bp": -0.39116298126192905,
+        "swing_bp_by_coin": {
+          "1000PEPEUSDT": -0.008310150581616937,
+          "1000SHIBUSDT": 0.0019663677682276726,
+          "ADAUSDT": -0.004443017609555733,
+          "ARBUSDT": 0.0036302360372499898,
+          "AVAXUSDT": 0.0017399452056497955,
+          "BNBUSDT": 0.00011526789617938293,
+          "BTCUSDT": -0.014156681069073362,
+          "DOGEUSDT": -0.0005098259553998341,
+          "ETHUSDT": 0.016914324711374884,
+          "LINKUSDT": 0.002318300240375104,
+          "LTCUSDT": -0.001477951339525052,
+          "OPUSDT": 0.0068531603306568045,
+          "SOLUSDT": 0.001884848235278902,
+          "SUIUSDT": 0.0010161343382619759,
+          "XRPUSDT": -0.008332094893785336
+        },
+        "most_influential_coin": "ETHUSDT",
+        "n_coins_whose_removal_flips_pooled_sign": 0,
+        "coins_whose_removal_flips_pooled_sign": []
+      },
+      "per_coin": {
+        "1000PEPEUSDT": {
+          "net_bp": -0.3273660686861941,
+          "net_ci95": [
+            -0.3773013442368266,
+            -0.2922172611327779
+          ],
+          "adv_over_cap": 1.4238586142492244,
+          "n_coindays": 319,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.3848405090934332,
+            -0.2698916282789547
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 9036389,
+          "capture_bp": 0.7723473292292372,
+          "adverse_bp": -1.0997133979154312
+        },
+        "1000SHIBUSDT": {
+          "net_bp": -0.42671512658287203,
+          "net_ci95": [
+            -0.4602586664785889,
+            -0.34090916551152084
+          ],
+          "adv_over_cap": 1.611273890501232,
+          "n_coindays": 319,
+          "negative": true,
+          "negative_clears_zero": null,
+          "testable": true,
+          "positive_clears_zero": null,
+          "verdict_is_available": false,
+          "net_ci95_t": [
+            -0.5377396494207007,
+            -0.31569060374504326
+          ],
+          "negative_clears_zero_percentile": null,
+          "positive_clears_zero_percentile": null,
+          "n_fills": 4109443,
+          "capture_bp": 0.6980751725433144,
+          "adverse_bp": -1.1247902991261851
+        },
+        "ADAUSDT": {
+          "net_bp": -0.17370861958570225,
+          "net_ci95": [
+            -0.2493980287119398,
+            -0.06321640317973923
+          ],
+          "adv_over_cap": 1.138696480109202,
+          "n_coindays": 319,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.2868427179029571,
+            -0.060574521268447354
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 1569964,
+          "capture_bp": 1.2524371162767391,
+          "adverse_bp": -1.4261457358624423
+        },
+        "ARBUSDT": {
+          "net_bp": -0.469556318344034,
+          "net_ci95": [
+            -0.509102809803926,
+            -0.41036899803668486
+          ],
+          "adv_over_cap": 1.7551610124714228,
+          "n_coindays": 319,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.5264372900614844,
+            -0.41267534662658417
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 3470244,
+          "capture_bp": 0.6217962932266754,
+          "adverse_bp": -1.0913526115707093
+        },
+        "AVAXUSDT": {
+          "net_bp": -0.41823079907528293,
+          "net_ci95": [
+            -0.4818598683063272,
+            -0.36272723986984595
+          ],
+          "adv_over_cap": 1.8180276189700062,
+          "n_coindays": 319,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.5018156950226287,
+            -0.33464590312793757
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 4735762,
+          "capture_bp": 0.5112673330050702,
+          "adverse_bp": -0.929498132080353
+        },
+        "BNBUSDT": {
+          "net_bp": -0.39349915966821364,
+          "net_ci95": [
+            -0.4228411789674024,
+            -0.3585716770777722
+          ],
+          "adv_over_cap": 2.3081043012817912,
+          "n_coindays": 319,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.43357005534572907,
+            -0.3534282639906983
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 3686802,
+          "capture_bp": 0.3008163487289433,
+          "adverse_bp": -0.6943155083971573
+        },
+        "BTCUSDT": {
+          "net_bp": -0.3244741978334536,
+          "net_ci95": [
+            -0.35369094785243016,
+            -0.2922437212631175
+          ],
+          "adv_over_cap": 10.207542378449592,
+          "n_coindays": 319,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.3635089323952559,
+            -0.28543946327165143
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 13729971,
+          "capture_bp": 0.03524004392234904,
+          "adverse_bp": -0.35971424175580285
+        },
+        "DOGEUSDT": {
+          "net_bp": -0.37981642188986353,
+          "net_ci95": [
+            -0.41129626118103335,
+            -0.30866562346370996
+          ],
+          "adv_over_cap": 1.5251508534480052,
+          "n_coindays": 319,
+          "negative": true,
+          "negative_clears_zero": null,
+          "testable": true,
+          "positive_clears_zero": null,
+          "verdict_is_available": false,
+          "net_ci95_t": [
+            -0.4634000829209397,
+            -0.29623276085878736
+          ],
+          "negative_clears_zero_percentile": null,
+          "positive_clears_zero_percentile": null,
+          "n_fills": 3371580,
+          "capture_bp": 0.7232520320515263,
+          "adverse_bp": -1.1030684539413893
+        },
+        "ETHUSDT": {
+          "net_bp": -0.5337962987457755,
+          "net_ci95": [
+            -0.5772234588069873,
+            -0.48323747588325056
+          ],
+          "adv_over_cap": 11.482181929410666,
+          "n_coindays": 319,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.5951453715644701,
+            -0.4724472259270809
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 8312432,
+          "capture_bp": 0.05092415895282854,
+          "adverse_bp": -0.5847204576986043
+        },
+        "LINKUSDT": {
+          "net_bp": -0.4427834504848483,
+          "net_ci95": [
+            -0.5016575952546877,
+            -0.38278239418803695
+          ],
+          "adv_over_cap": 1.723060267814256,
+          "n_coindays": 319,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.5184097357170911,
+            -0.36715716525260633
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 3370020,
+          "capture_bp": 0.6123741964460879,
+          "adverse_bp": -1.055157646930936
+        },
+        "LTCUSDT": {
+          "net_bp": -0.32951822908123163,
+          "net_ci95": [
+            -0.38946393578015415,
+            -0.23838894591449525
+          ],
+          "adv_over_cap": 1.410715142538318,
+          "n_coindays": 319,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.42157578200040824,
+            -0.2374606761620559
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 1835855,
+          "capture_bp": 0.8023035796652891,
+          "adverse_bp": -1.131821808746521
+        },
+        "OPUSDT": {
+          "net_bp": -0.4833084744566626,
+          "net_ci95": [
+            -0.5199479146170032,
+            -0.45234904649716695
+          ],
+          "adv_over_cap": 1.8685327163478616,
+          "n_coindays": 319,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.5266192151663096,
+            -0.4399977337470153
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 5427820,
+          "capture_bp": 0.5564654794916095,
+          "adverse_bp": -1.0397739539482724
+        },
+        "SOLUSDT": {
+          "net_bp": -0.4049589413221607,
+          "net_ci95": [
+            -0.455467999761708,
+            -0.3639036290069528
+          ],
+          "adv_over_cap": 2.2842485088506277,
+          "n_coindays": 319,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.46562800245489117,
+            -0.34428988018943
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 9424792,
+          "capture_bp": 0.315327554232155,
+          "adverse_bp": -0.7202864955543156
+        },
+        "SUIUSDT": {
+          "net_bp": -0.4093208635126773,
+          "net_ci95": [
+            -0.4639984716582022,
+            -0.3530154515199138
+          ],
+          "adv_over_cap": 1.486687763812292,
+          "n_coindays": 319,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.477172364024533,
+            -0.341469363000822
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 4155295,
+          "capture_bp": 0.8410338084245463,
+          "adverse_bp": -1.2503546719372243
+        },
+        "XRPUSDT": {
+          "net_bp": -0.0987439692833106,
+          "net_ci95": [
+            -0.17601095972145822,
+            -0.009574215459901492
+          ],
+          "adv_over_cap": 1.0961299335560517,
+          "n_coindays": 319,
+          "negative": true,
+          "negative_clears_zero": false,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.20222039910673448,
+            0.00473246054011317
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 2172255,
+          "capture_bp": 1.027192734152225,
+          "adverse_bp": -1.1259367034355374
+        }
+      },
+      "n_coins_testable": 15,
+      "n_coins_untestable": 0,
+      "n_coins_net_negative": 15,
+      "n_coins_net_negative_clearing_zero": 12,
+      "coins_significantly_positive": [],
+      "counterexamples_to_net_le_zero": 0,
+      "date_first": "20230516",
+      "date_last": "20240329",
+      "n_dates": 319,
+      "n_coins_verdict_withheld": 2,
+      "n_fills": 78408624,
+      "coins": [
+        "1000PEPEUSDT",
+        "1000SHIBUSDT",
+        "ADAUSDT",
+        "ARBUSDT",
+        "AVAXUSDT",
+        "BNBUSDT",
+        "BTCUSDT",
+        "DOGEUSDT",
+        "ETHUSDT",
+        "LINKUSDT",
+        "LTCUSDT",
+        "OPUSDT",
+        "SOLUSDT",
+        "SUIUSDT",
+        "XRPUSDT"
+      ],
+      "n_months": 11,
+      "horizon_saturation": {
+        "adverse_bp_10s": -0.8516088093912355,
+        "adverse_bp_60s": -0.8442882375590107,
+        "ratio_60s_over_10s": 0.9914038326617853,
+        "ratio_if_drift_continued_at_the_same_rate": 6.0,
+        "value_if_flow_carried_no_information": 0.0,
+        "note": "this term is a signed markout, so under a martingale mid and flow that carries no information it is zero at every horizon rather than growing with the square root of time, which is how the unsigned magnitude would scale. The measured value is far from zero and close to flat between the two horizons, so the adverse move is substantially complete by ten seconds instead of accumulating. Had it continued at the ten second rate the ratio would be six. This compares a measured ratio against two reference values and does not test permanence, and the capture leg is invariant across the horizons by construction so it carries none of the comparison"
+      }
+    },
+    "hyperliquid": {
+      "n_coindays": 1580,
+      "n_coins": 20,
+      "date_range": [
+        "20250727",
+        "20260528"
+      ],
+      "maker_fee_bp": 1.5,
+      "pooled": {
+        "10s_row_mean": {
+          "capture_bp": 0.5598514486143977,
+          "adverse_bp": -1.0173989744167522,
+          "net_bp": -0.45754754670777875,
+          "net_ci95": [
+            -0.5612660560175996,
+            -0.24774109262620456
+          ],
+          "adv_over_cap": 1.8172659496278165,
+          "net_clears_zero": true,
+          "net_after_fee_bp": -1.9575475467077788,
+          "net_clears_zero_percentile": true,
+          "net_ci95_t": [
+            -0.6733418844469388,
+            -0.24175320896861863
+          ],
+          "n_month_clusters": 11,
+          "n_effective_months_kish": 6.302325142208643,
+          "percentile_interval_has_power_to_fail": true,
+          "net_ci95_t_two_way_month_coin": [
+            -0.72864577765024,
+            -0.18644931576531748
+          ],
+          "net_se_month_only": 0.08393400923343448,
+          "net_se_two_way_month_coin": 0.09765786417235635,
+          "net_clears_zero_two_way": true
+        },
+        "10s_coin_unit_weighted": {
+          "capture_bp": 0.7396572970599232,
+          "adverse_bp": -1.0471651887786464,
+          "net_bp": -0.307507928968931,
+          "net_ci95": [
+            -0.42033789803927324,
+            -0.07471927234640954
+          ],
+          "adv_over_cap": 1.4157437409744238,
+          "net_clears_zero": true,
+          "net_after_fee_bp": -1.8075079289689309,
+          "net_clears_zero_percentile": true,
+          "net_ci95_t": [
+            -0.5643147750699601,
+            -0.05070108286790187
+          ],
+          "n_month_clusters": 11,
+          "n_effective_months_kish": 5.274851766386231,
+          "percentile_interval_has_power_to_fail": true,
+          "net_ci95_t_two_way_month_coin": [
+            -0.5680591060971854,
+            -0.04695675184067666
+          ],
+          "net_se_month_only": 0.09250967078567332,
+          "net_se_two_way_month_coin": 0.09385849320182073,
+          "net_clears_zero_two_way": true
+        },
+        "60s_row_mean": {
+          "capture_bp": 0.5598514486143977,
+          "adverse_bp": -1.194235203774147,
+          "net_bp": -0.6343837731772178,
+          "net_ci95": [
+            -0.6925350856212833,
+            -0.5377010411931238
+          ],
+          "adv_over_cap": 2.133128719644854,
+          "net_clears_zero": true,
+          "net_after_fee_bp": -2.134383773177218,
+          "net_clears_zero_percentile": true,
+          "net_ci95_t": [
+            -0.7429938715376574,
+            -0.5257736748167774
+          ],
+          "n_month_clusters": 11,
+          "n_effective_months_kish": 6.302325142208643,
+          "percentile_interval_has_power_to_fail": false,
+          "net_ci95_t_two_way_month_coin": null,
+          "net_se_month_only": 0.04224430119036952,
+          "net_se_two_way_month_coin": 0.04224430119036952,
+          "net_clears_zero_two_way": true
+        },
+        "60s_coin_unit_weighted": {
+          "capture_bp": 0.7396572970599232,
+          "adverse_bp": -1.342137879262879,
+          "net_bp": -0.602480599083307,
+          "net_ci95": [
+            -0.8094658116183162,
+            -0.4195107315198656
+          ],
+          "adv_over_cap": 1.8145401723173238,
+          "net_clears_zero": true,
+          "net_after_fee_bp": -2.102480599083307,
+          "net_clears_zero_percentile": true,
+          "net_ci95_t": [
+            -0.8381580322057296,
+            -0.36680316596088547
+          ],
+          "n_month_clusters": 11,
+          "n_effective_months_kish": 5.274851766386231,
+          "percentile_interval_has_power_to_fail": false,
+          "net_ci95_t_two_way_month_coin": null,
+          "net_se_month_only": 0.0848982107789705,
+          "net_se_two_way_month_coin": 0.0848982107789705,
+          "net_clears_zero_two_way": true
+        }
+      },
+      "weighting_family": {
+        "n_cells": 4,
+        "cells": [
+          "10s_coin_unit_weighted",
+          "10s_row_mean",
+          "60s_coin_unit_weighted",
+          "60s_row_mean"
+        ],
+        "net_bp_range": [
+          -0.6343837731772178,
+          -0.307507928968931
+        ],
+        "spread_bp": 0.32687584420828686,
+        "spread_over_smallest_magnitude": 1.0629834661639332,
+        "all_same_sign": true,
+        "n_clearing_zero": 4,
+        "verdict_is_weighting_invariant": true,
+        "magnitude_is_stable": false
+      },
+      "leave_one_coin_out": {
+        "full_sample_net_bp": -0.45754754670777875,
+        "most_influential_coin": "ETH",
+        "net_without_most_influential": -0.40354739630813136,
+        "swing_bp": 0.054000150399647395,
+        "swing_over_effect": 0.11802085004760302,
+        "swing_over_ci_half_width": 0.3444711375804245,
+        "sign_stable": true,
+        "by_dropped_coin": {
+          "AAVE": {
+            "net_without": -0.4592812313192773,
+            "row_share": 0.05
+          },
+          "APT": {
+            "net_without": -0.46103549855537873,
+            "row_share": 0.05
+          },
+          "ARB": {
+            "net_without": -0.4636875628358869,
+            "row_share": 0.05
+          },
+          "AVAX": {
+            "net_without": -0.4625787323795114,
+            "row_share": 0.05
+          },
+          "BNB": {
+            "net_without": -0.46119522172180233,
+            "row_share": 0.05
+          },
+          "BTC": {
+            "net_without": -0.4090187763973644,
+            "row_share": 0.05
+          },
+          "DOGE": {
+            "net_without": -0.46751777574724473,
+            "row_share": 0.05
+          },
+          "ETH": {
+            "net_without": -0.40354739630813136,
+            "row_share": 0.05
+          },
+          "HYPE": {
+            "net_without": -0.48619028047297136,
+            "row_share": 0.05
+          },
+          "INJ": {
+            "net_without": -0.4589861449849893,
+            "row_share": 0.05
+          },
+          "LINK": {
+            "net_without": -0.4694546756675419,
+            "row_share": 0.05
+          },
+          "LTC": {
+            "net_without": -0.46160830861553376,
+            "row_share": 0.05
+          },
+          "NEAR": {
+            "net_without": -0.4646026824348042,
+            "row_share": 0.05
+          },
+          "OP": {
+            "net_without": -0.46046160899844285,
+            "row_share": 0.05
+          },
+          "SEI": {
+            "net_without": -0.46053162089320443,
+            "row_share": 0.05
+          },
+          "SOL": {
+            "net_without": -0.44267480817562327,
+            "row_share": 0.05
+          },
+          "SUI": {
+            "net_without": -0.45794255691000374,
+            "row_share": 0.05
+          },
+          "TIA": {
+            "net_without": -0.45816339153761415,
+            "row_share": 0.05
+          },
+          "WLD": {
+            "net_without": -0.4596748625683645,
+            "row_share": 0.05
+          },
+          "XRP": {
+            "net_without": -0.4664354826228506,
+            "row_share": 0.05
+          }
+        },
+        "n_coins_same_sign_as_pooled": 13,
+        "n_coins_opposite_sign_to_pooled": 7,
+        "coins_opposite_sign": [
+          "APT",
+          "ARB",
+          "LINK",
+          "LTC",
+          "NEAR",
+          "OP",
+          "SEI"
+        ],
+        "closest_coin_to_zero_bp": 0.01907711981735156,
+        "most_extreme_opposing_coin_bp": 0.4028582226016568,
+        "n_month_clusters": 11,
+        "most_extreme_month_bp": 0.21026850465302802,
+        "percentile_interval_has_power_to_fail": true,
+        "power_by_coin_unit": true,
+        "swing_exceeds_ci_half_width": false,
+        "pooled_net_bp": -0.45754754670777875,
+        "swing_bp_by_coin": {
+          "AAVE": -0.0017336846114985316,
+          "APT": -0.0034879518475999793,
+          "ARB": -0.006140016128108161,
+          "AVAX": -0.005031185671732663,
+          "BNB": -0.003647675014023577,
+          "BTC": 0.04852877031041436,
+          "DOGE": -0.009970229039465983,
+          "ETH": 0.054000150399647395,
+          "HYPE": -0.028642733765192607,
+          "INJ": -0.0014385982772105455,
+          "LINK": -0.011907128959763147,
+          "LTC": -0.004060761907755006,
+          "NEAR": -0.00705513572702543,
+          "OP": -0.002914062290664099,
+          "SEI": -0.002984074185425678,
+          "SOL": 0.014872738532155483,
+          "SUI": -0.00039501020222498795,
+          "TIA": -0.0006158448298353991,
+          "WLD": -0.0021273158605857323,
+          "XRP": -0.008887935915071865
+        },
+        "n_coins_whose_removal_flips_pooled_sign": 0,
+        "coins_whose_removal_flips_pooled_sign": []
+      },
+      "per_coin": {
+        "AAVE": {
+          "net_bp": -0.34911100264740497,
+          "net_ci95": [
+            -0.6163165894452717,
+            0.1342751711212778
+          ],
+          "adv_over_cap": 1.270032423631689,
+          "n_coindays": 79,
+          "negative": true,
+          "negative_clears_zero": null,
+          "testable": true,
+          "positive_clears_zero": null,
+          "verdict_is_available": false,
+          "net_ci95_t": [
+            -0.9810306415154744,
+            0.2828086362206645
+          ],
+          "negative_clears_zero_percentile": null,
+          "positive_clears_zero_percentile": null,
+          "n_fills": 30596,
+          "capture_bp": 1.2928486324682966,
+          "adverse_bp": -1.6419596820826252
+        },
+        "APT": {
+          "net_bp": 0.06150688226229003,
+          "net_ci95": [
+            -0.1030756251613683,
+            0.2816676849231267
+          ],
+          "adv_over_cap": 0.9619413196617354,
+          "n_coindays": 79,
+          "negative": false,
+          "negative_clears_zero": false,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.18059808652073228,
+            0.30361185104531235
+          ],
+          "negative_clears_zero_percentile": false,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 12978,
+          "capture_bp": 1.6161082565110187,
+          "adverse_bp": -1.5546013089844357
+        },
+        "ARB": {
+          "net_bp": 0.2659689714565124,
+          "net_ci95": [
+            -0.29937344065694965,
+            1.5553238819617277
+          ],
+          "adv_over_cap": 0.8178493266986646,
+          "n_coindays": 79,
+          "negative": false,
+          "negative_clears_zero": null,
+          "testable": true,
+          "positive_clears_zero": null,
+          "verdict_is_available": false,
+          "net_ci95_t": [
+            -1.2882457729656431,
+            1.8201837158786678
+          ],
+          "negative_clears_zero_percentile": null,
+          "positive_clears_zero_percentile": null,
+          "n_fills": 16361,
+          "capture_bp": 1.4601588252551798,
+          "adverse_bp": -1.194189912108062
+        },
+        "AVAX": {
+          "net_bp": -0.025841805964818346,
+          "net_ci95": [
+            -0.4174462709592053,
+            0.7618009134288096
+          ],
+          "adv_over_cap": 1.0199963456164276,
+          "n_coindays": 79,
+          "negative": true,
+          "negative_clears_zero": false,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.9281554253362242,
+            0.8764718134065875
+          ],
+          "negative_clears_zero_percentile": false,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 22398,
+          "capture_bp": 1.292328143584249,
+          "adverse_bp": -1.318169983793196
+        },
+        "BNB": {
+          "net_bp": -0.21282885589213799,
+          "net_ci95": [
+            -0.6310024321735405,
+            0.39616388391200424
+          ],
+          "adv_over_cap": 1.2645446064806285,
+          "n_coindays": 79,
+          "negative": true,
+          "negative_clears_zero": false,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.9687397497226937,
+            0.5430820379384178
+          ],
+          "negative_clears_zero_percentile": false,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 28555,
+          "capture_bp": 0.8045106688145685,
+          "adverse_bp": -1.0173396271055857
+        },
+        "BTC": {
+          "net_bp": -0.583166697016063,
+          "net_ci95": [
+            -0.6621609914000104,
+            -0.4717106021383936
+          ],
+          "adv_over_cap": 4.205414771919542,
+          "n_coindays": 79,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.7070016741293548,
+            -0.45933171990277133
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 541801,
+          "capture_bp": 0.18193171106365633,
+          "adverse_bp": -0.7650983051876983
+        },
+        "DOGE": {
+          "net_bp": -0.05574733759585365,
+          "net_ci95": [
+            -0.3842324404827798,
+            0.6936007913346928
+          ],
+          "adv_over_cap": 1.0656765938089328,
+          "n_coindays": 79,
+          "negative": true,
+          "negative_clears_zero": null,
+          "testable": true,
+          "positive_clears_zero": null,
+          "verdict_is_available": false,
+          "net_ci95_t": [
+            -0.9607865988939107,
+            0.8492919237022035
+          ],
+          "negative_clears_zero_percentile": null,
+          "positive_clears_zero_percentile": null,
+          "n_fills": 47077,
+          "capture_bp": 0.8488146176476837,
+          "adverse_bp": -0.9045618705100152
+        },
+        "ETH": {
+          "net_bp": -0.7010198422105427,
+          "net_ci95": [
+            -0.782846059682825,
+            -0.6510958064602628
+          ],
+          "adv_over_cap": 3.1354042134639126,
+          "n_coindays": 79,
+          "negative": true,
+          "negative_clears_zero": null,
+          "testable": true,
+          "positive_clears_zero": null,
+          "verdict_is_available": false,
+          "net_ci95_t": [
+            -0.7962294499295554,
+            -0.6058102344915298
+          ],
+          "negative_clears_zero_percentile": null,
+          "positive_clears_zero_percentile": null,
+          "n_fills": 352945,
+          "capture_bp": 0.3282843847879981,
+          "adverse_bp": -1.0293042432786976
+        },
+        "HYPE": {
+          "net_bp": -0.37098342880962876,
+          "net_ci95": [
+            -0.5332659338097594,
+            0.0021917629839120606
+          ],
+          "adv_over_cap": 1.5447603312579832,
+          "n_coindays": 79,
+          "negative": true,
+          "negative_clears_zero": false,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.7537827284500174,
+            0.011815870830760133
+          ],
+          "negative_clears_zero_percentile": false,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 483387,
+          "capture_bp": 0.6810030190613318,
+          "adverse_bp": -1.0519864493128694
+        },
+        "INJ": {
+          "net_bp": -0.10861186734310412,
+          "net_ci95": [
+            -0.4875188000538214,
+            0.4998963441512937
+          ],
+          "adv_over_cap": 1.0417867663278195,
+          "n_coindays": 79,
+          "negative": true,
+          "negative_clears_zero": null,
+          "testable": true,
+          "positive_clears_zero": null,
+          "verdict_is_available": false,
+          "net_ci95_t": [
+            -0.9565430178362493,
+            0.739319283150041
+          ],
+          "negative_clears_zero_percentile": null,
+          "positive_clears_zero_percentile": null,
+          "n_fills": 7983,
+          "capture_bp": 2.5991882651885256,
+          "adverse_bp": -2.707799937867969
+        },
+        "LINK": {
+          "net_bp": 0.15651311294073111,
+          "net_ci95": [
+            -0.3159227352215208,
+            0.8444325388393056
+          ],
+          "adv_over_cap": 0.8879458536842966,
+          "n_coindays": 79,
+          "negative": false,
+          "negative_clears_zero": null,
+          "testable": true,
+          "positive_clears_zero": null,
+          "verdict_is_available": false,
+          "net_ci95_t": [
+            -1.7350793855105848,
+            2.0481056113920473
+          ],
+          "negative_clears_zero_percentile": null,
+          "positive_clears_zero_percentile": null,
+          "n_fills": 36984,
+          "capture_bp": 1.3967631127514601,
+          "adverse_bp": -1.2402500145468307
+        },
+        "LTC": {
+          "net_bp": 0.01907711981735156,
+          "net_ci95": [
+            -0.6710598274870923,
+            0.8543427154423417
+          ],
+          "adv_over_cap": 0.9882282976771141,
+          "n_coindays": 79,
+          "negative": false,
+          "negative_clears_zero": null,
+          "testable": true,
+          "positive_clears_zero": null,
+          "verdict_is_available": false,
+          "net_ci95_t": [
+            -1.32078479088408,
+            1.3589390305187832
+          ],
+          "negative_clears_zero_percentile": null,
+          "positive_clears_zero_percentile": null,
+          "n_fills": 16425,
+          "capture_bp": 1.6205845700456616,
+          "adverse_bp": -1.601507530898022
+        },
+        "NEAR": {
+          "net_bp": 0.4028582226016568,
+          "net_ci95": [
+            0.07390090625887862,
+            0.8853188847210288
+          ],
+          "adv_over_cap": 0.8138390974486448,
+          "n_coindays": 79,
+          "negative": false,
+          "negative_clears_zero": false,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.11892206278174733,
+            0.924638507985061
+          ],
+          "negative_clears_zero_percentile": false,
+          "positive_clears_zero_percentile": true,
+          "n_fills": 15813,
+          "capture_bp": 2.164032264212989,
+          "adverse_bp": -1.7611740647568461
+        },
+        "OP": {
+          "net_bp": 0.2795792779519332,
+          "net_ci95": [
+            -0.20477458598874565,
+            1.0654360389336848
+          ],
+          "adv_over_cap": 0.8719287021550538,
+          "n_coindays": 79,
+          "negative": false,
+          "negative_clears_zero": null,
+          "testable": true,
+          "positive_clears_zero": null,
+          "verdict_is_available": false,
+          "net_ci95_t": [
+            -0.874537300919914,
+            1.43369585682378
+          ],
+          "negative_clears_zero_percentile": null,
+          "positive_clears_zero_percentile": null,
+          "n_fills": 7656,
+          "capture_bp": 2.1829975948275866,
+          "adverse_bp": -1.9034182596656215
+        },
+        "SEI": {
+          "net_bp": 0.12046935619867817,
+          "net_ci95": [
+            -0.023983270687353727,
+            0.4293534539806942
+          ],
+          "adv_over_cap": 0.9338842525475692,
+          "n_coindays": 79,
+          "negative": false,
+          "negative_clears_zero": null,
+          "testable": true,
+          "positive_clears_zero": null,
+          "verdict_is_available": false,
+          "net_ci95_t": [
+            -0.26632591286694424,
+            0.5072646252643006
+          ],
+          "negative_clears_zero_percentile": null,
+          "positive_clears_zero_percentile": null,
+          "n_fills": 9986,
+          "capture_bp": 1.8220962463448833,
+          "adverse_bp": -1.701626991087523
+        },
+        "SOL": {
+          "net_bp": -0.6095738903202719,
+          "net_ci95": [
+            -0.7041622577660649,
+            -0.44443292487339736
+          ],
+          "adv_over_cap": 2.3675243089220284,
+          "n_coindays": 79,
+          "negative": true,
+          "negative_clears_zero": true,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -0.8084042809357836,
+            -0.4107434997047603
+          ],
+          "negative_clears_zero_percentile": true,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 173259,
+          "capture_bp": 0.44574996276095336,
+          "adverse_bp": -1.055323872537646
+        },
+        "SUI": {
+          "net_bp": -0.4387514118043931,
+          "net_ci95": [
+            -0.5489392746768815,
+            -0.2426896616921744
+          ],
+          "adv_over_cap": 1.4996037077271005,
+          "n_coindays": 79,
+          "negative": true,
+          "negative_clears_zero": null,
+          "testable": true,
+          "positive_clears_zero": null,
+          "verdict_is_available": false,
+          "net_ci95_t": [
+            -0.6736681334740852,
+            -0.203834690134701
+          ],
+          "negative_clears_zero_percentile": null,
+          "positive_clears_zero_percentile": null,
+          "n_fills": 40019,
+          "capture_bp": 0.8781989648916767,
+          "adverse_bp": -1.3169504238736602
+        },
+        "TIA": {
+          "net_bp": -0.3398574152751704,
+          "net_ci95": [
+            -0.8088456063531535,
+            0.6303253736691178
+          ],
+          "adv_over_cap": 1.2401665708731648,
+          "n_coindays": 79,
+          "negative": true,
+          "negative_clears_zero": false,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -1.3717925154746267,
+            0.6920776849242859
+          ],
+          "negative_clears_zero_percentile": false,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 10121,
+          "capture_bp": 1.4150904181404997,
+          "adverse_bp": -1.7549478313407767
+        },
+        "WLD": {
+          "net_bp": -0.2230830720741334,
+          "net_ci95": [
+            -1.6287700646032457,
+            1.245357339622608
+          ],
+          "adv_over_cap": 1.11176255045378,
+          "n_coindays": 79,
+          "negative": true,
+          "negative_clears_zero": false,
+          "testable": true,
+          "positive_clears_zero": false,
+          "verdict_is_available": true,
+          "net_ci95_t": [
+            -1.9249926443724628,
+            1.4788265002241958
+          ],
+          "negative_clears_zero_percentile": false,
+          "positive_clears_zero_percentile": false,
+          "n_fills": 17482,
+          "capture_bp": 1.9960465876901963,
+          "adverse_bp": -2.219129845155017
+        },
+        "XRP": {
+          "net_bp": -0.22793055479338617,
+          "net_ci95": [
+            -0.47677165104361563,
+            0.4308066248259383
+          ],
+          "adv_over_cap": 1.4251942441821386,
+          "n_coindays": 79,
+          "negative": true,
+          "negative_clears_zero": null,
+          "testable": true,
+          "positive_clears_zero": null,
+          "verdict_is_available": false,
+          "net_ci95_t": [
+            -0.9278587974169237,
+            0.4719976878301513
+          ],
+          "negative_clears_zero_percentile": null,
+          "positive_clears_zero_percentile": null,
+          "n_fills": 72454,
+          "capture_bp": 0.5360621078615398,
+          "adverse_bp": -0.7639926306484114
+        }
+      },
+      "n_coins_testable": 20,
+      "n_coins_untestable": 0,
+      "n_coins_net_negative": 13,
+      "n_coins_net_negative_clearing_zero": 2,
+      "coins_significantly_positive": [],
+      "counterexamples_to_net_le_zero": 0,
+      "date_first": "20250727",
+      "date_last": "20260528",
+      "n_dates": 79,
+      "n_coins_verdict_withheld": 11,
+      "n_fills": 1944280,
+      "coins": [
+        "AAVE",
+        "APT",
+        "ARB",
+        "AVAX",
+        "BNB",
+        "BTC",
+        "DOGE",
+        "ETH",
+        "HYPE",
+        "INJ",
+        "LINK",
+        "LTC",
+        "NEAR",
+        "OP",
+        "SEI",
+        "SOL",
+        "SUI",
+        "TIA",
+        "WLD",
+        "XRP"
+      ],
+      "n_months": 11,
+      "horizon_saturation": {
+        "adverse_bp_10s": -1.0173989744167522,
+        "adverse_bp_60s": -1.194235203774147,
+        "ratio_60s_over_10s": 1.173812077468203,
+        "ratio_if_drift_continued_at_the_same_rate": 6.0,
+        "value_if_flow_carried_no_information": 0.0,
+        "note": "this term is a signed markout, so under a martingale mid and flow that carries no information it is zero at every horizon rather than growing with the square root of time, which is how the unsigned magnitude would scale. The measured value is far from zero and close to flat between the two horizons, so the adverse move is substantially complete by ten seconds instead of accumulating. Had it continued at the ten second rate the ratio would be six. This compares a measured ratio against two reference values and does not test permanence, and the capture leg is invariant across the horizons by construction so it carries none of the comparison"
+      }
+    }
+  },
+  "limitations": {
+    "intervals_resample_months": "The percentile interval here resamples calendar months, and the reported verdict is read from the t interval beside it, 29 on Bybit and 11 on each of the other two venues. At those counts the percentile interval under-covers, so read it alongside the per-coin counts rather than on its own.",
+    "capture_is_horizon_invariant": "Captured half-spread is markout minus adverse drift, which reduces to a quantity fixed at fill time, so it does not vary with the markout horizon and is identical in the 10 s and 60 s rows by construction. Any claim that the result is horizon robust is a claim about adverse selection alone.",
+    "coin_unit_weighting_is_not_traded_value": "The coin-unit weighting multiplies fill count by mean fill size. Order size is a fixed one coin, so a unit of one asset is not comparable with a unit of another. Within a coin it is a true size weighting; across coins it is not a mean over traded value.",
+    "hype_disagrees_between_files": "Hyperliquid HYPE at 10 s sits within 0.0022 bp of zero, and this file and the per-coin interval file land on opposite sides of it. Treat its clears-zero flag as undetermined rather than as either verdict.",
+    "panels_are_not_contemporaneous": "The three panels cover different calendar windows. Binance and Hyperliquid share no dates at all and Bybit overlaps Hyperliquid on twelve, so a venue comparison read straight off these pooled figures is confounded with the period each panel covers. The venue difference reported separately uses only coin-days both venues traded on the same date.",
+    "coin_sets_differ_across_venues": "The venues carry 13, 15 and 20 coins with 12 in common. Restricting to those 12 moves the low end of the adverse-to-capture range, taking Hyperliquid from 1.8 to 2.2 and Binance from 1.8 to 2.1, while Bybit is unchanged at 5.1.",
+    "the_ratio_has_a_collapsing_denominator": "Adverse over capture divides by a captured half-spread that approaches zero on the highest-volume coins, so the ratio is unstable where the weight is. Bybit BTC is 34 percent of that venue's fills at a capture of 0.012 bp and a ratio near 50. Medians across coins are 3.7, 1.7 and 1.1 against pooled 5.1, 1.9 and 1.8. The negative sign of net markout holds under every weighting tried; the magnitude of the ratio does not.",
+    "panels_are_stride_sampled_at_different_densities": "Binance covers every calendar day in its window, Bybit about a third of its days on a uniform stride, and Hyperliquid about a quarter. A month of Bybit therefore carries roughly ten sampled days against thirty of Binance, so the month counts of 29 and 11 describe clusters of very different weight, and the twelve-date overlap with Hyperliquid is a product of two strides rather than the calendar overlap, which is wider.",
+    "a_fill_is_a_simulated_quoter_fill": "Fills here are those of a simulated passive quoter rather than every passive execution on the venue, and the three Bybit panels count different things: the same coin-day carries 9,765 fills in this decomposition, 5,743 for the quoting arm's touch leg and 2,789 at the touch in the depth frontier. The posting and fill rule behind this panel is set upstream and is not documented in this repository.",
+    "some_per_coin_verdicts_are_withheld": "A per-coin clears-zero flag is null where the effective month count falls below the level at which a cluster interval is worth reading. That is 2 of 15 on Binance and 11 of 20 on Hyperliquid. The same guard governs the per-coin interval file, and for a time only that file applied it.",
+    "rebuild_coverage_is_uneven": "A rebuild recomputes the measurements and not the per-row blocks beside them. Across the ten files the comparison reaches 1,097 of 1,403 leaves here, 99 of 265 on the venue difference, 39 of 160 on the depth intervals, 68 of 6,575 on the cross-venue lead-lag and 45 of 1,626 on the quoting arm, so a clean comparison speaks for the figures it covers rather than the whole file."
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "venue": "bybit_perp",
+  "n_coindays": 300,
+  "level_meaning": "1 = touch (best bid), k = k-th price level from mid",
+  "markout_bp_by_level": [
+    -0.717064146366643,
+    -0.6534759985834138,
+    -0.5128287400883014,
+    -0.45132577985970473,
+    -0.3283353007753428
+  ],
+  "fill_rate_by_level": [
+    0.0033479604313758206,
+    0.001074791365714891,
+    0.0006997429611587366,
+    0.0005176298777266506,
+    0.00040843662596066354
+  ],
+  "n_fills_by_level": [
+    610366.0,
+    195945.0,
+    127570.0,
+    94369.0,
+    74462.0
+  ],
+  "n_opportunities_by_level": [
+    182309801.0,
+    182309801.0,
+    182309801.0,
+    182309801.0,
+    182309801.0
+  ],
+  "bp_per_opportunity_by_level": [
+    -0.0024007023887938003,
+    -0.0007023503609793695,
+    -0.00035884830115669213,
+    -0.0002336197082436642,
+    -0.00013410416243246065
+  ],
+  "fill_rate_ratio_L5_over_L1": 0.12199565506597682,
+  "by_rebate": {
+    "0.000": {
+      "ev_by_level": [
+        -0.0024007023887938003,
+        -0.0007023503609793695,
+        -0.00035884830115669213,
+        -0.0002336197082436642,
+        -0.00013410416243246065
+      ],
+      "best_level": null,
+      "any_level_profitable": false,
+      "argmax_level_even_if_unprofitable": 5
+    },
+    "0.250": {
+      "ev_by_level": [
+        -0.0015637122809498453,
+        -0.0004336525195506467,
+        -0.00018391256086700794,
+        -0.00010421223881200154,
+        -3.199500594229476e-05
+      ],
+      "best_level": null,
+      "any_level_profitable": false,
+      "argmax_level_even_if_unprofitable": 5
+    },
+    "0.500": {
+      "ev_by_level": [
+        -0.0007267221731058901,
+        -0.00016495467812192394,
+        -8.976820577323794e-06,
+        2.5195230619661113e-05,
+        7.011415054787113e-05
+      ],
+      "best_level": 5,
+      "any_level_profitable": true,
+      "argmax_level_even_if_unprofitable": 5,
+      "action": "quote at L5"
+    },
+    "0.839": {
+      "ev_by_level": [
+        0.00040723202500110025,
+        0.0001990771574457096,
+        0.00022802612036714032,
+        0.00020051647020567767,
+        0.00020845163576074788
+      ],
+      "best_level": 1,
+      "any_level_profitable": true,
+      "argmax_level_even_if_unprofitable": 1,
+      "action": "quote at L1"
+    },
+    "1.000": {
+      "ev_by_level": [
+        0.0009472580425820201,
+        0.00037244100473552154,
+        0.0003408946600020445,
+        0.0002840101694829864,
+        0.0002743324635282029
+      ],
+      "best_level": 1,
+      "any_level_profitable": true,
+      "argmax_level_even_if_unprofitable": 1,
+      "action": "quote at L1"
+    },
+    "1.250": {
+      "ev_by_level": [
+        0.0017842481504259753,
+        0.0006411388461642442,
+        0.0005158304002917287,
+        0.00041341763891464907,
+        0.00037644162001836877
+      ],
+      "best_level": 1,
+      "any_level_profitable": true,
+      "argmax_level_even_if_unprofitable": 1,
+      "action": "quote at L1"
+    },
+    "1.500": {
+      "ev_by_level": [
+        0.0026212382582699303,
+        0.000909836687592967,
+        0.0006907661405814128,
+        0.0005428251083463117,
+        0.0004785507765085346
+      ],
+      "best_level": 1,
+      "any_level_profitable": true,
+      "argmax_level_even_if_unprofitable": 1,
+      "action": "quote at L1"
+    },
+    "2.000": {
+      "ev_by_level": [
+        0.004295218473957841,
+        0.0014472323704504124,
+        0.001040637621160781,
+        0.000801640047209637,
+        0.0006827690894888664
+      ],
+      "best_level": 1,
+      "any_level_profitable": true,
+      "argmax_level_even_if_unprofitable": 1,
+      "action": "quote at L1"
+    }
+  },
+  "touch_overtakes_deepest_at_rebate_bp": 0.7710766696924987,
+  "markout_horizon": "10s",
+  "fee_treatment": "no maker fee charged; rebate replaces it",
+  "phantom_fill_share_by_level": [
+    0.4189,
+    0.3538,
+    0.3487,
+    0.3479,
+    0.3424
+  ],
+  "breakeven_rebate_by_level_bp": [
+    0.717064146366643,
+    0.6534759985834138,
+    0.5128287400883014,
+    0.45132577985970473,
+    0.3283353007753428
+  ],
+  "min_rebate_for_any_level_profitable_bp": 0.3283353007753428,
+  "bybit_breakeven_rebate_bp": 0.8387,
+  "bybit_best_published_tier_bp": 1.5,
+  "markout_weighting": "mean over fill rows, not size-weighted",
+  "limitations": {
+    "scope": "Bid side only, 10 s markout, weighted as a mean over fill rows, on 300 of the 3,618 panel coin-days, which is 8.3 percent. Levels are price levels measured from the mid, not queue positions.",
+    "published_tier_is_an_upper_bound": "The tier cited for comparison carries monthly uptime, symbol coverage and minimum order size obligations that the single-level, size-1.0, bid-only quoter measured here would not satisfy. Treat it as an upper bound on what this quoter could earn rather than as an achievable rebate.",
+    "residual_fee_is_the_dominant_sensitivity": "No maker fee is charged, on the reading that the rebate replaces it. Charging a residual fee alongside moves the crossing one for one, and a residual near 0.73 bp inverts the ordering, against a bootstrap interval 0.194 bp wide, resampling coin-days. This axis sits outside the interval and dominates it.",
+    "phantom_fill_share_is_carried_as_a_literal": "The phantom fill share by level is stored in this file as a fixed value. No script in this repository computes it, so it should not be read as output measured by the code shipped here.",
+    "subsample_is_time_skewed": "The 300 coin-days are not spread evenly through the panel window, so the frontier describes the periods they fall in rather than the whole span.",
+    "crossing_moved_under_a_fill_model_fix": "The rebate at which the touch overtakes the deepest level was 1.1301 bp before a fill-model correction and is 0.7711 bp after it. Only the corrected figure is reported here."
+  }
+}
