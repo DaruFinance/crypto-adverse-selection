@@ -43,6 +43,7 @@ import argparse
 import json
 import sys
 from datetime import datetime, timezone
+from pathlib import Path
 
 import numpy as np
 
@@ -87,16 +88,33 @@ def parse_horizon(text):
 
 
 def _read_table(path, columns=None):
-    """Read a parquet or delimited file into {column: list}."""
+    """Read a parquet or delimited file into {column: list}.
+
+    Every failure here leaves as a Bail. A wrong path is the likeliest first
+    mistake anyone makes with this command, and a traceback is the wrong way to
+    tell them.
+    """
     p = str(path)
+    if not Path(p).exists():
+        raise Bail(f"no such file: {p}")
     if p.endswith((".parquet", ".pq")):
         try:
             import pyarrow.parquet as pq
         except ImportError:
             raise Bail("reading parquet needs pyarrow: pip install 'makercex[data]', "
                        "or convert the file to CSV first")
-        table = pq.read_table(p)
+        try:
+            table = pq.read_table(p)
+        except Exception as exc:                              # noqa: BLE001
+            raise Bail(f"{p} does not read as parquet: {exc}")
         return {name: table[name].to_pylist() for name in table.schema.names}
+    try:
+        return _read_delimited(p)
+    except OSError as exc:
+        raise Bail(f"cannot read {p}: {exc}")
+
+
+def _read_delimited(p):
     import csv as _csv
     with open(p, newline="") as fh:
         sample = fh.read(8192)
@@ -160,35 +178,71 @@ def _to_ns(values, unit=None, what="timestamp"):
         if unit not in _UNIT_NS:
             raise Bail(f"--time-unit must be one of {', '.join(_UNIT_NS)}")
         return raw * _UNIT_NS[unit]
-    # Seconds since the epoch land near 1.7e9 today; each thousandfold step up
-    # is the next finer unit. Inferring beats defaulting, because a wrong unit
-    # silently rescales every horizon in the run.
+    # Seconds since the epoch land near 1.7e9 today and each thousandfold step
+    # up is the next finer unit, so the cut for each sits two orders above the
+    # value it accepts and two below the next. Inferring beats defaulting,
+    # because a wrong unit silently rescales every horizon in the run.
     m = float(np.nanmedian(np.abs(raw.astype(np.float64))))
-    for unit_name, scale in (("s", 1e9), ("ms", 1e12), ("us", 1e15), ("ns", 1e18)):
-        if m < scale:
-            return raw * _UNIT_NS[unit_name]
-    return raw
+    for unit_name, below in (("s", 1e11), ("ms", 1e14), ("us", 1e17)):
+        if m < below:
+            return _checked(raw * _UNIT_NS[unit_name], unit_name, what)
+    return _checked(raw, "ns", what)
+
+
+# A wrong unit does not fail, it rescales every horizon in the run and returns a
+# plausible number, so an inferred unit is checked against the calendar it
+# implies. A thousandfold error moves the implied year by centuries, which is
+# what makes this catchable at all. An explicit --time-unit skips the check.
+_EPOCH_FLOOR_NS = 315_532_800_000_000_000    # 1980-01-01
+_EPOCH_CEIL_NS = 4_102_444_800_000_000_000   # 2100-01-01
+
+
+def _checked(ns, unit_name, what):
+    m = float(np.nanmedian(ns.astype(np.float64))) if ns.size else 0.0
+    if _EPOCH_FLOOR_NS <= m <= _EPOCH_CEIL_NS:
+        return ns
+    year = datetime.fromtimestamp(max(m, 0) / 1e9, tz=timezone.utc).year
+    raise Bail(
+        f"{what}: read as {unit_name} the tape sits in the year {year}, which "
+        f"is almost certainly the wrong unit rather than the right date. Name "
+        f"the unit with --time-unit to override this check.")
+
+
+_TRUTHY = ("1", "+1", "t", "true", "y", "yes")
+_FALSY = ("0", "-1", "f", "false", "n", "no")
+_BUY = ("1", "+1", "b", "buy", "buyer", "bid", "taker_buy", "true")
+_SELL = ("-1", "s", "sell", "seller", "ask", "taker_sell", "false")
 
 
 def _to_side(values, column_name):
-    """Aggressor side to int8 +1 (aggressive buy) / -1 (aggressive sell)."""
-    is_maker_flag = "buyer_maker" in str(column_name).lower()
+    """Aggressor side to int8 +1 (aggressive buy) / -1 (aggressive sell).
+
+    A column named for the *maker* rather than the aggressor is inverted
+    before anything else, because it answers the opposite question: where
+    is_buyer_maker is true the buyer was resting, so the aggressor sold. That
+    branch has to come first and cover the integer encoding as well as the
+    boolean one, since the venues that publish this field ship it as 0/1 in
+    their CSV archives and as a JSON boolean on their sockets. Reading a 1
+    there as an aggressive buy would flip the sign on every trade in the file
+    and turn captured spread into adverse selection without failing.
+    """
+    maker_flag = "buyer_maker" in str(column_name).lower()
     out = np.empty(len(values), dtype=np.int8)
     for i, v in enumerate(values):
-        if isinstance(v, bool):
-            out[i] = -1 if v else 1
+        t = ("true" if v else "false") if isinstance(v, bool) else str(v).strip().lower()
+        if maker_flag:
+            if t in _TRUTHY:
+                out[i] = -1        # buyer rested, so the aggressor sold
+            elif t in _FALSY:
+                out[i] = 1
+            else:
+                raise Bail(f"cannot read maker flag {v!r} in column "
+                           f"{column_name!r}; expected a boolean or 0/1")
             continue
-        t = str(v).strip().lower()
-        if t in ("1", "+1", "b", "buy", "buyer", "bid", "true") and not (
-                is_maker_flag and t == "true"):
+        if t in _BUY:
             out[i] = 1
-        elif t in ("-1", "s", "sell", "seller", "ask", "false") and not (
-                is_maker_flag and t == "false"):
+        elif t in _SELL:
             out[i] = -1
-        elif is_maker_flag and t in ("true", "1"):
-            out[i] = -1   # the buyer was the maker, so the aggressor sold
-        elif is_maker_flag and t in ("false", "0"):
-            out[i] = 1
         else:
             raise Bail(f"cannot read aggressor side {v!r} in column "
                        f"{column_name!r}; expected +1/-1, buy/sell, or a "
