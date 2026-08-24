@@ -1,0 +1,359 @@
+{
+  "panel": "sign_rule_coindays.csv",
+  "n_boot": 4000,
+  "seed": 313,
+  "rules": {
+    "true": "exchange aggressor flag",
+    "lee_ready": "Lee-Ready",
+    "tick": "tick rule"
+  },
+  "n_coindays_dropped_for_incomplete_rule_set": 0,
+  "venues": {
+    "bybit_perp": {
+      "n_coindays": 3618,
+      "by_rule": {
+        "true": {
+          "label": "exchange aggressor flag",
+          "sign_accuracy": 1.0,
+          "sign_accuracy_size_weighted": 1.0,
+          "n_fills": 45476018,
+          "capture_bp_10s": 0.20568540243332212,
+          "adverse_bp_10s": -1.0444216247245746,
+          "net_bp_10s": -0.8387362079915616,
+          "capture_bp_60s": 0.20568540243332212,
+          "adverse_bp_60s": -1.03999357824821,
+          "net_bp_60s": -0.834308187783548
+        },
+        "lee_ready": {
+          "label": "Lee-Ready",
+          "sign_accuracy": 0.93236292149175,
+          "sign_accuracy_size_weighted": 0.9458499281620997,
+          "n_fills": 48252517,
+          "capture_bp_10s": 0.21637000346719734,
+          "adverse_bp_10s": -1.0264272819607732,
+          "net_bp_10s": -0.8100572947263663,
+          "capture_bp_60s": 0.21637000346719734,
+          "adverse_bp_60s": -1.0276922509195117,
+          "net_bp_60s": -0.8113222535770518,
+          "net_error_bp_10s": 0.028678913265195227,
+          "net_error_bp_60s": 0.022985934206496195,
+          "capture_error_bp_10s": 0.010684601033875224,
+          "adverse_error_bp_10s": 0.017994342763801408,
+          "fill_count_ratio": 1.0610541362702426,
+          "net_error_as_share_of_truth": 0.0341930072792133
+        },
+        "tick": {
+          "label": "tick rule",
+          "sign_accuracy": 0.8981043822927655,
+          "sign_accuracy_size_weighted": 0.9108030792101479,
+          "n_fills": 42617965,
+          "capture_bp_10s": 0.20057721762601757,
+          "adverse_bp_10s": -0.9966012110751415,
+          "net_bp_10s": -0.7960239959841583,
+          "capture_bp_60s": 0.20057721762601757,
+          "adverse_bp_60s": -1.0038271590262933,
+          "net_bp_60s": -0.8032499495726275,
+          "net_error_bp_10s": 0.04271221200740327,
+          "net_error_bp_60s": 0.031058238210920464,
+          "capture_error_bp_10s": -0.005108184807304544,
+          "adverse_error_bp_10s": 0.04782041364943301,
+          "fill_count_ratio": 0.9371525228967936,
+          "net_error_as_share_of_truth": 0.05092448805767188
+        }
+      },
+      "net_error_10s": {
+        "lee_ready": {
+          "point": 0.03232336302780511,
+          "ci95": [
+            0.023834868712339346,
+            0.03952756386280069
+          ],
+          "ci95_t": [
+            0.023909255176102914,
+            0.04073747087950731
+          ],
+          "se_cluster": 0.004056946890888234,
+          "t_degrees_of_freedom": 22,
+          "t_degrees_of_freedom_verdict": 4,
+          "se_used_for_verdict": 0.01171829350108243,
+          "ci95_t_two_way": [
+            -0.00020661973119971005,
+            0.06485334578680993
+          ],
+          "verdict_is_two_way": true,
+          "two_way_variance_was_negative": false,
+          "verdict_is_available": true,
+          "clears_zero": false,
+          "clears_zero_percentile": true,
+          "n_clusters": 29,
+          "weight_concentration_clusters": 23.18307648252876,
+          "n_effective_clusters": 23.18307648252876,
+          "verdict_interval": "ci95_t_two_way",
+          "percentile_interval_can_reach_zero": true
+        },
+        "tick": {
+          "point": 0.03183660627597165,
+          "ci95": [
+            0.025109427618199863,
+            0.03748119928157394
+          ],
+          "ci95_t": [
+            0.025049862241381792,
+            0.038623350310561515
+          ],
+          "se_cluster": 0.003272297027285372,
+          "t_degrees_of_freedom": 22,
+          "t_degrees_of_freedom_verdict": 4,
+          "se_used_for_verdict": 0.012099464529342064,
+          "ci95_t_two_way": [
+            -0.001751507257481917,
+            0.06542471980942521
+          ],
+          "verdict_is_two_way": true,
+          "two_way_variance_was_negative": false,
+          "verdict_is_available": true,
+          "clears_zero": false,
+          "clears_zero_percentile": true,
+          "n_clusters": 29,
+          "weight_concentration_clusters": 23.18307648252876,
+          "n_effective_clusters": 23.18307648252876,
+          "verdict_interval": "ci95_t_two_way",
+          "percentile_interval_can_reach_zero": true
+        }
+      },
+      "net_error_60s": {
+        "lee_ready": {
+          "point": 0.02655758739175448,
+          "ci95": [
+            0.013137461189663134,
+            0.037632795629442724
+          ],
+          "ci95_t": [
+            0.013155243395565114,
+            0.03995993138794385
+          ],
+          "se_cluster": 0.006462075215134699,
+          "t_degrees_of_freedom": 22,
+          "t_degrees_of_freedom_verdict": 4,
+          "se_used_for_verdict": 0.011043283531626112,
+          "ci95_t_two_way": [
+            -0.004098567692039604,
+            0.057213742475548564
+          ],
+          "verdict_is_two_way": true,
+          "two_way_variance_was_negative": false,
+          "verdict_is_available": true,
+          "clears_zero": false,
+          "clears_zero_percentile": true,
+          "n_clusters": 29,
+          "weight_concentration_clusters": 23.18307648252876,
+          "n_effective_clusters": 23.18307648252876,
+          "verdict_interval": "ci95_t_two_way",
+          "percentile_interval_can_reach_zero": true
+        },
+        "tick": {
+          "point": 0.021277490724033926,
+          "ci95": [
+            0.009377465755996219,
+            0.032919739799245604
+          ],
+          "ci95_t": [
+            0.008209424190694306,
+            0.034345557257373545
+          ],
+          "se_cluster": 0.006300899967859027,
+          "t_degrees_of_freedom": 22,
+          "t_degrees_of_freedom_verdict": 4,
+          "se_used_for_verdict": 0.010811503982481225,
+          "ci95_t_two_way": [
+            -0.008735244331333953,
+            0.0512902257794018
+          ],
+          "verdict_is_two_way": true,
+          "two_way_variance_was_negative": false,
+          "verdict_is_available": true,
+          "clears_zero": false,
+          "clears_zero_percentile": true,
+          "n_clusters": 29,
+          "weight_concentration_clusters": 23.18307648252876,
+          "n_effective_clusters": 23.18307648252876,
+          "verdict_interval": "ci95_t_two_way",
+          "percentile_interval_can_reach_zero": true
+        }
+      }
+    },
+    "hyperliquid": {
+      "n_coindays": 1580,
+      "by_rule": {
+        "true": {
+          "label": "exchange aggressor flag",
+          "sign_accuracy": 1.0,
+          "sign_accuracy_size_weighted": 1.0,
+          "n_fills": 1944280,
+          "capture_bp_10s": 0.5598514486143972,
+          "adverse_bp_10s": -1.0173989744167506,
+          "net_bp_10s": -0.4575475467077788,
+          "capture_bp_60s": 0.5598514486143972,
+          "adverse_bp_60s": -1.1942352037741477,
+          "net_bp_60s": -0.6343837731772173
+        },
+        "lee_ready": {
+          "label": "Lee-Ready",
+          "sign_accuracy": 0.9178065355406388,
+          "sign_accuracy_size_weighted": 0.9212978379586094,
+          "n_fills": 2173001,
+          "capture_bp_10s": 0.5325639026641036,
+          "adverse_bp_10s": -1.0569617210567321,
+          "net_bp_10s": -0.5243978749871722,
+          "capture_bp_60s": 0.5325639026641036,
+          "adverse_bp_60s": -1.212694701621398,
+          "net_bp_60s": -0.680130843588659,
+          "net_error_bp_10s": -0.06685032827939336,
+          "net_error_bp_60s": -0.04574707041144177,
+          "capture_error_bp_10s": -0.02728754595029359,
+          "adverse_error_bp_10s": -0.039562746639981494,
+          "fill_count_ratio": 1.117637891661695,
+          "net_error_as_share_of_truth": -0.1461057517637365
+        },
+        "tick": {
+          "label": "tick rule",
+          "sign_accuracy": 0.8936467213319836,
+          "sign_accuracy_size_weighted": 0.9241628707930203,
+          "n_fills": 1808070,
+          "capture_bp_10s": 0.546715967484666,
+          "adverse_bp_10s": -1.0840840859391507,
+          "net_bp_10s": -0.5373681068813706,
+          "capture_bp_60s": 0.546715967484666,
+          "adverse_bp_60s": -1.2395406481955897,
+          "net_bp_60s": -0.6928246761264775,
+          "net_error_bp_10s": -0.07982056017359179,
+          "net_error_bp_60s": -0.05844090294926019,
+          "capture_error_bp_10s": -0.013135481129731175,
+          "adverse_error_bp_10s": -0.06668511152240009,
+          "fill_count_ratio": 0.9299432180550127,
+          "net_error_as_share_of_truth": -0.17445303935717674
+        }
+      },
+      "net_error_10s": {
+        "lee_ready": {
+          "point": -0.057837303132779225,
+          "ci95": [
+            -0.10306560664686033,
+            -0.03183944994217462
+          ],
+          "ci95_t": [
+            -0.10469416015560346,
+            -0.010980446109955001
+          ],
+          "se_cluster": 0.018225148589196508,
+          "t_degrees_of_freedom": 5,
+          "t_degrees_of_freedom_verdict": 5,
+          "se_used_for_verdict": 0.018225148589196508,
+          "ci95_t_two_way": null,
+          "verdict_is_two_way": false,
+          "two_way_variance_was_negative": false,
+          "verdict_is_available": true,
+          "clears_zero": true,
+          "clears_zero_percentile": true,
+          "n_clusters": 11,
+          "weight_concentration_clusters": 6.302325142208643,
+          "n_effective_clusters": 6.302325142208643,
+          "verdict_interval": "ci95_t",
+          "percentile_interval_can_reach_zero": true
+        },
+        "tick": {
+          "point": -0.05270149195126217,
+          "ci95": [
+            -0.0736418645145083,
+            -0.015705565652432616
+          ],
+          "ci95_t": [
+            -0.09172072134915488,
+            -0.013682262553369455
+          ],
+          "se_cluster": 0.015176674211549092,
+          "t_degrees_of_freedom": 5,
+          "t_degrees_of_freedom_verdict": 4,
+          "se_used_for_verdict": 0.02285673005990399,
+          "ci95_t_two_way": [
+            -0.11615177459755564,
+            0.010748790695031304
+          ],
+          "verdict_is_two_way": true,
+          "two_way_variance_was_negative": false,
+          "verdict_is_available": true,
+          "clears_zero": false,
+          "clears_zero_percentile": true,
+          "n_clusters": 11,
+          "weight_concentration_clusters": 6.302325142208643,
+          "n_effective_clusters": 6.302325142208643,
+          "verdict_interval": "ci95_t_two_way",
+          "percentile_interval_can_reach_zero": true
+        }
+      },
+      "net_error_60s": {
+        "lee_ready": {
+          "point": -0.04369829898419981,
+          "ci95": [
+            -0.08438528756127409,
+            -0.019011590832660276
+          ],
+          "ci95_t": [
+            -0.08685872372432564,
+            -0.000537874244073977
+          ],
+          "se_cluster": 0.01678740752241378,
+          "t_degrees_of_freedom": 5,
+          "t_degrees_of_freedom_verdict": 5,
+          "se_used_for_verdict": 0.01678740752241378,
+          "ci95_t_two_way": null,
+          "verdict_is_two_way": false,
+          "two_way_variance_was_negative": false,
+          "verdict_is_available": true,
+          "clears_zero": true,
+          "clears_zero_percentile": true,
+          "n_clusters": 11,
+          "weight_concentration_clusters": 6.302325142208643,
+          "n_effective_clusters": 6.302325142208643,
+          "verdict_interval": "ci95_t",
+          "percentile_interval_can_reach_zero": true
+        },
+        "tick": {
+          "point": -0.04851891460797827,
+          "ci95": [
+            -0.07197270241032844,
+            -0.017860988177164503
+          ],
+          "ci95_t": [
+            -0.08273641338685256,
+            -0.014301415829103978
+          ],
+          "se_cluster": 0.013309023251215205,
+          "t_degrees_of_freedom": 5,
+          "t_degrees_of_freedom_verdict": 4,
+          "se_used_for_verdict": 0.02951601511518757,
+          "ci95_t_two_way": [
+            -0.13045537256773895,
+            0.033417543351782424
+          ],
+          "verdict_is_two_way": true,
+          "two_way_variance_was_negative": false,
+          "verdict_is_available": true,
+          "clears_zero": false,
+          "clears_zero_percentile": true,
+          "n_clusters": 11,
+          "weight_concentration_clusters": 6.302325142208643,
+          "n_effective_clusters": 6.302325142208643,
+          "verdict_interval": "ci95_t_two_way",
+          "percentile_interval_can_reach_zero": true
+        }
+      }
+    }
+  },
+  "scope": {
+    "binance_is_the_untested_cell": "Binance carries no fill ledger and no local trade archive, so this counterfactual is run on Bybit and Hyperliquid only. The third venue is untested here rather than tested and agreeing.",
+    "the_classifier_changes_the_fill_set_too": "A sign decides which of the maker's two resting orders a trade can lift, so each rule takes its own fill set. The fill count ratio is reported per rule because part of a rule's markout error is a change in which fills were measured.",
+    "accuracy_is_against_the_venue_flag": "Accuracy is agreement with the exchange aggressor flag, which is taken as ground truth throughout. Where a venue's own flag is wrong this measures agreement rather than correctness.",
+    "one_quoter_one_cadence": "Every figure is the reference last-in-queue touch quoter at the same 100 ms re-quote ceiling used everywhere else in the paper. The error a classifier carries for a different quoter or a different cadence is not measured here."
+  }
+}

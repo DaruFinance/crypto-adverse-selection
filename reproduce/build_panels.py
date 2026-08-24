@@ -1,4 +1,4 @@
-"""Rebuild the eight shipped panels from frozen measurement artifacts.
+"""Rebuild the nine shipped panels from frozen measurement artifacts.
 
 The inputs are derived measurement outputs, not raw order-book archives. Their
 relative paths and hashes are recorded in ``lineage.json``. This script keeps
@@ -48,6 +48,13 @@ CONDITIONAL_COLUMNS = [
 REQUOTE_COLUMNS = [
     "venue", "coin", "date", "gap_ms", "n_fills", "capture_bp",
     "adverse_bp", "net_bp",
+]
+
+SIGN_RULE_COLUMNS = [
+    "venue", "coin", "date", "rule", "n_fills",
+    "spread_capture_bp_10s", "adverse_select_bp_10s", "net_markout_bp_10s",
+    "spread_capture_bp_60s", "adverse_select_bp_60s", "net_markout_bp_60s",
+    "n_trades", "sign_accuracy", "sign_accuracy_szw",
 ]
 
 
@@ -145,6 +152,35 @@ def requote_rows(path: Path, venue: str):
         }
 
 
+def sign_rule_rows(root: Path, out: Path):
+    """The sign-rule counterfactual, restricted to the coin-days each venue's
+    own panel carries.
+
+    The measurement program sweeps every coin-day on disk, while the two venue
+    panels are post-dust-guard subsets of that. Restricting here is what makes
+    the ``true`` rows reconcile with the headline of the main decomposition
+    instead of sitting on a slightly wider sample; the restriction is read off
+    the two panels built earlier in this same run, so it is fixed by the
+    manifest rather than by a list kept in this file.
+    """
+    sources = [
+        ("bybit_perp", "runs/sign_rule/bybit_sign_rules.csv",
+         "bybit_perp_coindays.csv"),
+        ("hyperliquid", "runs/sign_rule/hl_sign_rules.csv",
+         "hyperliquid_coindays.csv"),
+    ]
+    for venue, rel, panel_name in sources:
+        with (out / panel_name).open(newline="") as handle:
+            keep = {(r["coin"], r["date"]) for r in csv.DictReader(handle)}
+        with (root / rel).open(newline="") as handle:
+            for source in csv.DictReader(handle):
+                if (source["coin"], source["date"]) not in keep:
+                    continue
+                row = {c: source.get(c, "") for c in SIGN_RULE_COLUMNS}
+                row["venue"] = venue
+                yield row
+
+
 def load_manifest() -> dict:
     return json.loads(MANIFEST.read_text())
 
@@ -202,6 +238,8 @@ def build(source_root: Path, out: Path) -> None:
              source_root / "runs/conditional_bybit_v15_common_strided_per_coinday_cells.csv")),
         ("venue_requote_rungs.csv", REQUOTE_COLUMNS,
          combined_requote_rows(source_root)),
+        ("sign_rule_coindays.csv", SIGN_RULE_COLUMNS,
+         sign_rule_rows(source_root, out)),
     ]
     for name, columns, rows in jobs:
         count = write_rows(out / name, columns, rows)

@@ -1,5 +1,16 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "dataset": {
+    "name": "MakerCEX Panels",
+    "id": "makercex-panels",
+    "version": "1.0.0",
+    "description": "Nine aggregate coin-day panels of simulated last-in-queue touch-quoter entry markout on three crypto perpetual venues, two centralized and one an on-chain central limit order book, with a trade-sign counterfactual panel measured against each venue's true aggressor flag.",
+    "venues": ["bybit_perp", "binance_um", "hyperliquid"],
+    "coverage": "2023-04 to 2026-05, 9,983 coin-days, 125,828,922 simulated fills",
+    "license": "Code MIT. Panels are provided for reproducibility subject to the original venues' data terms.",
+    "citation": "Gatto, D. V. (2026). MakerCEX Panels, version 1.0.0. https://github.com/DaruFinance/crypto-adverse-selection",
+    "versioning": "The version changes when a panel's bytes change. Every panel's output hash is recorded below, so a result quoted against a version can be checked against the bytes it was computed on."
+  },
   "boundary": "The frozen sources are derived measurement artifacts. Raw venue archives and fill-level ledgers are outside this repository.",
   "panels": {
     "bybit_perp_coindays.csv": {
@@ -53,13 +64,17 @@
     },
     "venue_requote_rungs.csv": {
       "source_kind": "file_set",
-      "source_paths": [
-        "runs/part2/requote_bybit_25d.json",
-        "runs/part2/requote_hl_25d_all.json"
-      ],
+      "source_paths": ["runs/part2/requote_bybit_25d.json", "runs/part2/requote_hl_25d_all.json"],
       "source_sha256": "da95ee4772a1cb586ad78782b01f9dc05b10a97a7234e0a815dd7bfe5660f801",
       "output_sha256": "67426e9b593c964da82532b471831758bbea6b7f61a03c1ce22fd8385ca9bdfd",
       "rows": 5775
+    },
+    "sign_rule_coindays.csv": {
+      "source_kind": "file_set",
+      "source_paths": ["runs/sign_rule/bybit_sign_rules.csv", "runs/sign_rule/hl_sign_rules.csv"],
+      "source_sha256": "f311face4a271d2e3f6819e41c4d6746d1e2a0f2773c5ccfe9d07f66a76398ba",
+      "output_sha256": "d4f1fefc92b9ca3c4be43722be7855c51fd62dde4c2de67dd5ffc165713b0e31",
+      "rows": 15594
     }
   }
 }
