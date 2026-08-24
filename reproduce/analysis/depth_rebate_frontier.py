@@ -18,8 +18,7 @@ at which the touch overtakes the deepest level.
 
 The measurement covers the bid side of 300 coin-days and charges no maker fee,
 on the reading that the rebate replaces it. A residual fee moves the crossing
-one for one. The phantom fill share reported in the shipped result file is not
-rebuilt here, because no measurement in this repository produces it.
+one for one.
 
 One rebate on the swept grid, 0.8387 bp, is Bybit's pooled net markout rather
 than a round number. It comes from the venue decomposition table and is not

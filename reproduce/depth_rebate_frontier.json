@@ -145,13 +145,6 @@
   "touch_overtakes_deepest_at_rebate_bp": 0.7710766696924987,
   "markout_horizon": "10s",
   "fee_treatment": "no maker fee charged; rebate replaces it",
-  "phantom_fill_share_by_level": [
-    0.4189,
-    0.3538,
-    0.3487,
-    0.3479,
-    0.3424
-  ],
   "breakeven_rebate_by_level_bp": [
     0.717064146366643,
     0.6534759985834138,
@@ -167,7 +160,6 @@
     "scope": "Bid side only, 10 s markout, weighted as a mean over fill rows, on 300 of the 3,618 panel coin-days, which is 8.3 percent. Levels are price levels measured from the mid, not queue positions.",
     "published_tier_is_an_upper_bound": "The tier cited for comparison carries monthly uptime, symbol coverage and minimum order size obligations that the single-level, size-1.0, bid-only quoter measured here would not satisfy. Treat it as an upper bound on what this quoter could earn rather than as an achievable rebate.",
     "residual_fee_is_the_dominant_sensitivity": "No maker fee is charged, on the reading that the rebate replaces it. Charging a residual fee alongside moves the crossing one for one, and a residual near 0.73 bp inverts the ordering, against a bootstrap interval 0.194 bp wide, resampling coin-days. This axis sits outside the interval and dominates it.",
-    "phantom_fill_share_is_carried_as_a_literal": "The phantom fill share by level is stored in this file as a fixed value. No script in this repository computes it, so it should not be read as output measured by the code shipped here.",
     "subsample_is_time_skewed": "The 300 coin-days are not spread evenly through the panel window, so the frontier describes the periods they fall in rather than the whole span.",
     "crossing_moved_under_a_fill_model_fix": "The rebate at which the touch overtakes the deepest level was 1.1301 bp before a fill-model correction and is 0.7711 bp after it. Only the corrected figure is reported here."
   }
