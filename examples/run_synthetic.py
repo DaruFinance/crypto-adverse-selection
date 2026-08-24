@@ -34,7 +34,8 @@ import numpy as np
 from makercex import (breakeven_rebate_bp, cluster_bootstrap, decompose,
                       make_panel, make_tape, net_after_fee, sign_test_p,
                       t_crit_95, two_way_se, wild_cluster_p)
-from makercex import MIN_CLUSTERS, simulate_touch_fills
+from makercex import (MIN_CLUSTERS, benjamini_hochberg, simulate_touch_fills,
+                      t_two_sided_p)
 
 CHECKS = []
 SPARSE_SEED = 1
@@ -358,6 +359,38 @@ def part_four():
                                [1], [100.0], [7.0], [-1])[3].size == 0)
 
 
+def part_five():
+    """The t tail and the two multiplicity procedures, against known values.
+
+    Both are implemented in this package rather than pulled from scipy, which
+    keeps the single numpy dependency. Reference values below were taken from
+    scipy and are hardcoded so the check does not need it.
+    """
+    print("\nPart five: the t tail and the multiplicity procedures")
+    for df, t, want in ((4, 2.776, 0.05002278), (8, 2.306, 0.05000032),
+                        (29, 2.045, 0.05002408), (1, 12.706, 0.05000080),
+                        (200, 1.960, 0.05138484)):
+        check(f"two-sided t p at df {df} matches the reference to 1e-7",
+              abs(t_two_sided_p(t, df) - want) < 1e-7)
+    check("a zero t statistic returns p of one",
+          abs(t_two_sided_p(0.0, 10) - 1.0) < 1e-12)
+    check("a t p-value is refused below one degree of freedom",
+          t_two_sided_p(2.0, 0) != t_two_sided_p(2.0, 0))
+
+    raw = [0.001, 0.008, 0.039, 0.041, 0.042, 0.06, 0.5]
+    want_bh = [0.007, 0.028, 0.0588, 0.0588, 0.0588, 0.07, 0.5]
+    got = benjamini_hochberg(raw)
+    check("Benjamini-Hochberg matches the reference on a known family",
+          all(abs(a - b) < 1e-9 for a, b in zip(got, want_bh)))
+    check("Benjamini-Hochberg is monotone in the sorted p-values",
+          all(x <= y + 1e-12 for x, y in zip(sorted(got), sorted(got)[1:])))
+    check("a NaN p-value stays NaN and leaves the family",
+          np.isnan(benjamini_hochberg([0.01, float("nan")])[1])
+          and abs(benjamini_hochberg([0.01, float("nan")])[0] - 0.01) < 1e-12)
+    check("an adjusted p-value is never below its raw value",
+          all(a >= b - 1e-12 for a, b in zip(got, raw)))
+
+
 def main():
     print("Synthetic smoke test for the entry-markout decomposition\n")
     part_one()
@@ -365,6 +398,7 @@ def main():
     part_two()
     part_three()
     part_four()
+    part_five()
     failed = [n for n, ok in CHECKS if not ok]
     print(f"\n{len(CHECKS) - len(failed)} of {len(CHECKS)} checks passed.")
     if failed:

@@ -71,7 +71,7 @@ report the full count. It is also exposed under the plainer name
 from __future__ import annotations
 
 from collections import defaultdict
-from math import comb
+from math import comb, exp, lgamma, log
 
 import numpy as np
 
@@ -348,3 +348,86 @@ def sign_test_p(n_positive, n_total):
     k = min(n_positive, n_total - n_positive)
     tail = sum(comb(n_total, i) for i in range(k + 1)) / 2 ** n_total
     return float(min(1.0, 2 * tail))
+
+def _betacf(a, b, x, itmax=300, eps=3e-16):
+    """Continued fraction for the incomplete beta, Lentz's method."""
+    tiny = 1e-300
+    qab, qap, qam = a + b, a + 1.0, a - 1.0
+    c = 1.0
+    d = 1.0 - qab * x / qap
+    if abs(d) < tiny:
+        d = tiny
+    d = 1.0 / d
+    h = d
+    for m in range(1, itmax + 1):
+        m2 = 2 * m
+        aa = m * (b - m) * x / ((qam + m2) * (a + m2))
+        d = 1.0 + aa * d
+        if abs(d) < tiny:
+            d = tiny
+        c = 1.0 + aa / c
+        if abs(c) < tiny:
+            c = tiny
+        d = 1.0 / d
+        h *= d * c
+        aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2))
+        d = 1.0 + aa * d
+        if abs(d) < tiny:
+            d = tiny
+        c = 1.0 + aa / c
+        if abs(c) < tiny:
+            c = tiny
+        d = 1.0 / d
+        delta = d * c
+        h *= delta
+        if abs(delta - 1.0) < eps:
+            break
+    return h
+
+
+def _betainc(a, b, x):
+    """Regularized incomplete beta I_x(a, b), enough for a t tail."""
+    if x <= 0.0:
+        return 0.0
+    if x >= 1.0:
+        return 1.0
+    front = exp(lgamma(a + b) - lgamma(a) - lgamma(b)
+                + a * log(x) + b * log(1.0 - x))
+    if x < (a + 1.0) / (a + b + 2.0):
+        return front * _betacf(a, b, x) / a
+    return 1.0 - exp(lgamma(a + b) - lgamma(a) - lgamma(b)
+                     + b * log(1.0 - x) + a * log(x)) * _betacf(b, a, 1.0 - x) / b
+
+
+def t_two_sided_p(t_stat, df):
+    """Two-sided Student-t p-value.
+
+    Implemented here rather than pulled from scipy so the package keeps its
+    single numpy dependency. The smoke test checks it against hardcoded
+    reference values taken from scipy.
+    """
+    if df is None or df < 1 or not np.isfinite(t_stat):
+        return float("nan")
+    df = float(df)
+    return float(_betainc(df / 2.0, 0.5, df / (df + float(t_stat) ** 2)))
+
+
+def benjamini_hochberg(pvalues):
+    """BH-adjusted p-values (q-values), preserving input order.
+
+    NaN entries stay NaN and are excluded from the family, so a panel that
+    withholds some verdicts is corrected across the verdicts it actually
+    returned rather than across the cells it merely has.
+    """
+    p = np.asarray(pvalues, dtype=np.float64)
+    out = np.full(p.shape, np.nan)
+    live = np.isfinite(p)
+    m = int(live.sum())
+    if m == 0:
+        return out
+    idx = np.flatnonzero(live)
+    order = idx[np.argsort(p[idx], kind="stable")]
+    ranked = p[order] * m / np.arange(1, m + 1)
+    q = np.minimum.accumulate(ranked[::-1])[::-1]
+    out[order] = np.minimum(q, 1.0)
+    return out
