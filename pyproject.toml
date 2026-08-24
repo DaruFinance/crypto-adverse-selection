@@ -12,8 +12,12 @@ license = "MIT"
 authors = [{ name = "Daniel Gatto" }]
 dependencies = ["numpy>=1.24"]
 
+[project.scripts]
+makercex = "makercex.cli:main"
+
 [project.optional-dependencies]
 figures = ["matplotlib>=3.7"]
+data = ["pyarrow>=12"]
 
 [tool.setuptools]
 packages = ["makercex"]
