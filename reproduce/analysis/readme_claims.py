@@ -15,6 +15,21 @@ def load(name: str):
     return json.loads((RESULTS / name).read_text(encoding="utf-8"))
 
 
+def _signrule_row(prefix: str, block: dict, rule: str) -> str:
+    """One row of the README's sign-rule table, normalized to single spaces."""
+    r = block["by_rule"][rule]
+    fields = [
+        prefix,
+        f"{r['sign_accuracy']:.3f}",
+        f"{r['capture_bp_10s']:.3f}",
+        f"{r['adverse_bp_10s']:.3f}",
+        f"{r['net_bp_10s']:.3f}",
+        f"{r['net_error_bp_10s']:+.3f}",
+        f"{r['fill_count_ratio']:.3f}",
+    ]
+    return " ".join(" ".join(fields).split())
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--out", required=True)
@@ -27,6 +42,8 @@ def main() -> None:
     leadlag = load("cross_venue_leadlag.json")
     depth = load("depth_rebate_frontier.json")
     arm = load("avellaneda_stoikov_arm.json")
+    signrule = load("sign_rule_counterfactual.json")["venues"]
+    multiplicity = load("per_coin_multiplicity.json")
     conditional = {
         block: load(f"conditional_net_{block}.json")
         for block in ("asia", "europe", "us")
@@ -78,6 +95,23 @@ def main() -> None:
             "arm_fill_share": f"takes {100 * arm['as_fill_share_of_touch']:.1f}% as many fills",
             "lineage_boundary": "The reproducible chain starts at the frozen artifacts and ends at the figures; raw-archive processing remains outside it",
             "markout_boundary": "does not establish realised maker profit or loss",
+            "signrule_bybit_lee_ready": _signrule_row(
+                "Bybit        Lee-Ready    ", signrule["bybit_perp"], "lee_ready"),
+            "signrule_bybit_tick": _signrule_row(
+                "Bybit        tick rule    ", signrule["bybit_perp"], "tick"),
+            "signrule_hl_lee_ready": _signrule_row(
+                "Hyperliquid  Lee-Ready    ", signrule["hyperliquid"], "lee_ready"),
+            "signrule_hl_tick": _signrule_row(
+                "Hyperliquid  tick rule    ", signrule["hyperliquid"], "tick"),
+            "signrule_binance_untested": "Binance carries no trade archive here and is the untested cell",
+            "multiplicity_bh": (
+                f"{multiplicity['counts']['raw_below_alpha']} clear zero at raw p below 0.05 "
+                f"and all {multiplicity['counts']['bh_below_alpha_both_horizons']} survive "
+                f"Benjamini-Hochberg; "
+                f"{multiplicity['counts']['by_below_alpha_both_horizons']} survive "
+                f"Benjamini-Yekutieli"),
+            "multiplicity_family": (
+                f"the {multiplicity['n_cells_in_family']} per-coin cells that return a verdict"),
         }
     )
 

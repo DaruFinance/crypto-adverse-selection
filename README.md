@@ -1,11 +1,42 @@
-# Crypto adverse selection at the touch
+# makercex
 
-This repository is the reproducibility package for *Adverse Selection
-Over-Consumes the Touch: A True-Aggressor-Signed Maker P&L Decomposition Across
-Centralized and On-Chain Crypto Perpetual Order Books*.
+Measure the entry markout of a passive quote against true-aggressor-signed tape,
+with cluster-robust intervals that abstain when the panel cannot support one.
 
-It contains the reference measurement code, aggregate coin-day panels, analysis
-scripts and figure producers. It does not contain raw exchange data.
+Point it at your own book and tape:
+
+```bash
+pip install -e ".[data]"
+makercex measure --snapshots book.parquet --trades tape.parquet --horizon 10s
+```
+
+```text
+Entry markout at the touch, 10s horizon, pre-fee
+  26,205 fills over 58 symbol-days (6 symbols, 10 months)
+
+  captured half-spread     +0.5445 bp
+  adverse selection        -0.8333 bp
+  net entry markout        -0.2888 bp
+  break-even rebate         0.2888 bp
+
+  clustered on month and symbol, 10 clusters, 5.3 effective
+  95% interval           [-0.7711, +0.1934]
+  clears zero            no
+```
+
+Snapshots need a timestamp, the best bid and ask and the size at each. Trades
+need a timestamp, price, size and a **true aggressor flag**. Column names are
+detected from the usual spellings and can be overridden with `--*-col`;
+timestamps may be integers in any unit or a datetime column; parquet and
+delimited text both work. Each symbol-day is simulated separately and the
+interval is taken across those cells, clustered on calendar month and symbol.
+
+Below five effective clusters the tool returns no verdict rather than a weak
+one. That is a withheld verdict, not a failed test, and the distinction is kept
+everywhere in this package.
+
+The aggressor flag is the one input the measurement cannot infer for you. A tick
+rule or Lee-Ready in its place carries the error measured below.
 
 ## Main result
 
@@ -34,6 +65,30 @@ net entry markout = capture + adverse
 No inventory unwind or exit cost is modelled. The result therefore does not
 establish realised maker profit or loss.
 
+## What a trade-sign classifier costs
+
+Almost every maker-markout study has to infer the aggressor side, and none can
+measure the resulting error, because measuring it needs the true sign that was
+missing. These venues publish it. The same decomposition, rerun on the same tape
+under each rule:
+
+```text
+Venue        Rule            Accuracy  Capture  Adverse  Net      Error   Fills
+Bybit        exchange flag      1.000    0.206   -1.044   -0.839       .  1.000
+Bybit        Lee-Ready          0.932    0.216   -1.026   -0.810  +0.029  1.061
+Bybit        tick rule          0.898    0.201   -0.997   -0.796  +0.043  0.937
+Hyperliquid  exchange flag      1.000    0.560   -1.017   -0.458       .  1.000
+Hyperliquid  Lee-Ready          0.918    0.533   -1.057   -0.524  -0.067  1.118
+Hyperliquid  tick rule          0.894    0.547   -1.084   -0.537  -0.080  0.930
+```
+
+The sign of the result survives both classifiers on both venues. The magnitude
+moves by 3 to 5 percent on Bybit and 15 to 17 percent on Hyperliquid, in
+opposite directions, so no constant correction is available. One of the four
+errors clears zero. A rule also changes which fills happen, not only how they
+are signed, which is what the fills column is. Binance carries no trade archive
+here and is the untested cell.
+
 ## Other measured results
 
 **Matched venue days.** The same-date Bybit-minus-Hyperliquid estimate is
@@ -60,35 +115,68 @@ simulated quoter is not shown to satisfy.
 66 of 91 coin-days and takes 9.2% as many fills as the touch rule. This single
 arm does not represent inventory-aware market making in general.
 
+**Multiplicity.** Across the 70 per-coin cells that return a verdict, 56 clear
+zero at raw p below 0.05 and all 56 survive Benjamini-Hochberg; 54 survive
+Benjamini-Yekutieli. Multiplicity is not what limits that surface.
+
 The complete allowed and prohibited claim set is locked in
 `reproduce/claim_contract.json`.
+
+## The dataset
+
+The panels have a name and a version so a result can be quoted against the bytes
+it was computed on.
+
+```text
+MakerCEX Panels, version 1.0.0
+  9 aggregate coin-day panels, 3 venues, 2023-04 to 2026-05
+  9,983 coin-days, 125,828,922 simulated fills
+  every panel's SHA-256 recorded in reproduce/lineage.json
+```
+
+Cite as: Gatto, D. V. (2026). *MakerCEX Panels, version 1.0.0.*
+https://github.com/DaruFinance/crypto-adverse-selection
+
+The version changes when a panel's bytes change. Run your own estimators against
+`reproduce/panels/*.csv` directly; each row is a coin-day with fill counts and
+the fill-weighted decomposition terms, which is everything the intervals in this
+package are built from.
 
 ## Repository contents
 
 ```text
 makercex/
+  cli.py                    the `makercex measure` runner
   decomp.py                 entry-markout decomposition
   fills.py                  reference posting and fill rule
-  inference.py              clustered estimators and sign tests
+  inference.py              clustered estimators, abstention rule, BH and BY
   synth.py                  deterministic synthetic test fixtures
 examples/
   run_synthetic.py          sub-minute mechanism and inference smoke test
 reproduce/
-  panels/                   eight aggregate analysis panels
+  panels/                   nine aggregate analysis panels
   analysis/                 panel-to-result producers and checks
   build_panels.py           frozen-artifact-to-panel rebuild and hash check
-  lineage.json              source and output hashes, row counts and boundary
+  lineage.json              dataset identity, source and output hashes, boundary
   claim_contract.json       allowed and prohibited interpretations
   print_headline.py         compact result printer
   make_figures.py           figure producer
   *.json                    shipped analysis results
 ```
 
-## Quick start
+## Reproducing the papers
+
+This repository is the reproducibility package for two working papers:
+
+- *Adverse Selection Over-Consumes the Touch: A True-Aggressor-Signed
+  Entry-Markout Decomposition Across Centralized and On-Chain Crypto Perpetual
+  Order Books* — the measurement and its results.
+- *Withholding a Verdict When the Panel Will Not Support One* — the interval
+  calibration and the abstention rule, which are reusable on any panel.
 
 Python 3.10 or newer is required. The smoke test finishes in under a minute,
-asserting 53 invariants that cover the decomposition and its inference and fill
-rule.
+asserting the invariants that cover the decomposition, its inference and the
+fill rule.
 
 ```bash
 pip install -e .
@@ -113,14 +201,16 @@ pip install -e ".[figures]"
 python reproduce/make_figures.py
 ```
 
-## Rebuild the analysis results
+### Rebuild the analysis results
 
-Run these commands from the repository root. Each producer writes to a separate
-file so the shipped result remains untouched.
+Run these from the repository root. Each producer writes to a separate file so
+the shipped result remains untouched.
 
 ```bash
 python reproduce/analysis/decomposition_table.py --out decomposition_by_venue.rebuilt.json
 python reproduce/analysis/per_coin_intervals.py --out per_coin_intervals.rebuilt.json
+python reproduce/analysis/per_coin_multiplicity.py --out per_coin_multiplicity.rebuilt.json
+python reproduce/analysis/sign_rule_counterfactual.py --out sign_rule_counterfactual.rebuilt.json
 python reproduce/analysis/conditional_net.py --block asia --out conditional_net_asia.rebuilt.json
 python reproduce/analysis/conditional_net.py --block europe --out conditional_net_europe.rebuilt.json
 python reproduce/analysis/conditional_net.py --block us --out conditional_net_us.rebuilt.json
@@ -144,7 +234,7 @@ python reproduce/analysis/wild_test_calibration.py --out wild_test_calibration.r
 
 ## Panel lineage and data boundary
 
-All eight shipped panels rebuild byte-for-byte from frozen derived measurement
+All nine shipped panels rebuild byte-for-byte from frozen derived measurement
 artifacts. `reproduce/lineage.json` records every source path relative to an
 external artifact root, its SHA-256 hash, each output hash and each row count.
 
@@ -180,6 +270,10 @@ of the repository. The reproducible chain starts at the frozen artifacts and
 ends at the figures; raw-archive processing remains outside it. Binance has the
 same boundary as the other venues, with no shipped or independently rebuilt
 Binance fill ledger.
+
+That boundary is about *these* raw archives, which are not ours to
+redistribute. It says nothing about yours, which is why `makercex measure` ships
+even though the archives do not.
 
 ## Measurement rule
 
@@ -236,9 +330,25 @@ against the shipped result files and rejects prohibited phrases.
 @article{gatto2026adverse,
   author = {Gatto, Daniel V.},
   title = {Adverse Selection Over-Consumes the Touch: A True-Aggressor-Signed
-           Maker P\&L Decomposition Across Centralized and On-Chain Crypto
+           Entry-Markout Decomposition Across Centralized and On-Chain Crypto
            Perpetual Order Books},
   year = {2026}
+}
+
+@article{gatto2026withholding,
+  author = {Gatto, Daniel V.},
+  title = {Withholding a Verdict When the Panel Will Not Support One:
+           Abstention, and the Joint Failure Region of Four Cluster-Robust
+           Interval Methods on Small Unequally Weighted Panels},
+  year = {2026}
+}
+
+@misc{makercexpanels,
+  author = {Gatto, Daniel V.},
+  title  = {MakerCEX Panels},
+  year   = {2026},
+  note   = {Version 1.0.0},
+  url    = {https://github.com/DaruFinance/crypto-adverse-selection}
 }
 ```
 
