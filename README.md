@@ -185,6 +185,15 @@ python reproduce/build_panels.py --verify-shipped
 python reproduce/print_headline.py
 ```
 
+The runner has its own suite, covering column resolution, timestamp-unit
+inference, both file formats, the aggressor-flag encodings and the abstention
+rule on both sides of its floor. It needs no data: the fixtures are generated.
+
+```bash
+pip install -e ".[dev]"
+python -m pytest tests/          # or: python tests/test_cli.py
+```
+
 The same commands work in PowerShell:
 
 ```powershell

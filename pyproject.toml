@@ -18,6 +18,10 @@ makercex = "makercex.cli:main"
 [project.optional-dependencies]
 figures = ["matplotlib>=3.7"]
 data = ["pyarrow>=12"]
+dev = ["pytest>=7", "pyarrow>=12"]
 
 [tool.setuptools]
 packages = ["makercex"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
