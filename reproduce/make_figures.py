@@ -41,6 +41,12 @@ DISPLAY = {"bybit_perp": "Bybit", "binance_um": "Binance",
            "hyperliquid": "Hyperliquid", "asia": "Asia", "europe": "Europe",
            "us": "US"}
 
+# The CME reference bars in the first figure. These are the published figures of
+# the companion paper, not a measurement made here, and they are hardcoded for
+# exactly that reason: nothing in this package produces them and no shipped
+# panel should appear to. Different asset class, period and feed.
+CME_COMPANION = {"capture_bp": 0.654, "adverse_bp": -0.661, "net_bp": -0.022}
+
 
 def load(name):
     return json.loads((HERE / name).read_text())
@@ -56,22 +62,42 @@ def save(fig, stem):
 
 
 def fig_decomposition():
+    """The three crypto venues, with the CME companion as a reference panel.
+
+    The CME bars are not a fourth measurement from this study. They are the
+    published companion figures on a different asset class, period and feed, so
+    they are shaded and separated to keep the contrast readable without
+    presenting it as a matched comparison.
+    """
     d = load("decomposition_by_venue.json")["venues"]
     names = list(d)
     cap = [d[v]["pooled"]["10s_row_mean"]["capture_bp"] for v in names]
     adv = [d[v]["pooled"]["10s_row_mean"]["adverse_bp"] for v in names]
     net = [d[v]["pooled"]["10s_row_mean"]["net_bp"] for v in names]
-    x = np.arange(len(names))
-    fig, ax = plt.subplots(figsize=(7.2, 3.6))
-    ax.bar(x - 0.22, cap, 0.2, color=C_CAP, label="captured half-spread")
-    ax.bar(x, adv, 0.2, color=C_ADV, label="adverse selection")
-    ax.bar(x + 0.22, net, 0.2, color=C_NET, label="net markout")
-    ax.axhline(0, color="#2d3748", lw=0.9)
+
+    labels = ["CME futures"] + [DISPLAY.get(n, n) for n in names]
+    cap = [CME_COMPANION["capture_bp"]] + cap
+    adv = [CME_COMPANION["adverse_bp"]] + adv
+    net = [CME_COMPANION["net_bp"]] + net
+
+    x = np.arange(len(labels))
+    fig, ax = plt.subplots(figsize=(7.8, 3.6))
+    ax.axvspan(-0.5, 0.5, color="#8a94a6", alpha=0.13, zorder=0)
+    ax.axvline(0.5, color="#8a94a6", lw=0.9, ls=(0, (4, 3)), zorder=1)
+    ax.bar(x - 0.22, cap, 0.2, color=C_CAP, label="captured half-spread", zorder=2)
+    ax.bar(x, adv, 0.2, color=C_ADV, label="adverse selection", zorder=2)
+    ax.bar(x + 0.22, net, 0.2, color=C_NET, label="net markout", zorder=2)
+    ax.axhline(0, color="#2d3748", lw=0.9, zorder=3)
     ax.set_xticks(x)
-    ax.set_xticklabels([DISPLAY.get(n, n) for n in names])
+    ax.set_xticklabels(labels)
+    ax.set_xlim(-0.5, len(labels) - 0.5)
     ax.set_ylabel("basis points per fill")
-    ax.set_title("Entry markout at the touch, 10 s horizon, pre-fee", loc="left")
-    ax.legend(fontsize=8)
+    ax.set_title("Adverse selection cancels the touch on CME futures and\n"
+                 "over-consumes it on crypto perpetuals", loc="left")
+    ax.text(0, 0.035, "reference panel,\ncompanion paper", transform=ax.get_xaxis_transform(),
+            ha="center", va="bottom", fontsize=6.5, color="#4a5568")
+    ax.legend(fontsize=8, ncol=3, loc="upper center", bbox_to_anchor=(0.5, -0.13),
+              frameon=False, handlelength=1.4, columnspacing=1.6)
     save(fig, "fig1_decomposition")
 
 
