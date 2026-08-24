@@ -132,6 +132,25 @@ def paired_error(cells, rule, key, horizon_weight="n_fills"):
                              n_boot=N_BOOT, seed=SEED, cluster_b=coins)
 
 
+def per_coin_accuracy(items, rule):
+    """Trade-weighted accuracy for one rule, coin by coin.
+
+    The pooled figure hides most of what a reader needs here: agreement runs
+    with the tick grid, so the coin-level spread is wider than the venue-level
+    number and is the part that transfers to a different coin list.
+    """
+    hit = collections.defaultdict(float)
+    seen = collections.defaultdict(float)
+    for (venue, coin, date), by_rule in items:
+        n = _f(by_rule[rule], "n_trades")
+        a = _f(by_rule[rule], "sign_accuracy")
+        if not (np.isfinite(n) and np.isfinite(a) and n > 0):
+            continue
+        hit[coin] += a * n
+        seen[coin] += n
+    return {c: hit[c] / seen[c] for c in sorted(seen)}
+
+
 def venue_block(items):
     cells = [v for _, v in items]
     out = {"n_coindays": len(cells), "by_rule": {}, "net_error_10s": {},
@@ -151,6 +170,8 @@ def venue_block(items):
             "net_bp_60s": pooled(cells, rule, "net_markout_bp_60s"),
         }
     truth = out["by_rule"]["true"]
+    for rule in CLASSIFIERS:
+        out["by_rule"][rule]["sign_accuracy_by_coin"] = per_coin_accuracy(items, rule)
     for rule in CLASSIFIERS:
         got = out["by_rule"][rule]
         got["net_error_bp_10s"] = got["net_bp_10s"] - truth["net_bp_10s"]
