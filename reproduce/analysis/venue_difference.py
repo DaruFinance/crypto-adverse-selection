@@ -7,14 +7,13 @@ Run from the repository root: python reproduce/analysis/venue_difference.py
 The two venues publish their books at different rates, so comparing them
 without matching that rate measures the reconstruction as much as the venue.
 The panel carries each coin-day decomposed at seven re-quote gaps, and the
-comparison is taken at a fixed 2000 ms gap. An earlier version of this note
-said the gap was the one where the two venues' effective re-quote intervals are
-closest, which is not what the code does and is not reproducible from what ships
-here: the quote-update counts that rule needs are in no panel. The one
-re-quote-intensity statistic that does ship, fills per coin-day, is closest
-between the venues at 500 ms rather than at 2000. The choice matters for the
-composition and not for the difference, so all seven rungs ship in the result
-file. Only coin-days both venues traded on the same date are
+comparison is taken at a fixed 2000 ms gap. That rung is fixed by hand, not
+derived: selecting the gap where the two venues' effective re-quote intervals
+are closest would need quote-update counts, which are in no shipped panel, and
+the one re-quote-intensity statistic that does ship, fills per coin-day, is
+closest between the venues at 500 ms rather than at 2000. The choice moves the
+composition and not the difference, so all seven rungs ship in the result
+file and the direction can be read at any of them. Only coin-days both venues traded on the same date are
 used, which is what keeps the comparison from being confounded with the period
 each panel covers.
 
