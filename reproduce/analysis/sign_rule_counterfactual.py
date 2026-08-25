@@ -38,11 +38,19 @@ the two rules' pooled figures are each dominated by the same handful of
 high-volume coins, and an unpaired interval would price that shared variation
 twice.
 
-Bybit and Hyperliquid carry this analysis and Binance does not. The Binance
-boundary is the one the paper's reproducibility section states: no fill ledger
-and no local trade archive exist for it, and a sign counterfactual needs the
-tape rather than the aggregate. It is named here as the untested cell rather
-than left out silently.
+All three venues carry this analysis. The Binance panel is measured by
+streaming its daily archive rather than from a local store, which is why it
+arrived after the other two, and its ``true`` rows reproduce the shipped Binance
+panel on all 4,785 coin-days.
+
+One lookup decides whether any of this is comparable. Lee-Ready needs the quote
+that stood when the order arrived, and a book update caused by a trade often
+carries that trade's own timestamp, so the last quote AT OR BEFORE the trade is
+the post-trade book and inverts the classification on exactly the price-moving
+trades. The damage scales with the feed's clock: trades sharing a timestamp with
+a book update run 0.3 percent on Bybit, 8 to 10 on Hyperliquid and 52.7 on
+millisecond-stamped Binance. Taking the quote strictly before the trade is both
+the definition and the only choice that compares venues rather than clocks.
 """
 
 from __future__ import annotations
@@ -73,6 +81,11 @@ SEED = 313
 
 RULE_LABEL = {"true": "exchange aggressor flag", "lee_ready": "Lee-Ready",
               "tick": "tick rule"}
+
+# Venue order is fixed here rather than sorted, so the result file, the figure
+# and every table in the paper read the same way round. Alphabetical would put
+# Binance first and disagree with the coverage and headline tables.
+VENUE_ORDER = ("bybit_perp", "binance_um", "hyperliquid")
 
 
 def load(path):
@@ -206,7 +219,8 @@ def main():
         "seed": SEED,
         "rules": {r: RULE_LABEL[r] for r in RULES},
         "n_coindays_dropped_for_incomplete_rule_set": dropped,
-        "venues": {v: venue_block(sorted(items)) for v, items in sorted(venues.items())},
+        "venues": {v: venue_block(sorted(venues[v]))
+                   for v in VENUE_ORDER if v in venues},
         "scope": {
             "binance_is_the_untested_cell": (
                 "Binance carries no fill ledger and no local trade archive, so "

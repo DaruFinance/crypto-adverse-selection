@@ -99,11 +99,14 @@ def main() -> None:
                 "Bybit        Lee-Ready    ", signrule["bybit_perp"], "lee_ready"),
             "signrule_bybit_tick": _signrule_row(
                 "Bybit        tick rule    ", signrule["bybit_perp"], "tick"),
+            "signrule_binance_lee_ready": _signrule_row(
+                "Binance      Lee-Ready    ", signrule["binance_um"], "lee_ready"),
+            "signrule_binance_tick": _signrule_row(
+                "Binance      tick rule    ", signrule["binance_um"], "tick"),
             "signrule_hl_lee_ready": _signrule_row(
                 "Hyperliquid  Lee-Ready    ", signrule["hyperliquid"], "lee_ready"),
             "signrule_hl_tick": _signrule_row(
                 "Hyperliquid  tick rule    ", signrule["hyperliquid"], "tick"),
-            "signrule_binance_untested": "Binance carries no trade archive here and is the untested cell",
             "multiplicity_bh": (
                 f"{multiplicity['counts']['raw_below_alpha']} clear zero at raw p below 0.05 "
                 f"and all {multiplicity['counts']['bh_below_alpha_both_horizons']} survive "

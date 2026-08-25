@@ -42,24 +42,29 @@
       "qualification": "Raw venue archives and the raw-to-derived measurement stage are outside this repository."
     },
     {
-      "claim": "Lee-Ready and the plain tick rule agree with the exchange aggressor flag on 93.2 and 89.8 percent of Bybit trades and 91.8 and 89.4 percent of Hyperliquid trades.",
+      "claim": "Lee-Ready and the plain tick rule agree with the exchange aggressor flag on 93.2 and 89.8 percent of Bybit trades, 98.2 and 91.3 percent of Binance USD-M trades and 93.6 and 89.4 percent of Hyperliquid trades.",
       "evidence": "sign_rule_counterfactual.json",
       "qualification": "Accuracy is agreement with the venue's own flag, taken as ground truth. Per-coin accuracy is far more dispersed than the pooled figure."
     },
     {
-      "claim": "The sign of the pooled net entry markout is unchanged when either classifier replaces the exchange flag, on both venues where the test could be run.",
+      "claim": "The sign of the pooled net entry markout is unchanged when either classifier replaces the exchange flag, on all three venues.",
       "evidence": "sign_rule_counterfactual.json",
-      "qualification": "Binance carries no trade archive here and is untested rather than tested and agreeing."
+      "qualification": "Accuracy is agreement with the venue's own flag, taken as ground truth. The quote for Lee-Ready is the last one strictly before the trade; an at-or-before lookup reads the post-trade book on a feed whose book updates share the trade's timestamp."
     },
     {
-      "claim": "A classifier moves the pooled net entry markout by 3 to 5 percent of its magnitude on Bybit and 15 to 17 percent on Hyperliquid, in opposite directions.",
+      "claim": "A classifier moves the pooled net entry markout by 0.8 to 12.4 percent of its magnitude on the two centralized venues and by 17.4 to 23.5 percent on the on-chain one, in the opposite direction.",
       "evidence": "sign_rule_counterfactual.json",
-      "qualification": "These are point estimates. One of the four paired errors clears zero; the other three intervals contain it. Part of each error is a change in which fills occurred rather than in how they were signed."
+      "qualification": "Three of the six paired errors clear zero and three contain it. Part of each error is a change in which fills occurred rather than in how they were signed."
     },
     {
       "claim": "Of the 70 per-coin cells that return a verdict, 56 clear zero at raw p below 0.05, all 56 survive Benjamini-Hochberg and 54 survive Benjamini-Yekutieli.",
       "evidence": "per_coin_multiplicity.json",
       "qualification": "The p-values invert the shipped month-clustered t interval, so they inherit its coverage properties. Multiplicity is not what limits this surface; abstention and lack of power are."
+    },
+    {
+      "claim": "A classifier's agreement rate does not order its markout error across venues: Hyperliquid's Lee-Ready is more accurate than Bybit's and carries roughly seven times the error as a share of its own effect.",
+      "evidence": "sign_rule_counterfactual.json",
+      "qualification": "Three venues are three points. This establishes that accuracy does not order the error, not what does."
     }
   ],
   "prohibited": [
@@ -75,7 +80,8 @@
     "The result is a tradeable edge or a walk-forward strategy result.",
     "A constant correction can remove the bias a trade-sign classifier introduces.",
     "Lee-Ready and the tick rule are unbiased on crypto perpetual tape.",
-    "The trade-sign counterfactual holds on Binance.",
-    "The per-coin surface is 96 independent tests."
+    "The per-coin surface is 96 independent tests.",
+    "A classifier accurate enough on one venue is accurate enough on another.",
+    "A higher sign-classification accuracy implies a smaller markout bias."
   ]
 }

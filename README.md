@@ -74,20 +74,35 @@ under each rule:
 
 ```text
 Venue        Rule            Accuracy  Capture  Adverse  Net      Error   Fills
-Bybit        exchange flag      1.000    0.206   -1.044   -0.839       .  1.000
-Bybit        Lee-Ready          0.932    0.216   -1.026   -0.810  +0.029  1.061
-Bybit        tick rule          0.898    0.201   -0.997   -0.796  +0.043  0.937
-Hyperliquid  exchange flag      1.000    0.560   -1.017   -0.458       .  1.000
-Hyperliquid  Lee-Ready          0.918    0.533   -1.057   -0.524  -0.067  1.118
-Hyperliquid  tick rule          0.894    0.547   -1.084   -0.537  -0.080  0.930
+Bybit        exchange flag   1.000    0.206   -1.044   -0.839        .  1.000
+Bybit        Lee-Ready       0.932    0.216   -1.027   -0.810   +0.028  1.060
+Bybit        tick rule       0.898    0.201   -0.997   -0.796   +0.043  0.937
+Binance      exchange flag   1.000    0.460   -0.852   -0.391        .  1.000
+Binance      Lee-Ready       0.982    0.461   -0.849   -0.388   +0.003  0.998
+Binance      tick rule       0.913    0.459   -0.802   -0.343   +0.048  1.011
+Hyperliquid  exchange flag   1.000    0.560   -1.017   -0.458        .  1.000
+Hyperliquid  Lee-Ready       0.936    0.518   -1.083   -0.565   -0.108  1.082
+Hyperliquid  tick rule       0.894    0.547   -1.084   -0.537   -0.080  0.930
 ```
 
-The sign of the result survives both classifiers on both venues. The magnitude
-moves by 3 to 5 percent on Bybit and 15 to 17 percent on Hyperliquid, in
-opposite directions, so no constant correction is available. One of the four
-errors clears zero. A rule also changes which fills happen, not only how they
-are signed, which is what the fills column is. Binance carries no trade archive
-here and is the untested cell.
+The sign of the result survives both classifiers on all three venues. The
+magnitude moves by 3.4 and 5.1 percent on Bybit, 0.8 and 12.4 on Binance and
+23.5 and 17.4 on Hyperliquid, and the two centralized venues move it the
+opposite way from the on-chain one, so no constant correction is available.
+Three of the six errors clear zero.
+
+Accuracy does not order that error across venues. Hyperliquid's Lee-Ready is
+more accurate than Bybit's and carries about seven times the error as a share
+of its own effect; Binance's tick rule is more accurate than Bybit's and carries
+more than twice the share. A rule also changes which fills happen, not only how
+they are signed, which is what the fills column is.
+
+The quote is taken strictly before each trade, not at or before it. That is not
+cosmetic: a book update caused by a trade often carries that trade's timestamp,
+so an at-or-before lookup reads the post-trade book. The share of trades sharing
+a timestamp with a book update is 0.3 percent on Bybit, 8 to 10 on Hyperliquid
+and 52.7 on millisecond-stamped Binance, and on one heavy Binance day the quote
+rule scores 0.620 read one way and 0.996 read the other.
 
 ## Other measured results
 
@@ -128,13 +143,13 @@ The panels have a name and a version so a result can be quoted against the bytes
 it was computed on.
 
 ```text
-MakerCEX Panels, version 1.0.0
+MakerCEX Panels, version 1.1.0
   9 aggregate coin-day panels, 3 venues, 2023-04 to 2026-05
   9,983 coin-days, 125,828,922 simulated fills
   every panel's SHA-256 recorded in reproduce/lineage.json
 ```
 
-Cite as: Gatto, D. V. (2026). *MakerCEX Panels, version 1.0.0.*
+Cite as: Gatto, D. V. (2026). *MakerCEX Panels, version 1.1.0.*
 https://github.com/DaruFinance/crypto-adverse-selection
 
 The version changes when a panel's bytes change. Run your own estimators against
@@ -356,7 +371,7 @@ against the shipped result files and rejects prohibited phrases.
   author = {Gatto, Daniel V.},
   title  = {MakerCEX Panels},
   year   = {2026},
-  note   = {Version 1.0.0},
+  note   = {Version 1.1.0},
   url    = {https://github.com/DaruFinance/crypto-adverse-selection}
 }
 ```

@@ -26,36 +26,36 @@
         },
         "lee_ready": {
           "label": "Lee-Ready",
-          "sign_accuracy": 0.93236292149175,
-          "sign_accuracy_size_weighted": 0.9458499281620997,
-          "n_fills": 48252517,
-          "capture_bp_10s": 0.21637000346719734,
-          "adverse_bp_10s": -1.0264272819607732,
-          "net_bp_10s": -0.8100572947263663,
-          "capture_bp_60s": 0.21637000346719734,
-          "adverse_bp_60s": -1.0276922509195117,
-          "net_bp_60s": -0.8113222535770518,
+          "sign_accuracy": 0.9315641772459765,
+          "sign_accuracy_size_weighted": 0.9451511753822385,
+          "n_fills": 48216335,
+          "capture_bp_10s": 0.21627818415906147,
+          "adverse_bp_10s": -1.0265654908633142,
+          "net_bp_10s": -0.810287285371379,
+          "capture_bp_60s": 0.21627818415906147,
+          "adverse_bp_60s": -1.027932259515411,
+          "net_bp_60s": -0.8116540836492445,
           "sign_accuracy_by_coin": {
-            "ARB": 0.9493559629444185,
-            "AVAX": 0.9456007136729303,
-            "BNB": 0.9602076358493918,
-            "BTC": 0.947641855728227,
-            "DOGE": 0.8883292597576109,
-            "ETH": 0.9414512303372792,
-            "HYPE": 0.9377390031688252,
-            "LINK": 0.9485591921420684,
-            "LTC": 0.95259264103782,
-            "OP": 0.9301068259562645,
-            "SOL": 0.9286369178947288,
-            "SUI": 0.9390428325124183,
-            "XRP": 0.9150894552853288
+            "ARB": 0.9488143205642455,
+            "AVAX": 0.9449411219061868,
+            "BNB": 0.9597418480626485,
+            "BTC": 0.9471078359025797,
+            "DOGE": 0.8870036308478322,
+            "ETH": 0.9407674628120122,
+            "HYPE": 0.9367241063572022,
+            "LINK": 0.9478650007589132,
+            "LTC": 0.9520441427203098,
+            "OP": 0.9293074753290387,
+            "SOL": 0.927788592594842,
+            "SUI": 0.9382554596239301,
+            "XRP": 0.9140466042160262
           },
-          "net_error_bp_10s": 0.028678913265195227,
-          "net_error_bp_60s": 0.022985934206496195,
-          "capture_error_bp_10s": 0.010684601033875224,
-          "adverse_error_bp_10s": 0.017994342763801408,
-          "fill_count_ratio": 1.0610541362702426,
-          "net_error_as_share_of_truth": 0.0341930072792133
+          "net_error_bp_10s": 0.028448922620182615,
+          "net_error_bp_60s": 0.022654104134303465,
+          "capture_error_bp_10s": 0.010592781725739353,
+          "adverse_error_bp_10s": 0.017856133861260393,
+          "fill_count_ratio": 1.0602585081217972,
+          "net_error_as_share_of_truth": 0.03391879633801244
         },
         "tick": {
           "label": "tick rule",
@@ -93,22 +93,22 @@
       },
       "net_error_10s": {
         "lee_ready": {
-          "point": 0.03232336302780511,
+          "point": 0.03209678769183353,
           "ci95": [
-            0.023834868712339346,
-            0.03952756386280069
+            0.02339538450343123,
+            0.03943320219370884
           ],
           "ci95_t": [
-            0.023909255176102914,
-            0.04073747087950731
+            0.02353500387575927,
+            0.04065857150790779
           ],
-          "se_cluster": 0.004056946890888234,
+          "se_cluster": 0.004128150345262421,
           "t_degrees_of_freedom": 22,
           "t_degrees_of_freedom_verdict": 4,
-          "se_used_for_verdict": 0.01171829350108243,
+          "se_used_for_verdict": 0.011611206786860518,
           "ci95_t_two_way": [
-            -0.00020661973119971005,
-            0.06485334578680993
+            -0.00013592234849126722,
+            0.06432949773215832
           ],
           "verdict_is_two_way": true,
           "two_way_variance_was_negative": false,
@@ -153,22 +153,22 @@
       },
       "net_error_60s": {
         "lee_ready": {
-          "point": 0.02655758739175448,
+          "point": 0.026260088405211733,
           "ci95": [
-            0.013137461189663134,
-            0.037632795629442724
+            0.012413326392870712,
+            0.037647698172617726
           ],
           "ci95_t": [
-            0.013155243395565114,
-            0.03995993138794385
+            0.012505199514577703,
+            0.040014977295845765
           ],
-          "se_cluster": 0.006462075215134699,
+          "se_cluster": 0.0066320582886374305,
           "t_degrees_of_freedom": 22,
           "t_degrees_of_freedom_verdict": 4,
-          "se_used_for_verdict": 0.011043283531626112,
+          "se_used_for_verdict": 0.010957141123149888,
           "ci95_t_two_way": [
-            -0.004098567692039604,
-            0.057213742475548564
+            -0.004156935352652352,
+            0.05667711216307582
           ],
           "verdict_is_two_way": true,
           "two_way_variance_was_negative": false,
@@ -212,6 +212,210 @@
         }
       }
     },
+    "binance_um": {
+      "n_coindays": 4785,
+      "by_rule": {
+        "true": {
+          "label": "exchange aggressor flag",
+          "sign_accuracy": 1.0,
+          "sign_accuracy_size_weighted": 1.0,
+          "n_fills": 78408624,
+          "capture_bp_10s": 0.46044582195939315,
+          "adverse_bp_10s": -0.8516088050537145,
+          "net_bp_10s": -0.3911629808904949,
+          "capture_bp_60s": 0.46044582195939315,
+          "adverse_bp_60s": -0.8442882398643675,
+          "net_bp_60s": -0.3838424001361763
+        },
+        "lee_ready": {
+          "label": "Lee-Ready",
+          "sign_accuracy": 0.9820915597617305,
+          "sign_accuracy_size_weighted": 0.9837745680607654,
+          "n_fills": 78238554,
+          "capture_bp_10s": 0.4605597720686914,
+          "adverse_bp_10s": -0.8487688094336202,
+          "net_bp_10s": -0.3882090393807125,
+          "capture_bp_60s": 0.4605597720686914,
+          "adverse_bp_60s": -0.8407256772250672,
+          "net_bp_60s": -0.38016590154145746,
+          "sign_accuracy_by_coin": {
+            "1000PEPEUSDT": 0.9910905658703874,
+            "1000SHIBUSDT": 0.9917721192239894,
+            "ADAUSDT": 0.9962453366277082,
+            "ARBUSDT": 0.9935729340307922,
+            "AVAXUSDT": 0.9950250749788425,
+            "BNBUSDT": 0.9945614317873627,
+            "BTCUSDT": 0.960079905492847,
+            "DOGEUSDT": 0.9922135473144106,
+            "ETHUSDT": 0.960710473710729,
+            "LINKUSDT": 0.9949140858369887,
+            "LTCUSDT": 0.9950344327607719,
+            "OPUSDT": 0.9941287454019884,
+            "SOLUSDT": 0.9924814764055848,
+            "SUIUSDT": 0.9925967207968848,
+            "XRPUSDT": 0.9947833576598665
+          },
+          "net_error_bp_10s": 0.0029539415097823984,
+          "net_error_bp_60s": 0.0036764985947188578,
+          "capture_error_bp_10s": 0.00011395010929826643,
+          "adverse_error_bp_10s": 0.0028399956200942933,
+          "fill_count_ratio": 0.9978309783882957,
+          "net_error_as_share_of_truth": 0.007551689843087035
+        },
+        "tick": {
+          "label": "tick rule",
+          "sign_accuracy": 0.9132765500573935,
+          "sign_accuracy_size_weighted": 0.9395285069783393,
+          "n_fills": 79300008,
+          "capture_bp_10s": 0.4589412512450314,
+          "adverse_bp_10s": -0.8017519888698247,
+          "net_bp_10s": -0.3428107356337215,
+          "capture_bp_60s": 0.4589412512450314,
+          "adverse_bp_60s": -0.7991332902270326,
+          "net_bp_60s": -0.3401920541248117,
+          "sign_accuracy_by_coin": {
+            "1000PEPEUSDT": 0.8887128768669647,
+            "1000SHIBUSDT": 0.8776462672565319,
+            "ADAUSDT": 0.8749314759763963,
+            "ARBUSDT": 0.8483715159256839,
+            "AVAXUSDT": 0.8738970473427251,
+            "BNBUSDT": 0.8970837999762329,
+            "BTCUSDT": 0.9732822841980074,
+            "DOGEUSDT": 0.8808119957486292,
+            "ETHUSDT": 0.9673739446230393,
+            "LINKUSDT": 0.863262413573556,
+            "LTCUSDT": 0.878338717797233,
+            "OPUSDT": 0.869542118404543,
+            "SOLUSDT": 0.9021046193644483,
+            "SUIUSDT": 0.8560963247252233,
+            "XRPUSDT": 0.925588779671851
+          },
+          "net_error_bp_10s": 0.048352245256773396,
+          "net_error_bp_60s": 0.04365034601136464,
+          "capture_error_bp_10s": -0.0015045707143617748,
+          "adverse_error_bp_10s": 0.04985681618388982,
+          "fill_count_ratio": 1.0113684433487826,
+          "net_error_as_share_of_truth": 0.12361150624912916
+        }
+      },
+      "net_error_10s": {
+        "lee_ready": {
+          "point": 0.0025171656235288605,
+          "ci95": [
+            0.0018896445569436678,
+            0.0029467855921229236
+          ],
+          "ci95_t": [
+            0.0018619478985267965,
+            0.0031723833485309246
+          ],
+          "se_cluster": 0.00027704766384865285,
+          "t_degrees_of_freedom": 7,
+          "t_degrees_of_freedom_verdict": 7,
+          "se_used_for_verdict": 0.00043858166493474974,
+          "ci95_t_two_way": [
+            0.0014799199859581772,
+            0.003554411261099544
+          ],
+          "verdict_is_two_way": true,
+          "two_way_variance_was_negative": false,
+          "verdict_is_available": true,
+          "clears_zero": true,
+          "clears_zero_percentile": true,
+          "n_clusters": 11,
+          "weight_concentration_clusters": 8.41231408625665,
+          "n_effective_clusters": 8.41231408625665,
+          "verdict_interval": "ci95_t_two_way",
+          "percentile_interval_can_reach_zero": true
+        },
+        "tick": {
+          "point": 0.05226750139090567,
+          "ci95": [
+            0.04439419596204107,
+            0.057047077075811845
+          ],
+          "ci95_t": [
+            0.04459078768712764,
+            0.0599442150946837
+          ],
+          "se_cluster": 0.003245967739441029,
+          "t_degrees_of_freedom": 7,
+          "t_degrees_of_freedom_verdict": 7,
+          "se_used_for_verdict": 0.014947758005991844,
+          "ci95_t_two_way": [
+            0.016916053706734956,
+            0.08761894907507639
+          ],
+          "verdict_is_two_way": true,
+          "two_way_variance_was_negative": false,
+          "verdict_is_available": true,
+          "clears_zero": true,
+          "clears_zero_percentile": true,
+          "n_clusters": 11,
+          "weight_concentration_clusters": 8.41231408625665,
+          "n_effective_clusters": 8.41231408625665,
+          "verdict_interval": "ci95_t_two_way",
+          "percentile_interval_can_reach_zero": false
+        }
+      },
+      "net_error_60s": {
+        "lee_ready": {
+          "point": 0.00330921516876766,
+          "ci95": [
+            0.0025412865441771858,
+            0.004185637589737409
+          ],
+          "ci95_t": [
+            0.0023322894141817223,
+            0.0042861409233535975
+          ],
+          "se_cluster": 0.0004130764290003965,
+          "t_degrees_of_freedom": 7,
+          "t_degrees_of_freedom_verdict": 7,
+          "se_used_for_verdict": 0.0004130764290003965,
+          "ci95_t_two_way": null,
+          "verdict_is_two_way": false,
+          "two_way_variance_was_negative": false,
+          "verdict_is_available": true,
+          "clears_zero": true,
+          "clears_zero_percentile": true,
+          "n_clusters": 11,
+          "weight_concentration_clusters": 8.41231408625665,
+          "n_effective_clusters": 8.41231408625665,
+          "verdict_interval": "ci95_t",
+          "percentile_interval_can_reach_zero": false
+        },
+        "tick": {
+          "point": 0.04753704009293671,
+          "ci95": [
+            0.04154457927680516,
+            0.05256950536011755
+          ],
+          "ci95_t": [
+            0.04088002683755658,
+            0.05419405334831684
+          ],
+          "se_cluster": 0.0028148047591459308,
+          "t_degrees_of_freedom": 7,
+          "t_degrees_of_freedom_verdict": 7,
+          "se_used_for_verdict": 0.013754650613425578,
+          "ci95_t_two_way": [
+            0.015007291392185214,
+            0.0800667887936882
+          ],
+          "verdict_is_two_way": true,
+          "two_way_variance_was_negative": false,
+          "verdict_is_available": true,
+          "clears_zero": true,
+          "clears_zero_percentile": true,
+          "n_clusters": 11,
+          "weight_concentration_clusters": 8.41231408625665,
+          "n_effective_clusters": 8.41231408625665,
+          "verdict_interval": "ci95_t_two_way",
+          "percentile_interval_can_reach_zero": false
+        }
+      }
+    },
     "hyperliquid": {
       "n_coindays": 1580,
       "by_rule": {
@@ -229,43 +433,43 @@
         },
         "lee_ready": {
           "label": "Lee-Ready",
-          "sign_accuracy": 0.9178065355406388,
-          "sign_accuracy_size_weighted": 0.9212978379586094,
-          "n_fills": 2173001,
-          "capture_bp_10s": 0.5325639026641036,
-          "adverse_bp_10s": -1.0569617210567321,
-          "net_bp_10s": -0.5243978749871722,
-          "capture_bp_60s": 0.5325639026641036,
-          "adverse_bp_60s": -1.212694701621398,
-          "net_bp_60s": -0.680130843588659,
+          "sign_accuracy": 0.9362333849130007,
+          "sign_accuracy_size_weighted": 0.9445478616008395,
+          "n_fills": 2103104,
+          "capture_bp_10s": 0.5182959910246949,
+          "adverse_bp_10s": -1.0833608971572497,
+          "net_bp_10s": -0.565064947350678,
+          "capture_bp_60s": 0.5182959910246949,
+          "adverse_bp_60s": -1.2348905042256588,
+          "net_bp_60s": -0.7165945222551999,
           "sign_accuracy_by_coin": {
-            "AAVE": 0.9489450735545522,
-            "APT": 0.93669954756313,
-            "ARB": 0.9141703832869983,
-            "AVAX": 0.9245365280279348,
-            "BNB": 0.9310715939389675,
-            "BTC": 0.9179711048388522,
-            "DOGE": 0.9143062602527765,
-            "ETH": 0.9116214238614712,
-            "HYPE": 0.9205345256003875,
-            "INJ": 0.9451323480324367,
-            "LINK": 0.9227377051297788,
-            "LTC": 0.9324961017978433,
-            "NEAR": 0.9426288666860251,
-            "OP": 0.9489226245424356,
-            "SEI": 0.9299902728560793,
-            "SOL": 0.9166798527926792,
-            "SUI": 0.9026346806010028,
-            "TIA": 0.9111590242970261,
-            "WLD": 0.9330045081562824,
-            "XRP": 0.8965467072502663
+            "AAVE": 0.9725146057844617,
+            "APT": 0.9579127250099869,
+            "ARB": 0.9395771035726043,
+            "AVAX": 0.9457149908776602,
+            "BNB": 0.9500709125801465,
+            "BTC": 0.9424888455706172,
+            "DOGE": 0.9367271664764304,
+            "ETH": 0.9214031897365212,
+            "HYPE": 0.9398308910856304,
+            "INJ": 0.9657538145210445,
+            "LINK": 0.9399424233599627,
+            "LTC": 0.9522038672528315,
+            "NEAR": 0.9624504367635321,
+            "OP": 0.9690605755520955,
+            "SEI": 0.9557877165873874,
+            "SOL": 0.9312345338078808,
+            "SUI": 0.9218882697281907,
+            "TIA": 0.9282567295840339,
+            "WLD": 0.9533620009230538,
+            "XRP": 0.9122729969991383
           },
-          "net_error_bp_10s": -0.06685032827939336,
-          "net_error_bp_60s": -0.04574707041144177,
-          "capture_error_bp_10s": -0.02728754595029359,
-          "adverse_error_bp_10s": -0.039562746639981494,
-          "fill_count_ratio": 1.117637891661695,
-          "net_error_as_share_of_truth": -0.1461057517637365
+          "net_error_bp_10s": -0.10751740064289922,
+          "net_error_bp_60s": -0.08221074907798265,
+          "capture_error_bp_10s": -0.04155545758970225,
+          "adverse_error_bp_10s": -0.06596192274049906,
+          "fill_count_ratio": 1.0816878227415805,
+          "net_error_as_share_of_truth": -0.23498629031348997
         },
         "tick": {
           "label": "tick rule",
@@ -310,21 +514,24 @@
       },
       "net_error_10s": {
         "lee_ready": {
-          "point": -0.057837303132779225,
+          "point": -0.09314331093669637,
           "ci95": [
-            -0.10306560664686033,
-            -0.03183944994217462
+            -0.11698995063971594,
+            -0.07642856303411974
           ],
           "ci95_t": [
-            -0.10469416015560346,
-            -0.010980446109955001
+            -0.11911605175831529,
+            -0.06717057011507745
           ],
-          "se_cluster": 0.018225148589196508,
+          "se_cluster": 0.010102194018521554,
           "t_degrees_of_freedom": 5,
-          "t_degrees_of_freedom_verdict": 5,
-          "se_used_for_verdict": 0.018225148589196508,
-          "ci95_t_two_way": null,
-          "verdict_is_two_way": false,
+          "t_degrees_of_freedom_verdict": 4,
+          "se_used_for_verdict": 0.011234601904901843,
+          "ci95_t_two_way": [
+            -0.12433056582470388,
+            -0.061956056048688854
+          ],
+          "verdict_is_two_way": true,
           "two_way_variance_was_negative": false,
           "verdict_is_available": true,
           "clears_zero": true,
@@ -332,8 +539,8 @@
           "n_clusters": 11,
           "weight_concentration_clusters": 6.302325142208643,
           "n_effective_clusters": 6.302325142208643,
-          "verdict_interval": "ci95_t",
-          "percentile_interval_can_reach_zero": true
+          "verdict_interval": "ci95_t_two_way",
+          "percentile_interval_can_reach_zero": false
         },
         "tick": {
           "point": -0.05270149195126217,
@@ -367,19 +574,19 @@
       },
       "net_error_60s": {
         "lee_ready": {
-          "point": -0.04369829898419981,
+          "point": -0.0791198577277964,
           "ci95": [
-            -0.08438528756127409,
-            -0.019011590832660276
+            -0.10112412726096576,
+            -0.05910199893090912
           ],
           "ci95_t": [
-            -0.08685872372432564,
-            -0.000537874244073977
+            -0.10454255574576282,
+            -0.05369715970982997
           ],
-          "se_cluster": 0.01678740752241378,
+          "se_cluster": 0.009888252826902538,
           "t_degrees_of_freedom": 5,
           "t_degrees_of_freedom_verdict": 5,
-          "se_used_for_verdict": 0.01678740752241378,
+          "se_used_for_verdict": 0.009888252826902538,
           "ci95_t_two_way": null,
           "verdict_is_two_way": false,
           "two_way_variance_was_negative": false,
@@ -390,7 +597,7 @@
           "weight_concentration_clusters": 6.302325142208643,
           "n_effective_clusters": 6.302325142208643,
           "verdict_interval": "ci95_t",
-          "percentile_interval_can_reach_zero": true
+          "percentile_interval_can_reach_zero": false
         },
         "tick": {
           "point": -0.04851891460797827,

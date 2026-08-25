@@ -166,6 +166,8 @@ def sign_rule_rows(root: Path, out: Path):
     sources = [
         ("bybit_perp", "runs/sign_rule/bybit_sign_rules.csv",
          "bybit_perp_coindays.csv"),
+        ("binance_um", "runs/sign_rule/binance_sign_rules.csv",
+         "binance_um_coindays.csv"),
         ("hyperliquid", "runs/sign_rule/hl_sign_rules.csv",
          "hyperliquid_coindays.csv"),
     ]

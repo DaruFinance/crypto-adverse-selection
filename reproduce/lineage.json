@@ -3,8 +3,8 @@
   "dataset": {
     "name": "MakerCEX Panels",
     "id": "makercex-panels",
-    "version": "1.0.0",
-    "description": "Nine aggregate coin-day panels of simulated last-in-queue touch-quoter entry markout on three crypto perpetual venues, two centralized and one an on-chain central limit order book, with a trade-sign counterfactual panel measured against each venue's true aggressor flag.",
+    "version": "1.1.0",
+    "description": "Nine aggregate coin-day panels of simulated last-in-queue touch-quoter entry markout on three crypto perpetual venues, two centralized and one an on-chain central limit order book, with a trade-sign counterfactual panel covering all three venues against their true aggressor flags.",
     "venues": ["bybit_perp", "binance_um", "hyperliquid"],
     "coverage": "2023-04 to 2026-05, 9,983 coin-days, 125,828,922 simulated fills",
     "license": "Code MIT. Panels are provided for reproducibility subject to the original venues' data terms.",
@@ -71,10 +71,10 @@
     },
     "sign_rule_coindays.csv": {
       "source_kind": "file_set",
-      "source_paths": ["runs/sign_rule/bybit_sign_rules.csv", "runs/sign_rule/hl_sign_rules.csv"],
-      "source_sha256": "f311face4a271d2e3f6819e41c4d6746d1e2a0f2773c5ccfe9d07f66a76398ba",
-      "output_sha256": "d4f1fefc92b9ca3c4be43722be7855c51fd62dde4c2de67dd5ffc165713b0e31",
-      "rows": 15594
+      "source_paths": ["runs/sign_rule/binance_sign_rules.csv", "runs/sign_rule/bybit_sign_rules.csv", "runs/sign_rule/hl_sign_rules.csv"],
+      "source_sha256": "e5eb6c6310a8d80b8330278ce340c6e641f6ed4953f2ca80c1c7bc17555facb2",
+      "output_sha256": "e1e22780f2648f7b3e105a479dfbd590dbf9840e7a8d2b9749875d4dcc639178",
+      "rows": 29949
     }
   }
 }
