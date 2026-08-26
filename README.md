@@ -194,10 +194,10 @@ reproduce/
 
 ## Reproducing the papers
 
-This repository is the reproducibility package for *Adverse Selection
-Over-Consumes the Touch for a Last-in-Queue Quoter: A True-Aggressor-Signed
-Entry-Markout Decomposition Across Centralized and On-Chain Crypto Perpetual
-Order Books*, covering the measurement, its results, the interval calibration
+This repository is the reproducibility package for *The Trade That Breaks Even
+on CME Loses Money on Crypto: A True-Aggressor-Signed Entry-Markout
+Decomposition for a Last-in-Queue Quoter Across Bybit, Binance USD-M and
+Hyperliquid*, covering the measurement, its results, the interval calibration
 behind them and the abstention rule, which is reusable on any panel.
 
 Python 3.10 or newer is required. The smoke test finishes in under a minute,
@@ -366,9 +366,9 @@ against the shipped result files and rejects prohibited phrases.
 ```bibtex
 @article{gatto2026adverse,
   author = {Gatto, Daniel V.},
-  title = {Adverse Selection Over-Consumes the Touch: A True-Aggressor-Signed
-           Entry-Markout Decomposition Across Centralized and On-Chain Crypto
-           Perpetual Order Books},
+  title = {The Trade That Breaks Even on CME Loses Money on Crypto: A
+           True-Aggressor-Signed Entry-Markout Decomposition for a
+           Last-in-Queue Quoter Across Bybit, Binance USD-M and Hyperliquid},
   year = {2026}
 }
 
