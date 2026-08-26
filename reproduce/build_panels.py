@@ -1,4 +1,4 @@
-"""Rebuild the nine shipped panels from frozen measurement artifacts.
+"""Rebuild the ten shipped panels from frozen measurement artifacts.
 
 The inputs are derived measurement outputs, not raw order-book archives. Their
 relative paths and hashes are recorded in ``lineage.json``. This script keeps
@@ -48,6 +48,16 @@ CONDITIONAL_COLUMNS = [
 REQUOTE_COLUMNS = [
     "venue", "coin", "date", "gap_ms", "n_fills", "capture_bp",
     "adverse_bp", "net_bp",
+]
+
+DELISTED_COLUMNS = [
+    "venue", "symbol", "date", "n_fills", "mean_fill_size",
+    "spread_capture_bp_10s", "adverse_select_bp_10s", "net_markout_bp_10s",
+    "spread_capture_bp_60s", "adverse_select_bp_60s", "net_markout_bp_60s",
+    "spread_capture_szw_bp_10s", "adverse_select_szw_bp_10s",
+    "net_markout_szw_bp_10s", "spread_capture_szw_bp_60s",
+    "adverse_select_szw_bp_60s", "net_markout_szw_bp_60s", "rv_10s_bp",
+    "maker_fee_bp", "ts_semantics",
 ]
 
 SIGN_RULE_COLUMNS = [
@@ -242,6 +252,8 @@ def build(source_root: Path, out: Path) -> None:
          combined_requote_rows(source_root)),
         ("sign_rule_coindays.csv", SIGN_RULE_COLUMNS,
          sign_rule_rows(source_root, out)),
+        ("delisted_coindays.csv", DELISTED_COLUMNS,
+         core_rows_passthrough(source_root / "runs/surv/delisted_decomp.csv")),
     ]
     for name, columns, rows in jobs:
         count = write_rows(out / name, columns, rows)

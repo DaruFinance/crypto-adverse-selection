@@ -82,6 +82,8 @@
     "Lee-Ready and the tick rule are unbiased on crypto perpetual tape.",
     "The per-coin surface is 96 independent tests.",
     "A classifier accurate enough on one venue is accurate enough on another.",
-    "A higher sign-classification accuracy implies a smaller markout bias."
+    "A higher sign-classification accuracy implies a smaller markout bias.",
+    "The decisions in this section constitute a profitable quoting strategy.",
+    "The measured survivorship bound makes the panel point-in-time or survivorship-free."
   ]
 }

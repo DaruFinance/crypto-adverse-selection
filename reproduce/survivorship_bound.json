@@ -1,0 +1,811 @@
+{
+ "scope": "Bybit and Binance USD-M only. Hyperliquid is out of scope: both of its archive buckets are requester-pays and no listing or delisting record was obtainable.",
+ "design": "Contrast is per delisted coin-day against the live panel's fill-weighted net on the same date, so the live side is reweighted onto the dead coin's calendar. Interval is two-way clustered on month and coin with the library's Kish floor.",
+ "preregistration": "reproduce/preregistration/survivorship_bound.md",
+ "selection_rule": "The ten delisted perpetuals with the most in-window trading days, which are the longest-lived and so the least distressed of the qualifying set. The gap measured on them is expected to understate the gap across all qualifying delistings, making the bound an understatement rather than a conservative overstatement.",
+ "commensurability": {
+  "checked_in": "scripts/surv/validate.py (measurement tree)",
+  "bybit_coindays_reproducing_shipped_panel": "16 of 16",
+  "note": "The delisted rows are measured on the shipped Bybit panel's publish-time book basis, not the engine stamp the order-book parser now prefers, so the contrast carries no book-time shift. Binance bookTicker has a single causal stamp and no such choice arises."
+ },
+ "venues": {
+  "bybit_perp": {
+   "n_delisted_coins": 10,
+   "n_delisted_coindays": 2481,
+   "listed_at_window_start": 206,
+   "delisted_in_window": 30,
+   "death_rate_by_coin": 0.14563106796116504,
+   "window": [
+    "2023-04-01",
+    "2025-08-18"
+   ],
+   "by_horizon": {
+    "10s": {
+     "all": {
+      "gap_bp_fill_weighted": -0.8482868941294648,
+      "gap_bp_mean_over_coins": -0.8673075366274015,
+      "gap_ci95_two_way_month_coin": [
+       -1.0532456573399003,
+       -0.6433281309190293
+      ],
+      "gap_ci95_t_month_only": [
+       -1.0084948367045725,
+       -0.688078951554357
+      ],
+      "gap_ci95_percentile_month": [
+       -0.9920839199254169,
+       -0.7004129423542986
+      ],
+      "gap_verdict_interval": "ci95_t_two_way",
+      "gap_verdict_is_two_way": true,
+      "gap_verdict_is_available": true,
+      "gap_clears_zero": true,
+      "percentile_interval_can_reach_zero": false,
+      "n_coins_negative": 10,
+      "n_coins": 10,
+      "gap_clears_zero_percentile": true,
+      "n_month_clusters": 28,
+      "n_effective_months_kish": 19.802242895957985,
+      "min_effective_clusters_floor": 5,
+      "n_coindays": 2481,
+      "n_dead_fills": 4040938.0,
+      "n_matched_live_fills": 43556218.0,
+      "dead_fill_share_of_measured_set": 0.08489872798282318,
+      "bound_bp_by_coin_count": -0.12630692280981573,
+      "bound_bp_by_fill_weight": -0.07201847827609135,
+      "bound_bp_by_coin_count_worst_case": -0.15338528990386896,
+      "benchmark": "whole live panel",
+      "is_preregistered": true,
+      "dead_fills_per_coinday": 1628.7537283353486,
+      "benchmark_fills_per_coinday": 12569.380320619126,
+      "per_coin": {
+       "BALUSDT": {
+        "gap_bp": -0.8559225744701631,
+        "n_coindays": 285,
+        "n_fills": 127455,
+        "n_months": 28
+       },
+       "BNXUSDT": {
+        "gap_bp": -0.9748289931221008,
+        "n_coindays": 239,
+        "n_fills": 534318,
+        "n_months": 24
+       },
+       "EOSUSDT": {
+        "gap_bp": -0.8034139551641847,
+        "n_coindays": 261,
+        "n_fills": 798699,
+        "n_months": 26
+       },
+       "LEVERUSDT": {
+        "gap_bp": -1.012010868412471,
+        "n_coindays": 253,
+        "n_fills": 408891,
+        "n_months": 26
+       },
+       "LINAUSDT": {
+        "gap_bp": -0.8032678975797566,
+        "n_coindays": 243,
+        "n_fills": 364567,
+        "n_months": 24
+       },
+       "MDTUSDT": {
+        "gap_bp": -0.7815520417418158,
+        "n_coindays": 246,
+        "n_fills": 227788,
+        "n_months": 26
+       },
+       "OMGUSDT": {
+        "gap_bp": -1.0935022992618781,
+        "n_coindays": 265,
+        "n_fills": 317231,
+        "n_months": 27
+       },
+       "REEFUSDT": {
+        "gap_bp": -0.4980002268977192,
+        "n_coindays": 221,
+        "n_fills": 450404,
+        "n_months": 22
+       },
+       "RENUSDT": {
+        "gap_bp": -1.2385933319675415,
+        "n_coindays": 236,
+        "n_fills": 325055,
+        "n_months": 24
+       },
+       "STMXUSDT": {
+        "gap_bp": -0.611983177656384,
+        "n_coindays": 232,
+        "n_fills": 486530,
+        "n_months": 23
+       }
+      }
+     },
+     "all_vs_thin_live": {
+      "gap_bp_fill_weighted": -0.6303725390847702,
+      "gap_bp_mean_over_coins": -0.6470646967491727,
+      "gap_ci95_two_way_month_coin": [
+       -0.8396393544024399,
+       -0.4211057237671006
+      ],
+      "gap_ci95_t_month_only": [
+       -0.8022165256528102,
+       -0.45852855251673014
+      ],
+      "gap_ci95_percentile_month": [
+       -0.7925149054661224,
+       -0.4795439824307729
+      ],
+      "gap_verdict_interval": "ci95_t_two_way",
+      "gap_verdict_is_two_way": true,
+      "gap_verdict_is_available": true,
+      "gap_clears_zero": true,
+      "percentile_interval_can_reach_zero": false,
+      "n_coins_negative": 10,
+      "n_coins": 10,
+      "gap_clears_zero_percentile": true,
+      "n_month_clusters": 28,
+      "n_effective_months_kish": 19.802242895957985,
+      "min_effective_clusters_floor": 5,
+      "n_coindays": 2481,
+      "n_dead_fills": 4040938.0,
+      "n_matched_live_fills": 43556218.0,
+      "dead_fill_share_of_measured_set": 0.08489872798282318,
+      "bound_bp_by_coin_count": -0.09423272282754941,
+      "bound_bp_by_fill_weight": -0.053517826723599476,
+      "bound_bp_by_coin_count_worst_case": -0.12227757588385046,
+      "benchmark": "least active third of the live panel",
+      "is_preregistered": false,
+      "dead_fills_per_coinday": 1628.7537283353486,
+      "benchmark_fills_per_coinday": 4634.18813559322,
+      "per_coin": {
+       "BALUSDT": {
+        "gap_bp": -0.6433068848629161,
+        "n_coindays": 285,
+        "n_fills": 127455,
+        "n_months": 28
+       },
+       "BNXUSDT": {
+        "gap_bp": -0.7827901085031884,
+        "n_coindays": 239,
+        "n_fills": 534318,
+        "n_months": 24
+       },
+       "EOSUSDT": {
+        "gap_bp": -0.5809274544290628,
+        "n_coindays": 261,
+        "n_fills": 798699,
+        "n_months": 26
+       },
+       "LEVERUSDT": {
+        "gap_bp": -0.7649774736798579,
+        "n_coindays": 253,
+        "n_fills": 408891,
+        "n_months": 26
+       },
+       "LINAUSDT": {
+        "gap_bp": -0.5824427561449332,
+        "n_coindays": 243,
+        "n_fills": 364567,
+        "n_months": 24
+       },
+       "MDTUSDT": {
+        "gap_bp": -0.5462961215365565,
+        "n_coindays": 246,
+        "n_fills": 227788,
+        "n_months": 26
+       },
+       "OMGUSDT": {
+        "gap_bp": -0.8539084243924489,
+        "n_coindays": 265,
+        "n_fills": 317231,
+        "n_months": 27
+       },
+       "REEFUSDT": {
+        "gap_bp": -0.3180389778090343,
+        "n_coindays": 221,
+        "n_fills": 450404,
+        "n_months": 22
+       },
+       "RENUSDT": {
+        "gap_bp": -0.995782609167908,
+        "n_coindays": 236,
+        "n_fills": 325055,
+        "n_months": 24
+       },
+       "STMXUSDT": {
+        "gap_bp": -0.40217615696581993,
+        "n_coindays": 232,
+        "n_fills": 486530,
+        "n_months": 23
+       }
+      }
+     }
+    },
+    "60s": {
+     "all": {
+      "gap_bp_fill_weighted": -0.8056284338442441,
+      "gap_bp_mean_over_coins": -0.8547485027126811,
+      "gap_ci95_two_way_month_coin": null,
+      "gap_ci95_t_month_only": [
+       -0.9810540625508797,
+       -0.6302028051376085
+      ],
+      "gap_ci95_percentile_month": [
+       -0.9641603890811664,
+       -0.6377717515888051
+      ],
+      "gap_verdict_interval": "ci95_t",
+      "gap_verdict_is_two_way": false,
+      "gap_verdict_is_available": true,
+      "gap_clears_zero": true,
+      "percentile_interval_can_reach_zero": false,
+      "n_coins_negative": 10,
+      "n_coins": 10,
+      "gap_clears_zero_percentile": true,
+      "n_month_clusters": 28,
+      "n_effective_months_kish": 19.802242895957985,
+      "min_effective_clusters_floor": 5,
+      "n_coindays": 2481,
+      "n_dead_fills": 4040938.0,
+      "n_matched_live_fills": 43556218.0,
+      "dead_fill_share_of_measured_set": 0.08489872798282318,
+      "bound_bp_by_coin_count": -0.12447793728825453,
+      "bound_bp_by_fill_weight": -0.06839682926017034,
+      "bound_bp_by_coin_count_worst_case": -0.14287195085692422,
+      "benchmark": "whole live panel",
+      "is_preregistered": true,
+      "dead_fills_per_coinday": 1628.7537283353486,
+      "benchmark_fills_per_coinday": 12569.380320619126,
+      "per_coin": {
+       "BALUSDT": {
+        "gap_bp": -0.9911948608954823,
+        "n_coindays": 285,
+        "n_fills": 127455,
+        "n_months": 28
+       },
+       "BNXUSDT": {
+        "gap_bp": -0.9179286398519033,
+        "n_coindays": 239,
+        "n_fills": 534318,
+        "n_months": 24
+       },
+       "EOSUSDT": {
+        "gap_bp": -0.7322615504200364,
+        "n_coindays": 261,
+        "n_fills": 798699,
+        "n_months": 26
+       },
+       "LEVERUSDT": {
+        "gap_bp": -0.7593787211699702,
+        "n_coindays": 253,
+        "n_fills": 408891,
+        "n_months": 26
+       },
+       "LINAUSDT": {
+        "gap_bp": -0.9317249016394457,
+        "n_coindays": 243,
+        "n_fills": 364567,
+        "n_months": 24
+       },
+       "MDTUSDT": {
+        "gap_bp": -1.123498703146592,
+        "n_coindays": 246,
+        "n_fills": 227788,
+        "n_months": 26
+       },
+       "OMGUSDT": {
+        "gap_bp": -0.9574965177491406,
+        "n_coindays": 265,
+        "n_fills": 317231,
+        "n_months": 27
+       },
+       "REEFUSDT": {
+        "gap_bp": -0.4007652583347885,
+        "n_coindays": 221,
+        "n_fills": 450404,
+        "n_months": 22
+       },
+       "RENUSDT": {
+        "gap_bp": -1.1133887865146237,
+        "n_coindays": 236,
+        "n_fills": 325055,
+        "n_months": 24
+       },
+       "STMXUSDT": {
+        "gap_bp": -0.6198470874048292,
+        "n_coindays": 232,
+        "n_fills": 486530,
+        "n_months": 23
+       }
+      }
+     },
+     "all_vs_thin_live": {
+      "gap_bp_fill_weighted": -0.573856694128061,
+      "gap_bp_mean_over_coins": -0.6243333614856377,
+      "gap_ci95_two_way_month_coin": null,
+      "gap_ci95_t_month_only": [
+       -0.7905306780593604,
+       -0.3571827101967615
+      ],
+      "gap_ci95_percentile_month": [
+       -0.7759080884280406,
+       -0.384551427637391
+      ],
+      "gap_verdict_interval": "ci95_t",
+      "gap_verdict_is_two_way": false,
+      "gap_verdict_is_available": true,
+      "gap_clears_zero": true,
+      "percentile_interval_can_reach_zero": true,
+      "n_coins_negative": 10,
+      "n_coins": 10,
+      "gap_clears_zero_percentile": true,
+      "n_month_clusters": 28,
+      "n_effective_months_kish": 19.802242895957985,
+      "min_effective_clusters_floor": 5,
+      "n_coindays": 2481,
+      "n_dead_fills": 4040938.0,
+      "n_matched_live_fills": 43556218.0,
+      "dead_fill_share_of_measured_set": 0.08489872798282318,
+      "bound_bp_by_coin_count": -0.09092233419693752,
+      "bound_bp_by_fill_weight": -0.04871970337590041,
+      "bound_bp_by_coin_count_worst_case": -0.1151258269018486,
+      "benchmark": "least active third of the live panel",
+      "is_preregistered": false,
+      "dead_fills_per_coinday": 1628.7537283353486,
+      "benchmark_fills_per_coinday": 4634.18813559322,
+      "per_coin": {
+       "BALUSDT": {
+        "gap_bp": -0.7789923283991197,
+        "n_coindays": 285,
+        "n_fills": 127455,
+        "n_months": 28
+       },
+       "BNXUSDT": {
+        "gap_bp": -0.7166387870163574,
+        "n_coindays": 239,
+        "n_fills": 534318,
+        "n_months": 24
+       },
+       "EOSUSDT": {
+        "gap_bp": -0.48912429765297044,
+        "n_coindays": 261,
+        "n_fills": 798699,
+        "n_months": 26
+       },
+       "LEVERUSDT": {
+        "gap_bp": -0.4994931839308709,
+        "n_coindays": 253,
+        "n_fills": 408891,
+        "n_months": 26
+       },
+       "LINAUSDT": {
+        "gap_bp": -0.684278777164253,
+        "n_coindays": 243,
+        "n_fills": 364567,
+        "n_months": 24
+       },
+       "MDTUSDT": {
+        "gap_bp": -0.8854147133533871,
+        "n_coindays": 246,
+        "n_fills": 227788,
+        "n_months": 26
+       },
+       "OMGUSDT": {
+        "gap_bp": -0.7566915152214294,
+        "n_coindays": 265,
+        "n_fills": 317231,
+        "n_months": 27
+       },
+       "REEFUSDT": {
+        "gap_bp": -0.23371709381952616,
+        "n_coindays": 221,
+        "n_fills": 450404,
+        "n_months": 22
+       },
+       "RENUSDT": {
+        "gap_bp": -0.8545477043003411,
+        "n_coindays": 236,
+        "n_fills": 325055,
+        "n_months": 24
+       },
+       "STMXUSDT": {
+        "gap_bp": -0.3444352139981224,
+        "n_coindays": 232,
+        "n_fills": 486530,
+        "n_months": 23
+       }
+      }
+     }
+    }
+   },
+   "thin_live_benchmark_coins": [
+    "ARB",
+    "AVAX",
+    "BNB",
+    "LTC"
+   ]
+  },
+  "binance_um": {
+   "n_delisted_coins": 4,
+   "n_delisted_coindays": 970,
+   "listed_at_window_start": 185,
+   "delisted_in_window": 4,
+   "death_rate_by_coin": 0.021621621621621623,
+   "window": [
+    "2023-05-16",
+    "2024-03-29"
+   ],
+   "by_horizon": {
+    "10s": {
+     "all": {
+      "gap_bp_fill_weighted": 0.06218605647404391,
+      "gap_bp_mean_over_coins": 0.12592035806341775,
+      "gap_ci95_two_way_month_coin": [
+       -0.9630942894828396,
+       1.0874664024309275
+      ],
+      "gap_ci95_t_month_only": [
+       -0.01692819843626473,
+       0.14130031138435256
+      ],
+      "gap_ci95_percentile_month": [
+       -0.005318412962390295,
+       0.12580039592957729
+      ],
+      "gap_verdict_interval": "ci95_t_two_way",
+      "gap_verdict_is_two_way": true,
+      "gap_verdict_is_available": true,
+      "gap_clears_zero": false,
+      "percentile_interval_can_reach_zero": true,
+      "n_coins_negative": 2,
+      "n_coins": 4,
+      "gap_clears_zero_percentile": false,
+      "n_month_clusters": 11,
+      "n_effective_months_kish": 8.482576586785495,
+      "min_effective_clusters_floor": 5,
+      "n_coindays": 970,
+      "n_dead_fills": 5351195.0,
+      "n_matched_live_fills": 77148325.0,
+      "dead_fill_share_of_measured_set": 0.06486334708371637,
+      "bound_bp_by_coin_count": 0.00272260233650633,
+      "bound_bp_by_fill_weight": 0.004033595764843498,
+      "bound_bp_by_coin_count_worst_case": 0.023512787079587625,
+      "benchmark": "whole live panel",
+      "is_preregistered": true,
+      "dead_fills_per_coinday": 5516.69587628866,
+      "benchmark_fills_per_coinday": 16386.337304075234,
+      "per_coin": {
+       "BLUEBIRDUSDT": {
+        "gap_bp": -0.048424847275614455,
+        "n_coindays": 316,
+        "n_fills": 252265,
+        "n_months": 11
+       },
+       "FOOTBALLUSDT": {
+        "gap_bp": 0.40319378660399047,
+        "n_coindays": 316,
+        "n_fills": 490353,
+        "n_months": 11
+       },
+       "STRAXUSDT": {
+        "gap_bp": 0.17867798734857965,
+        "n_coindays": 156,
+        "n_fills": 1364662,
+        "n_months": 6
+       },
+       "TOMOUSDT": {
+        "gap_bp": -0.029765494423284737,
+        "n_coindays": 182,
+        "n_fills": 3243915,
+        "n_months": 7
+       }
+      }
+     },
+     "single_coin_only": {
+      "gap_bp_fill_weighted": 0.03195744060020646,
+      "gap_bp_mean_over_coins": 0.07445624646264745,
+      "gap_ci95_two_way_month_coin": [
+       NaN,
+       NaN
+      ],
+      "gap_ci95_t_month_only": [
+       -0.061261155147431176,
+       0.12517603634784408
+      ],
+      "gap_ci95_percentile_month": [
+       -0.04434591529530591,
+       0.10288577877764192
+      ],
+      "gap_verdict_interval": "none: two-way t on zero df",
+      "gap_verdict_is_two_way": true,
+      "gap_verdict_is_available": false,
+      "gap_clears_zero": false,
+      "percentile_interval_can_reach_zero": true,
+      "n_coins_negative": 1,
+      "n_coins": 2,
+      "gap_clears_zero_percentile": false,
+      "n_month_clusters": 11,
+      "n_effective_months_kish": 7.823556183564247,
+      "min_effective_clusters_floor": 5,
+      "n_coindays": 338,
+      "n_dead_fills": 4608577.0,
+      "n_matched_live_fills": 70713421.0,
+      "dead_fill_share_of_measured_set": 0.06118500733344859,
+      "bound_bp_by_coin_count": 0.0016098647883815665,
+      "bound_bp_by_fill_weight": 0.0019553162374818796,
+      "bound_bp_by_coin_count_worst_case": null,
+      "benchmark": "whole live panel",
+      "is_preregistered": true,
+      "dead_fills_per_coinday": 13634.843195266272,
+      "benchmark_fills_per_coinday": 16386.337304075234,
+      "per_coin": {
+       "STRAXUSDT": {
+        "gap_bp": 0.17867798734857965,
+        "n_coindays": 156,
+        "n_fills": 1364662,
+        "n_months": 6
+       },
+       "TOMOUSDT": {
+        "gap_bp": -0.029765494423284737,
+        "n_coindays": 182,
+        "n_fills": 3243915,
+        "n_months": 7
+       }
+      }
+     },
+     "all_vs_thin_live": {
+      "gap_bp_fill_weighted": -0.02240367182621394,
+      "gap_bp_mean_over_coins": 0.035057277949906304,
+      "gap_ci95_two_way_month_coin": [
+       -0.9750019190037593,
+       0.9301945753513314
+      ],
+      "gap_ci95_t_month_only": [
+       -0.12828563539495755,
+       0.08347829174252966
+      ],
+      "gap_ci95_percentile_month": [
+       -0.1180082257961157,
+       0.04966702232204936
+      ],
+      "gap_verdict_interval": "ci95_t_two_way",
+      "gap_verdict_is_two_way": true,
+      "gap_verdict_is_available": true,
+      "gap_clears_zero": false,
+      "percentile_interval_can_reach_zero": true,
+      "n_coins_negative": 2,
+      "n_coins": 4,
+      "gap_clears_zero_percentile": false,
+      "n_month_clusters": 11,
+      "n_effective_months_kish": 8.482576586785495,
+      "min_effective_clusters_floor": 5,
+      "n_coindays": 970,
+      "n_dead_fills": 5351195.0,
+      "n_matched_live_fills": 77148325.0,
+      "dead_fill_share_of_measured_set": 0.06486334708371637,
+      "bound_bp_by_coin_count": 0.0007579951989168931,
+      "bound_bp_by_fill_weight": -0.0014531771416133926,
+      "bound_bp_by_coin_count_worst_case": 0.021081122573054258,
+      "benchmark": "least active third of the live panel",
+      "is_preregistered": false,
+      "dead_fills_per_coinday": 5516.69587628866,
+      "benchmark_fills_per_coinday": 7723.933542319749,
+      "per_coin": {
+       "BLUEBIRDUSDT": {
+        "gap_bp": -0.13557766659486295,
+        "n_coindays": 316,
+        "n_fills": 252265,
+        "n_months": 11
+       },
+       "FOOTBALLUSDT": {
+        "gap_bp": 0.302775787597438,
+        "n_coindays": 316,
+        "n_fills": 490353,
+        "n_months": 11
+       },
+       "STRAXUSDT": {
+        "gap_bp": 0.0780452439781675,
+        "n_coindays": 156,
+        "n_fills": 1364662,
+        "n_months": 6
+       },
+       "TOMOUSDT": {
+        "gap_bp": -0.10501425318111736,
+        "n_coindays": 182,
+        "n_fills": 3243915,
+        "n_months": 7
+       }
+      }
+     }
+    },
+    "60s": {
+     "all": {
+      "gap_bp_fill_weighted": 0.08955070223385808,
+      "gap_bp_mean_over_coins": 0.11732777937116348,
+      "gap_ci95_two_way_month_coin": [
+       -0.8447331978898303,
+       1.0238346023575464
+      ],
+      "gap_ci95_t_month_only": [
+       -0.014255313589243021,
+       0.1933567180569592
+      ],
+      "gap_ci95_percentile_month": [
+       0.006073922730787694,
+       0.166548535817988
+      ],
+      "gap_verdict_interval": "ci95_t_two_way",
+      "gap_verdict_is_two_way": true,
+      "gap_verdict_is_available": true,
+      "gap_clears_zero": false,
+      "percentile_interval_can_reach_zero": true,
+      "n_coins_negative": 1,
+      "n_coins": 4,
+      "gap_clears_zero_percentile": true,
+      "n_month_clusters": 11,
+      "n_effective_months_kish": 8.482576586785495,
+      "min_effective_clusters_floor": 5,
+      "n_coindays": 970,
+      "n_dead_fills": 5351195.0,
+      "n_matched_live_fills": 77148325.0,
+      "dead_fill_share_of_measured_set": 0.06486334708371637,
+      "bound_bp_by_coin_count": 0.0025368168512684,
+      "bound_bp_by_fill_weight": 0.005808558280585271,
+      "bound_bp_by_coin_count_worst_case": 0.0221369643752983,
+      "benchmark": "whole live panel",
+      "is_preregistered": true,
+      "dead_fills_per_coinday": 5516.69587628866,
+      "benchmark_fills_per_coinday": 16386.337304075234,
+      "per_coin": {
+       "BLUEBIRDUSDT": {
+        "gap_bp": -0.14534377518617664,
+        "n_coindays": 316,
+        "n_fills": 252265,
+        "n_months": 11
+       },
+       "FOOTBALLUSDT": {
+        "gap_bp": 0.3927507916916091,
+        "n_coindays": 316,
+        "n_fills": 490353,
+        "n_months": 11
+       },
+       "STRAXUSDT": {
+        "gap_bp": 0.21101797001186945,
+        "n_coindays": 156,
+        "n_fills": 1364662,
+        "n_months": 6
+       },
+       "TOMOUSDT": {
+        "gap_bp": 0.010886130967352017,
+        "n_coindays": 182,
+        "n_fills": 3243915,
+        "n_months": 7
+       }
+      }
+     },
+     "single_coin_only": {
+      "gap_bp_fill_weighted": 0.07014787612950711,
+      "gap_bp_mean_over_coins": 0.11095205048961074,
+      "gap_ci95_two_way_month_coin": [
+       NaN,
+       NaN
+      ],
+      "gap_ci95_t_month_only": [
+       -0.05951751765149575,
+       0.19981326991050996
+      ],
+      "gap_ci95_percentile_month": [
+       -0.037112803152238985,
+       0.16068246131244568
+      ],
+      "gap_verdict_interval": "none: two-way t on zero df",
+      "gap_verdict_is_two_way": true,
+      "gap_verdict_is_available": false,
+      "gap_clears_zero": false,
+      "percentile_interval_can_reach_zero": true,
+      "n_coins_negative": 0,
+      "n_coins": 2,
+      "gap_clears_zero_percentile": false,
+      "n_month_clusters": 11,
+      "n_effective_months_kish": 7.823556183564247,
+      "min_effective_clusters_floor": 5,
+      "n_coindays": 338,
+      "n_dead_fills": 4608577.0,
+      "n_matched_live_fills": 70713421.0,
+      "dead_fill_share_of_measured_set": 0.06118500733344859,
+      "bound_bp_by_coin_count": 0.0023989632538294215,
+      "bound_bp_by_fill_weight": 0.004291998315409736,
+      "bound_bp_by_coin_count_worst_case": null,
+      "benchmark": "whole live panel",
+      "is_preregistered": true,
+      "dead_fills_per_coinday": 13634.843195266272,
+      "benchmark_fills_per_coinday": 16386.337304075234,
+      "per_coin": {
+       "STRAXUSDT": {
+        "gap_bp": 0.21101797001186945,
+        "n_coindays": 156,
+        "n_fills": 1364662,
+        "n_months": 6
+       },
+       "TOMOUSDT": {
+        "gap_bp": 0.010886130967352017,
+        "n_coindays": 182,
+        "n_fills": 3243915,
+        "n_months": 7
+       }
+      }
+     },
+     "all_vs_thin_live": {
+      "gap_bp_fill_weighted": 0.05165602750361924,
+      "gap_bp_mean_over_coins": 0.06040258304120536,
+      "gap_ci95_two_way_month_coin": null,
+      "gap_ci95_t_month_only": [
+       -0.08280109859789177,
+       0.18611315360513025
+      ],
+      "gap_ci95_percentile_month": [
+       -0.05249697599658282,
+       0.14696985217001632
+      ],
+      "gap_verdict_interval": "ci95_t",
+      "gap_verdict_is_two_way": false,
+      "gap_verdict_is_available": true,
+      "gap_clears_zero": false,
+      "percentile_interval_can_reach_zero": true,
+      "n_coins_negative": 1,
+      "n_coins": 4,
+      "gap_clears_zero_percentile": false,
+      "n_month_clusters": 11,
+      "n_effective_months_kish": 8.482576586785495,
+      "min_effective_clusters_floor": 5,
+      "n_coindays": 970,
+      "n_dead_fills": 5351195.0,
+      "n_matched_live_fills": 77148325.0,
+      "dead_fill_share_of_measured_set": 0.06486334708371637,
+      "bound_bp_by_coin_count": 0.0013060017954855214,
+      "bound_bp_by_fill_weight": 0.0033505828409332535,
+      "bound_bp_by_coin_count_worst_case": 0.004024068186056871,
+      "benchmark": "least active third of the live panel",
+      "is_preregistered": false,
+      "dead_fills_per_coinday": 5516.69587628866,
+      "benchmark_fills_per_coinday": 7723.933542319749,
+      "per_coin": {
+       "BLUEBIRDUSDT": {
+        "gap_bp": -0.20207568815654758,
+        "n_coindays": 316,
+        "n_fills": 252265,
+        "n_months": 11
+       },
+       "FOOTBALLUSDT": {
+        "gap_bp": 0.3282082139722297,
+        "n_coindays": 316,
+        "n_fills": 490353,
+        "n_months": 11
+       },
+       "STRAXUSDT": {
+        "gap_bp": 0.11075675864769238,
+        "n_coindays": 156,
+        "n_fills": 1364662,
+        "n_months": 6
+       },
+       "TOMOUSDT": {
+        "gap_bp": 0.004721047701446946,
+        "n_coindays": 182,
+        "n_fills": 3243915,
+        "n_months": 7
+       }
+      }
+     }
+    }
+   },
+   "thin_live_benchmark_coins": [
+    "ADAUSDT",
+    "DOGEUSDT",
+    "LINKUSDT",
+    "LTCUSDT",
+    "XRPUSDT"
+   ]
+  }
+ }
+}

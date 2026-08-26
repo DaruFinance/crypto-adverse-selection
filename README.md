@@ -169,7 +169,7 @@ makercex/
 examples/
   run_synthetic.py          sub-minute mechanism and inference smoke test
 reproduce/
-  panels/                   nine aggregate analysis panels
+  panels/                   ten aggregate analysis panels
   analysis/                 panel-to-result producers and checks
   build_panels.py           frozen-artifact-to-panel rebuild and hash check
   lineage.json              dataset identity, source and output hashes, boundary
@@ -258,7 +258,7 @@ python reproduce/analysis/wild_test_calibration.py --out wild_test_calibration.r
 
 ## Panel lineage and data boundary
 
-All nine shipped panels rebuild byte-for-byte from frozen derived measurement
+All ten shipped panels rebuild byte-for-byte from frozen derived measurement
 artifacts. `reproduce/lineage.json` records every source path relative to an
 external artifact root, its SHA-256 hash, each output hash and each row count.
 
