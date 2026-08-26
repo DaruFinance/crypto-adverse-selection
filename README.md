@@ -194,10 +194,9 @@ reproduce/
 
 ## Reproducing the papers
 
-This repository is the reproducibility package for *The Trade That Breaks Even
-on CME Loses Money on Crypto: A True-Aggressor-Signed Entry-Markout
-Decomposition for a Last-in-Queue Quoter Across Bybit, Binance USD-M and
-Hyperliquid*, covering the measurement, its results, the interval calibration
+This repository is the reproducibility package for *Quoting the Touch Does Not
+Pay Its Adverse Selection: A True-Aggressor-Signed Entry-Markout Decomposition
+for a Last-in-Queue Quoter Across Bybit, Binance USD-M and Hyperliquid*, covering the measurement, its results, the interval calibration
 behind them and the abstention rule, which is reusable on any panel.
 
 Python 3.10 or newer is required. The smoke test finishes in under a minute,
@@ -366,7 +365,7 @@ against the shipped result files and rejects prohibited phrases.
 ```bibtex
 @article{gatto2026adverse,
   author = {Gatto, Daniel V.},
-  title = {The Trade That Breaks Even on CME Loses Money on Crypto: A
+  title = {Quoting the Touch Does Not Pay Its Adverse Selection: A
            True-Aggressor-Signed Entry-Markout Decomposition for a
            Last-in-Queue Quoter Across Bybit, Binance USD-M and Hyperliquid},
   year = {2026}
