@@ -2,7 +2,7 @@
 Measure the sign-flip test's size on the month structure these panels carry.
 
 Run from the repository root: python3 reproduce/analysis/wild_test_calibration.py
---out wild_test_calibration.json
+--out wild_test_calibration.rebuilt.json
 
 The sign-flip test is exact only when cluster contributions are symmetric about
 their mean. The coverage sweep stresses that with a lognormal cluster effect,

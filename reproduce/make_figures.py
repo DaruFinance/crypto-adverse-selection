@@ -270,11 +270,10 @@ def fig_conditional_net():
 
 
 
-# The companion methods note's figures. Named apart from the paper's so the two
-# documents never pick up each other's files. The row order below is the note's
-# Table 1 order, which the shipped sweep does not itself carry: figure and table
-# in one document should read the same way round.
-NOTE_ORDER = [
+# The interval-calibration figure. It visualises the coverage sweep behind the
+# calibration section, whose row order the shipped sweep does not itself carry:
+# figure and table should read the same way round.
+CALIB_ORDER = [
     ("cluster count alone", [
         ("8 clusters", "8 clusters"),
         ("11 clusters", "11 clusters"),
@@ -303,11 +302,11 @@ NOTE_ORDER = [
         ("20 clusters, daily shock 1.0", "20 clusters, common daily shock"),
     ]),
 ]
-NOTE_METHODS = [("percentile", "percentile", "#8a94a6"), ("t", "$t$", "#2F6B8C"),
+CALIB_METHODS = [("percentile", "percentile", "#8a94a6"), ("t", "$t$", "#2F6B8C"),
                 ("two_way", "two-way", "#3F8659"), ("wild", "sign-flip", "#A5722C")]
 
 
-def fig_note_coverage():
+def fig_calibration_coverage():
     """Four interval methods against a nominal 0.05, and where they abstain.
 
     The point of the left panel is not any single row but the pattern: the
@@ -323,7 +322,7 @@ def fig_note_coverage():
     # Each family gets its own blank row, so the family name lives in the tick
     # column instead of floating over the data.
     rows, labels, positions, header_rows, bands = [], [], [], [], []
-    for family, members in NOTE_ORDER:
+    for family, members in CALIB_ORDER:
         header_rows.append(len(labels))
         labels.append(family)
         first = len(labels)
@@ -348,9 +347,9 @@ def fig_note_coverage():
                 ha="left", va="center")
 
     for j, r in enumerate(rows):
-        got = [r[k] for k, _, _ in NOTE_METHODS if r[k] is not None]
+        got = [r[k] for k, _, _ in CALIB_METHODS if r[k] is not None]
         ax.plot([min(got), max(got)], [y[j], y[j]], color="#cbd2dc", lw=0.8, zorder=2)
-    for i, (key, label, colour) in enumerate(NOTE_METHODS):
+    for i, (key, label, colour) in enumerate(CALIB_METHODS):
         vals = [r[key] if r[key] is not None else np.nan for r in rows]
         ax.scatter(vals, y + (i - 1.5) * 0.19, s=26, color=colour, label=label,
                    zorder=3, linewidths=0)
@@ -382,7 +381,7 @@ def fig_note_coverage():
     bx.spines["right"].set_visible(False)
 
     fig.subplots_adjust(wspace=0.10)
-    save(fig, "note_fig1_coverage")
+    save(fig, "fig6_calibration_coverage")
 
 def main():
     print("writing figures to reproduce/figures/")
@@ -391,7 +390,7 @@ def main():
     fig_per_coin()
     fig_depth_rebate()
     fig_conditional_net()
-    fig_note_coverage()
+    fig_calibration_coverage()
 
 
 if __name__ == "__main__":

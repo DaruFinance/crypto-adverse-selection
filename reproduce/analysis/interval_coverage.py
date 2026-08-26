@@ -8,7 +8,7 @@ effect that clustering absorbs. The sweep asserts the design is crossed before
 it measures anything.
 
 Run from the repository root: python reproduce/analysis/interval_coverage.py
---out coverage.json
+--out coverage_sweep.rebuilt.json
 
 Every figure the README and the inference module quote about how often these
 intervals reject a true null comes from this script. It draws panels with no

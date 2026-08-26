@@ -1,5 +1,5 @@
 """
-``makercex measure`` — point the measurement at your own dump.
+``makercex measure``: point the measurement at your own dump.
 
 The rest of this package documents and tests the rule; this runs it. Give it
 book snapshots and a trade tape carrying a true aggressor flag and it returns
@@ -10,7 +10,7 @@ firing when the effective cluster count will not support a verdict.
     makercex measure --snapshots book.parquet --trades tape.parquet --horizon 10s
 
 The data boundary stated in the README is about *our* raw archives, which are
-not ours to redistribute. It says nothing about yours, so the runner ships even
+not redistributable here. It says nothing about any other archive, so the runner ships even
 though the archives do not.
 
 What it needs

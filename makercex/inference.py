@@ -31,8 +31,8 @@ The critical value is taken on the effective cluster count rather than the raw
 one. Cluster weights here are fill counts, which span orders of magnitude
 across coins, and a t interval built on the raw count over-rejects badly under
 that skew. The raw-count version, which this module no longer implements, was
-consistently anti-conservative against the effective-count one, though by less
-than was once claimed here: the largest size reproducible from it is near 0.08
+consistently anti-conservative against the effective-count one: the largest
+size reproducible from it is near 0.08
 at 8 clusters, since the two differ only in a t critical value and that is a
 change of about a tenth in interval width. Taking the degrees of freedom from
 the Kish count brings it back near nominal and drifts up with weight skew

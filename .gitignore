@@ -10,3 +10,5 @@ coverage.json
 dist/
 readme_checks.json
 readme_traceability.json
+.pytest_cache/
+.DS_Store

@@ -4,9 +4,9 @@ Compare a rebuilt result file against the shipped one, leaf by leaf.
 Run from the repository root, after writing a rebuild. The README gives the
 output name each rebuild script uses:
 
-    python reproduce/analysis/decomposition_table.py --out dec.json
+    python reproduce/analysis/decomposition_table.py --out decomposition_by_venue.rebuilt.json
     python reproduce/analysis/compare_rebuild.py --shipped
-        decomposition_by_venue.json --rebuilt dec.json
+        decomposition_by_venue.json --rebuilt decomposition_by_venue.rebuilt.json
 
 Every other check here asks whether a number is internally consistent or
 whether the prose matches the data. None of them asks the plainest question:

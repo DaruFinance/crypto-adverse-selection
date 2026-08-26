@@ -3,7 +3,7 @@ Rebuild the Avellaneda-Stoikov quoting arm from its per-coin-day panel.
 
 Run from the repository root:
 
-    python reproduce/analysis/quoting_arm.py --out arm.json
+    python reproduce/analysis/quoting_arm.py --out avellaneda_stoikov_arm.rebuilt.json
 
 The arm quotes with an inventory-skewed reservation price and is scored against
 a passive quote at the touch on the same coin-days. Both legs are measured per

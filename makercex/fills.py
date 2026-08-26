@@ -1,7 +1,7 @@
 """
 Reference implementation of the posting and fill rule behind every panel here.
 
-The README describes this rule in prose under "What a fill is". Prose cannot be
+The README describes this rule in prose under "Measurement rule". Prose cannot be
 checked. This is the same rule as code, and the smoke test asserts each property
 the prose claims.
 

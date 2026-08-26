@@ -12,7 +12,7 @@
     ],
     "coverage": "2023-04 to 2026-05, 9,983 live coin-days, 125,828,922 simulated fills; plus a separate survivorship panel of 3,451 coin-days on 14 delisted perpetuals, which is a control and is not part of the headline sample.",
     "license": "Code MIT. Panels are provided for reproducibility subject to the original venues' data terms.",
-    "citation": "Gatto, D. V. (2026). MakerCEX Panels, version 1.0.0. https://github.com/DaruFinance/crypto-adverse-selection",
+    "citation": "Gatto, D. V. (2026). MakerCEX Panels, version 1.2.0. https://github.com/DaruFinance/crypto-adverse-selection",
     "versioning": "The version changes when a panel's bytes change. Every panel's output hash is recorded below, so a result quoted against a version can be checked against the bytes it was computed on."
   },
   "boundary": "The frozen sources are derived measurement artifacts. Raw venue archives and fill-level ledgers are outside this repository.",
@@ -110,5 +110,68 @@
       "output_sha256": "366050323158a392928ba2ea798a02dce0e0152bca10c307e8498e6e03e513cb",
       "rows": 3451
     }
-  }
+  },
+  "results": {
+    "avellaneda_stoikov_arm.json": {
+      "producer": "reproduce/analysis/quoting_arm.py",
+      "sha256": "539c67e4d12e8b6ebdcd8ec74213ac9341420d2d432f73065ed018b9a33033a9"
+    },
+    "conditional_net_asia.json": {
+      "producer": "reproduce/analysis/conditional_net.py --block asia",
+      "sha256": "884198e933a5ca5f88cd049d90e957dbea764127b26aa8f88299fd2e11844efa"
+    },
+    "conditional_net_europe.json": {
+      "producer": "reproduce/analysis/conditional_net.py --block europe",
+      "sha256": "cc099d0d2014b8873246a5c8b399cddb9fd99c78ba846e252f9c1d317b62dd8c"
+    },
+    "conditional_net_us.json": {
+      "producer": "reproduce/analysis/conditional_net.py --block us",
+      "sha256": "61324d572cd4c5c07c56471e5253ef3e1de2f082803d7b04bb2df0d525bcd8ee"
+    },
+    "coverage_sweep.json": {
+      "producer": "reproduce/analysis/interval_coverage.py",
+      "sha256": "7d2f17b6590640dc5c03907f7f21a4fca30cd53e0255090c823aea2bfc663dc8"
+    },
+    "cross_venue_leadlag.json": {
+      "producer": "reproduce/analysis/cross_venue_leadlag.py",
+      "sha256": "6c5c7878b0f674daf6616bd2eb8dd2ad623e6e8d774f7a0ce58a3f1aa4e417cb"
+    },
+    "decomposition_by_venue.json": {
+      "producer": "reproduce/analysis/decomposition_table.py",
+      "sha256": "f52c75e1023c24e07fbdff757b47b37aa9020c7e52b3d2c4e94c49430afd71be"
+    },
+    "depth_rebate_frontier.json": {
+      "producer": "reproduce/analysis/depth_rebate_frontier.py",
+      "sha256": "122f8b8e87e0aeb48a7c69b6a6f73de99cbae3443ff914ee4311470fa39001fc"
+    },
+    "depth_rebate_intervals.json": {
+      "producer": "reproduce/analysis/depth_rebate_intervals.py",
+      "sha256": "7859f3e35ee9700ddb95287ea2b99aec53a3c17d6f2e70434a9cfc9277a0c045"
+    },
+    "per_coin_intervals.json": {
+      "producer": "reproduce/analysis/per_coin_intervals.py",
+      "sha256": "e53ef69893b92b732b15fb9c355478256ee0bffbdd1841e1b152db590500fe56"
+    },
+    "per_coin_multiplicity.json": {
+      "producer": "reproduce/analysis/per_coin_multiplicity.py",
+      "sha256": "fc7d270b822d10e4ba0f1e84eba65638cc1a496be964e19a1845ce6854b84fc4"
+    },
+    "sign_rule_counterfactual.json": {
+      "producer": "reproduce/analysis/sign_rule_counterfactual.py",
+      "sha256": "61e80c1d1af7c48e495a9275df03baef6f2dedbb04985cf9a7a2976e0b8f0f32"
+    },
+    "survivorship_bound.json": {
+      "producer": "reproduce/analysis/survivorship_bound.py",
+      "sha256": "c3b032b51af63541a5f975b3ed5ec8e4b568eb261ad9ef852da7d4967f6f987a"
+    },
+    "venue_difference.json": {
+      "producer": "reproduce/analysis/venue_difference.py",
+      "sha256": "282f481fa2b69bd3545f0163431fbd347a909b6270872e6d9876eb125044cbe7"
+    },
+    "wild_test_calibration.json": {
+      "producer": "reproduce/analysis/wild_test_calibration.py",
+      "sha256": "eab881b1ac100d069835b056ba89550962099d21ca33f6a82d91f0970056b4f3"
+    }
+  },
+  "results_note": "Result files carry a digest so a figure quoted from one can be checked against the bytes it was computed on. They rebuild from the panels above rather than from the frozen sources, and bootstrap interval bounds drift between runs because the random stream is not part of the contract; point estimates and verdict flags do not."
 }

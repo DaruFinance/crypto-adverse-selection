@@ -38,6 +38,29 @@ repository by the boundary stated in the paper, so a re-measurement check
 cannot run inside the package; its result is carried in
 `commensurability` below and reproduced by `scripts/surv/validate.py` in the
 measurement tree, where the archives are reachable.
+
+Three details of the implementation are worth stating once here rather than at
+their call sites.
+
+**Power to fail.** Where the monthly means behind a gap share a sign, a resample
+of whole months cannot produce a pooled value on the other side of zero, so the
+percentile interval's clears-zero flag is an identity rather than a test. That
+is the reading the per-coin surface already refuses, and it is refused here too:
+`percentile_interval_can_reach_zero` travels with every verdict, and where it is
+false the evidence for the gap is the unanimity across coins, not the interval.
+
+**Abstention on a non-finite interval.** A second clustering dimension with two
+groups leaves the two-way t on zero degrees of freedom, which yields a non-finite
+bound while the library still reports the verdict as available. No shipped cell
+reaches that state, so it is handled here rather than by changing the library
+underneath every other result that depends on it: a cell whose verdict interval
+is not finite abstains, for the same reason the Kish floor abstains one dimension
+up.
+
+**Worst case against central case.** A bound should be quoted from the far end of
+its interval, so `bound_bp_*_worst_case` reads the verdict interval and the
+unsuffixed fields read the point estimate. That distinction is what keeps a venue
+whose gap is imprecise, but whose death rate is small, from looking unbounded.
 """
 
 from __future__ import annotations
@@ -203,13 +226,7 @@ def venue_block(venue, spec, dead_all, n_boot, seed):
                 continue
             ci = cluster_bootstrap(vals, wts, months, n_boot=n_boot, seed=seed,
                                    cluster_b=coins)
-            # A second dimension with two clusters leaves the two-way t on zero
-            # degrees of freedom, and the library returns [nan, nan] while still
-            # reporting the verdict as available. No shipped cell reaches that
-            # state, so it is handled here rather than by editing the library
-            # under every other result that depends on it. A cell whose verdict
-            # interval is not finite abstains, which is what the Kish floor does
-            # for the same reason one dimension up.
+            # See "Abstention on a non-finite interval" in the module docstring.
             bounds = ci["ci95_t_two_way"] if ci["verdict_is_two_way"] else ci["ci95_t"]
             if bounds is None or not all(np.isfinite(b) for b in bounds):
                 ci = dict(ci, verdict_is_available=False, clears_zero=False,
@@ -245,13 +262,7 @@ def venue_block(venue, spec, dead_all, n_boot, seed):
                 "gap_verdict_is_two_way": bool(ci["verdict_is_two_way"]),
                 "gap_verdict_is_available": bool(ci["verdict_is_available"]),
                 "gap_clears_zero": bool(ci["clears_zero"]),
-                # Whether the month resample could have reached zero at all.
-                # Section 5.1 refuses to read a cleared interval as a test where
-                # the units share a sign, because a resample of same-signed
-                # months cannot produce a pooled value on the other side of it.
-                # The same refusal applies here and the flag travels with the
-                # verdict so the gap is not read as 'significant' when what is
-                # actually doing the work is unanimity across coins.
+                # See "Power to fail" in the module docstring.
                 "percentile_interval_can_reach_zero": bool(
                     ci["percentile_interval_can_reach_zero"]),
                 "n_coins_negative": sum(1 for v in per_coin.values()
@@ -267,12 +278,7 @@ def venue_block(venue, spec, dead_all, n_boot, seed):
                 "dead_fill_share_of_measured_set": fill_share,
                 "bound_bp_by_coin_count": out["death_rate_by_coin"] * gap_by_coin,
                 "bound_bp_by_fill_weight": fill_share * gap_fill_wtd,
-                # "at most" read off the interval rather than the point. The
-                # bound is a bound, so the far end of the verdict interval is
-                # the honest figure to quote for how far the estimate could be
-                # off; the point-estimate versions above are the central case.
-                # This is what keeps a venue whose gap is imprecise, but whose
-                # death rate is small, from looking unbounded.
+                # "at most", read off the interval rather than the point.
                 "bound_bp_by_coin_count_worst_case": (
                     out["death_rate_by_coin"] * max(abs(b) for b in bounds)
                     * (-1 if gap_by_coin < 0 else 1)

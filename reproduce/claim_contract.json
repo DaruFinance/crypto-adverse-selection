@@ -37,7 +37,7 @@
       "qualification": "This is one limited quoting arm, not a general test of inventory-aware market making."
     },
     {
-      "claim": "All nine shipped aggregate panels rebuild byte-for-byte from the frozen derived measurement artifacts named in the lineage manifest.",
+      "claim": "All ten shipped aggregate panels rebuild byte-for-byte from the frozen derived measurement artifacts named in the lineage manifest.",
       "evidence": "lineage.json and build_panels.py",
       "qualification": "Raw venue archives and the raw-to-derived measurement stage are outside this repository."
     },
@@ -65,6 +65,11 @@
       "claim": "A classifier's agreement rate does not order its markout error across venues: Hyperliquid's Lee-Ready is more accurate than Bybit's and carries roughly seven times the error as a share of its own effect.",
       "evidence": "sign_rule_counterfactual.json",
       "qualification": "Three venues are three points. This establishes that accuracy does not order the error, not what does."
+    },
+    {
+      "claim": "On Bybit, perpetuals delisted inside the window carry a net entry markout 0.8483 bp more negative than surviving coins on matched dates, and the 14.6 percent death rate bounds the survivorship omission at 0.1263 bp by coin count and 0.0720 bp by fill weight.",
+      "evidence": "survivorship_bound.json and panels/delisted_coindays.csv",
+      "qualification": "Bybit only. On Binance the same test returns no verdict on four delistings, though its 2.2 percent death rate caps the omission at 0.0235 bp, and Hyperliquid is untested. The bound is not a correction and the panels remain survivor-only. The ten delisted names measured are the longest-lived qualifying delistings, so the gap is more likely understated than overstated."
     }
   ],
   "prohibited": [
