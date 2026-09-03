@@ -16,9 +16,10 @@ so the narrowing is visible rather than implied.
 
 Neither interval covers the axis that dominates the answer. No maker fee is
 charged, on the reading that the rebate replaces it, and charging a residual
-fee moves the crossing one for one. The fee curve below shows that directly:
-the crossing passes the published tier at a residual smaller than the width of
-either interval.
+fee moves the crossing one for one. The fee curve below shows that directly,
+and a residual well inside the width of either interval shifts the crossing by
+more than the bootstrap prices. No venue rebate tier is assumed; pass --tier-bp
+with --tier-source to compare the crossing against one.
 """
 
 from __future__ import annotations
@@ -39,7 +40,6 @@ REPRODUCE = HERE.parent
 N_LEVELS = 5
 N_BOOT = 4000
 SEED = 11
-TIER_BP = 1.5
 
 
 def load_cells(path, n_levels=N_LEVELS):
@@ -104,9 +104,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--panel",
                     default=str(REPRODUCE / "panels" / "bybit_depth_levels.csv"))
-    ap.add_argument("--tier-bp", type=float, default=TIER_BP)
+    ap.add_argument("--tier-bp", type=float, default=None,
+                    help="a venue maker rebate tier to compare the crossing against; requires --tier-source")
+    ap.add_argument("--tier-source", default=None,
+                    help="the schedule and retrieval date the tier comes from")
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
+    if (a.tier_bp is None) != (a.tier_source is None):
+        ap.error("--tier-bp and --tier-source must be given together")
     cells = load_cells(a.panel)
     by_coin = defaultdict(list)
     for k in cells:
@@ -128,8 +133,31 @@ def main():
         return ([float(np.percentile(d, 2.5)), float(np.percentile(d, 97.5))]
                 if d.size >= 200 else [float("nan"), float("nan")])
 
-    n_below = int((coin_draws < a.tier_bp).sum()) if coin_draws.size else 0
-    at_floor = bool(coin_draws.size and n_below == coin_draws.size)
+    if a.tier_bp is None:
+        n_below, at_floor = 0, False
+    else:
+        n_below = int((coin_draws < a.tier_bp).sum()) if coin_draws.size else 0
+        at_floor = bool(coin_draws.size and n_below == coin_draws.size)
+    if a.tier_bp is None:
+        tier_block = {"tier_bp": None, "source": None,
+                      "why_absent": "No venue rebate tier is asserted here. A tier is a property of a "
+                                    "fee schedule the venue revises on its own cadence, not of this "
+                                    "panel, so it is supplied by the caller with its source or it is "
+                                    "left out. An earlier version of this file carried a 1.5 bp "
+                                    "figure attributed to Bybit's best published maker tier; that "
+                                    "attribution could not be sourced and was withdrawn along with "
+                                    "every quantity derived from it."
+                      }
+    else:
+        tier_block = {
+            "tier_bp": a.tier_bp,
+            "source": a.tier_source,
+            "crossing_is_below_tier": bool(point < a.tier_bp),
+            "residual_fee_that_would_invert_it_bp": a.tier_bp - point,
+            "prob_crossing_below_tier": (
+                n_below / coin_draws.size if coin_draws.size else float("nan")),
+            "prob_is_at_resampling_floor": at_floor,
+        }
     out = {
         "venue": "bybit_perp",
         "n_coindays": len(cells),
@@ -148,19 +176,16 @@ def main():
         "n_clusters": len(coins),
         "leave_one_coin_out_crossing": loco,
         "loco_range": [min(live), max(live)] if live else None,
-        "prob_crossing_below_published_tier": (
-            n_below / coin_draws.size if coin_draws.size else float("nan")),
-        "prob_crossing_below_published_tier_bound": (
-            1.0 - 1.0 / (coin_draws.size + 1.0) if at_floor
-            else (n_below / coin_draws.size if coin_draws.size else float("nan"))),
-        "prob_crossing_below_published_tier_is_at_floor": at_floor,
         "fee_sensitivity": {
-            "residual_fee_that_inverts_the_verdict_bp": a.tier_bp - point,
-            "curve": {f"{c:.1f}": {"crossing_bp": point + c,
-                                   "touch_wins_at_tier": bool(point + c < a.tier_bp)}
+            "note": "A residual maker fee charged alongside a rebate moves the "
+                    "crossing one for one. The crossing is a property of this "
+                    "panel; whether it sits above or below any particular "
+                    "rebate is a property of a fee schedule and is not decided "
+                    "here.",
+            "curve": {f"{c:.1f}": {"crossing_bp": point + c}
                       for c in (0.0, 0.5, 1.0, 1.5, 2.0)},
         },
-        "bybit_best_published_tier_bp": a.tier_bp,
+        "published_tier": tier_block,
     }
     Path(a.out).write_text(json.dumps(out, indent=2, default=float))
     print(f"{len(cells)} coin-days, {len(coins)} coins")

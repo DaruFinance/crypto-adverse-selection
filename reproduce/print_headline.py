@@ -78,8 +78,8 @@ def main():
     print(f"  minimum rebate before any level profits "
           f"{dr['min_rebate_for_any_level_profitable_bp']:.4f} bp")
     print(f"  touch overtakes the deepest level at "
-          f"{dr['touch_overtakes_deepest_at_rebate_bp']:.4f} bp against a "
-          f"published tier of {dr['bybit_best_published_tier_bp']} bp")
+          f"{dr['touch_overtakes_deepest_at_rebate_bp']:.4f} bp; no venue "
+          f"rebate tier is asserted here")
 
     asm = load("avellaneda_stoikov_arm.json")
     print("\nAvellaneda-Stoikov quoting arm, Bybit only")

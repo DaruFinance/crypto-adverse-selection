@@ -1792,17 +1792,13 @@
       "prefers": "touch"
     }
   },
-  "published_tier_bp": 1.5,
   "crossing_rebate_bp": 0.9075507601409188,
   "crossing_ci95_coin_clustered": [
     0.8489030591385215,
     0.9761951218309021
   ],
-  "prob_crossing_below_published_tier": 1.0,
   "touch_breakeven_rebate_bp": 0.8741891081969947,
   "as_breakeven_rebate_bp": 0.5439417645391167,
-  "prefers_at_published_tier": "touch",
-  "headline_reverses_at_published_tier": true,
   "as_fill_share_of_touch": 0.09175144825201026,
   "median_diff_bp_unweighted": 0.5024933250633978,
   "n_days_as_better": 74,
@@ -1818,12 +1814,12 @@
     "fill_threshold_was_loose": "Windows were retained at a minimum of 50 fills rather than the stricter 400 the same code treats as its default. The looser threshold admits thin windows.",
     "attrition_is_informative": "The fill minimum binds on the arm and not on the touch, so the windows it drops are the ones where the arm quoted deepest. Attrition here is informative rather than random.",
     "per_opportunity_metric_rewards_not_trading": "Fill rate times markout on a common denominator rewards not trading: a quoter posted far from the mid takes no fills and loses nothing, and wins on that metric while being useless. The arm still loses on every fill it takes and simply takes far fewer. The rebate sweep is the decision-relevant comparison, because a rebate is paid per fill.",
-    "headline_is_per_fill_at_zero_rebate": "The figure showing the arm ahead of the touch is per fill at zero rebate. Per quoting opportunity at the venue's best published maker tier the preference reverses to the touch. Both hold, and only the second describes a maker choosing between the two.",
-    "crossing_is_not_an_independent_fact": "The crossing sits within about 4 percent of the touch's own breakeven rebate, because the arm takes only about 9 percent of the touch's fills. It is a ratio of small differences, its interval is wide by construction, and it should be read through the probability of crossing below the published tier rather than through the point value.",
+    "headline_is_per_fill_at_zero_rebate": "The figure showing the arm ahead of the touch is per fill at a zero rebate. Per quoting opportunity the ordering depends on the rebate: the arm is preferred below the 0.9076 bp crossing and the touch above it. Both hold, and which one describes a given maker depends on that maker's fee schedule.",
     "difference_interval_is_not_coin_clustered": "The shipped interval on the per-fill difference resamples coin-days, which treats 91 of them as independent when they come from 13 coins. Clustering on coins gives roughly +0.167 to +0.704 bp on the percentile interval, about half again as wide, but that interval could not have crossed zero at all because all 13 coin means share a sign. On the t interval the coin-clustered bound runs -0.011 to +0.743 and does not clear zero while the coin-day bound does, so the verdict does turn on the choice of unit and the coin-clustered one is the stricter reading.",
     "touch_net_appears_under_two_weightings": "The touch leg's net of -0.9098 is weighted in common with the arm, while the breakeven rebate of 0.8742 is the negated touch net under touch-fill weighting. They describe the same quantity 0.036 bp apart and the file did not say which was which.",
     "some_per_day_columns_have_no_panel_behind_them": "The per-day block carries quote counts and inventory occupancy that the shipped panel does not, so the median inventory occupancy reported at the top of this file cannot be rebuilt from what ships.",
-    "single_venue": "Bybit only. The arm and the touch leg it is scored against are both simulated on the Bybit panel, so this result says nothing about the other two venues."
+    "single_venue": "Bybit only. The arm and the touch leg it is scored against are both simulated on the Bybit panel, so this result says nothing about the other two venues.",
+    "crossing_is_not_an_independent_fact": "The crossing sits within about 4 percent of the touch's own breakeven rebate, because the arm takes only about 9 percent of the touch's fills. It is a ratio of small differences rather than a separate measurement."
   },
   "venue": "bybit_perp",
   "diff_ci95_t_coin_clustered": [
@@ -1851,5 +1847,10 @@
   "median_quotes_outside_book": 0.5430028087172744,
   "n_coindays": 91,
   "n_coins": 13,
-  "tested_family_is_a_depth_rule": true
+  "tested_family_is_a_depth_rule": true,
+  "published_tier": {
+    "tier_bp": null,
+    "source": null,
+    "why_absent": "No venue rebate tier is asserted here. The rebate frontier orders the two rules at every swept rebate; where a particular maker sits on it is a property of that maker's fee schedule and is not decided by this panel. An earlier version carried a 1.5 bp figure attributed to Bybit's best published maker tier; that attribution could not be sourced and was withdrawn."
+  }
 }

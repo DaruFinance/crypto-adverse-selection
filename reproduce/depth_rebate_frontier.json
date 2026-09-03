@@ -63,6 +63,18 @@
       "any_level_profitable": false,
       "argmax_level_even_if_unprofitable": 5
     },
+    "0.400": {
+      "ev_by_level": [
+        -0.0010615182162434721,
+        -0.00027243381469341303,
+        -7.895111669319745e-05,
+        -2.6567757153003938e-05,
+        2.927048795180478e-05
+      ],
+      "best_level": 5,
+      "any_level_profitable": true,
+      "argmax_level_even_if_unprofitable": 5
+    },
     "0.500": {
       "ev_by_level": [
         -0.0007267221731058901,
@@ -75,6 +87,30 @@
       "any_level_profitable": true,
       "argmax_level_even_if_unprofitable": 5,
       "action": "quote at L5"
+    },
+    "0.600": {
+      "ev_by_level": [
+        -0.0003919261299683082,
+        -5.7475541550434875e-05,
+        6.0997475538549855e-05,
+        7.695821839232616e-05,
+        0.00011095781314393747
+      ],
+      "best_level": 5,
+      "any_level_profitable": true,
+      "argmax_level_even_if_unprofitable": 5
+    },
+    "0.750": {
+      "ev_by_level": [
+        0.00011026793473806495,
+        0.00010374316330679879,
+        0.00016595891971236037,
+        0.00015460270005132376,
+        0.00017222330703803702
+      ],
+      "best_level": 5,
+      "any_level_profitable": true,
+      "argmax_level_even_if_unprofitable": 5
     },
     "0.839": {
       "ev_by_level": [
@@ -154,13 +190,18 @@
   ],
   "min_rebate_for_any_level_profitable_bp": 0.3283353007753428,
   "bybit_breakeven_rebate_bp": 0.8387,
-  "bybit_best_published_tier_bp": 1.5,
   "markout_weighting": "mean over fill rows, not size-weighted",
   "limitations": {
     "scope": "Bid side only, 10 s markout, weighted as a mean over fill rows, on 300 of the 3,618 panel coin-days, which is 8.3 percent. Levels are price levels measured from the mid, not queue positions.",
-    "published_tier_is_an_upper_bound": "The tier cited for comparison carries monthly uptime, symbol coverage and minimum order size obligations that the single-level, size-1.0, bid-only quoter measured here would not satisfy. Treat it as an upper bound on what this quoter could earn rather than as an achievable rebate.",
+    "published_tier_is_an_upper_bound": "Superseded. This file no longer cites a venue rebate tier; see published_tier. Any tier a reader supplies still carries monthly uptime, symbol coverage and minimum order size obligations that the single-level, size-1.0, bid-only quoter measured here would not satisfy, so it bounds what this quoter could earn rather than describing an achievable rebate.",
     "residual_fee_is_the_dominant_sensitivity": "No maker fee is charged, on the reading that the rebate replaces it. Charging a residual fee alongside moves the crossing one for one, and a residual near 0.73 bp inverts the ordering, against a bootstrap interval 0.194 bp wide, resampling coin-days. This axis sits outside the interval and dominates it.",
     "subsample_is_time_skewed": "The 300 coin-days are not spread evenly through the panel window, so the frontier describes the periods they fall in rather than the whole span.",
     "crossing_moved_under_a_fill_model_fix": "The rebate at which the touch overtakes the deepest level was 1.1301 bp before a fill-model correction and is 0.7711 bp after it. Only the corrected figure is reported here."
-  }
+  },
+  "published_tier": {
+    "tier_bp": null,
+    "source": null,
+    "why_absent": "No venue rebate tier is asserted here. A tier is a property of a fee schedule the venue revises on its own cadence, not of this panel, so it is supplied by the caller with its source or it is left out. An earlier version of this file carried a 1.5 bp figure attributed to Bybit's best published maker tier; that attribution could not be sourced and was withdrawn along with every quantity derived from it."
+  },
+  "terms": "The fields naming a level profitable, and the action strings beside them, mean that the level's expected value per quoting opportunity is positive under this file's own accounting: a one-sided entry markout at the 10 second horizon, bid side only, with no maker fee charged on the reading that the rebate replaces it, no exit leg and no inventory. They are not statements about realised profit, and nothing here establishes that quoting at any level pays."
 }

@@ -1,28 +1,23 @@
 {
   "fee_sensitivity": {
+    "note": "A residual maker fee charged alongside a rebate moves the crossing one for one. The crossing is a property of this panel; whether it sits above or below any particular rebate is a property of a fee schedule and is not decided here.",
     "crossing_by_residual_maker_fee_bp": {
       "0.0": {
-        "crossing_bp": 0.7710766696924987,
-        "touch_wins_at_tier": true
+        "crossing_bp": 0.7710766696924987
       },
       "0.5": {
-        "crossing_bp": 1.2710766696924987,
-        "touch_wins_at_tier": true
+        "crossing_bp": 1.2710766696924987
       },
       "1.0": {
-        "crossing_bp": 1.7710766696924987,
-        "touch_wins_at_tier": false
+        "crossing_bp": 1.7710766696924987
       },
       "1.5": {
-        "crossing_bp": 2.2710766696924987,
-        "touch_wins_at_tier": false
+        "crossing_bp": 2.2710766696924987
       },
       "2.0": {
-        "crossing_bp": 2.7710766696924987,
-        "touch_wins_at_tier": false
+        "crossing_bp": 2.7710766696924987
       }
-    },
-    "residual_fee_that_inverts_the_verdict_bp": 0.7289233303075013
+    }
   },
   "coinday_bootstrap_ci95": [
     0.675269409532158,
@@ -67,10 +62,6 @@
   "n_bootstrap_draws_degenerate": 0,
   "clusters": "coin",
   "n_clusters": 13,
-  "prob_crossing_below_published_tier": 1.0,
-  "prob_crossing_below_published_tier_is_at_floor": true,
-  "prob_crossing_below_published_tier_bound": 0.9997500624843789,
-  "published_tier_bp": 1.5,
   "per_coin": {
     "ARB": {
       "crossing_bp": 0.7529580114697889,
@@ -229,6 +220,11 @@
   },
   "limitations": {
     "same_scope_as_the_frontier": "These intervals cover the same measurement as the depth and rebate frontier and inherit its scope: bid side only, 300 coin-days, and no maker fee charged.",
-    "fee_axis_sits_outside_the_interval": "The dominant sensitivity is the residual maker fee, which is not a source of variation these intervals cover. A residual near 0.73 bp inverts the ordering, against an interval 0.194 bp wide, resampling coin-days."
+    "fee_axis_sits_outside_the_interval": "The dominant sensitivity is the residual maker fee, which is not a source of variation these intervals cover. The crossing moves one for one with it, so a reader comparing the crossing against a rebate must charge whatever fee is payable alongside that rebate before reading the comparison."
+  },
+  "published_tier": {
+    "tier_bp": null,
+    "source": null,
+    "why_absent": "No venue rebate tier is asserted here. A tier is a property of a fee schedule the venue revises on its own cadence, not of this panel, so it is supplied by the caller with its source or it is left out. An earlier version of this file carried a 1.5 bp figure attributed to Bybit's best published maker tier; that attribution could not be sourced and was withdrawn along with every quantity derived from it."
   }
 }

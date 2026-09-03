@@ -14,7 +14,7 @@ coin-day so that neither leg's volume drives the average on its own.
 Two readings of the same arm point opposite ways and both are reported. Per
 fill at no rebate the arm looks better than the touch, because it declines most
 of the fills the touch takes and the ones it declines are the worst. Per
-quoting opportunity at the venue's published tier the preference reverses,
+quoting opportunity the preference reverses above the crossing rebate,
 because a rebate is paid per fill and the arm has given up the volume that
 earns it. Only the second describes a maker choosing between the two.
 
@@ -52,8 +52,7 @@ sys.path.insert(0, str(REPRODUCE.parent))
 from makercex import cluster_bootstrap
 N_BOOT = 4000
 SEED = 11
-REBATES = (0.0, 0.25, 0.5, 0.75, 1.0, 1.25)
-TIER_BP = 1.5
+REBATES = (0.0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 2.0)
 
 
 def load(path):
@@ -165,10 +164,17 @@ def main():
         "at_deepest_median": float(np.median([r["at_deepest"] for r in rows])),
         "tested_family_is_a_depth_rule": bool(outside > 0.5),
         "rebate_frontier": fr,
-        "prefers_at_published_tier": (
-            "A-S" if (sum(r["as_fills"] * (r["as_net"] + TIER_BP) for r in rows)
-                      > sum(r["touch_fills"] * (r["touch_net"] + TIER_BP)
-                            for r in rows)) else "touch"),
+        "published_tier": {
+            "tier_bp": None,
+            "source": None,
+            "why_absent": "No venue rebate tier is asserted here. The rebate frontier "
+                          "orders the two rules at every swept rebate; where a particular "
+                          "maker sits on it is a property of that maker's fee schedule and "
+                          "is not decided by this panel. An earlier version carried a 1.5 "
+                          "bp figure attributed to Bybit's best published maker tier; that "
+                          "attribution could not be sourced and was withdrawn."
+            ,
+        },
         "verdict": "the Avellaneda-Stoikov arm does not escape adverse selection",
     }
     Path(a.out).write_text(json.dumps(out, indent=2, default=float))
@@ -178,8 +184,8 @@ def main():
     print(f"  per-fill difference {diff:+.4f} bp")
     print(f"    coin-clustered [{ci_coin[0]:+.4f}, {ci_coin[1]:+.4f}]")
     print(f"    by coin-day    [{ci_day[0]:+.4f}, {ci_day[1]:+.4f}]")
-    print(f"  at the published tier the maker prefers the "
-          f"{out['prefers_at_published_tier']}")
+    print(f"  per quoting opportunity the arm is preferred below "
+          f"{out['crossing_rebate_bp']:.4f} bp and the touch above it")
 
 
 if __name__ == "__main__":

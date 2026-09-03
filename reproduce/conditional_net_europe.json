@@ -66,6 +66,7 @@
     "caveats": [
       "the stress share is not pinned at a third and drifts across the sample, so calm and stress cells differ in date composition as well as coin composition",
       "pooled cutoffs restricted to these same dates is the control that would separate the label channel from the sample channel, and it is not run here"
-    ]
+    ],
+    "dropped_prefix_is_carried_not_computed": "dropped_prefix_share_of_tape and the composition beside it are carried from the upstream measurement as literals. The shipped panel holds only the cells that survived the cut, so neither is derivable from it and a rebuild re-emits them unchanged rather than checking them."
   }
 }

@@ -23,6 +23,13 @@ one for one.
 One rebate on the swept grid, 0.8387 bp, is Bybit's pooled net markout rather
 than a round number. It comes from the venue decomposition table and is not
 derivable from this panel, so it is carried here as a constant.
+
+No venue rebate tier is assumed. A tier is a fact about a fee schedule rather
+than about this panel, it is revised by the venue on its own cadence, and an
+earlier version of this script carried one as an unsourced literal. Pass
+--tier-bp together with --tier-source to place a tier on the frontier; both are
+required together so that a tier can never enter a result without the schedule
+and retrieval date that support it.
 """
 
 from __future__ import annotations
@@ -40,9 +47,9 @@ import numpy as np
 HERE = Path(__file__).resolve().parent
 REPRODUCE = HERE.parent
 N_LEVELS = 5
-BEST_TIER_BP = 1.5
 BYBIT_BREAKEVEN_BP = 0.8387
-REBATES = [0.0, 0.25, 0.5, BYBIT_BREAKEVEN_BP, 1.0, 1.25, BEST_TIER_BP, 2.0]
+REBATES = [0.0, 0.25, 0.4, 0.5, 0.6, 0.75, BYBIT_BREAKEVEN_BP, 1.0, 1.25, 1.5,
+           2.0]
 
 
 def collect(path, n_levels=N_LEVELS):
@@ -92,7 +99,14 @@ def main():
     ap.add_argument("--panel",
                     default=str(REPRODUCE / "panels" / "bybit_depth_levels.csv"))
     ap.add_argument("--out", required=True)
+    ap.add_argument("--tier-bp", type=float, default=None,
+                    help="a venue maker rebate tier to mark on the frontier; "
+                         "requires --tier-source")
+    ap.add_argument("--tier-source", default=None,
+                    help="the schedule and retrieval date the tier comes from")
     a = ap.parse_args()
+    if (a.tier_bp is None) != (a.tier_source is None):
+        ap.error("--tier-bp and --tier-source must be given together")
     markout, fill_rate, fills, opportunities, n_days = collect(a.panel)
     r1, r5 = fill_rate[0], fill_rate[-1]
     m1, m5 = markout[0], markout[-1]
@@ -116,7 +130,18 @@ def main():
         "breakeven_rebate_by_level_bp": (-markout).tolist(),
         "min_rebate_for_any_level_profitable_bp": float(np.nanmin(-markout)),
         "bybit_breakeven_rebate_bp": BYBIT_BREAKEVEN_BP,
-        "bybit_best_published_tier_bp": BEST_TIER_BP,
+        "published_tier": ({"tier_bp": a.tier_bp, "source": a.tier_source}
+                           if a.tier_bp is not None else
+                           {"tier_bp": None,
+                            "source": None,
+                            "why_absent": "No venue rebate tier is asserted here. A tier is a property of a "
+                                          "fee schedule the venue revises on its own cadence, not of this "
+                                          "panel, so it is supplied by the caller with its source or it is "
+                                          "left out. An earlier version of this file carried a 1.5 bp "
+                                          "figure attributed to Bybit's best published maker tier; that "
+                                          "attribution could not be sourced and was withdrawn along with "
+                                          "every quantity derived from it."
+                            }),
     }
     Path(a.out).write_text(json.dumps(out, indent=2, default=float))
     print(f"{n_days} coin-days, bid side, level 1 is the touch")

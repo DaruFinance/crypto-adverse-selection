@@ -226,14 +226,13 @@ def fig_depth_rebate():
         ax2.plot(rebs, ev, lw=1.8 if level in (1, len(lv)) else 0.9,
                  color=C_NET if level == 1 else
                  (C_ADV if level == len(lv) else "#cbd5e0"),
-                 label=("touch" if level == 1 else
-                        f"deepest (L{level})" if level == len(lv) else None))
+                 label=("touch (L1)" if level == 1 else
+                        f"deepest (L{level})" if level == len(lv) else
+                        "levels 2 to 4" if level == 2 else None))
     r_min = d["min_rebate_for_any_level_profitable_bp"]
     ax2.axvspan(min(rebs), r_min, color="#718096", alpha=0.10, lw=0)
     ax2.axvline(d["touch_overtakes_deepest_at_rebate_bp"], color=C_ACC,
                 lw=1.4, ls="--")
-    ax2.axvline(d["bybit_best_published_tier_bp"], color="#718096", lw=0.9,
-                ls=":")
     ax2.axhline(0, color="#2d3748", lw=0.9)
     ax2.set_xlabel("maker rebate, bp")
     ax2.set_ylabel("bp per quoting opportunity")

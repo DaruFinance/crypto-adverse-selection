@@ -134,8 +134,11 @@ measured break-even rebate is 0.328 bp, and the touch overtakes the deepest
 quoted level at 0.771 bp, with levels referring to price depth rather than queue
 position.
 
-**Rebate qualification.** The published 1.5 bp tier carries obligations the
-simulated quoter is not shown to satisfy.
+**No rebate tier is asserted.** The crossing is a property of this panel. Whether
+a given maker's rebate sits above or below it is a property of that maker's fee
+schedule, which venues revise on their own cadence, so no tier ships in these
+results. A caller supplying one with `--tier-bp` must also supply
+`--tier-source`.
 
 **Quoting arm.** The tested Avellaneda-Stoikov depth rule remains negative on
 66 of 91 coin-days and takes 9.2% as many fills as the touch rule. This single

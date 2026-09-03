@@ -114,19 +114,19 @@
   "results": {
     "avellaneda_stoikov_arm.json": {
       "producer": "reproduce/analysis/quoting_arm.py",
-      "sha256": "539c67e4d12e8b6ebdcd8ec74213ac9341420d2d432f73065ed018b9a33033a9"
+      "sha256": "cd9bee96c91239e223c431d8bd0f148d5f84fabfe291a28d4459d3afecda7ceb"
     },
     "conditional_net_asia.json": {
       "producer": "reproduce/analysis/conditional_net.py --block asia",
-      "sha256": "884198e933a5ca5f88cd049d90e957dbea764127b26aa8f88299fd2e11844efa"
+      "sha256": "0ae3e145d252e193d717d9b79e6c4363dc7b8a91b578a953d972391cfd5d043e"
     },
     "conditional_net_europe.json": {
       "producer": "reproduce/analysis/conditional_net.py --block europe",
-      "sha256": "cc099d0d2014b8873246a5c8b399cddb9fd99c78ba846e252f9c1d317b62dd8c"
+      "sha256": "106254c103a27ca1491cdc6ab1fb8e64aee6935995f1998eb49990efe88d87a3"
     },
     "conditional_net_us.json": {
       "producer": "reproduce/analysis/conditional_net.py --block us",
-      "sha256": "61324d572cd4c5c07c56471e5253ef3e1de2f082803d7b04bb2df0d525bcd8ee"
+      "sha256": "adce5d58d22f91c0d26a024632d148114263e16672cf3b3a2ab2cda55b35f403"
     },
     "coverage_sweep.json": {
       "producer": "reproduce/analysis/interval_coverage.py",
@@ -142,11 +142,11 @@
     },
     "depth_rebate_frontier.json": {
       "producer": "reproduce/analysis/depth_rebate_frontier.py",
-      "sha256": "122f8b8e87e0aeb48a7c69b6a6f73de99cbae3443ff914ee4311470fa39001fc"
+      "sha256": "681bcb1f5a3e16a53c815d5aba51a4c9ac685f811d56fbecc54e0db63722de88"
     },
     "depth_rebate_intervals.json": {
       "producer": "reproduce/analysis/depth_rebate_intervals.py",
-      "sha256": "7859f3e35ee9700ddb95287ea2b99aec53a3c17d6f2e70434a9cfc9277a0c045"
+      "sha256": "c2c73ef8f1f329373d999324ece849c1520156fd039a257fdcc1381c10d1e12d"
     },
     "per_coin_intervals.json": {
       "producer": "reproduce/analysis/per_coin_intervals.py",
@@ -166,7 +166,7 @@
     },
     "venue_difference.json": {
       "producer": "reproduce/analysis/venue_difference.py",
-      "sha256": "282f481fa2b69bd3545f0163431fbd347a909b6270872e6d9876eb125044cbe7"
+      "sha256": "0aacd7ce9f7cb5b9e937f349f6302088a0d86efcfb31752db1baef738b768c6f"
     },
     "wild_test_calibration.json": {
       "producer": "reproduce/analysis/wild_test_calibration.py",
