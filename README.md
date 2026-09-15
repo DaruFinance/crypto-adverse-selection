@@ -200,7 +200,7 @@ reproduce/
   *.json                    shipped analysis results
 ```
 
-## Reproducing the papers
+## Reproducing the paper
 
 This repository is the reproducibility package for *Quoting the Touch Does Not
 Pay Its Adverse Selection: A True-Aggressor-Signed Entry-Markout Decomposition
@@ -372,12 +372,16 @@ against the shipped result files and rejects prohibited phrases.
 ## Citation
 
 ```bibtex
-@article{gatto2026adverse,
-  author = {Gatto, Daniel V.},
-  title = {Quoting the Touch Does Not Pay Its Adverse Selection: A
-           True-Aggressor-Signed Entry-Markout Decomposition for a
-           Last-in-Queue Quoter Across Bybit, Binance USD-M and Hyperliquid},
-  year = {2026}
+@techreport{gatto2026quoting,
+  author      = {Gatto, Daniel V.},
+  title       = {Quoting the Touch Does Not Pay Its Adverse Selection: A
+                 True-Aggressor-Signed Entry-Markout Decomposition for a
+                 Last-in-Queue Quoter Across Bybit, Binance USD-M and Hyperliquid},
+  year        = {2026},
+  institution = {Universidade Paulista (UNIP)},
+  type        = {SSRN Working Paper},
+  number      = {7461901},
+  url         = {https://ssrn.com/abstract=7461901}
 }
 
 @misc{makercexpanels,
