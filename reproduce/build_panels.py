@@ -213,6 +213,27 @@ def verify_outputs(root: Path, manifest: dict) -> bool:
     return not failed
 
 
+def verify_results(manifest: dict) -> bool:
+    """Check the shipped result files against the hashes recorded for them.
+
+    The panel check above says nothing about the result files, so a result
+    edited after the manifest was written passed every check in this package.
+    It no longer does.
+    """
+    failed = False
+    for name, spec in manifest.get("results", {}).items():
+        path = HERE / name
+        if not path.exists():
+            print(f"FAIL  missing {name}")
+            failed = True
+            continue
+        actual = sha256_file(path)
+        label = "ok  " if actual == spec["sha256"] else "FAIL"
+        print(f"{label}  {name}  {actual}")
+        failed |= actual != spec["sha256"]
+    return not failed
+
+
 def verify_sources(root: Path, manifest: dict) -> bool:
     failed = False
     for name, spec in manifest["panels"].items():
@@ -280,7 +301,9 @@ def main() -> None:
     manifest = load_manifest()
 
     if args.verify_shipped:
-        raise SystemExit(0 if verify_outputs(HERE / "panels", manifest) else 1)
+        panels_ok = verify_outputs(HERE / "panels", manifest)
+        results_ok = verify_results(manifest)
+        raise SystemExit(0 if panels_ok and results_ok else 1)
     if args.source_root is None:
         parser.error("--source-root is required unless --verify-shipped is used")
     if not args.skip_source_hash and not verify_sources(args.source_root, manifest):

@@ -1,94 +1,94 @@
 {
-  "scope": "Claims supported by the shipped aggregate panels and result files.",
-  "allowed": [
-    {
-      "claim": "The simulated last-in-queue touch quoter has negative 10-second pre-fee entry markout on Bybit, Binance and Hyperliquid.",
-      "evidence": "decomposition_by_venue.json",
-      "qualification": "This is a one-sided entry markout, not realised maker profit or loss."
-    },
-    {
-      "claim": "The two-way month-and-coin intervals for the pooled 10-second entry markout exclude zero on all three venues.",
-      "evidence": "decomposition_by_venue.json",
-      "qualification": "The panels cover different calendars and coin sets."
-    },
-    {
-      "claim": "The same-date Bybit-minus-Hyperliquid estimate is negative in the shipped re-quote panel.",
-      "evidence": "venue_difference.json",
-      "qualification": "The estimate depends on the extraction and re-quote specification and is not a causal architecture comparison."
-    },
-    {
-      "claim": "The matched lead-lag panel has a median 500 ms Bybit lead.",
-      "evidence": "cross_venue_leadlag.json",
-      "qualification": "The 441 ms publication-cadence gap is of the same order, so the result does not establish an information lead."
-    },
-    {
-      "claim": "No session block shows a detectable calm-to-stress change in net entry markout under the specified sign test.",
-      "evidence": "conditional_net_asia.json, conditional_net_europe.json, conditional_net_us.json",
-      "qualification": "The test is Bybit-only and low powered; failure to reject is not invariance."
-    },
-    {
-      "claim": "In the 300-coin-day Bybit bid-side depth panel, the minimum measured break-even rebate is 0.328 bp and the touch overtakes the deepest level at 0.771 bp.",
-      "evidence": "depth_rebate_frontier.json",
-      "qualification": "Levels are price depth, not queue position. The crossing is a property of this panel; no venue rebate tier is asserted, and whether a maker's own rebate sits above or below the crossing is a property of that maker's fee schedule."
-    },
-    {
-      "claim": "The tested Avellaneda-Stoikov depth rule remains negative on 66 of 91 coin-days and takes about 9.2 percent as many fills as the touch rule.",
-      "evidence": "avellaneda_stoikov_arm.json",
-      "qualification": "This is one limited quoting arm, not a general test of inventory-aware market making."
-    },
-    {
-      "claim": "All ten shipped aggregate panels rebuild byte-for-byte from the frozen derived measurement artifacts named in the lineage manifest.",
-      "evidence": "lineage.json and build_panels.py",
-      "qualification": "Raw venue archives and the raw-to-derived measurement stage are outside this repository."
-    },
-    {
-      "claim": "Lee-Ready and the plain tick rule agree with the exchange aggressor flag on 93.2 and 89.8 percent of Bybit trades, 98.2 and 91.3 percent of Binance USD-M trades and 93.6 and 89.4 percent of Hyperliquid trades.",
-      "evidence": "sign_rule_counterfactual.json",
-      "qualification": "Accuracy is agreement with the venue's own flag, taken as ground truth. Per-coin accuracy is far more dispersed than the pooled figure."
-    },
-    {
-      "claim": "The sign of the pooled net entry markout is unchanged when either classifier replaces the exchange flag, on all three venues.",
-      "evidence": "sign_rule_counterfactual.json",
-      "qualification": "Accuracy is agreement with the venue's own flag, taken as ground truth. The quote for Lee-Ready is the last one strictly before the trade; an at-or-before lookup reads the post-trade book on a feed whose book updates share the trade's timestamp."
-    },
-    {
-      "claim": "A classifier moves the pooled net entry markout by 0.8 to 12.4 percent of its magnitude on the two centralized venues and by 17.4 to 23.5 percent on the on-chain one, in the opposite direction.",
-      "evidence": "sign_rule_counterfactual.json",
-      "qualification": "Three of the six paired errors clear zero and three contain it. Part of each error is a change in which fills occurred rather than in how they were signed."
-    },
-    {
-      "claim": "Of the 70 per-coin cells that return a verdict, 56 clear zero at raw p below 0.05, all 56 survive Benjamini-Hochberg and 54 survive Benjamini-Yekutieli.",
-      "evidence": "per_coin_multiplicity.json",
-      "qualification": "The p-values invert the shipped month-clustered t interval, so they inherit its coverage properties. Multiplicity is not what limits this surface; abstention and lack of power are."
-    },
-    {
-      "claim": "A classifier's agreement rate does not order its markout error across venues: Hyperliquid's Lee-Ready is more accurate than Bybit's and carries roughly seven times the error as a share of its own effect.",
-      "evidence": "sign_rule_counterfactual.json",
-      "qualification": "Three venues are three points. This establishes that accuracy does not order the error, not what does."
-    },
-    {
-      "claim": "On Bybit, perpetuals delisted inside the window carry a net entry markout 0.8483 bp more negative than surviving coins on matched dates, and the 14.6 percent death rate bounds the survivorship omission at 0.1263 bp by coin count and 0.0720 bp by fill weight.",
-      "evidence": "survivorship_bound.json and panels/delisted_coindays.csv",
-      "qualification": "Bybit only. On Binance the same test runs on four delistings and does not clear zero, and its 2.2 percent death rate caps the omission at 0.0235 bp, and Hyperliquid is untested. The bound is not a correction and the panels remain survivor-only. The ten delisted names measured are the longest-lived qualifying delistings, so the gap is more likely understated than overstated."
-    }
-  ],
-  "prohibited": [
-    "Market makers lose money on these venues.",
-    "The study measures realised maker profitability.",
-    "Venue architecture causes the observed difference.",
-    "Bybit has an information lead over Hyperliquid.",
-    "Deeper queue position improves the result.",
-    "The adverse-to-capture ratio of 1.8 to 5.1 is a robust headline effect.",
-    "A venue's published maker rebate tier is stated as a fact of this study, or the simulated quoter is said to qualify for one.",
-    "Net entry markout is unchanged or invariant across volatility regimes.",
-    "This repository reproduces the study from raw venue archives.",
-    "The result is a tradeable edge or a walk-forward strategy result.",
-    "A constant correction can remove the bias a trade-sign classifier introduces.",
-    "Lee-Ready and the tick rule are unbiased on crypto perpetual tape.",
-    "The per-coin surface is 96 independent tests.",
-    "A classifier accurate enough on one venue is accurate enough on another.",
-    "A higher sign-classification accuracy implies a smaller markout bias.",
-    "The decisions in this section constitute a profitable quoting strategy.",
-    "The measured survivorship bound makes the panel point-in-time or survivorship-free."
-  ]
+ "scope": "Claims supported by the shipped aggregate panels and result files.",
+ "allowed": [
+  {
+   "claim": "The simulated last-in-queue touch quoter has negative 10-second pre-fee entry markout on Bybit, Binance and Hyperliquid.",
+   "evidence": "decomposition_by_venue.json",
+   "qualification": "This is a one-sided entry markout, not realised maker profit or loss."
+  },
+  {
+   "claim": "The two-way month-and-coin intervals for the pooled 10-second entry markout exclude zero on all three venues.",
+   "evidence": "decomposition_by_venue.json",
+   "qualification": "The panels cover different calendars and coin sets."
+  },
+  {
+   "claim": "The same-date Bybit-minus-Hyperliquid estimate is negative in the shipped re-quote panel.",
+   "evidence": "venue_difference.json",
+   "qualification": "The estimate depends on the extraction and re-quote specification and is not a causal architecture comparison."
+  },
+  {
+   "claim": "The matched lead-lag panel has a median 500 ms Bybit lead.",
+   "evidence": "cross_venue_leadlag.json",
+   "qualification": "The 441 ms publication-cadence gap is of the same order, so the result does not establish an information lead."
+  },
+  {
+   "claim": "No session block shows a detectable calm-to-stress change in net entry markout under the specified sign test.",
+   "evidence": "conditional_net_asia.json, conditional_net_europe.json, conditional_net_us.json",
+   "qualification": "The test is Bybit-only and low powered; failure to reject is not invariance."
+  },
+  {
+   "claim": "In the 300-coin-day Bybit bid-side depth panel, the minimum measured break-even rebate is 0.328 bp and the touch overtakes the deepest level at 0.771 bp.",
+   "evidence": "depth_rebate_frontier.json",
+   "qualification": "Levels are price depth, not queue position. The crossing is a property of this panel; no venue rebate tier is asserted, and whether a maker's own rebate sits above or below the crossing is a property of that maker's fee schedule."
+  },
+  {
+   "claim": "The tested Avellaneda-Stoikov depth rule remains negative on 66 of 91 coin-days and takes about 9.2 percent as many fills as the touch rule.",
+   "evidence": "avellaneda_stoikov_arm.json",
+   "qualification": "This is one limited quoting arm, not a general test of inventory-aware market making."
+  },
+  {
+   "claim": "All ten shipped aggregate panels rebuild byte-for-byte from the frozen derived measurement artifacts named in the lineage manifest.",
+   "evidence": "lineage.json and build_panels.py",
+   "qualification": "Raw venue archives and the raw-to-derived measurement stage are outside this repository."
+  },
+  {
+   "claim": "Lee-Ready and the plain tick rule agree with the exchange aggressor flag on 93.2 and 89.8 percent of Bybit trades, 98.2 and 91.3 percent of Binance USD-M trades and 93.6 and 89.4 percent of Hyperliquid trades.",
+   "evidence": "sign_rule_counterfactual.json",
+   "qualification": "Accuracy is agreement with the venue's own flag, taken as ground truth. Per-coin accuracy is far more dispersed than the pooled figure."
+  },
+  {
+   "claim": "The sign of the pooled net entry markout is unchanged when either classifier replaces the exchange flag, on all three venues.",
+   "evidence": "sign_rule_counterfactual.json",
+   "qualification": "Accuracy is agreement with the venue's own flag, taken as ground truth. The quote for Lee-Ready is the last one strictly before the trade; an at-or-before lookup reads the post-trade book on a feed whose book updates share the trade's timestamp."
+  },
+  {
+   "claim": "A classifier moves the net entry markout, measured as the paired within-coin-day difference, by 0.6 to 13.4 percent of its magnitude on the two centralized venues and by 11.5 to 20.4 percent on the on-chain one, in the opposite direction.",
+   "evidence": "sign_rule_counterfactual.json",
+   "qualification": "Three of the six paired errors clear zero and three contain it. Part of each error is a change in which fills occurred rather than in how they were signed."
+  },
+  {
+   "claim": "Of the 70 per-coin cells that return a verdict, 56 clear zero at raw p below 0.05, all 56 survive Benjamini-Hochberg and 54 survive Benjamini-Yekutieli.",
+   "evidence": "per_coin_multiplicity.json",
+   "qualification": "The p-values invert the shipped month-clustered t interval, so they inherit its coverage properties. Multiplicity is not what limits this surface; abstention and lack of power are."
+  },
+  {
+   "claim": "A classifier's agreement rate does not order its markout error across venues: Hyperliquid's Lee-Ready is more accurate than Bybit's and carries roughly five times the error as a share of its own effect.",
+   "evidence": "sign_rule_counterfactual.json",
+   "qualification": "Three venues are three points. This establishes that accuracy does not order the error, not what does."
+  },
+  {
+   "claim": "On Bybit, perpetuals delisted inside the window carry a net entry markout 0.8483 bp more negative than surviving coins on matched dates, and the 14.6 percent death rate bounds the survivorship omission at 0.1263 bp by coin count and 0.0720 bp by fill weight.",
+   "evidence": "survivorship_bound.json and panels/delisted_coindays.csv",
+   "qualification": "Bybit only. On Binance the same test runs on four delistings, two of which are contracts on index products rather than coins, and its verdict is withheld: four coins sit below the effective cluster floor. Its 2.2 percent death rate caps the omission at 0.0235 bp even at the far end of that interval, and the coin-only pair gives a gap of 0.0320 bp on the same rule. Hyperliquid is untested. The bound is not a correction and the panels remain survivor-only. The ten delisted names measured are the longest-lived qualifying delistings, so the gap is more likely understated than overstated."
+  }
+ ],
+ "prohibited": [
+  "Market makers lose money on these venues.",
+  "The study measures realised maker profitability.",
+  "Venue architecture causes the observed difference.",
+  "Bybit has an information lead over Hyperliquid.",
+  "Deeper queue position improves the result.",
+  "The adverse-to-capture ratio of 1.8 to 5.1 is a robust headline effect.",
+  "A venue's published maker rebate tier is stated as a fact of this study, or the simulated quoter is said to qualify for one.",
+  "Net entry markout is unchanged or invariant across volatility regimes.",
+  "This repository reproduces the study from raw venue archives.",
+  "The result is a tradeable edge or a walk-forward strategy result.",
+  "A constant correction can remove the bias a trade-sign classifier introduces.",
+  "Lee-Ready and the tick rule are unbiased on crypto perpetual tape.",
+  "The per-coin surface is 96 independent tests.",
+  "A classifier accurate enough on one venue is accurate enough on another.",
+  "A higher sign-classification accuracy implies a smaller markout bias.",
+  "The decisions in this section constitute a profitable quoting strategy.",
+  "The measured survivorship bound makes the panel point-in-time or survivorship-free."
+ ]
 }

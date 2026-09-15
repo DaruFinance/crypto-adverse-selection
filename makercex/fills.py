@@ -25,9 +25,10 @@ measured capture, which makes the split sensitive to re-quote spacing in a way
 the net is not.
 
 Mid prices are read on a step rule. `mid_at_or_before` carries the mid of the
-last snapshot at or before the time asked for. It does not interpolate, and it
-is undefined before the first snapshot. `markout_mids` applies that rule at the
-fill and again one horizon later.
+last snapshot at or before the time asked for, or strictly before it when
+`strict` is set. It does not interpolate, and it is undefined before the first
+snapshot. `markout_mids` reads the mid strictly before the fill and at or
+before the time one horizon later.
 
 The order posted at the final snapshot has no following snapshot to retire it,
 so it stands until the tape ends. That follows the measurement path rather than
@@ -52,14 +53,25 @@ DUST_FRAC = 1e-9
 PX_EPSILON = 1e-9
 
 
-def mid_at_or_before(snap_ts, snap_mid, when):
-    """Mid carried by the last snapshot at or before each time, NaN before the first."""
+def mid_at_or_before(snap_ts, snap_mid, when, strict=True):
+    """Mid carried by the last snapshot before each time, NaN before the first.
+
+    `strict=True` takes the last snapshot STRICTLY before `when`, which is the
+    convention the measurement uses and the only correct one for reading a
+    reference mid at a fill: a fill and the book update it triggers can share a
+    timestamp, and an at-or-before read then returns the POST-fill book. On a
+    millisecond-stamped feed that is not a corner case; on Binance USD-M 52.7
+    percent of fills share a timestamp with a book update.
+
+    `strict=False` restores the at-or-before reading for callers who want it.
+    """
     snap_ts = np.asarray(snap_ts, dtype=np.int64)
     snap_mid = np.asarray(snap_mid, dtype=np.float64)
     if snap_ts.size != snap_mid.size:
         raise ValueError("snapshot time and mid arrays must share one length")
     when = np.asarray(when, dtype=np.int64)
-    idx = np.searchsorted(snap_ts, when, side="right") - 1
+    side = "left" if strict else "right"
+    idx = np.searchsorted(snap_ts, when, side=side) - 1
     out = np.where(idx < 0, np.nan, snap_mid[np.clip(idx, 0, None)])
     return out
 
@@ -67,8 +79,11 @@ def mid_at_or_before(snap_ts, snap_mid, when):
 def markout_mids(fill_ts, snap_ts, snap_mid, horizon_ns):
     """The mid at each fill and the mid one horizon later, on the same step rule."""
     fill_ts = np.asarray(fill_ts, dtype=np.int64)
-    return (mid_at_or_before(snap_ts, snap_mid, fill_ts),
-            mid_at_or_before(snap_ts, snap_mid, fill_ts + int(horizon_ns)))
+    # the reference mid is read strictly before the fill; the horizon mid is
+    # read at or before, since nothing at the horizon is triggered by the fill
+    return (mid_at_or_before(snap_ts, snap_mid, fill_ts, strict=True),
+            mid_at_or_before(snap_ts, snap_mid, fill_ts + int(horizon_ns),
+                             strict=False))
 
 
 def simulate_touch_fills(snap_ts, bid_px, bid_sz, ask_px, ask_sz,

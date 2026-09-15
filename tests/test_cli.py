@@ -317,13 +317,33 @@ def test_the_abstention_rule_fires_below_the_floor(tmp_path):
     assert res["interval"]["verdict_is_available"] is False
     assert res["interval"]["clears_zero"] is False
 
-    wide, wide_t = make_book_and_tape(n_days=14)
+    # Both dimensions have to clear the floor, not just the first: the guard
+    # watches whichever binds, so six symbols are needed as well as 14 days.
+    wide, wide_t = make_book_and_tape(
+        n_days=14, symbols=("AAA", "BBB", "CCC", "DDD", "EEE", "FFF"))
     res = run(write_csv(tmp_path / "b2.csv", wide),
               write_csv(tmp_path / "t2.csv", wide_t))
     assert res["interval"]["n_effective_clusters"] >= MIN_CLUSTERS
+    assert res["interval"]["n_effective_clusters_binding"] >= MIN_CLUSTERS
     assert res["interval"]["verdict_is_available"] is True
     lo, hi = res["interval"]["ci95_t_two_way"] or res["interval"]["ci95_t"]
     assert lo < hi
+
+
+def test_the_guard_watches_the_binding_dimension(tmp_path):
+    """Many days but few symbols must still abstain.
+
+    The floor used to be checked on the first cluster dimension alone, so a
+    panel with 14 month clusters and 3 effective symbols returned a verdict
+    on a two-way interval its second dimension could not support.
+    """
+    snaps, trades = make_book_and_tape(n_days=14, symbols=("AAA", "BBB", "CCC"))
+    res = run(write_csv(tmp_path / "b.csv", snaps),
+              write_csv(tmp_path / "t.csv", trades))
+    i = res["interval"]
+    assert i["n_effective_clusters"] >= MIN_CLUSTERS
+    assert i["n_effective_clusters_b"] < MIN_CLUSTERS
+    assert i["verdict_is_available"] is False
 
 
 def test_the_interval_crosses_two_dimensions_when_a_symbol_is_present(tmp_path):
@@ -409,3 +429,19 @@ def _main():
 
 if __name__ == "__main__":
     raise SystemExit(_main())
+
+def test_the_reference_mid_is_read_strictly_before_the_fill():
+    """A fill and the update it triggers can share a timestamp.
+
+    Reading the mid at-or-before then returns the post-fill book, which
+    inflates capture and moves the split. Section 13 names this convention as
+    wrong for the measurement, so the shipped tool must not implement it.
+    """
+    import numpy as np
+    from makercex.fills import mid_at_or_before
+    snap_ts = np.array([100, 200, 200, 300], dtype=np.int64)
+    snap_mid = np.array([10.0, 11.0, 99.0, 12.0])
+    strict = mid_at_or_before(snap_ts, snap_mid, [200], strict=True)[0]
+    loose = mid_at_or_before(snap_ts, snap_mid, [200], strict=False)[0]
+    assert strict == 10.0, "a colliding update must not be read as the reference"
+    assert loose == 99.0, "the at-or-before reading stays available behind a flag"

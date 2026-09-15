@@ -24,7 +24,7 @@ def _signrule_row(prefix: str, block: dict, rule: str) -> str:
         f"{r['capture_bp_10s']:.3f}",
         f"{r['adverse_bp_10s']:.3f}",
         f"{r['net_bp_10s']:.3f}",
-        f"{r['net_error_bp_10s']:+.3f}",
+        f"{r['net_error_bp_10s_paired']:+.3f}",
         f"{r['fill_count_ratio']:.3f}",
     ]
     return " ".join(" ".join(fields).split())

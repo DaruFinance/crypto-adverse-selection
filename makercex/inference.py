@@ -110,6 +110,8 @@ def _nan_dict(extra):
             "verdict_interval": "ci95_t",
             "clears_zero_percentile": False, "n_clusters": 0,
             "n_effective_clusters": float("nan"),
+            "n_effective_clusters_b": None,
+            "n_effective_clusters_binding": float("nan"),
             "weight_concentration_clusters": float("nan"),
             "t_degrees_of_freedom": 0,
             "t_degrees_of_freedom_verdict": 0,
@@ -211,8 +213,17 @@ def cluster_bootstrap(values, weights, cluster_ids, n_boot=4000, seed=7,
             tc_two_way = t_crit_95(df_two_way)
     if not used_two_way:
         df_two_way, tc_two_way = df, tc
+    # The guard has to watch whichever dimension binds, not just the first one.
+    # On two of the three panels here the coin count is the smaller of the two
+    # (5.96 and 5.43 against 23.2 and 6.3 effective months), so checking A alone
+    # let a verdict through on a panel whose B dimension carried one effective
+    # cluster.
+    n_eff_b = (effective_clusters(_cluster_weight_totals(weights, cluster_b))
+               if cluster_b is not None else np.inf)
+    n_eff_binding = min(n_eff, n_eff_b)
     testable = bool(np.isfinite(se_used) and se_used > 0
-                    and np.isfinite(n_eff) and n_eff >= MIN_CLUSTERS)
+                    and np.isfinite(n_eff_binding)
+                    and n_eff_binding >= MIN_CLUSTERS)
     return {
         "point": point,
         "ci95": [float(lo), float(hi)],
@@ -227,6 +238,8 @@ def cluster_bootstrap(values, weights, cluster_ids, n_boot=4000, seed=7,
         "verdict_is_two_way": used_two_way,
         "two_way_variance_was_negative": bool(
             two_way is not None and two_way["variance_was_negative"]),
+        "n_effective_clusters_b": (None if cluster_b is None else float(n_eff_b)),
+        "n_effective_clusters_binding": float(n_eff_binding),
         "verdict_is_available": testable,
         "clears_zero": bool(testable
                             and (point - tc_two_way * se_used > 0

@@ -330,10 +330,11 @@ def main():
             "checked_in": "scripts/surv/validate.py (measurement tree)",
             "bybit_coindays_reproducing_shipped_panel": "16 of 16",
             "note": ("The delisted rows are measured on the shipped Bybit panel's "
-                     "publish-time book basis, not the engine stamp the order-book "
-                     "parser now prefers, so the contrast carries no book-time "
-                     "shift. Binance bookTicker has a single causal stamp and no "
-                     "such choice arises."),
+                     "publish-time book basis rather than the venue's "
+                     "matching-engine stamp, which is the basis the shipped panel "
+                     "carries, so the dead-minus-live contrast carries no "
+                     "book-time shift. Binance bookTicker has a single causal "
+                     "stamp and no such choice arises."),
         },
         "venues": {},
     }

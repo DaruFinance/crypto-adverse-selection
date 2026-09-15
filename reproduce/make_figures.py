@@ -45,7 +45,10 @@ DISPLAY = {"bybit_perp": "Bybit", "binance_um": "Binance",
 # the companion paper, not a measurement made here, and they are hardcoded for
 # exactly that reason: nothing in this package produces them and no shipped
 # panel should appear to. Different asset class, period and feed.
-CME_COMPANION = {"capture_bp": 0.654, "adverse_bp": -0.661, "net_bp": -0.022}
+# the published net of -0.022 is not the sum of the two published legs
+# (0.654 - 0.661 = -0.007), so drawing all three put an unexplained number in the
+# figure. The reference group shows the two legs, which is the offsetting point.
+CME_COMPANION = {"capture_bp": 0.654, "adverse_bp": -0.661, "net_bp": None}
 
 
 def load(name):
@@ -78,7 +81,7 @@ def fig_decomposition():
     labels = ["CME futures"] + [DISPLAY.get(n, n) for n in names]
     cap = [CME_COMPANION["capture_bp"]] + cap
     adv = [CME_COMPANION["adverse_bp"]] + adv
-    net = [CME_COMPANION["net_bp"]] + net
+    net = [np.nan] + net          # no CME net bar; see CME_COMPANION
 
     x = np.arange(len(labels))
     fig, ax = plt.subplots(figsize=(7.8, 3.6))
@@ -92,8 +95,10 @@ def fig_decomposition():
     ax.set_xticklabels(labels)
     ax.set_xlim(-0.5, len(labels) - 0.5)
     ax.set_ylabel("basis points per fill")
-    ax.set_title("Adverse selection cancels the touch on CME futures and\n"
-                 "over-consumes it on crypto perpetuals", loc="left")
+    # the CME group is a front-of-queue quoter and these panels are queue-tail, so
+    # the title must not attribute the difference to the asset class
+    ax.set_title("Adverse selection over-consumes the captured touch on all\n"
+                 "three crypto perpetual venues", loc="left")
     ax.text(0, 0.035, "reference panel,\ncompanion paper", transform=ax.get_xaxis_transform(),
             ha="center", va="bottom", fontsize=6.5, color="#4a5568")
     ax.legend(fontsize=8, ncol=3, loc="upper center", bbox_to_anchor=(0.5, -0.13),
@@ -122,8 +127,12 @@ def fig_sign_rule():
     x = np.arange(len(venues))
     for i, (rule, (label, colour)) in enumerate(RULE_STYLE.items()):
         off = (i - 0.5) * 0.34
-        vals = [d[v]["by_rule"][rule]["net_error_bp_10s"] for v in venues]
+        # the bar must be the estimand the whisker is built on. by_rule carries the
+        # pooled difference of the two nets; net_error_10s carries the paired
+        # within-coin-day difference the interval is centred on. Plotting one
+        # against the other put uncentred whiskers on every bar.
         ci = [d[v]["net_error_10s"][rule] for v in venues]
+        vals = [c["point"] for c in ci]
         lo = [c["ci95_t_two_way"][0] if c["ci95_t_two_way"] else c["ci95_t"][0] for c in ci]
         hi = [c["ci95_t_two_way"][1] if c["ci95_t_two_way"] else c["ci95_t"][1] for c in ci]
         ax.bar(x + off, vals, 0.3, color=colour, label=label, zorder=2)
@@ -165,7 +174,8 @@ def fig_sign_rule():
     bx.set_ylim(len(venues) - 0.55, -0.45)
     bx.set_xlabel("trades signed as the exchange did, percent\n"
                   "one dot per coin, the dark rule marks the pooled figure", fontsize=8.5)
-    bx.set_title("Agreement runs with the tick grid", loc="left", fontsize=9.5)
+    bx.set_title("Per-coin agreement is far more dispersed than the pooled rate",
+                 loc="left", fontsize=9.5)
     bx.legend(fontsize=7.5, frameon=False, loc="upper left", handletextpad=0.3)
     bx.margins(x=0.06)
     fig.subplots_adjust(wspace=0.28)
@@ -177,31 +187,45 @@ def fig_per_coin():
     fig, axes = plt.subplots(1, len(d), figsize=(11.5, 3.4))
     for ax, (venue, v) in zip(np.atleast_1d(axes), d.items()):
         pc = v["per_coin"]
-        coins = sorted(pc, key=lambda c: pc[c]["net_bp"])
+        # most negative at the TOP: barh puts index 0 at the bottom, so sort
+        # ascending by net and the reader gets most-negative-first reading down
+        coins = sorted(pc, key=lambda c: -pc[c]["net_bp"])
         labels = [base_symbol(c) for c in coins]
         vals = [pc[c]["net_bp"] for c in coins]
-        lo = [pc[c]["net_ci95"][0] for c in coins]
-        hi = [pc[c]["net_ci95"][1] for c in coins]
+        # every verdict in the paper is read from the t interval, so that is the
+        # object plotted here. The percentile interval disagrees on the sign for
+        # Hyperliquid NEAR and Binance XRP, and drawing it put a cell entirely
+        # above zero into the paper's own headline figure.
+        lo = [pc[c].get("net_ci95_t", pc[c]["net_ci95"])[0] for c in coins]
+        hi = [pc[c].get("net_ci95_t", pc[c]["net_ci95"])[1] for c in coins]
         y = np.arange(len(coins))
         cells = power.get(venue, {}).get("per_coin", {})
         strong = [bool(cells.get(c, {}).get("10s", {})
                        .get("percentile_interval_has_power_to_fail")) for c in coins]
+        held = [cells.get(c, {}).get("10s", {}).get("verdict_is_available") is False
+                for c in coins]
         ax.barh(y, vals, color=[C_NET if x > 0 else C_ADV for x in vals])
         for i in range(len(coins)):
-            ax.plot([lo[i], hi[i]], [y[i], y[i]], color="#2d3748",
-                    lw=1.0 if strong[i] else 0.6,
-                    alpha=1.0 if strong[i] else 0.35)
+            if held[i]:                       # withheld: dotted, and only dotted
+                ax.plot([lo[i], hi[i]], [y[i], y[i]], color="#2d3748",
+                        lw=0.9, ls=":", alpha=0.75)
+            else:
+                ax.plot([lo[i], hi[i]], [y[i], y[i]], color="#2d3748",
+                        lw=1.0 if strong[i] else 0.6,
+                        alpha=1.0 if strong[i] else 0.35)
         ax.axvline(0, color="#2d3748", lw=0.9)
         ax.set_yticks(y)
         ax.set_yticklabels(labels, fontsize=6.5)
         ax.set_ylim(-0.6, len(coins) - 0.4)
         ax.set_title(DISPLAY.get(venue, venue), loc="left", fontsize=9)
         ax.set_xlabel("net markout, bp")
-    axes[0].set_ylabel("faded whisker: interval could not reach zero",
-                       fontsize=6.5)
+    axes[0].set_ylabel("coin", fontsize=7)
     fig.subplots_adjust(wspace=0.42)
     save(fig, "fig2_per_coin")
 
+
+# depth_rebate_intervals.json withdraws the 1.5 bp published-tier attribution as
+# unsourceable, so no tier line is drawn here.
 
 def fig_depth_rebate():
     d = load("depth_rebate_frontier.json")
@@ -211,7 +235,7 @@ def fig_depth_rebate():
     ax.plot(lv, d["markout_bp_by_level"], "o-", color=C_ADV)
     ax.axhline(0, color="#2d3748", lw=0.9)
     ax.set_xticks(lv)
-    ax.set_xlabel("price level from mid, 1 is the touch")
+    ax.set_xlabel("price rung from the mid, 1 is the touch")
     ax.set_ylabel("net markout per fill, bp", color=C_ADV)
     axb = ax.twinx()
     axb.plot(lv, d["fill_rate_by_level"], "s--", color=C_CAP)
@@ -230,15 +254,24 @@ def fig_depth_rebate():
                         f"deepest (L{level})" if level == len(lv) else
                         "levels 2 to 4" if level == 2 else None))
     r_min = d["min_rebate_for_any_level_profitable_bp"]
-    ax2.axvspan(min(rebs), r_min, color="#718096", alpha=0.10, lw=0)
-    ax2.axvline(d["touch_overtakes_deepest_at_rebate_bp"], color=C_ACC,
-                lw=1.4, ls="--")
+    r_x = d["touch_overtakes_deepest_at_rebate_bp"]
+    # the no-profit band was drawn at alpha 0.10 and read as absent; the
+    # published-tier line the caption promises was never drawn at all
+    ax2.axvspan(min(rebs), r_min, color="#718096", alpha=0.22, lw=0, zorder=0)
+    ax2.axvline(r_x, color=C_ACC, lw=1.4, ls="--")
     ax2.axhline(0, color="#2d3748", lw=0.9)
+    ax2.set_xlim(min(rebs), max(rebs))
+    ymin, ymax = ax2.get_ylim()
+    ax2.set_ylim(ymin, ymax + 0.16 * (ymax - ymin))
+    ymin, ymax = ax2.get_ylim()
+    ax2.annotate(f"touch overtakes\ndeepest, {r_x:.3f} bp", (r_x, ymin),
+                 xytext=(4, 6), textcoords="offset points", fontsize=6.5,
+                 color=C_ACC, va="bottom")
     ax2.set_xlabel("maker rebate, bp")
     ax2.set_ylabel("bp per quoting opportunity")
     ax2.set_title("Three regions: do not quote, quote deep, quote the touch",
                   loc="left", fontsize=9)
-    ax2.legend(fontsize=7.5)
+    ax2.legend(fontsize=7.5, loc="upper left", framealpha=0.9)
     fig.subplots_adjust(wspace=0.58)
     save(fig, "fig3_depth_rebate")
 
@@ -262,7 +295,7 @@ def fig_conditional_net():
     ax.set_xticklabels([DISPLAY.get(b, b) for b in blocks])
     ax.set_ylim(0, 1.0)
     ax.set_ylabel("share of coins with a positive contrast")
-    ax.set_title("Net entry markout, high volatility minus low", loc="left",
+    ax.set_title("Share of coins with a positive high-minus-low contrast", loc="left",
                  fontsize=9)
     save(fig, "fig4_conditional_net")
 

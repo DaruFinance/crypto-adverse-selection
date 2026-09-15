@@ -96,8 +96,8 @@
       "percentile_se": 0.012426822841174084,
       "t": 0.06333333333333334,
       "t_se": 0.009943358103295405,
-      "two_way": 0.041666666666666664,
-      "two_way_se": 0.008157875086438006,
+      "two_way": 0.041736227045075125,
+      "two_way_se": 0.008171197675225327,
       "wild": 0.056666666666666664,
       "wild_se": 0.009438887253940084,
       "verdict_available_frac": 1.0
@@ -111,8 +111,8 @@
       "percentile_se": 0.01547125289345275,
       "t": 0.07006369426751592,
       "t_se": 0.011761498688851861,
-      "two_way": 0.050955414012738856,
-      "two_way_se": 0.010132766193572597,
+      "two_way": 0.052256532066508314,
+      "two_way_se": 0.010846125978798051,
       "wild": 0.06666666666666667,
       "wild_se": 0.01018350154434631,
       "verdict_available_frac": 0.785
@@ -126,8 +126,8 @@
       "percentile_se": 0.020523677458042025,
       "t": 0.08260869565217391,
       "t_se": 0.018152074867008455,
-      "two_way": 0.06086956521739131,
-      "two_way_se": 0.015765187466671354,
+      "two_way": 0.049079754601226995,
+      "two_way_se": 0.016921132880881706,
       "wild": 0.06333333333333334,
       "wild_se": 0.009943358103295405,
       "verdict_available_frac": 0.38333333333333336
@@ -214,11 +214,43 @@
       "verdict_available_frac": 0.13666666666666666
     },
     {
-      "condition": "13 clusters, right-skewed coin effects 0.8",
+      "condition": "13 clusters, coin effects lognormal sigma 0.44 (skewness 1.5)",
       "n_clusters": 13,
       "per_cluster": 40,
       "cluster_effect": 0.5,
-      "effect_skew": 0.8,
+      "effect_sigma": 0.44,
+      "percentile": 0.09333333333333334,
+      "percentile_se": 0.011875901525233233,
+      "t": 0.05333333333333334,
+      "t_se": 0.009173229973577907,
+      "two_way": 0.045,
+      "two_way_se": 0.008463155439905378,
+      "wild": 0.06,
+      "wild_se": 0.009695359714832657,
+      "verdict_available_frac": 1.0
+    },
+    {
+      "condition": "13 clusters, coin effects lognormal sigma 0.55 (skewness 2.0)",
+      "n_clusters": 13,
+      "per_cluster": 40,
+      "cluster_effect": 0.5,
+      "effect_sigma": 0.55,
+      "percentile": 0.1,
+      "percentile_se": 0.012247448713915891,
+      "t": 0.058333333333333334,
+      "t_se": 0.00956822480536102,
+      "two_way": 0.056666666666666664,
+      "two_way_se": 0.009438887253940084,
+      "wild": 0.058333333333333334,
+      "wild_se": 0.00956822480536102,
+      "verdict_available_frac": 1.0
+    },
+    {
+      "condition": "13 clusters, coin effects lognormal sigma 0.8 (skewness 3.7)",
+      "n_clusters": 13,
+      "per_cluster": 40,
+      "cluster_effect": 0.5,
+      "effect_sigma": 0.8,
       "percentile": 0.13833333333333334,
       "percentile_se": 0.014094752109811547,
       "t": 0.095,
@@ -230,11 +262,11 @@
       "verdict_available_frac": 1.0
     },
     {
-      "condition": "13 clusters, right-skewed coin effects 1.2",
+      "condition": "13 clusters, coin effects lognormal sigma 1.2 (skewness 11.2)",
       "n_clusters": 13,
       "per_cluster": 40,
       "cluster_effect": 0.5,
-      "effect_skew": 1.2,
+      "effect_sigma": 1.2,
       "percentile": 0.19833333333333333,
       "percentile_se": 0.01627867839753493,
       "t": 0.17166666666666666,
@@ -246,11 +278,11 @@
       "verdict_available_frac": 1.0
     },
     {
-      "condition": "13 clusters, right-skewed coin effects 2.0",
+      "condition": "13 clusters, coin effects lognormal sigma 2.0 (skewness 414)",
       "n_clusters": 13,
       "per_cluster": 40,
       "cluster_effect": 0.5,
-      "effect_skew": 2.0,
+      "effect_sigma": 2.0,
       "percentile": 0.4216666666666667,
       "percentile_se": 0.020160352546888034,
       "t": 0.415,
@@ -291,5 +323,62 @@
       "wild_se": null,
       "verdict_available_frac": 1.0
     }
-  ]
+  ],
+  "paper_configuration": {
+    "why": "The rows above cluster one-way on the coin and cross in the date. Every shipped verdict clusters one-way on the calendar month and crosses in the coin, so the two conditions that decide the headline interval choice are measured separately here in that configuration.",
+    "rows": [
+      {
+        "condition": "29 months x 13 coins, daily shock inside months",
+        "n_months": 29,
+        "n_coins": 13,
+        "dates_per_month": 5,
+        "date_shock": 1.0,
+        "month_only": 0.051666666666666666,
+        "month_only_se": 0.009036704987828088,
+        "month_only_verdict_available_frac": 1.0,
+        "two_way": 0.051666666666666666,
+        "two_way_se": 0.009036704987828088,
+        "two_way_verdict_available_frac": 1.0
+      },
+      {
+        "condition": "29 months x 13 coins, coin effect across months",
+        "n_months": 29,
+        "n_coins": 13,
+        "dates_per_month": 5,
+        "coin_effect": 1.0,
+        "month_only": 0.8666666666666667,
+        "month_only_se": 0.013877773329774218,
+        "month_only_verdict_available_frac": 1.0,
+        "two_way": 0.056666666666666664,
+        "two_way_se": 0.009438887253940084,
+        "two_way_verdict_available_frac": 1.0
+      },
+      {
+        "condition": "11 months x 20 coins, daily shock inside months",
+        "n_months": 11,
+        "n_coins": 20,
+        "dates_per_month": 5,
+        "date_shock": 1.0,
+        "month_only": 0.04,
+        "month_only_se": 0.008,
+        "month_only_verdict_available_frac": 1.0,
+        "two_way": 0.04,
+        "two_way_se": 0.008,
+        "two_way_verdict_available_frac": 1.0
+      },
+      {
+        "condition": "11 months x 20 coins, coin effect across months",
+        "n_months": 11,
+        "n_coins": 20,
+        "dates_per_month": 5,
+        "coin_effect": 1.0,
+        "month_only": 0.7766666666666666,
+        "month_only_se": 0.01700272309345161,
+        "month_only_verdict_available_frac": 1.0,
+        "two_way": 0.04833333333333333,
+        "two_way_se": 0.008755685983236096,
+        "two_way_verdict_available_frac": 1.0
+      }
+    ]
+  }
 }

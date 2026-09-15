@@ -97,6 +97,103 @@ def load_pairs(path, gap_ms):
     return pairs
 
 
+def _paired_gap(a_rows, b_rows, keys, a_cols, b_cols):
+    """Min-fill paired A-minus-B difference over a fixed key set."""
+    w = np.array([min(float(a_rows[k][a_cols[1]]), float(b_rows[k][b_cols[1]]))
+                  for k in keys])
+    d = np.array([float(a_rows[k][a_cols[0]]) - float(b_rows[k][b_cols[0]])
+                  for k in keys])
+    return float(np.average(d, weights=w))
+
+
+def extraction_check(rung_path, panel_dir, gap_ms):
+    """Compare the two extractions of the same coin-days, venue by venue.
+
+    Each venue appears twice in the shipped panels: once in its main coin-day
+    panel and once in the re-quote panel at the 100 ms rung, which is the same
+    re-quote ceiling the main panel is measured at. On coin-days both carry,
+    the two should agree. Bybit's do. Hyperliquid's do not, and the size of
+    that disagreement is measured here rather than left as prose, because that
+    venue's headline figure is read from the main panel while its entry in the
+    venue comparison is read from the re-quote panel.
+    """
+    rung, headline = defaultdict(dict), defaultdict(dict)
+    with open(rung_path) as fh:
+        for r in csv.DictReader(fh):
+            if int(r["gap_ms"]) == 100:
+                rung[r["venue"]][(r["coin"], r["date"])] = r
+            if int(r["gap_ms"]) == gap_ms:
+                headline[r["venue"]][(r["coin"], r["date"])] = r
+    out, mains = {}, {}
+    for venue, panel_name in ((VENUE_A, "bybit_perp_coindays.csv"),
+                              (VENUE_B, "hyperliquid_coindays.csv")):
+        main = {}
+        with open(Path(panel_dir) / panel_name) as fh:
+            for r in csv.DictReader(fh):
+                main[(r["coin"], r["date"])] = r
+        mains[venue] = main
+        shared = sorted(set(rung[venue]) & set(main))
+        if not shared:
+            continue
+        legs = {}
+        for tag, src, cols in (
+                ("main_panel", main,
+                 ("spread_capture_bp_10s", "adverse_select_bp_10s",
+                  "net_markout_bp_10s", "n_fills")),
+                ("requote_100ms_panel", rung[venue],
+                 ("capture_bp", "adverse_bp", "net_bp", "n_fills"))):
+            w = np.array([float(src[k][cols[3]]) for k in shared])
+            legs[tag] = {
+                "capture_bp": float(np.average(
+                    [float(src[k][cols[0]]) for k in shared], weights=w)),
+                "adverse_bp": float(np.average(
+                    [float(src[k][cols[1]]) for k in shared], weights=w)),
+                "net_bp": float(np.average(
+                    [float(src[k][cols[2]]) for k in shared], weights=w)),
+                "n_fills": int(w.sum()),
+            }
+        matched = sum(1 for k in shared
+                      if int(float(main[k]["n_fills"]))
+                      == int(float(rung[venue][k]["n_fills"])))
+        out[venue] = {
+            "n_shared_coindays": len(shared),
+            "n_coindays_with_equal_fill_counts": matched,
+            **legs,
+            "net_bp_difference": (legs["main_panel"]["net_bp"]
+                                  - legs["requote_100ms_panel"]["net_bp"]),
+            "fill_count_ratio_main_over_requote": (
+                legs["main_panel"]["n_fills"]
+                / legs["requote_100ms_panel"]["n_fills"]),
+        }
+    keys = sorted(set(mains[VENUE_A]) & set(rung[VENUE_A])
+                  & set(mains[VENUE_B]) & set(rung[VENUE_B]))
+    if keys:
+        out["two_scheme_gap"] = {
+            "n_coindays": len(keys),
+            "estimator": "min-fill paired Bybit minus Hyperliquid, in bp",
+            "from_requote_panel": _paired_gap(
+                headline[VENUE_A], headline[VENUE_B], keys,
+                ("net_bp", "n_fills"), ("net_bp", "n_fills")),
+            "requote_panel_gap_ms": gap_ms,
+            "from_the_two_main_panels": _paired_gap(
+                mains[VENUE_A], mains[VENUE_B], keys,
+                ("net_markout_bp_10s", "n_fills"),
+                ("net_markout_bp_10s", "n_fills")),
+            "note": ("The same venue gap read off the two sampling schemes on "
+                     "the coin-days both cover. The sign holds and the "
+                     "magnitude does not, and the two rates have different "
+                     "bases rather than a common denominator."),
+        }
+    out["note"] = (
+        "Both extractions run the same 100 ms re-quote ceiling on the same "
+        "coin-days. Bybit's two agree fill for fill. Hyperliquid's do not, and "
+        "they carry different fill sets, so the disagreement is not a reference "
+        "mid shifted between them, which Proposition 1 leaves the net invariant "
+        "to. The cause is not established here. It is carried as a threat to "
+        "that venue's figure rather than resolved.")
+    return out
+
+
 def rung_choice(path, gap_ms):
     rows = collections.defaultdict(float)
     days = collections.defaultdict(set)
@@ -138,6 +235,9 @@ def main():
     ap.add_argument("--panel", default=str(
         REPRODUCE / "panels" / "venue_requote_rungs.csv"))
     ap.add_argument("--gap-ms", type=int, default=GAP_MS)
+    ap.add_argument("--panels", default=str(REPRODUCE / "panels"),
+                    help="directory holding the main coin-day panels, read "
+                         "for the two-extraction check")
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     pairs = load_pairs(a.panel, a.gap_ms)
@@ -235,6 +335,7 @@ def main():
                 "at every rung here"),
         },
         "rung_choice": rung_choice(a.panel, a.gap_ms),
+        "panel_extraction_check": extraction_check(a.panel, a.panels, a.gap_ms),
     }
     Path(a.out).write_text(json.dumps(out, indent=2, default=float))
     print(f"{len(pairs)} shared coin-days over {out['n_date_clusters']} dates "

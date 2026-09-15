@@ -40,6 +40,7 @@
           ],
           "net_se_month_only": 0.014675296987620911,
           "net_se_two_way_month_coin": 0.08818121698413423,
+          "net_two_way_interval_was_constructed": true,
           "net_clears_zero_two_way": true
         },
         "10s_coin_unit_weighted": {
@@ -67,6 +68,7 @@
           ],
           "net_se_month_only": 0.024752531337031765,
           "net_se_two_way_month_coin": 0.05613976596793643,
+          "net_two_way_interval_was_constructed": true,
           "net_clears_zero_two_way": true
         },
         "60s_row_mean": {
@@ -94,6 +96,7 @@
           ],
           "net_se_month_only": 0.016383031777615416,
           "net_se_two_way_month_coin": 0.07768708653988453,
+          "net_two_way_interval_was_constructed": true,
           "net_clears_zero_two_way": true
         },
         "60s_coin_unit_weighted": {
@@ -121,6 +124,7 @@
           ],
           "net_se_month_only": 0.023083629227213232,
           "net_se_two_way_month_coin": 0.054728182578558944,
+          "net_two_way_interval_was_constructed": true,
           "net_clears_zero_two_way": true
         }
       },
@@ -605,6 +609,7 @@
           ],
           "net_se_month_only": 0.012755928372457918,
           "net_se_two_way_month_coin": 0.025538302327960973,
+          "net_two_way_interval_was_constructed": true,
           "net_clears_zero_two_way": true
         },
         "10s_coin_unit_weighted": {
@@ -632,6 +637,7 @@
           ],
           "net_se_month_only": 0.01042935519704623,
           "net_se_two_way_month_coin": 0.021041027136338743,
+          "net_two_way_interval_was_constructed": true,
           "net_clears_zero_two_way": true
         },
         "60s_row_mean": {
@@ -659,6 +665,7 @@
           ],
           "net_se_month_only": 0.015279378177445055,
           "net_se_two_way_month_coin": 0.02813888315420372,
+          "net_two_way_interval_was_constructed": true,
           "net_clears_zero_two_way": true
         },
         "60s_coin_unit_weighted": {
@@ -686,6 +693,7 @@
           ],
           "net_se_month_only": 0.014758087668792368,
           "net_se_two_way_month_coin": 0.024639026483438447,
+          "net_two_way_interval_was_constructed": true,
           "net_clears_zero_two_way": true
         }
       },
@@ -1229,6 +1237,7 @@
           ],
           "net_se_month_only": 0.08393400923343448,
           "net_se_two_way_month_coin": 0.09765786417235635,
+          "net_two_way_interval_was_constructed": true,
           "net_clears_zero_two_way": true
         },
         "10s_coin_unit_weighted": {
@@ -1256,6 +1265,7 @@
           ],
           "net_se_month_only": 0.09250967078567332,
           "net_se_two_way_month_coin": 0.09385849320182073,
+          "net_two_way_interval_was_constructed": true,
           "net_clears_zero_two_way": true
         },
         "60s_row_mean": {
@@ -1280,7 +1290,8 @@
           "net_ci95_t_two_way_month_coin": null,
           "net_se_month_only": 0.04224430119036952,
           "net_se_two_way_month_coin": 0.04224430119036952,
-          "net_clears_zero_two_way": true
+          "net_two_way_interval_was_constructed": false,
+          "net_clears_zero_two_way": null
         },
         "60s_coin_unit_weighted": {
           "capture_bp": 0.7396572970599232,
@@ -1304,7 +1315,8 @@
           "net_ci95_t_two_way_month_coin": null,
           "net_se_month_only": 0.0848982107789705,
           "net_se_two_way_month_coin": 0.0848982107789705,
-          "net_clears_zero_two_way": true
+          "net_two_way_interval_was_constructed": false,
+          "net_clears_zero_two_way": null
         }
       },
       "weighting_family": {
@@ -1970,13 +1982,14 @@
     "intervals_resample_months": "The percentile interval here resamples calendar months, and the reported verdict is read from the t interval beside it, 29 on Bybit and 11 on each of the other two venues. At those counts the percentile interval under-covers, so read it alongside the per-coin counts rather than on its own.",
     "capture_is_horizon_invariant": "Captured half-spread is markout minus adverse drift, which reduces to a quantity fixed at fill time, so it does not vary with the markout horizon and is identical in the 10 s and 60 s rows by construction. Any claim that the result is horizon robust is a claim about adverse selection alone.",
     "coin_unit_weighting_is_not_traded_value": "The coin-unit weighting multiplies fill count by mean fill size. Order size is a fixed one coin, so a unit of one asset is not comparable with a unit of another. Within a coin it is a true size weighting; across coins it is not a mean over traded value.",
-    "hype_disagrees_between_files": "Hyperliquid HYPE at 10 s sits within 0.0022 bp of zero, and this file and the per-coin interval file land on opposite sides of it. Treat its clears-zero flag as undetermined rather than as either verdict.",
+    "hype_percentile_bound_is_decided_in_the_fourth_decimal": "Hyperliquid HYPE at 10 s carries a t interval that contains zero and a percentile interval whose upper bound sits within a hundredth of a basis point of it, against a point estimate near -0.371. The two interval types therefore disagree on that one cell, and the bound moves with the bootstrap stream. Its verdict is read from the t interval, which is no, and its percentile flag should not be read as a verdict of either kind.",
+    "the_two_way_interval_is_not_always_constructible": "Where the coin dimension cannot be crossed in, the estimator falls back to the month-only standard error. Those cells carry net_two_way_interval_was_constructed false and a null net_clears_zero_two_way rather than a verdict read off the narrower interval. That is the two Hyperliquid 60 s cells.",
     "panels_are_not_contemporaneous": "The three panels cover different calendar windows. Binance and Hyperliquid share no dates at all and Bybit overlaps Hyperliquid on twelve, so a venue comparison read straight off these pooled figures is confounded with the period each panel covers. The venue difference reported separately uses only coin-days both venues traded on the same date.",
     "coin_sets_differ_across_venues": "The venues carry 13, 15 and 20 coins with 12 in common. Restricting to those 12 moves the low end of the adverse-to-capture range, taking Hyperliquid from 1.8 to 2.2 and Binance from 1.8 to 2.1, while Bybit is unchanged at 5.1.",
     "the_ratio_has_a_collapsing_denominator": "Adverse over capture divides by a captured half-spread that approaches zero on the highest-volume coins, so the ratio is unstable where the weight is. Bybit BTC is 34 percent of that venue's fills at a capture of 0.012 bp and a ratio near 50. Medians across coins are 3.7, 1.7 and 1.1 against pooled 5.1, 1.9 and 1.8. The negative sign of net markout holds under every weighting tried; the magnitude of the ratio does not.",
     "panels_are_stride_sampled_at_different_densities": "Binance covers every calendar day in its window, Bybit about a third of its days on a uniform stride, and Hyperliquid about a quarter. A month of Bybit therefore carries roughly ten sampled days against thirty of Binance, so the month counts of 29 and 11 describe clusters of very different weight, and the twelve-date overlap with Hyperliquid is a product of two strides rather than the calendar overlap, which is wider.",
     "a_fill_is_a_simulated_quoter_fill": "Fills here are those of a simulated passive quoter rather than every passive execution on the venue, and the three Bybit panels count different things: the same coin-day carries 9,765 fills in this decomposition, 5,743 for the quoting arm's touch leg and 2,789 at the touch in the depth frontier. The posting and fill rule behind this panel is set upstream and is not documented in this repository.",
-    "some_per_coin_verdicts_are_withheld": "A per-coin clears-zero flag is null where the effective month count falls below the level at which a cluster interval is worth reading. That is 2 of 15 on Binance and 11 of 20 on Hyperliquid. The same guard governs the per-coin interval file, and for a time only that file applied it.",
-    "rebuild_coverage_is_uneven": "A rebuild recomputes the measurements and not the per-row blocks beside them. Across the ten files the comparison reaches 1,097 of 1,403 leaves here, 99 of 265 on the venue difference, 39 of 160 on the depth intervals, 68 of 6,575 on the cross-venue lead-lag and 45 of 1,626 on the quoting arm, so a clean comparison speaks for the figures it covers rather than the whole file."
+    "some_per_coin_verdicts_are_withheld": "A per-coin clears-zero flag is null where the effective month count falls below the level at which a cluster interval is worth reading. That is 2 of 15 on Binance and 11 of 20 on Hyperliquid. The same guard governs the per-coin interval file.",
+    "rebuild_coverage_is_uneven": "A rebuild recomputes the measurements and not the stored metadata or per-row diagnostic blocks beside them. Across the shipped files the comparison reaches 1,111 of 1,415 leaves here, 130 of 288 on the venue difference, 39 of 154 on the depth intervals, 68 of 6,575 on the cross-venue lead-lag and 53 of 1,626 on the quoting arm, so a clean comparison speaks for the figures it covers rather than the whole file."
   }
 }

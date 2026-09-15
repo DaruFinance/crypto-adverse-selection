@@ -16,7 +16,16 @@ effect in them, runs each interval and counts how often each one says there is
 something there. A nominal 95 percent interval should reject 5 percent of the
 time.
 
-Four conditions are swept, because each stresses a different interval. The
+Two studies are written. The first sweeps the conditions below with the
+one-way interval clustered on the coin and the date crossed in. The second,
+under `paper_configuration`, clusters one-way on the calendar month and crosses
+in the coin, which is what every shipped verdict does, and it is the one to
+quote for the choice between the month-only and the two-way interval. The first
+study cannot speak to that choice: a coin effect is the dimension its own
+one-way estimator already clusters on, so both estimators absorb it there.
+
+Four conditions are swept in the first study, because each stresses a
+different interval. The
 first is a shared effect within a cluster, which is the dependence the
 clustering exists to absorb: an interval ignoring it is far too narrow, one
 clustering correctly is unmoved. Cluster count is the second: percentile
@@ -54,8 +63,11 @@ the weight to the size of the cluster effect, so the heavy clusters are also
 the atypical ones. That is the shape the real panels carry. One coin can hold a
 third of the fills on an atypical capture, which is the harder case.
 
-Cluster effects are Gaussian unless `effect_skew` is set, which draws them
-lognormal and demeaned instead. The sign-flip test names cluster-wise
+Cluster effects are Gaussian unless `effect_sigma` is set, which draws them
+lognormal and demeaned instead. NOTE: this parameter is the SIGMA of the
+lognormal, not a skewness. A lognormal with sigma s has skewness
+(e^{s^2}+2)*sqrt(e^{s^2}-1), so sigma 0.44 is skewness 1.49, sigma 0.55 is
+skewness 1.99, and sigma 2.0 is skewness 414. Rows are labelled with both. The sign-flip test names cluster-wise
 symmetry as its assumption, and without that switch nothing here stressed it.
 """
 
@@ -84,14 +96,14 @@ WILD_MAX_CLUSTERS = 13
 
 def panel(rng, n_clusters, per_cluster, weight_skew=0.0, date_shock=0.0,
           cluster_effect=0.0, n_dates=10, cluster_weights=False,
-          weight_value_corr=0.0, effect_skew=0.0):
+          weight_value_corr=0.0, effect_sigma=0.0):
     n = n_clusters * per_cluster
     ids = [f"c{i % n_clusters}" for i in range(n)]
     dates = [f"d{(i // n_clusters) % n_dates}" for i in range(n)]
     shock = rng.standard_normal(n_dates) * date_shock
-    if effect_skew:
-        effect = (rng.lognormal(0.0, effect_skew, n_clusters)
-                  - np.exp(effect_skew * effect_skew / 2.0)) * cluster_effect
+    if effect_sigma:
+        effect = (rng.lognormal(0.0, effect_sigma, n_clusters)
+                  - np.exp(effect_sigma * effect_sigma / 2.0)) * cluster_effect
     else:
         effect = rng.standard_normal(n_clusters) * cluster_effect
     values = np.array([shock[(i // n_clusters) % n_dates]
@@ -113,6 +125,63 @@ def panel(rng, n_clusters, per_cluster, weight_skew=0.0, date_shock=0.0,
     else:
         weights = np.exp(rng.standard_normal(n) * weight_skew)
     return values, weights, ids, dates
+
+
+def paper_panel(rng, n_months, n_coins, dates_per_month, date_shock=0.0,
+                coin_effect=0.0):
+    """Rows on a month-by-coin grid with calendar dates nested inside months.
+
+    The sweep above clusters one-way on the coin and crosses in the date. This
+    paper does the opposite: it clusters one-way on the calendar month and
+    crosses in the coin. The two are not the same study. A shock shared by
+    every coin on one date is within-cluster dependence that month clustering
+    already absorbs, while a coin effect that persists across months is
+    dependence month clustering cannot see at all. Neither condition can be
+    read off the coin-clustered grid, so both are measured here in the
+    configuration the shipped verdicts actually use.
+
+    Returns values, weights, month labels and coin labels, in that order, so
+    the month is the one-way cluster and the coin is the second dimension.
+    """
+    n_dates = n_months * dates_per_month
+    shock = rng.standard_normal(n_dates) * date_shock
+    effect = rng.standard_normal(n_coins) * coin_effect
+    values, months, coins = [], [], []
+    for d in range(n_dates):
+        for c in range(n_coins):
+            values.append(shock[d] + effect[c] + rng.standard_normal())
+            months.append(f"m{d // dates_per_month}")
+            coins.append(f"c{c}")
+    return np.array(values), np.ones(len(values)), months, coins
+
+
+def paper_size(reps, seed, **kw):
+    """Rejection rate of the month-only and month-by-coin intervals."""
+    hits = {"month_only": 0, "two_way": 0}
+    ran = {"month_only": 0, "two_way": 0}
+    for s in range(reps):
+        rng = np.random.default_rng(seed + s)
+        v, w, months, coins = paper_panel(rng, **kw)
+        one = cluster_bootstrap(v, w, months, n_boot=400, seed=s)
+        if one["verdict_is_available"]:
+            ran["month_only"] += 1
+            hits["month_only"] += one["clears_zero"]
+        two = cluster_bootstrap(v, w, months, n_boot=400, seed=s,
+                                cluster_b=coins)
+        if two["verdict_is_available"]:
+            ran["two_way"] += 1
+            hits["two_way"] += two["clears_zero"]
+    out = {}
+    for k in hits:
+        if not ran[k]:
+            out[k] = None
+            out[k + "_se"] = None
+            continue
+        p_hat = hits[k] / ran[k]
+        out[k] = p_hat
+        out[k + "_se"] = float(np.sqrt(p_hat * (1 - p_hat) / ran[k]))
+        out[k + "_verdict_available_frac"] = ran[k] / reps
+    return out
 
 
 def assert_crossed(ids, dates, n_clusters, n_dates):
@@ -204,15 +273,21 @@ def main():
              dict(n_clusters=13, per_cluster=40, weight_skew=1.5,
                   cluster_effect=0.6, cluster_weights=True,
                   weight_value_corr=0.9)),
-            ("13 clusters, right-skewed coin effects 0.8",
+            ("13 clusters, coin effects lognormal sigma 0.44 (skewness 1.5)",
              dict(n_clusters=13, per_cluster=40, cluster_effect=0.5,
-                  effect_skew=0.8)),
-            ("13 clusters, right-skewed coin effects 1.2",
+                  effect_sigma=0.44)),
+            ("13 clusters, coin effects lognormal sigma 0.55 (skewness 2.0)",
              dict(n_clusters=13, per_cluster=40, cluster_effect=0.5,
-                  effect_skew=1.2)),
-            ("13 clusters, right-skewed coin effects 2.0",
+                  effect_sigma=0.55)),
+            ("13 clusters, coin effects lognormal sigma 0.8 (skewness 3.7)",
              dict(n_clusters=13, per_cluster=40, cluster_effect=0.5,
-                  effect_skew=2.0)),
+                  effect_sigma=0.8)),
+            ("13 clusters, coin effects lognormal sigma 1.2 (skewness 11.2)",
+             dict(n_clusters=13, per_cluster=40, cluster_effect=0.5,
+                  effect_sigma=1.2)),
+            ("13 clusters, coin effects lognormal sigma 2.0 (skewness 414)",
+             dict(n_clusters=13, per_cluster=40, cluster_effect=0.5,
+                  effect_sigma=2.0)),
             ("13 clusters, daily shock 1.0",
              dict(n_clusters=13, per_cluster=40, date_shock=1.0)),
             ("20 clusters, daily shock 1.0",
@@ -224,9 +299,36 @@ def main():
         print(f"  {label:34s} {r['percentile']:>10.3f} {r['t']:>8.3f} "
               f"{r['two_way']:>8.3f} {wild}   +/-{r['percentile_se']:.3f}"
               f"   {r['verdict_available_frac']:>6.2f}")
+
+    paper_rows = []
+    print(f"\n  the paper's own configuration: one-way on the calendar month, "
+          f"crossed with the coin\n")
+    print(f"  {'condition':46s} {'month-only':>11} {'two-way':>9}   {'mc se':>6}")
+    for label, kw in (
+            ("29 months x 13 coins, daily shock inside months",
+             dict(n_months=29, n_coins=13, dates_per_month=5, date_shock=1.0)),
+            ("29 months x 13 coins, coin effect across months",
+             dict(n_months=29, n_coins=13, dates_per_month=5, coin_effect=1.0)),
+            ("11 months x 20 coins, daily shock inside months",
+             dict(n_months=11, n_coins=20, dates_per_month=5, date_shock=1.0)),
+            ("11 months x 20 coins, coin effect across months",
+             dict(n_months=11, n_coins=20, dates_per_month=5, coin_effect=1.0)),
+    ):
+        r = paper_size(a.reps, a.seed, **kw)
+        paper_rows.append({"condition": label, **kw, **r})
+        print(f"  {label:46s} {r['month_only']:>11.3f} {r['two_way']:>9.3f}"
+              f"   +/-{r['month_only_se']:.3f}")
+
     Path(a.out).write_text(json.dumps(
-        {"nominal": NOMINAL, "reps": a.reps, "rows": rows}, indent=2,
-        default=float))
+        {"nominal": NOMINAL, "reps": a.reps, "rows": rows,
+         "paper_configuration": {
+             "why": ("The rows above cluster one-way on the coin and cross in "
+                     "the date. Every shipped verdict clusters one-way on the "
+                     "calendar month and crosses in the coin, so the two "
+                     "conditions that decide the headline interval choice are "
+                     "measured separately here in that configuration."),
+             "rows": paper_rows}},
+        indent=2, default=float))
     print(f"\n  wrote {a.out}")
 
 

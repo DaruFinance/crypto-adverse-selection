@@ -55,7 +55,11 @@
           "capture_error_bp_10s": 0.010592781725739353,
           "adverse_error_bp_10s": 0.017856133861260393,
           "fill_count_ratio": 1.0602585081217972,
-          "net_error_as_share_of_truth": 0.03391879633801244
+          "net_error_as_share_of_truth": 0.03391879633801244,
+          "net_error_bp_10s_pooled": 0.028448922620182615,
+          "net_error_as_share_of_truth_pooled": 0.03391879633801244,
+          "net_error_bp_10s_paired": 0.03209678769183353,
+          "net_error_as_share_of_truth_paired": 0.03826803634564976
         },
         "tick": {
           "label": "tick rule",
@@ -88,7 +92,11 @@
           "capture_error_bp_10s": -0.005108184807304544,
           "adverse_error_bp_10s": 0.04782041364943301,
           "fill_count_ratio": 0.9371525228967936,
-          "net_error_as_share_of_truth": 0.05092448805767188
+          "net_error_as_share_of_truth": 0.05092448805767188,
+          "net_error_bp_10s_pooled": 0.04271221200740327,
+          "net_error_as_share_of_truth_pooled": 0.05092448805767188,
+          "net_error_bp_10s_paired": 0.03183660627597165,
+          "net_error_as_share_of_truth_paired": 0.03795782985476163
         }
       },
       "net_error_10s": {
@@ -112,6 +120,8 @@
           ],
           "verdict_is_two_way": true,
           "two_way_variance_was_negative": false,
+          "n_effective_clusters_b": 5.957390613438363,
+          "n_effective_clusters_binding": 5.957390613438363,
           "verdict_is_available": true,
           "clears_zero": false,
           "clears_zero_percentile": true,
@@ -141,6 +151,8 @@
           ],
           "verdict_is_two_way": true,
           "two_way_variance_was_negative": false,
+          "n_effective_clusters_b": 5.957390613438363,
+          "n_effective_clusters_binding": 5.957390613438363,
           "verdict_is_available": true,
           "clears_zero": false,
           "clears_zero_percentile": true,
@@ -172,6 +184,8 @@
           ],
           "verdict_is_two_way": true,
           "two_way_variance_was_negative": false,
+          "n_effective_clusters_b": 5.957390613438363,
+          "n_effective_clusters_binding": 5.957390613438363,
           "verdict_is_available": true,
           "clears_zero": false,
           "clears_zero_percentile": true,
@@ -201,6 +215,8 @@
           ],
           "verdict_is_two_way": true,
           "two_way_variance_was_negative": false,
+          "n_effective_clusters_b": 5.957390613438363,
+          "n_effective_clusters_binding": 5.957390613438363,
           "verdict_is_available": true,
           "clears_zero": false,
           "clears_zero_percentile": true,
@@ -260,7 +276,11 @@
           "capture_error_bp_10s": 0.00011395010929826643,
           "adverse_error_bp_10s": 0.0028399956200942933,
           "fill_count_ratio": 0.9978309783882957,
-          "net_error_as_share_of_truth": 0.007551689843087035
+          "net_error_as_share_of_truth": 0.007551689843087035,
+          "net_error_bp_10s_pooled": 0.0029539415097823984,
+          "net_error_as_share_of_truth_pooled": 0.007551689843087035,
+          "net_error_bp_10s_paired": 0.0025171656235288605,
+          "net_error_as_share_of_truth_paired": 0.0064350814021266875
         },
         "tick": {
           "label": "tick rule",
@@ -295,7 +315,11 @@
           "capture_error_bp_10s": -0.0015045707143617748,
           "adverse_error_bp_10s": 0.04985681618388982,
           "fill_count_ratio": 1.0113684433487826,
-          "net_error_as_share_of_truth": 0.12361150624912916
+          "net_error_as_share_of_truth": 0.12361150624912916,
+          "net_error_bp_10s_pooled": 0.048352245256773396,
+          "net_error_as_share_of_truth_pooled": 0.12361150624912916,
+          "net_error_bp_10s_paired": 0.05226750139090567,
+          "net_error_as_share_of_truth_paired": 0.13362077687391852
         }
       },
       "net_error_10s": {
@@ -319,6 +343,8 @@
           ],
           "verdict_is_two_way": true,
           "two_way_variance_was_negative": false,
+          "n_effective_clusters_b": 10.728444752469857,
+          "n_effective_clusters_binding": 8.41231408625665,
           "verdict_is_available": true,
           "clears_zero": true,
           "clears_zero_percentile": true,
@@ -348,6 +374,8 @@
           ],
           "verdict_is_two_way": true,
           "two_way_variance_was_negative": false,
+          "n_effective_clusters_b": 10.728444752469857,
+          "n_effective_clusters_binding": 8.41231408625665,
           "verdict_is_available": true,
           "clears_zero": true,
           "clears_zero_percentile": true,
@@ -376,6 +404,8 @@
           "ci95_t_two_way": null,
           "verdict_is_two_way": false,
           "two_way_variance_was_negative": false,
+          "n_effective_clusters_b": 10.728444752469857,
+          "n_effective_clusters_binding": 8.41231408625665,
           "verdict_is_available": true,
           "clears_zero": true,
           "clears_zero_percentile": true,
@@ -405,6 +435,8 @@
           ],
           "verdict_is_two_way": true,
           "two_way_variance_was_negative": false,
+          "n_effective_clusters_b": 10.728444752469857,
+          "n_effective_clusters_binding": 8.41231408625665,
           "verdict_is_available": true,
           "clears_zero": true,
           "clears_zero_percentile": true,
@@ -469,7 +501,11 @@
           "capture_error_bp_10s": -0.04155545758970225,
           "adverse_error_bp_10s": -0.06596192274049906,
           "fill_count_ratio": 1.0816878227415805,
-          "net_error_as_share_of_truth": -0.23498629031348997
+          "net_error_as_share_of_truth": -0.23498629031348997,
+          "net_error_bp_10s_pooled": -0.10751740064289922,
+          "net_error_as_share_of_truth_pooled": -0.23498629031348997,
+          "net_error_bp_10s_paired": -0.09314331093669637,
+          "net_error_as_share_of_truth_paired": -0.20357077992636263
         },
         "tick": {
           "label": "tick rule",
@@ -509,7 +545,11 @@
           "capture_error_bp_10s": -0.013135481129731175,
           "adverse_error_bp_10s": -0.06668511152240009,
           "fill_count_ratio": 0.9299432180550127,
-          "net_error_as_share_of_truth": -0.17445303935717674
+          "net_error_as_share_of_truth": -0.17445303935717674,
+          "net_error_bp_10s_pooled": -0.07982056017359179,
+          "net_error_as_share_of_truth_pooled": -0.17445303935717674,
+          "net_error_bp_10s_paired": -0.05270149195126217,
+          "net_error_as_share_of_truth_paired": -0.11518254732315492
         }
       },
       "net_error_10s": {
@@ -533,6 +573,8 @@
           ],
           "verdict_is_two_way": true,
           "two_way_variance_was_negative": false,
+          "n_effective_clusters_b": 5.430775527824393,
+          "n_effective_clusters_binding": 5.430775527824393,
           "verdict_is_available": true,
           "clears_zero": true,
           "clears_zero_percentile": true,
@@ -562,6 +604,8 @@
           ],
           "verdict_is_two_way": true,
           "two_way_variance_was_negative": false,
+          "n_effective_clusters_b": 5.430775527824393,
+          "n_effective_clusters_binding": 5.430775527824393,
           "verdict_is_available": true,
           "clears_zero": false,
           "clears_zero_percentile": true,
@@ -590,6 +634,8 @@
           "ci95_t_two_way": null,
           "verdict_is_two_way": false,
           "two_way_variance_was_negative": false,
+          "n_effective_clusters_b": 5.430775527824393,
+          "n_effective_clusters_binding": 5.430775527824393,
           "verdict_is_available": true,
           "clears_zero": true,
           "clears_zero_percentile": true,
@@ -619,6 +665,8 @@
           ],
           "verdict_is_two_way": true,
           "two_way_variance_was_negative": false,
+          "n_effective_clusters_b": 5.430775527824393,
+          "n_effective_clusters_binding": 5.430775527824393,
           "verdict_is_available": true,
           "clears_zero": false,
           "clears_zero_percentile": true,
@@ -632,7 +680,7 @@
     }
   },
   "scope": {
-    "binance_is_the_untested_cell": "Binance carries no fill ledger and no local trade archive, so this counterfactual is run on Bybit and Hyperliquid only. The third venue is untested here rather than tested and agreeing.",
+    "binance_runs_from_a_derived_artifact": "All three venues are measured under all three rules. Binance has no local fill ledger, so its rows enter through the derived sign-rule artifact named in the lineage manifest rather than through a ledger replay. That is how deep the chain reaches on that venue, not a venue left untested.",
     "the_classifier_changes_the_fill_set_too": "A sign decides which of the maker's two resting orders a trade can lift, so each rule takes its own fill set. The fill count ratio is reported per rule because part of a rule's markout error is a change in which fills were measured.",
     "accuracy_is_against_the_venue_flag": "Accuracy is agreement with the exchange aggressor flag, which is taken as ground truth throughout. Where a venue's own flag is wrong this measures agreement rather than correctness.",
     "one_quoter_one_cadence": "Every figure is the reference last-in-queue touch quoter at the same 100 ms re-quote ceiling used everywhere else in the paper. The error a classifier carries for a different quoter or a different cadence is not measured here."

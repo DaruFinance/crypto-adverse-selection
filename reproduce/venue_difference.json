@@ -383,13 +383,50 @@
   },
   "n_coins": 13,
   "panel_extraction_check": {
-    "shared_coin_days": 156,
-    "diff_bp_from_requote_panel": -0.3496,
-    "diff_bp_from_the_two_main_panels": -0.2232,
-    "bybit_rung_100ms_matches_main_panel_coin_days": 156,
-    "bybit_shared_coin_days": 156,
-    "hyperliquid_rung_100ms_matches_main_panel_coin_days": 3,
-    "hyperliquid_shared_coin_days": 500,
-    "note": "the two extractions of the same coin-days, reported so the difference between them is a leaf rather than only prose"
+    "bybit_perp": {
+      "n_shared_coindays": 156,
+      "n_coindays_with_equal_fill_counts": 156,
+      "main_panel": {
+        "capture_bp": 0.17105314400352783,
+        "adverse_bp": -0.9161089897752408,
+        "net_bp": -0.7450557758572404,
+        "n_fills": 2274479
+      },
+      "requote_100ms_panel": {
+        "capture_bp": 0.17105317861129146,
+        "adverse_bp": -0.9161089600900356,
+        "net_bp": -0.7450557814787443,
+        "n_fills": 2274479
+      },
+      "net_bp_difference": 5.621503929020832e-09,
+      "fill_count_ratio_main_over_requote": 1.0
+    },
+    "hyperliquid": {
+      "n_shared_coindays": 500,
+      "n_coindays_with_equal_fill_counts": 3,
+      "main_panel": {
+        "capture_bp": 0.4513565266711728,
+        "adverse_bp": -1.0338492680237956,
+        "net_bp": -0.582492714724637,
+        "n_fills": 729383
+      },
+      "requote_100ms_panel": {
+        "capture_bp": 0.274308158669635,
+        "adverse_bp": -0.617800927647407,
+        "net_bp": -0.3434927689777721,
+        "n_fills": 1484203
+      },
+      "net_bp_difference": -0.23899994574686495,
+      "fill_count_ratio_main_over_requote": 0.4914307544183646
+    },
+    "two_scheme_gap": {
+      "n_coindays": 156,
+      "estimator": "min-fill paired Bybit minus Hyperliquid, in bp",
+      "from_requote_panel": -0.3495817336600056,
+      "requote_panel_gap_ms": 2000,
+      "from_the_two_main_panels": -0.22320689818019354,
+      "note": "The same venue gap read off the two sampling schemes on the coin-days both cover. The sign holds and the magnitude does not, and the two rates have different bases rather than a common denominator."
+    },
+    "note": "Both extractions run the same 100 ms re-quote ceiling on the same coin-days. Bybit's two agree fill for fill. Hyperliquid's do not, and they carry different fill sets, so the disagreement is not a reference mid shifted between them, which Proposition 1 leaves the net invariant to. The cause is not established here. It is carried as a threat to that venue's figure rather than resolved."
   }
 }

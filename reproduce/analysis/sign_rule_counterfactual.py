@@ -199,6 +199,19 @@ def venue_block(items):
         for tau, key in (("10s", "net_markout_bp_10s"), ("60s", "net_markout_bp_60s")):
             ci = paired_error(items, rule, key)
             out[f"net_error_{tau}"][rule] = ci
+    # Two errors live in this file and they are not the same estimand. The
+    # difference of the two pooled net cells is one; the paired within-coin-day
+    # difference, which is what the intervals are built on, is the other. Every
+    # error and share quoted outside this file is the paired one, so it is
+    # named here rather than left to be recomputed from the interval block.
+    for rule in CLASSIFIERS:
+        got = out["by_rule"][rule]
+        got["net_error_bp_10s_pooled"] = got["net_error_bp_10s"]
+        got["net_error_as_share_of_truth_pooled"] = got["net_error_as_share_of_truth"]
+        got["net_error_bp_10s_paired"] = out["net_error_10s"][rule]["point"]
+        got["net_error_as_share_of_truth_paired"] = (
+            got["net_error_bp_10s_paired"] / abs(truth["net_bp_10s"])
+            if truth["net_bp_10s"] else float("nan"))
     return out
 
 
@@ -222,10 +235,12 @@ def main():
         "venues": {v: venue_block(sorted(venues[v]))
                    for v in VENUE_ORDER if v in venues},
         "scope": {
-            "binance_is_the_untested_cell": (
-                "Binance carries no fill ledger and no local trade archive, so "
-                "this counterfactual is run on Bybit and Hyperliquid only. The "
-                "third venue is untested here rather than tested and agreeing."),
+            "binance_runs_from_a_derived_artifact": (
+                "All three venues are measured under all three rules. Binance "
+                "has no local fill ledger, so its rows enter through the "
+                "derived sign-rule artifact named in the lineage manifest "
+                "rather than through a ledger replay. That is how deep the "
+                "chain reaches on that venue, not a venue left untested."),
             "the_classifier_changes_the_fill_set_too": (
                 "A sign decides which of the maker's two resting orders a trade "
                 "can lift, so each rule takes its own fill set. The fill count "

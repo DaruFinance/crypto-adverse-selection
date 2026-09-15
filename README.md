@@ -75,26 +75,31 @@ under each rule:
 ```text
 Venue        Rule            Accuracy  Capture  Adverse  Net      Error   Fills
 Bybit        exchange flag   1.000    0.206   -1.044   -0.839        .  1.000
-Bybit        Lee-Ready       0.932    0.216   -1.027   -0.810   +0.028  1.060
-Bybit        tick rule       0.898    0.201   -0.997   -0.796   +0.043  0.937
+Bybit        Lee-Ready       0.932    0.216   -1.027   -0.810   +0.032  1.060
+Bybit        tick rule       0.898    0.201   -0.997   -0.796   +0.032  0.937
 Binance      exchange flag   1.000    0.460   -0.852   -0.391        .  1.000
 Binance      Lee-Ready       0.982    0.461   -0.849   -0.388   +0.003  0.998
-Binance      tick rule       0.913    0.459   -0.802   -0.343   +0.048  1.011
+Binance      tick rule       0.913    0.459   -0.802   -0.343   +0.052  1.011
 Hyperliquid  exchange flag   1.000    0.560   -1.017   -0.458        .  1.000
-Hyperliquid  Lee-Ready       0.936    0.518   -1.083   -0.565   -0.108  1.082
-Hyperliquid  tick rule       0.894    0.547   -1.084   -0.537   -0.080  0.930
+Hyperliquid  Lee-Ready       0.936    0.518   -1.083   -0.565   -0.093  1.082
+Hyperliquid  tick rule       0.894    0.547   -1.084   -0.537   -0.053  0.930
+
+Error is the paired within-coin-day difference against the exchange flag, which
+is the estimand the intervals are built on, so it is not the difference of the
+two pooled Net cells beside it. Fills is the rule's fill count as a multiple of
+the true one.
 ```
 
 The sign of the result survives both classifiers on all three venues. The
-magnitude moves by 3.4 and 5.1 percent on Bybit, 0.8 and 12.4 on Binance and
-23.5 and 17.4 on Hyperliquid, and the two centralized venues move it the
+magnitude moves by 3.8 and 3.8 percent on Bybit, 0.6 and 13.4 on Binance and
+20.4 and 11.5 on Hyperliquid, and the two centralized venues move it the
 opposite way from the on-chain one, so no constant correction is available.
 Three of the six errors clear zero.
 
 Accuracy does not order that error across venues. Hyperliquid's Lee-Ready is
-more accurate than Bybit's and carries about seven times the error as a share
+more accurate than Bybit's and carries about five times the error as a share
 of its own effect; Binance's tick rule is more accurate than Bybit's and carries
-more than twice the share. A rule also changes which fills happen, not only how
+more than three times the share. A rule also changes which fills happen, not only how
 they are signed, which is what the fills column is.
 
 The quote is taken strictly before each trade, not at or before it. That is not
@@ -323,8 +328,9 @@ traded size exceeds the displayed queue ahead, and only the excess fills the
 simulated order up to its remaining size.
 
 Orders normally live for one snapshot interval, except that the final snapshot's
-order persists until the tape ends because no later snapshot retires it. Mid
-prices use the last observation at or before each requested timestamp without
+order persists until the tape ends because no later snapshot retires it. The
+mid at the fill is read from the last snapshot strictly before it, and the mid
+one horizon later from the last snapshot at or before that time, without
 interpolation. Side comes from true aggressor flags rather than a tick or quote
 rule.
 

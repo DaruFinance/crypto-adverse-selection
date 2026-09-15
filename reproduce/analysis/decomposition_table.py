@@ -190,8 +190,11 @@ def weighting_block(rows, tau, weight, suffix):
         "net_se_month_only": None if boot is None else boot["se_cluster"],
         "net_se_two_way_month_coin": (
             None if two is None else two["se_used_for_verdict"]),
+        "net_two_way_interval_was_constructed": (
+            None if two is None else bool(two["verdict_is_two_way"])),
         "net_clears_zero_two_way": (
             None if two is None or not two["verdict_is_available"]
+            or not two["verdict_is_two_way"]
             else two["clears_zero"]),
         "n_effective_months_kish": (None if boot is None
                                     else boot["n_effective_clusters"]),
@@ -295,6 +298,94 @@ def venue_block(rows):
     return block
 
 
+METHOD = {
+    "weightings": {"row_mean": "pooled by fill count, a mean over fills"},
+    "panels": "dust-free (post phantom-fill guard) only",
+}
+
+LIMITATIONS = {
+    "intervals_resample_months": (
+        "The percentile interval here resamples calendar months, and the "
+        "reported verdict is read from the t interval beside it, 29 on Bybit "
+        "and 11 on each of the other two venues. At those counts the "
+        "percentile interval under-covers, so read it alongside the per-coin "
+        "counts rather than on its own."),
+    "capture_is_horizon_invariant": (
+        "Captured half-spread is markout minus adverse drift, which reduces to "
+        "a quantity fixed at fill time, so it does not vary with the markout "
+        "horizon and is identical in the 10 s and 60 s rows by construction. "
+        "Any claim that the result is horizon robust is a claim about adverse "
+        "selection alone."),
+    "coin_unit_weighting_is_not_traded_value": (
+        "The coin-unit weighting multiplies fill count by mean fill size. "
+        "Order size is a fixed one coin, so a unit of one asset is not "
+        "comparable with a unit of another. Within a coin it is a true size "
+        "weighting; across coins it is not a mean over traded value."),
+    "hype_percentile_bound_is_decided_in_the_fourth_decimal": (
+        "Hyperliquid HYPE at 10 s carries a t interval that contains zero and "
+        "a percentile interval whose upper bound sits within a hundredth of a "
+        "basis point of it, against a point estimate near -0.371. The two "
+        "interval types therefore disagree on that one cell, and the bound "
+        "moves with the bootstrap stream. Its verdict is read from the t "
+        "interval, which is no, and its percentile flag should not be read as "
+        "a verdict of either kind."),
+    "the_two_way_interval_is_not_always_constructible": (
+        "Where the coin dimension cannot be crossed in, the estimator falls "
+        "back to the month-only standard error. Those cells carry "
+        "net_two_way_interval_was_constructed false and a null "
+        "net_clears_zero_two_way rather than a verdict read off the narrower "
+        "interval. That is the two Hyperliquid 60 s cells."),
+    "panels_are_not_contemporaneous": (
+        "The three panels cover different calendar windows. Binance and "
+        "Hyperliquid share no dates at all and Bybit overlaps Hyperliquid on "
+        "twelve, so a venue comparison read straight off these pooled figures "
+        "is confounded with the period each panel covers. The venue difference "
+        "reported separately uses only coin-days both venues traded on the "
+        "same date."),
+    "coin_sets_differ_across_venues": (
+        "The venues carry 13, 15 and 20 coins with 12 in common. Restricting "
+        "to those 12 moves the low end of the adverse-to-capture range, taking "
+        "Hyperliquid from 1.8 to 2.2 and Binance from 1.8 to 2.1, while Bybit "
+        "is unchanged at 5.1."),
+    "the_ratio_has_a_collapsing_denominator": (
+        "Adverse over capture divides by a captured half-spread that "
+        "approaches zero on the highest-volume coins, so the ratio is unstable "
+        "where the weight is. Bybit BTC is 34 percent of that venue's fills at "
+        "a capture of 0.012 bp and a ratio near 50. Medians across coins are "
+        "3.7, 1.7 and 1.1 against pooled 5.1, 1.9 and 1.8. The negative sign "
+        "of net markout holds under every weighting tried; the magnitude of "
+        "the ratio does not."),
+    "panels_are_stride_sampled_at_different_densities": (
+        "Binance covers every calendar day in its window, Bybit about a third "
+        "of its days on a uniform stride, and Hyperliquid about a quarter. A "
+        "month of Bybit therefore carries roughly ten sampled days against "
+        "thirty of Binance, so the month counts of 29 and 11 describe clusters "
+        "of very different weight, and the twelve-date overlap with "
+        "Hyperliquid is a product of two strides rather than the calendar "
+        "overlap, which is wider."),
+    "a_fill_is_a_simulated_quoter_fill": (
+        "Fills here are those of a simulated passive quoter rather than every "
+        "passive execution on the venue, and the three Bybit panels count "
+        "different things: the same coin-day carries 9,765 fills in this "
+        "decomposition, 5,743 for the quoting arm's touch leg and 2,789 at the "
+        "touch in the depth frontier. The posting and fill rule behind this "
+        "panel is set upstream and is not documented in this repository."),
+    "some_per_coin_verdicts_are_withheld": (
+        "A per-coin clears-zero flag is null where the effective month count "
+        "falls below the level at which a cluster interval is worth reading. "
+        "That is 2 of 15 on Binance and 11 of 20 on Hyperliquid. The same "
+        "guard governs the per-coin interval file."),
+    "rebuild_coverage_is_uneven": (
+        "A rebuild recomputes the measurements and not the stored metadata or "
+        "per-row diagnostic blocks beside them. Across the shipped files the "
+        "comparison reaches 1,111 of 1,415 leaves here, 130 of 288 on the "
+        "venue difference, 39 of 154 on the depth intervals, 68 of 6,575 on "
+        "the cross-venue lead-lag and 53 of 1,626 on the quoting arm, so a "
+        "clean comparison speaks for the figures it covers rather than the "
+        "whole file."),
+}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--panels", default=str(REPRODUCE / "panels"))
@@ -302,13 +393,14 @@ def main():
                     help="output path; pass a scratch file to compare against "
                          "the shipped decomposition_by_venue.json")
     a = ap.parse_args()
-    result = {"venues": {}}
+    result = {"method": METHOD, "venues": {}}
     for venue in VENUES:
         path = Path(a.panels) / f"{venue}_coindays.csv"
         rows = load(path)
         print(f"{venue:14s} {len(rows):>5} coin-days, "
               f"{len({r['coin'] for r in rows})} coins")
         result["venues"][venue] = venue_block(rows)
+    result["limitations"] = LIMITATIONS
     Path(a.out).write_text(json.dumps(result, indent=2, default=float))
     print(f"wrote {a.out}")
 
