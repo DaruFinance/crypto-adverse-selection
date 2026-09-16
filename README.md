@@ -40,8 +40,8 @@ rule or Lee-Ready in its place carries the error measured below.
 
 ## Main result
 
-For a simulated last-in-queue touch quoter, the 10-second pre-fee entry markout
-is negative on all three venues:
+For a simulated last-in-queue quoter, the 10-second pre-fee entry markout is
+negative on all three venues:
 
 ```text
 Venue                         Capture  Adverse  Net       95% two-way CI
@@ -53,6 +53,20 @@ Hyperliquid                     0.560   -1.017   -0.458   [-0.729, -0.186]
 Clustering uses calendar month and coin. The three venue panels cover
 different dates and coin sets, so the pooled values are not a causal venue
 ranking.
+
+Read the fill condition as part of the number, not as a conservative
+approximation to a broader one. The quoter re-posts at every snapshot and
+forfeits priority, so it is reached only when same-price aggressive volume
+clears the entire displayed queue inside one snapshot interval. Flow that does
+not clear the level never reaches it. These are the queue-clearing fills of the
+tape rather than a sample of what rests at the touch, and the difference is
+measurable: widening the re-quote interval loosens the condition while holding
+the panel fixed, and removes 28.5% of the adverse leg on Bybit and 32.7% on
+Hyperliquid. That share is a floor, since the reference-mid staleness channel
+pushes the other way over the same span. At the widest rung the Hyperliquid net
+reaches -0.040 bp and stops excluding zero, so on that venue the result is a
+property of the tight fill condition. `reproduce/panels/venue_requote_rungs.csv`
+carries the sweep.
 
 Net is calculated as a one-sided entry markout:
 
@@ -202,10 +216,12 @@ reproduce/
 
 ## Reproducing the paper
 
-This repository is the reproducibility package for *Quoting the Touch Does Not
-Pay Its Adverse Selection: A True-Aggressor-Signed Entry-Markout Decomposition
-for a Last-in-Queue Quoter Across Bybit, Binance USD-M and Hyperliquid*, covering the measurement, its results, the interval calibration
-behind them and the abstention rule, which is reusable on any panel.
+This repository is the reproducibility package for *Swept Quotes Do Not Pay
+Their Adverse Selection: A True-Aggressor-Signed Entry-Markout Decomposition
+for a Last-in-Queue Quoter Filled Only on Queue-Clearing Trades Across Bybit,
+Binance USD-M and Hyperliquid*, covering the measurement, its results, the
+interval calibration behind them and the abstention rule, which is reusable on
+any panel.
 
 Python 3.10 or newer is required. The smoke test finishes in under a minute,
 asserting the invariants that cover the decomposition, its inference and the
@@ -374,9 +390,10 @@ against the shipped result files and rejects prohibited phrases.
 ```bibtex
 @techreport{gatto2026quoting,
   author      = {Gatto, Daniel V.},
-  title       = {Quoting the Touch Does Not Pay Its Adverse Selection: A
+  title       = {Swept Quotes Do Not Pay Their Adverse Selection: A
                  True-Aggressor-Signed Entry-Markout Decomposition for a
-                 Last-in-Queue Quoter Across Bybit, Binance USD-M and Hyperliquid},
+                 Last-in-Queue Quoter Filled Only on Queue-Clearing Trades
+                 Across Bybit, Binance USD-M and Hyperliquid},
   year        = {2026},
   institution = {Universidade Paulista (UNIP)},
   type        = {SSRN Working Paper},
