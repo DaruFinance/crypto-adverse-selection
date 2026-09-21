@@ -1,5 +1,7 @@
 # makercex
 
+> Write-up and figures: [Quoting the Touch Does Not Pay Its Adverse Selection](https://daru.finance/research/crypto-adverse-selection), by Daniel Gatto.
+
 Measure the entry markout of a passive quote against true-aggressor-signed tape,
 with cluster-robust intervals that abstain when the panel cannot support one.
 
